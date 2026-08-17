@@ -9,6 +9,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Clients      | prospects, acceptance, conflicts, related parties                 |
 | Engagements  | scope, responsibility, teams, systems, commercial boundary        |
 | Authority    | matrix, delegations, grants, approvals, thresholds                |
+| Risk         | classification, ownership, acceptance, controls, residual risk    |
 | Policies     | lifecycle, versions, approvals, exceptions, acknowledgement       |
 | Procedures   | controlled procedure and runbook references                       |
 | Access       | requests, grants, reviews, revocation, break glass                |
@@ -23,3 +24,5 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Vendors      | due diligence, contracts, access, review and exit                 |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
+
+The first executable boundary is repository-backed rather than persistent: `PartnershipDefinitionRepository` loads canonical formation and constitutional facts; `ResolvePartnership` validates and projects them; `ResolvedPartnership` is the intermediate domain object consumed by the Firm Console. The rendered Agreement and browser are projections, never canonical truth.

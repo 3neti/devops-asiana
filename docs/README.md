@@ -31,3 +31,5 @@ Procedures and runbooks must name their governing policy, authorized roles, requ
 | `architecture/` | Software boundary and data design direction              |
 | `adr/`          | Durable institutional and technical decisions            |
 | `legal/`        | Matters requiring counsel validation                     |
+
+The current executable projection is documented under [Partnership compiler](architecture/partnership-compiler.md) and [Firm Console](architecture/firm-console.md). The browser catalogue is generated from this hierarchy; the repository remains canonical.

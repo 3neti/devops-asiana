@@ -6,6 +6,8 @@
 | Reserved Matters          | How should founder vetoes, voting thresholds, duration, deadlock, and enforceability be drafted?                    | Open   |
 | Dilution protections      | What protections and approval mechanics are valid and practical?                                                    | Open   |
 | Capital contributions     | How are initial and additional contributions, defaults, accounts, and returns documented?                           | Open   |
+| Founding economics        | How should the 30% / 50% / 20% Engagement Contribution allocation be documented, accounted for, and taxed?          | Open   |
+| Firm Allocation           | What treatment preserves its institutional purpose without treating the Firm as a Partner?                          | Open   |
 | Partner admission         | What approvals, deeds, registrations, warranties, and effective dates are required?                                 | Open   |
 | Partner classes           | Which proposed economic and governance distinctions are legally supportable?                                        | Open   |
 | Expulsion                 | What causes, process, interim restrictions, valuation, and fairness protections apply?                              | Open   |
@@ -29,5 +31,6 @@
 | Regulatory communications | Who may notify regulators or law enforcement, under what triggers and timelines?                                    | Open   |
 | Intellectual property     | How are pre-existing 3neti/ODTI IP, Client work product, and Firm-created operating IP separated?                   | Open   |
 | Dissolution               | What triggers, priorities, Client transitions, records custody, asset disposition, and continuing duties apply?     | Open   |
+| 50/50 deadlock            | What resolution mechanism protects equal governance without unintended dissolution or authority consequences?       | Open   |
 
 The register owner shall add counsel advice, decision references, affected documents, and closure evidence without replacing the original question. Legal advice itself may require privileged storage outside this repository.

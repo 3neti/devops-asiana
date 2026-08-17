@@ -1,0 +1,236 @@
+{
+    "schema_version": 1,
+    "formation": {
+        "firm": {
+            "name": "DevOps Asiana",
+            "jurisdiction": "Philippines",
+            "legal_form": "General Partnership",
+            "legal_status": "Subject to Philippine counsel review",
+            "principal_office": null,
+            "effective_date": null
+        },
+        "founding_partners": [
+            {
+                "key": "lester-hurtado",
+                "name": "Lester B. Hurtado",
+                "partner_status": "Founding Partner",
+                "governance_weight": 50,
+                "economic_allocation": 30,
+                "offices": [],
+                "operational_posture": "Non-day-to-day",
+                "primary_responsibilities": [
+                    "Institutional strategy",
+                    "Client origination",
+                    "Strategic relationships",
+                    "ODTI / 3neti ecosystem relationships",
+                    "Partnership development",
+                    "Constitutional governance"
+                ],
+                "constitutional_rights": [
+                    "Founding Partner participation in Reserved Matters"
+                ],
+                "practice_responsibilities": [],
+                "engagement_responsibilities": []
+            },
+            {
+                "key": "angelica-santos",
+                "name": "Angelica Anaïs C. Santos",
+                "partner_status": "Founding Partner",
+                "governance_weight": 50,
+                "economic_allocation": 50,
+                "offices": ["managing-partner"],
+                "operational_posture": "Day-to-day management",
+                "primary_responsibilities": [
+                    "Day-to-day management",
+                    "Delivery organization",
+                    "Staffing and work allocation",
+                    "Operational quality",
+                    "Client service execution",
+                    "Implementation of Firm policy"
+                ],
+                "constitutional_rights": [
+                    "Founding Partner participation in Reserved Matters"
+                ],
+                "practice_responsibilities": [
+                    "Cloud Operations — interim responsibility pending delegation"
+                ],
+                "engagement_responsibilities": []
+            }
+        ],
+        "economics": {
+            "basis": "Engagement Contribution",
+            "basis_definition": "Client revenue less permitted direct Engagement costs; final legal, accounting, and tax treatment remains unresolved.",
+            "firm_allocation": {
+                "recipient_type": "firm",
+                "label": "Firm Allocation",
+                "percentage": 20,
+                "purpose": [
+                    "Working capital",
+                    "Insurance",
+                    "Tools",
+                    "Training",
+                    "Equipment",
+                    "Hiring",
+                    "Reserves",
+                    "Professional services",
+                    "Offices or property",
+                    "Institutional development"
+                ]
+            }
+        }
+    },
+    "constitution": {
+        "offices": [
+            {
+                "key": "managing-partner",
+                "name": "Managing Partner",
+                "required": true,
+                "holder": "angelica-santos",
+                "responsibilities": [
+                    "Day-to-day administration",
+                    "Staffing",
+                    "Work allocation",
+                    "Operational supervision",
+                    "Implementation of approved policies"
+                ],
+                "authority_basis": "Partnership Agreement and Authority Matrix, subject to Reserved Matters"
+            }
+        ],
+        "responsibility_assignments": [
+            {
+                "key": "partnership-strategy",
+                "label": "Partnership Strategy",
+                "holders": ["lester-hurtado", "angelica-santos"]
+            },
+            {
+                "key": "constitutional-governance",
+                "label": "Constitutional Governance",
+                "holders": ["lester-hurtado", "angelica-santos"]
+            },
+            {
+                "key": "day-to-day-management",
+                "label": "Day-to-Day Management",
+                "holders": ["angelica-santos"]
+            },
+            {
+                "key": "business-development",
+                "label": "Business Development",
+                "holders": ["lester-hurtado"]
+            },
+            {
+                "key": "client-origination",
+                "label": "Client Origination",
+                "holders": ["lester-hurtado"]
+            },
+            {
+                "key": "ecosystem-relationships",
+                "label": "Strategic Ecosystem Relationships",
+                "holders": ["lester-hurtado"]
+            },
+            {
+                "key": "client-delivery",
+                "label": "Client Delivery",
+                "holders": ["angelica-santos"]
+            },
+            {
+                "key": "cloud-operations",
+                "label": "Cloud Operations",
+                "holders": ["angelica-santos"]
+            },
+            {
+                "key": "security-compliance",
+                "label": "Security & Compliance",
+                "holders": []
+            },
+            {
+                "key": "privileged-emergency-access",
+                "label": "Privileged Emergency Access Approval",
+                "holders": []
+            }
+        ],
+        "reserved_matters": [
+            "Admission of Equity Partners",
+            "Creation of Partner classes",
+            "Material ownership or capital changes",
+            "Amendment of the Partnership Agreement",
+            "Amendment of Founder protections",
+            "Merger, sale of substantially all assets, or dissolution",
+            "Major borrowing or guarantees",
+            "Material related-party transactions",
+            "Disposition of strategic assets or intellectual property",
+            "Fundamental change of business",
+            "Material change to Partner compensation architecture"
+        ],
+        "authority_principles": {
+            "firm_authority": "Permission granted by the Firm to an actor or office.",
+            "client_mandate": "Permission granted by the Client to the Firm under an Engagement.",
+            "specific_approval": "Authorization for a particular action within both Firm Authority and Client Mandate.",
+            "professional_independence": "Platform affiliation does not override professional duty to the Client."
+        }
+    },
+    "decisions": [
+        {
+            "key": "founding-governance",
+            "label": "Equal Founding Partner governance",
+            "institutional_state": "resolved",
+            "legal_state": "counsel_review",
+            "statement": "Lester B. Hurtado and Angelica Anaïs C. Santos each hold 50% governance weight."
+        },
+        {
+            "key": "founding-economics",
+            "label": "Founding economic allocation",
+            "institutional_state": "resolved",
+            "legal_state": "counsel_review",
+            "statement": "Engagement Contribution is allocated 30% to Lester, 50% to Anaïs, and 20% to the Firm Allocation."
+        },
+        {
+            "key": "initial-capital-contributions",
+            "label": "Initial capital contributions",
+            "institutional_state": "unresolved",
+            "legal_state": "not_yet_ready",
+            "statement": "No amount, form, timing, or contribution obligation has been decided."
+        },
+        {
+            "key": "capital-ownership",
+            "label": "Capital ownership and liquidation interests",
+            "institutional_state": "unresolved",
+            "legal_state": "not_yet_ready",
+            "statement": "Governance and Engagement economics do not determine capital interests."
+        },
+        {
+            "key": "governance-deadlock",
+            "label": "50/50 governance deadlock mechanism",
+            "institutional_state": "unresolved",
+            "legal_state": "counsel_review",
+            "statement": "No deadlock escalation, mediation, casting vote, buy-sell, or dissolution mechanism has been selected."
+        },
+        {
+            "key": "founder-dilution",
+            "label": "Founder dilution protection mechanics",
+            "institutional_state": "resolved",
+            "legal_state": "counsel_review",
+            "statement": "Founder protections are intended; their legal mechanics, limits, and duration require counsel."
+        },
+        {
+            "key": "partner-retirement",
+            "label": "Partner retirement mechanics",
+            "institutional_state": "unresolved",
+            "legal_state": "counsel_review",
+            "statement": "Notice, transition, economic treatment, and redemption have not been decided."
+        },
+        {
+            "key": "death-incapacity",
+            "label": "Partner death and incapacity mechanics",
+            "institutional_state": "unresolved",
+            "legal_state": "counsel_review",
+            "statement": "Authority is personal and economic value may survive, but implementation remains unresolved."
+        },
+        {
+            "key": "buyout-redemption",
+            "label": "Buyout and redemption valuation",
+            "institutional_state": "unresolved",
+            "legal_state": "not_yet_ready",
+            "statement": "No valuation method, date, funding method, or payment terms have been selected."
+        }
+    ]
+}

@@ -2,11 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use App\Documentation\InstitutionalDocumentRepository;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
+    public function __construct(private InstitutionalDocumentRepository $documents) {}
+
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -41,6 +44,9 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'institutionalNavigation' => fn (): array => $request->user() === null
+                ? []
+                : $this->documents->navigation(),
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
     }

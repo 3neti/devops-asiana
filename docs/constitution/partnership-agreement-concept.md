@@ -4,6 +4,8 @@
 
 The Partnership Agreement should constitute DevOps Asiana as a professional Firm and establish the authority from which policies derive. It should address purpose, term, capital, property, Partner classes, admission, governance, management, duties, conflicts, compensation, distributions, records, authority to bind the Firm, Reserved Matters, transfer restrictions, retirement, incapacity, death, expulsion, valuation, redemption, dissolution, dispute resolution, and amendment.
 
+The Agreement will be a projection of a reviewed `ResolvedPartnership`. Formation facts and continuing constitutional rules remain distinguishable in the canonical definition. Missing decisions and counsel dependencies must remain visible in any draft rather than be completed through boilerplate.
+
 The instrument should preserve these separations:
 
 - capital interest is not unlimited authority;

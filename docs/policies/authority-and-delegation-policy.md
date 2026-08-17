@@ -22,6 +22,10 @@ Each entry shall define the decision or action, initiator, reviewer, approver, e
 
 Authority grants shall be attributable, scoped, time-bound where appropriate, and revocable. Delegates shall not sub-delegate unless expressly permitted. A job title, Partner class, technical access, past practice, Client relationship, or emergency does not by itself confer authority.
 
+Firm Authority and Client Mandate are independent constraints. Firm delegation cannot enlarge what the Client authorized, and Client instruction does not identify which individual may act for the Firm. A Specific Approval must remain within both.
+
+Authority may attach to an office or personally to constitutional status. The Authority Matrix shall identify the source. Managing Partner authority follows the office; personal Founding Partner rights follow the governing instrument and do not arise from management office.
+
 High-risk actions should use independent approval where technically and operationally practical. No one person should be able to initiate, approve, execute, and verify a material commitment without an explicit, risk-accepted exception.
 
 Apparent overreach shall be stopped where safe, escalated immediately, and recorded. Ratification, if legally and institutionally available, is a separate affirmative decision; execution never implies approval.

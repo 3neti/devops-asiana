@@ -1,6 +1,12 @@
 # Future Institutional Operating System
 
-## Recommended first vertical slice
+## Implemented first vertical slice
+
+The repository now includes a read-only Partnership Formation and Constitution Compiler backed by `resources/institution/partnership.json`. It resolves a `ResolvedPartnership`, validates governance and economic totals, reports open decisions, counsel-review items, structural conflicts, and responsibility gaps, and supplies the Firm Map and document browser.
+
+This slice does not persist data, generate legal text, or claim legal validity.
+
+## Recommended next vertical slice
 
 Build **Policy Lifecycle and Exceptions** before Client or operational CRUD. It is narrow, establishes the authority hierarchy, and proves historical integrity.
 
