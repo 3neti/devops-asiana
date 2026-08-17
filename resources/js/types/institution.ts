@@ -507,3 +507,82 @@ export type ChangeCompiler = {
     };
     principles: string[];
 };
+
+export type IncidentLifecycleStatus =
+    | 'detected'
+    | 'triaged'
+    | 'declared'
+    | 'active'
+    | 'contained'
+    | 'recovering'
+    | 'monitoring'
+    | 'service_restored'
+    | 'under_review'
+    | 'closed'
+    | 'false_positive';
+
+export type IncidentProjection = {
+    key: string;
+    title: string;
+    lifecycle_status: IncidentLifecycleStatus;
+    lifecycle_status_label: string;
+    incident_type: 'operational' | 'security';
+    incident_type_label: string;
+    severity: string;
+    major_incident: boolean;
+    engagement_key: string;
+    engagement_title: string | null;
+    client_name: string | null;
+    responsible_partner_name: string | null;
+    response_policies_operative: boolean;
+    review_required: boolean;
+    active_response: boolean;
+    service_restored: boolean;
+    may_close_incident: boolean;
+    operational_status:
+        | 'closed_verified'
+        | 'blocked_closure'
+        | 'ready_for_closure'
+        | 'restored_not_closed'
+        | 'false_positive'
+        | 'active_response'
+        | 'pending';
+};
+
+export type IncidentCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        applies_to: 'all' | 'security' | 'major';
+        required_for_declaration: boolean;
+        title: string;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    }>;
+    record_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    incident_records: IncidentProjection[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        incident_records: number;
+        evidence_records: number;
+        active_response: number;
+        awaiting_closure: number;
+        by_lifecycle_status: Record<IncidentLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

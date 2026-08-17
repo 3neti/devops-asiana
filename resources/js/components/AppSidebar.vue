@@ -6,6 +6,7 @@ import {
     KeyRound,
     Landmark,
     ScrollText,
+    Siren,
     UserRoundCheck,
 } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
@@ -25,6 +26,7 @@ import { dashboard } from '@/routes';
 import { index as changes } from '@/routes/changes';
 import { index as clientAcceptance } from '@/routes/client-acceptance';
 import { index as engagements } from '@/routes/engagements';
+import { index as incidents } from '@/routes/incidents';
 import { index as policyRegistry } from '@/routes/policy-registry';
 import { index as productionAccess } from '@/routes/production-access';
 import type { InstitutionalNavigationGroup, NavItem } from '@/types';
@@ -59,6 +61,11 @@ const mainNavItems: NavItem[] = [
         title: 'Changes',
         href: changes(),
         icon: GitPullRequestArrow,
+    },
+    {
+        title: 'Incidents',
+        href: incidents(),
+        icon: Siren,
     },
 ];
 

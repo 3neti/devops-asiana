@@ -46,4 +46,16 @@ Every production Change requires viable recovery and a confirmed recovery point.
 
 The path varies by risk: a Standard Change uses a pre-approved definition; a Normal Change receives specific review; an Emergency Change invokes expedited authority and retrospective review. These paths share traceability and recovery requirements.
 
-Incident response separates command, technical execution, professional accountability, and communications. Service restoration is not Incident closure. Closure requires evidence and owned corrective actions where applicable.
+## Incident Record
+
+An Incident Record is the authoritative response history for an unplanned degradation, interruption, security concern, or material operational risk. An event or alert remains an observation until competent authority explicitly declares an Incident and records type, severity, reason, time, and evidence.
+
+```text
+Detect → Declare → Command → Contain → Recover → Verify → Review → Close
+```
+
+Every declared Incident names exactly one Incident Commander, the Engagement's one Responsible Partner, one Technical Lead, and one communication owner. These roles do not collapse: the Incident Commander coordinates response; the Responsible Partner retains professional and Client accountability; the Technical Lead directs technical work; and the communication owner issues factual authorized updates.
+
+The timeline is chronological and attributable. Facts, hypotheses, decisions, actions, and state changes remain distinguishable. Preservation precedes destructive remediation where practicable. Notification to the Client, legal advisers, regulators, insurers, or other parties is an explicit decision with authority, reason, time, and evidence. A Client-impacting Incident cannot close without recorded Client disclosure.
+
+Service restoration requires verification and a stability observation. It is not closure. Major, Security, and Client-impacting Incidents require a blameless post-incident review and owned, dated corrective actions. Closure is a separate authorized record after final notification decisions, applicable review, corrective-action accountability, and evidence are complete.

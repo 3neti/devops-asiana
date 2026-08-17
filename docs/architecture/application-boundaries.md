@@ -14,7 +14,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Procedures   | controlled procedure and runbook references                       |
 | Access       | requests, grants, reviews, revocation, break glass                |
 | Changes      | classification, review, recovery, deployment, verification        |
-| Incidents    | declaration, command, timeline, communications, corrective action |
+| Incidents    | detection, declaration, command, timeline, disclosure, restoration, review, corrective action |
 | Continuity   | dependencies, backups, restores, exercises, objectives            |
 | Evidence     | immutable index, custody, links, retention, integrity             |
 | Finance      | financial authority, commitments, Firm assets and approvals       |

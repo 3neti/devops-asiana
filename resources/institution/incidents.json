@@ -1,0 +1,112 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "incident-response",
+            "key": "incident-management",
+            "version": "0.1",
+            "applies_to": "all",
+            "required_for_declaration": true
+        },
+        {
+            "purpose": "authority",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "applies_to": "all",
+            "required_for_declaration": true
+        },
+        {
+            "purpose": "security-response",
+            "key": "information-security",
+            "version": "0.1",
+            "applies_to": "security",
+            "required_for_declaration": false
+        },
+        {
+            "purpose": "continuity-response",
+            "key": "business-continuity-dr",
+            "version": "0.1",
+            "applies_to": "major",
+            "required_for_declaration": false
+        }
+    ],
+    "record_requirements": [
+        {
+            "key": "detection",
+            "label": "Detection & Source",
+            "question": "What event or alert was observed, when, by whom, and from which source?"
+        },
+        {
+            "key": "engagement",
+            "label": "Open Engagement",
+            "question": "Which Open Engagement and Client establish the professional-accountability boundary?"
+        },
+        {
+            "key": "declaration",
+            "label": "Explicit Declaration",
+            "question": "Who declared the Incident, under what authority, classification, severity, reason, and evidence?"
+        },
+        {
+            "key": "command",
+            "label": "Command Roles",
+            "question": "Are exactly one Incident Commander, Responsible Partner, Technical Lead, and communication owner named?"
+        },
+        {
+            "key": "impact",
+            "label": "Impact & Scope",
+            "question": "Are affected Clients, services, systems, environments, data, and known impact stated without overclaiming certainty?"
+        },
+        {
+            "key": "timeline",
+            "label": "Incident Timeline",
+            "question": "Does an ordered, attributable timeline distinguish facts, decisions, actions, and state changes?"
+        },
+        {
+            "key": "preservation",
+            "label": "Safety & Evidence Preservation",
+            "question": "Were immediate safety constraints and evidence-preservation actions recorded before destructive remediation?"
+        },
+        {
+            "key": "containment",
+            "label": "Containment",
+            "question": "Are containment decisions, owners, authority, result, and evidence explicit?"
+        },
+        {
+            "key": "investigation",
+            "label": "Investigation",
+            "question": "Are hypotheses distinguished from verified facts and supported by evidence?"
+        },
+        {
+            "key": "recovery",
+            "label": "Recovery",
+            "question": "Does recovery identify the authorized plan, owner, execution record, and observed result?"
+        },
+        {
+            "key": "restoration",
+            "label": "Restoration Verification",
+            "question": "Was restored service independently verified and monitored without implying closure?"
+        },
+        {
+            "key": "client-disclosure",
+            "label": "Client Disclosure",
+            "question": "Was the Client notified when impacted, or was a reasoned not-required decision explicitly authorized and evidenced?"
+        },
+        {
+            "key": "external-notification",
+            "label": "Legal & Regulatory Decisions",
+            "question": "Are legal, regulatory, insurer, and other external notification decisions explicit rather than inferred?"
+        },
+        {
+            "key": "post-incident-review",
+            "label": "Blameless Review",
+            "question": "Where required, does review address impact, timeline, contributing conditions, controls, decisions, recovery, and communications?"
+        },
+        {
+            "key": "corrective-actions",
+            "label": "Corrective Action & Closure",
+            "question": "Are corrective actions owned and dated, notification decisions final, evidence preserved, and closure separately authorized?"
+        }
+    ],
+    "incident_records": [],
+    "evidence_records": []
+}

@@ -74,9 +74,17 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Change Execution Record  | Evidence of executor, authority, artifact, target, timing, output, and execution result             |
 | Change Verification      | Post-execution comparison of observed production state with approved expected outcomes             |
 | Post-Implementation Review | Structured review required by Change class, risk, failure, impact, or policy                     |
+| Event                    | Observed occurrence that may or may not require operational response                                |
+| Alert                    | Signal requiring evaluation; it does not itself declare an Incident                                 |
 | Incident                 | Unplanned degradation, interruption, security concern, or material operational risk               |
+| Incident Declaration     | Explicit authorized decision that an observed condition will be managed as an Incident            |
 | Major Incident           | Incident requiring coordinated command because of impact or complexity                            |
 | Security Incident        | Incident involving suspected compromise of confidentiality, integrity, availability, or control   |
+| Incident Commander       | Person coordinating response objectives, decisions, owners, timeline, and cadence                 |
+| Communication Owner      | Person accountable for timely, factual, authorized Incident communications                         |
+| Service Restoration      | Verified recovery of the defined operational state; distinct from Incident closure                |
+| Notification Decision    | Attributable decision to notify, not notify, or continue evaluating a defined audience             |
+| Post-Incident Review     | Blameless review of impact, timeline, conditions, controls, decisions, recovery, and communications |
 | Corrective Action        | Owned work addressing an identified contributing condition or control gap                         |
 | Capital Account          | Record of a Partner's capital position, distinct from compensation                                |
 | Origination Credit       | Compensation attribution for bringing work to the Firm                                            |

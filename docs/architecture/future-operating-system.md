@@ -53,13 +53,21 @@ Only a complete `Scheduled` Change inside its approved window creates execution 
 
 No Change Records are invented in canonical data. Because no canonical Engagement is Open, no Production Access Grant is Active, and the Change Management, Authority and Delegation, and Production Access policies remain Draft, the Console correctly reports zero executable Changes and three policy-readiness gaps.
 
+## Implemented seventh vertical slice
+
+The repository now includes a read-only **Incident Record Compiler** backed by `resources/institution/incidents.json`. It binds detection, explicit declaration, Open Engagement, type, severity, major-Incident classification, Incident Commander, the Engagement's Responsible Partner, Technical Lead, communication owner, impact, chronological timeline, evidence preservation, containment, investigation, recovery, restoration verification, notification decisions, post-incident review, corrective actions, closure authority, and Evidence Records.
+
+An event or alert does not imply declaration. Incident command does not replace Responsible Partner accountability. Client-impacting Incidents cannot close without evidenced Client disclosure. Security Incidents additionally require operative Information Security policy; Major Incidents additionally require operative Business Continuity and Disaster Recovery policy. Service restoration is a verified operational fact, not closure. A separate closure decision is permitted only after applicable disclosure decisions are final, required review is complete, corrective actions are owned and dated, and evidence is linked.
+
+No Incident Records are invented in canonical data. Because the Incident Management and Authority and Delegation policies remain Draft, the Console correctly reports zero active response records and two base declaration-readiness gaps.
+
 ## Recommended next vertical slice
 
-Build **Incident Record** around declaration and professional disclosure. It should preserve event-to-incident classification, severity, Incident Commander, Responsible Partner, technical lead, communication owner, Client impact, containment, recovery, notification decisions, timeline, evidence, post-incident review, and corrective actions. Service restoration must not imply Incident closure.
+Build a **Break-glass Access Record** around emergency privilege. It should preserve the threat or service-restoration reason, named actor, Open Engagement, bounded target and permissions, independent emergency authority, activation and expiry, complete activity logging, credential handling, revocation, disclosure, retrospective review, corrective action, and evidence. Break-glass access must never be disguised as an ordinary Access Grant or silently become standing access.
 
 ## Subsequent slices
 
-1. Break-glass Access Record with emergency justification, tightly bounded elevation, complete logging, automatic expiry, and retrospective review.
-2. Corrective Action tracking that links incidents, failed Changes, reviews, owners, due dates, verification, and closure evidence.
+1. Corrective Action tracking that links Incidents, failed Changes, reviews, owners, due dates, verification, and closure evidence.
+2. Continuity Exercise Record linking recovery objectives, dependencies, backups, restore tests, observed results, gaps, and evidence.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

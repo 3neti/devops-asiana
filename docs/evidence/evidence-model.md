@@ -17,7 +17,7 @@ An **Evidence Record** is a durable index entry proving or supporting a material
 
 Evidence should be append-only after finalization. Correction creates a new attributable entry and preserves the original. Storage controls should make unauthorized alteration detectable without premature blockchain or distributed-ledger complexity.
 
-The initial Policy Lifecycle compiler indexes evidence in `resources/institution/policies.json`. A policy approval or exception approval must reference a known Evidence Record. This repository-backed form is an initial durable record, not a claim that identity verification, electronic signature, retention, or legal-admissibility requirements have been fully implemented.
+The repository-backed compilers index evidence alongside their canonical definitions. An Incident declaration, material timeline entry, response action, notification decision, restoration verification, post-incident review, completed corrective action, and closure must reference a known complete Evidence Record when applicable. This initial durable form is not a claim that identity verification, electronic signature, chain-of-custody, retention, or legal-admissibility requirements have been fully implemented.
 
 ## Important separations
 
