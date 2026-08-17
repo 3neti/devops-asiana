@@ -1,0 +1,91 @@
+{
+    "schema_version": 1,
+    "governing_policy": {
+        "key": "client-acceptance",
+        "version": "0.1"
+    },
+    "required_assessments": [
+        {
+            "key": "identity",
+            "label": "Identity",
+            "question": "Is the prospective Client's legal identity established?"
+        },
+        {
+            "key": "beneficial-ownership",
+            "label": "Beneficial Ownership",
+            "question": "Are ownership and controlling interests understood?"
+        },
+        {
+            "key": "regulatory-status",
+            "label": "Regulatory Status",
+            "question": "Is the prospective Client's claimed regulatory standing understood?"
+        },
+        {
+            "key": "reputation",
+            "label": "Reputation",
+            "question": "Have material reputation concerns been assessed?"
+        },
+        {
+            "key": "conflicts-related-parties",
+            "label": "Conflicts & Related Parties",
+            "question": "Have conflicts and ODTI, 3neti, Partner, or other related-party relationships been disclosed and disposed?"
+        },
+        {
+            "key": "sanctions-legal",
+            "label": "Sanctions & Legal Concerns",
+            "question": "Have applicable sanctions and legal concerns been considered?"
+        },
+        {
+            "key": "technical-environment",
+            "label": "Technical Environment",
+            "question": "Is the operating environment understood sufficiently for acceptance?"
+        },
+        {
+            "key": "scope-feasibility",
+            "label": "Scope Feasibility",
+            "question": "Can the Firm competently deliver the anticipated scope?"
+        },
+        {
+            "key": "security-posture",
+            "label": "Security Posture",
+            "question": "Have material security conditions and dependencies been assessed?"
+        },
+        {
+            "key": "access-data",
+            "label": "Access & Data",
+            "question": "Are expected access, confidentiality, privacy, residency, and data-handling requirements understood?"
+        },
+        {
+            "key": "qualified-personnel",
+            "label": "Qualified Personnel",
+            "question": "Can appropriately qualified personnel be assigned?"
+        },
+        {
+            "key": "commercial-payment",
+            "label": "Commercial & Payment Risk",
+            "question": "Are commercial viability, payment risk, discounts, and proposed commitments acceptable?"
+        },
+        {
+            "key": "liability",
+            "label": "Potential Liability",
+            "question": "Are liability exposure and proposed risk allocation understood?"
+        },
+        {
+            "key": "insurance",
+            "label": "Insurance Compatibility",
+            "question": "Is the anticipated work compatible with available or required insurance?"
+        },
+        {
+            "key": "subcontractors",
+            "label": "Subcontractors & Providers",
+            "question": "Are material subcontractors and providers identified and acceptable?"
+        },
+        {
+            "key": "regulatory-outsourcing",
+            "label": "Regulatory & Outsourcing Requirements",
+            "question": "Have applicable bank, EMI, privacy, and outsourcing requirements been identified?"
+        }
+    ],
+    "prospective_clients": [],
+    "evidence_records": []
+}

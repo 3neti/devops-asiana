@@ -2,6 +2,10 @@
 
 A Prospective Client becomes a Client only through an explicit Client Acceptance decision. Acceptance answers whether the Firm may consider serving the organization; it does not authorize work.
 
+The repository-backed Client Acceptance definition separates the Prospective Client, required assessments, related-party disclosures, risk observations, decision, decision-maker, authority basis, validity, conditions, and Evidence Records. Review activity never implies a decision. Conditional acceptance must state its conditions; rejection must state its reason; accepted status expires or requires re-review at a recorded time.
+
+The governing Client Acceptance Policy must be Effective before the compiler will recognize an operative decision. This is a control-readiness requirement, not a claim that the current Draft policy has legal or institutional effect.
+
 An Engagement is the controlling unit of material Client work. It defines commercial and operational scope, authority, systems, data, responsibilities, and evidence requirements. Exactly one Responsible Partner is assigned throughout the Engagement's active life, including a recorded handover if responsibility changes.
 
 The Responsible Partner is the root of professional accountability, not necessarily the approver of every action. Security, Change, financial, or other authorities may approve within their domains, and authorized professionals may execute. The Responsible Partner ensures that the correct authority, staffing, escalation, and Client communication exist.
@@ -19,6 +23,9 @@ Contribution attribution may identify Originating, Relationship, Responsible, an
 Key invariants for future software:
 
 - work cannot become active without an accepted Client and approved Engagement;
+- Client acceptance cannot be inferred from review activity, commercial discussion, an Engagement reference, access, or performed work;
+- accepted or rejected decisions identify the decision-maker, authority basis, validity where applicable, and decision evidence;
+- material conflicts and related-party relationships are disclosed and disposed rather than silently ignored;
 - a material active Engagement has exactly one current Responsible Partner;
 - responsibility history is preserved rather than overwritten;
 - asset ownership is distinct from authority to operate;

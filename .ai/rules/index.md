@@ -6,9 +6,11 @@ Before planning or editing, find the row whose globs match the file's path and r
 | --- | --- |
 | app/Policies/** | .ai/rules/app-policies.md |
 | app/** | .ai/rules/app.md |
+| app/ClientAcceptance/** | .ai/rules/client-acceptance.md |
 | docs/** | .ai/rules/docs.md |
 | resources/js/pages/FirmConsole/** | .ai/rules/firm-console.md |
 | resources/institution/** | .ai/rules/institution.md |
+| resources/js/pages/ClientAcceptance/** | .ai/rules/pages-client-acceptance.md |
 | resources/js/pages/Policies/** | .ai/rules/pages-policies.md |
 | app/Partnership/** | .ai/rules/partnership.md |
 | app/Policies/**,resources/institution/policies.json,resources/js/pages/Policies/** | .ai/rules/policies.md |

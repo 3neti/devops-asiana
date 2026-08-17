@@ -178,3 +178,79 @@ export type PolicyRegistry = {
     };
     principles: string[];
 };
+
+export type AcceptanceReviewStatus =
+    | 'identified'
+    | 'under_review'
+    | 'decision_recorded'
+    | 'expired'
+    | 'withdrawn';
+
+export type AcceptanceOutcome =
+    'accepted' | 'accepted_with_conditions' | 'rejected';
+
+export type ClientAcceptanceDecision = {
+    outcome: AcceptanceOutcome;
+    outcome_label: string;
+    reason: string;
+    risk_classification: string | null;
+    conditions: Array<Record<string, unknown>>;
+    decision_maker: string;
+    authority_basis: string;
+    decided_at: string;
+    valid_until: string | null;
+    evidence_record_key: string;
+    permits_engagement_consideration: boolean;
+    temporal_state: 'within_validity' | 'past_validity';
+};
+
+export type ProspectiveClientProjection = {
+    key: string;
+    legal_name: string;
+    display_name?: string;
+    jurisdiction: string;
+    entity_type: string;
+    proposed_scope: string;
+    review_status: AcceptanceReviewStatus;
+    review_status_label: string;
+    reviewers: string[];
+    related_parties: Array<Record<string, unknown>>;
+    assessments: Array<Record<string, unknown>>;
+    decision: ClientAcceptanceDecision | null;
+    institutional_status:
+        'prospective_client' | 'accepted_client' | 'acceptance_expired';
+};
+
+export type ClientAcceptanceCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policy: {
+        key: string;
+        version: string;
+        title: string;
+        status: PolicyLifecycleStatus | 'invalid' | 'missing';
+        status_label: string;
+        operative: boolean;
+    };
+    required_assessments: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    prospective_clients: ProspectiveClientProjection[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        prospective_clients: number;
+        evidence_records: number;
+        by_review_status: Record<AcceptanceReviewStatus, number>;
+        by_outcome: Record<AcceptanceOutcome, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

@@ -23,15 +23,20 @@ Enforced invariants include: content is never silently mutated after submission 
 
 The Console remains read-only. Institutional actors and authority are deliberately not inferred from the starter `User` model. Repository changes remain the controlled drafting mechanism until the identity and authority model is designed.
 
+## Implemented third vertical slice
+
+The repository now includes a read-only **Client Acceptance Compiler** backed by `resources/institution/client-acceptance.json`. It establishes a required review standard, links to an exact governing policy version, validates Prospective Client identity, conflicts and related parties, risk observations, decision authority, validity, and evidence, and projects an acceptance ledger without introducing CRM behavior.
+
+No Prospective Clients are invented in canonical data. Hypothetical test fixtures prove that acceptance and rejection are explicit decisions; review activity, Engagement references, access, or performed work cannot imply acceptance. Accepted outcomes are blocked when required assessments remain unresolved or the governing policy is not Effective. The Console currently exposes that the Client Acceptance Policy remains Draft and therefore the control is not ready for operative decisions.
+
 ## Recommended next vertical slice
 
-Build **Client Acceptance** as a bounded decision process, not CRM. The slice should establish Prospective Client identity, conflict and related-party checks, risk observations, acceptance authority, an explicit acceptance or rejection decision, and linked evidence. Acceptance must not be inferred from an Engagement being opened or work being performed.
+Build **Engagement Opening** as the controlling authorization boundary for material Client work. It should require an accepted Client, exactly one Responsible Partner, defined scope and exclusions, Client and Firm responsibilities, authorized requestors, environments and systems, Client Mandate, risk classification, approval authority, effective period, transition duties, and evidence. Opening an Engagement must remain distinct from accepting the Client.
 
 ## Subsequent slices
 
-1. Engagement opening with exactly one current Responsible Partner and explicit system ownership.
-2. Production Access Grant linked to Engagement and authority.
-3. Change Record from request through independent verification and evidence.
-4. Incident command, timeline, disclosure decisions, and corrective actions.
+1. Production Access Grant linked to Engagement and authority.
+2. Change Record from request through independent verification and evidence.
+3. Incident command, timeline, disclosure decisions, and corrective actions.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

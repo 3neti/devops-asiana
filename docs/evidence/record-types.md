@@ -3,7 +3,8 @@
 | Record type                | What it must establish                                           |
 | -------------------------- | ---------------------------------------------------------------- |
 | Governance Decision Record | proposal, quorum, conflicts, vote, decision, executor            |
-| Client Acceptance Record   | review scope, risks, conditions, decision, authority             |
+| Client Acceptance Review   | identity, required assessments, findings, conflicts, related parties, reviewers, supporting sources |
+| Client Acceptance Record   | outcome, reason, risk, conditions, decision-maker, authority, validity, decision evidence |
 | Engagement Approval        | approved scope, terms, Responsible Partner, effective period     |
 | Authority Grant            | grantor, grantee, scope, limit, duration, revocation             |
 | Access Grant               | identity, system, privilege, purpose, approvals, validity        |

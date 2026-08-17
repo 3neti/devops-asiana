@@ -24,6 +24,7 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Practice                 | Professional capability classification, not necessarily a department                              |
 | Client                   | Person or organization formally accepted by the Firm                                              |
 | Prospective Client       | Candidate not yet accepted as a Client                                                            |
+| Client Acceptance Decision | Explicit authorized decision to accept, conditionally accept, or reject a Prospective Client     |
 | Engagement               | Approved boundary for material Client work                                                        |
 | Matter                   | Candidate future subdivision of an Engagement for bounded professional work                       |
 | Responsible Partner      | The one Partner professionally accountable for a material Engagement                              |
