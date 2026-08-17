@@ -63,6 +63,10 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Access Verification      | Independent comparison of observed access against the approved permission set                      |
 | Active Access Authority  | Current permission to use access after every policy, mandate, approval, provisioning, verification, validity, and evidence gate passes |
 | Privileged Access        | Access capable of material security, availability, data, or control impact                        |
+| Break-glass Access       | Separate, independently authorized emergency privilege with minimum scope and absolute expiry      |
+| Emergency Access Window  | Fixed, non-renewable period during which a specific Break-glass activation may be used             |
+| Emergency Access Activity Log | Chronological attributable record of every material action performed during Break-glass use  |
+| Access Termination Verification | Independent proof that emergency permissions were removed and credentials handled as required |
 | Change                   | Intentional alteration to a managed system or service                                             |
 | Change Record            | Durable request-through-closure record governing one bounded Change                               |
 | Standard Change          | Repeatable low-risk Change performed under a current pre-authorized definition and eligibility check |

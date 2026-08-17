@@ -61,13 +61,21 @@ An event or alert does not imply declaration. Incident command does not replace 
 
 No Incident Records are invented in canonical data. Because the Incident Management and Authority and Delegation policies remain Draft, the Console correctly reports zero active response records and two base declaration-readiness gaps.
 
+## Implemented eighth vertical slice
+
+The repository now includes a read-only **Break-glass Access Record Compiler** backed by `resources/institution/break-glass-access.json`. It binds a defined emergency, Open Engagement, declared Incident, named actor and account, Client Mandate, bounded permissions and prohibited actions, risk, Client emergency authority, Firm emergency authority, independent security authority, identity controls, fixed activation and expiry, complete activity logging, independent monitoring, technical removal, disclosure, retrospective review, corrective action, closure, and Evidence Records.
+
+Break-glass is not an elevated ordinary Access Grant. Credential possession does not create authority. The actor cannot approve, monitor, or retrospectively review their own use. Authority ends at the exact approved expiry even when technical cleanup remains incomplete. Continued need requires a new independently approved record; in-place extension is a conflict. Closure remains separate from expiry and requires verified permission removal, disclosure, independent review, owned corrective action, authority, and evidence.
+
+No emergency access history or secret material is invented in canonical data. Because the Production Access, Authority and Delegation, Information Security, and Incident Management policies remain Draft, the Console correctly reports zero active emergency authority and four activation-readiness gaps.
+
 ## Recommended next vertical slice
 
-Build a **Break-glass Access Record** around emergency privilege. It should preserve the threat or service-restoration reason, named actor, Open Engagement, bounded target and permissions, independent emergency authority, activation and expiry, complete activity logging, credential handling, revocation, disclosure, retrospective review, corrective action, and evidence. Break-glass access must never be disguised as an ordinary Access Grant or silently become standing access.
+Build a **Corrective Action Register** linking findings from Incidents, failed Changes, Break-glass reviews, access reviews, continuity exercises, and Policy Exceptions to one accountable owner, due date, verification standard, escalation state, completion evidence, and separate closure decision. Corrective work must not disappear merely because its source record closes.
 
 ## Subsequent slices
 
-1. Corrective Action tracking that links Incidents, failed Changes, reviews, owners, due dates, verification, and closure evidence.
-2. Continuity Exercise Record linking recovery objectives, dependencies, backups, restore tests, observed results, gaps, and evidence.
+1. Continuity Exercise Record linking recovery objectives, dependencies, backups, restore tests, observed results, gaps, and evidence.
+2. Responsibility Coverage projection linking policy-required offices and authorities to current qualified holders and exposing vacancies.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

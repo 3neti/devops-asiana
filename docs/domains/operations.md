@@ -26,6 +26,24 @@ For access, three authority layers must intersect:
 Client Mandate + Firm Authority + Specific Access Grant = bounded permission to use access
 ```
 
+## Break-glass Access Record
+
+A Break-glass Access Record is the separate emergency path for temporary privilege when delay through the ordinary access procedure would increase material harm. It is never a Standard or Privileged ordinary Access Grant and never contains credential values.
+
+```text
+Request → Authorize → Activate → Observe → Expire → Remove → Disclose → Review → Close
+```
+
+Activation requires a defined emergency, Open Engagement, declared Incident, named person and account, Client Mandate, minimum scope, prohibited-action boundary, emergency risk owner, three distinct authorities, safe credential custody, MFA, independent monitoring, and a fixed non-renewable window. The authority layers are:
+
+```text
+Client Emergency Authority + Firm Emergency Authority + Independent Security Authority
+```
+
+Possession of the emergency credential proves none of these gates. The actor cannot independently approve, monitor, or review their own use. Every material action is attributable and evidenced inside the approved window.
+
+Authority ends automatically at expiry even if technical removal is incomplete. Continued emergency need requires a new record and new approvals. Post-use control separately proves permission removal, credential rotation where required, Client and Responsible Partner disclosure, independent retrospective review, corrective-action ownership, and authorized closure.
+
 ## Production Change Record
 
 A Production Change Record is the bounded authority and historical record for one intentional production alteration. It preserves request, classification, risk, technical review, approvals, recovery, backup confirmation, schedule, executor, access basis, execution, verification, communications, outcome, review, closure, exceptions, and evidence as distinct facts.

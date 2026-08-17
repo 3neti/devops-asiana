@@ -6,6 +6,7 @@ import {
     KeyRound,
     Landmark,
     ScrollText,
+    ShieldAlert,
     Siren,
     UserRoundCheck,
 } from '@lucide/vue';
@@ -23,6 +24,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as breakGlassAccess } from '@/routes/break-glass-access';
 import { index as changes } from '@/routes/changes';
 import { index as clientAcceptance } from '@/routes/client-acceptance';
 import { index as engagements } from '@/routes/engagements';
@@ -56,6 +58,11 @@ const mainNavItems: NavItem[] = [
         title: 'Production Access',
         href: productionAccess(),
         icon: KeyRound,
+    },
+    {
+        title: 'Break-glass Access',
+        href: breakGlassAccess(),
+        icon: ShieldAlert,
     },
     {
         title: 'Changes',

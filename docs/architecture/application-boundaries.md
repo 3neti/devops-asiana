@@ -12,7 +12,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Risk         | classification, ownership, acceptance, controls, residual risk    |
 | Policies     | lifecycle, versions, approvals, exceptions, acknowledgement       |
 | Procedures   | controlled procedure and runbook references                       |
-| Access       | requests, grants, reviews, revocation, break glass                |
+| Access       | ordinary grants, emergency Break-glass authority, reviews, expiry, revocation |
 | Changes      | classification, review, recovery, deployment, verification        |
 | Incidents    | detection, declaration, command, timeline, disclosure, restoration, review, corrective action |
 | Continuity   | dependencies, backups, restores, exercises, objectives            |

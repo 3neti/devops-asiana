@@ -1,0 +1,108 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "emergency-access",
+            "key": "production-access",
+            "version": "0.1",
+            "required_for_activation": true
+        },
+        {
+            "purpose": "authority",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "required_for_activation": true
+        },
+        {
+            "purpose": "security",
+            "key": "information-security",
+            "version": "0.1",
+            "required_for_activation": true
+        },
+        {
+            "purpose": "incident-response",
+            "key": "incident-management",
+            "version": "0.1",
+            "required_for_activation": true
+        }
+    ],
+    "record_requirements": [
+        {
+            "key": "emergency",
+            "label": "Defined Emergency",
+            "question": "What current threat or restoration need makes ordinary access procedure too slow, and what material harm increases with delay?"
+        },
+        {
+            "key": "engagement-incident",
+            "label": "Engagement & Incident",
+            "question": "Which Open Engagement and declared active Incident establish the Client and professional-accountability boundary?"
+        },
+        {
+            "key": "named-actor",
+            "label": "Named Actor & Account",
+            "question": "Is one identified person using one attributable account without shared identity?"
+        },
+        {
+            "key": "scope",
+            "label": "Minimum Scope",
+            "question": "Are system, environment, permissions, purpose, permitted actions, and prohibited actions explicit and least-privileged?"
+        },
+        {
+            "key": "risk",
+            "label": "Emergency Risk",
+            "question": "Are impact, data sensitivity, risk owner, controls, and residual risk explicit?"
+        },
+        {
+            "key": "authority",
+            "label": "Independent Authority",
+            "question": "Are Client emergency authority, Firm emergency authority, and independent security approval explicit and evidenced?"
+        },
+        {
+            "key": "time-boundary",
+            "label": "Absolute Time Boundary",
+            "question": "Are activation and expiry timestamps fixed, ordered, and incapable of silent renewal?"
+        },
+        {
+            "key": "identity-controls",
+            "label": "Identity & Credential Controls",
+            "question": "Are MFA, credential custody, vault reference, session attribution, and post-use rotation defined without storing secrets?"
+        },
+        {
+            "key": "activation",
+            "label": "Activation Record",
+            "question": "Who activated access, when, under which approvals, and with what verification evidence?"
+        },
+        {
+            "key": "activity-log",
+            "label": "Complete Activity Log",
+            "question": "Are material commands, actions, targets, results, actors, times, and evidence recorded?"
+        },
+        {
+            "key": "monitoring",
+            "label": "Independent Monitoring",
+            "question": "Who monitored the emergency session independently and how were scope violations escalated?"
+        },
+        {
+            "key": "expiry-revocation",
+            "label": "Expiry & Revocation",
+            "question": "Did authority end automatically and was technical removal independently verified?"
+        },
+        {
+            "key": "disclosure",
+            "label": "Client Disclosure",
+            "question": "Was use disclosed promptly to the Client and Responsible Partner with factual evidence?"
+        },
+        {
+            "key": "review",
+            "label": "Retrospective Review",
+            "question": "Did an independent reviewer assess necessity, authority, scope, actions, outcome, credential handling, and control performance?"
+        },
+        {
+            "key": "closure",
+            "label": "Corrective Action & Closure",
+            "question": "Are follow-up actions owned, access removal verified, evidence complete, and closure separately authorized?"
+        }
+    ],
+    "access_records": [],
+    "evidence_records": []
+}

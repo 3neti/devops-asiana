@@ -17,6 +17,10 @@
 | Access Verification        | verifier, observed permissions, comparison result, verification time |
 | Access Suspension / Revocation / Closure | grant, actor, authority, reason, effective time, resulting state |
 | Access Review              | population, reviewer, disposition, remediation                   |
+| Break-glass Authorization  | emergency, actor, scope, Client authority, Firm authority, independent security authority, window |
+| Break-glass Activity Log   | session, actor, action, target, result, source, time, evidence   |
+| Break-glass Termination    | expiry or revocation, permission removal, verifier, credential rotation, resulting state |
+| Break-glass Review         | necessity, authority, scope, activity, outcome, credential handling, controls, corrective actions |
 | Change Request             | requestor, rationale, desired outcome, Client source, Engagement, scope, time |
 | Change Classification      | class, classifier, authority, rationale, Standard definition or emergency basis |
 | Technical Review           | reviewer, competence, implementation, dependencies, tests, monitoring, recovery, recommendation |

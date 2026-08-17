@@ -586,3 +586,90 @@ export type IncidentCompiler = {
     };
     principles: string[];
 };
+
+export type BreakGlassLifecycleStatus =
+    | 'requested'
+    | 'authorized'
+    | 'activated'
+    | 'expired'
+    | 'revoked'
+    | 'under_review'
+    | 'closed'
+    | 'rejected'
+    | 'cancelled';
+
+export type BreakGlassAccessProjection = {
+    key: string;
+    title: string;
+    lifecycle_status: BreakGlassLifecycleStatus;
+    lifecycle_status_label: string;
+    engagement_key: string;
+    engagement_title: string | null;
+    client_name: string | null;
+    incident_key: string;
+    incident_title: string | null;
+    window_state: 'undefined' | 'before_window' | 'active' | 'expired';
+    may_use_break_glass: boolean;
+    operational_status:
+        | 'closed_verified'
+        | 'blocked_closure'
+        | 'expired_authority'
+        | 'active_emergency_authority'
+        | 'awaiting_review'
+        | 'ready_for_closure'
+        | 'rejected'
+        | 'cancelled'
+        | 'pending';
+    actor?: {
+        key: string;
+        name: string;
+        account_identifier: string;
+        account_type: 'named';
+    };
+    scope?: {
+        system: string;
+        environment: string;
+        permissions: string[];
+        purpose: string;
+        permitted_actions: string[];
+        prohibited_actions: string[];
+    };
+};
+
+export type BreakGlassAccessCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        required_for_activation: boolean;
+        title: string;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    }>;
+    record_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    access_records: BreakGlassAccessProjection[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        access_records: number;
+        evidence_records: number;
+        active_emergency_authority: number;
+        awaiting_review: number;
+        by_lifecycle_status: Record<BreakGlassLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+    prohibited_content: string;
+};
