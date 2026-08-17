@@ -1,0 +1,25 @@
+# Application Boundaries
+
+The future Laravel application may organize a cohesive modular monolith around these domains:
+
+| Domain       | Responsibility                                                    |
+| ------------ | ----------------------------------------------------------------- |
+| Governance   | meetings, proposals, decisions, votes, Reserved Matters           |
+| Partnership  | people, Partner classes, capital concepts, succession events      |
+| Clients      | prospects, acceptance, conflicts, related parties                 |
+| Engagements  | scope, responsibility, teams, systems, commercial boundary        |
+| Authority    | matrix, delegations, grants, approvals, thresholds                |
+| Policies     | lifecycle, versions, approvals, exceptions, acknowledgement       |
+| Procedures   | controlled procedure and runbook references                       |
+| Access       | requests, grants, reviews, revocation, break glass                |
+| Changes      | classification, review, recovery, deployment, verification        |
+| Incidents    | declaration, command, timeline, communications, corrective action |
+| Continuity   | dependencies, backups, restores, exercises, objectives            |
+| Evidence     | immutable index, custody, links, retention, integrity             |
+| Finance      | financial authority, commitments, Firm assets and approvals       |
+| Compensation | attribution and policy-driven calculations, later                 |
+| Practices    | professional capability and leadership classifications            |
+| People       | identity, roles, assignments, joiner/mover/leaver state           |
+| Vendors      | due diligence, contracts, access, review and exit                 |
+
+Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
