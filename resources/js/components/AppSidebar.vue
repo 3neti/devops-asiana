@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { Landmark } from '@lucide/vue';
+import { Landmark, ScrollText } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import InstitutionalDocumentNav from '@/components/InstitutionalDocumentNav.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -15,6 +15,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as policyRegistry } from '@/routes/policy-registry';
 import type { InstitutionalNavigationGroup, NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -22,6 +23,11 @@ const mainNavItems: NavItem[] = [
         title: 'Firm Map',
         href: dashboard(),
         icon: Landmark,
+    },
+    {
+        title: 'Policy Register',
+        href: policyRegistry(),
+        icon: ScrollText,
     },
 ];
 

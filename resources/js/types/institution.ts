@@ -116,3 +116,65 @@ export type InstitutionalNavigationGroup = {
         href: string;
     }>;
 };
+
+export type PolicyLifecycleStatus =
+    | 'draft'
+    | 'under_review'
+    | 'approved'
+    | 'effective'
+    | 'superseded'
+    | 'retired';
+
+export type PolicyVersion = {
+    version: string;
+    status: PolicyLifecycleStatus;
+    status_label: string;
+    document_path: string;
+    content_digest: string;
+    content_integrity:
+        'mutable_draft' | 'verified' | 'digest_mismatch' | 'missing';
+    review_frequency: string;
+    effective_at: string | null;
+    superseded_by: string | null;
+    approval: null | {
+        key: string;
+        outcome: 'approved' | 'rejected';
+        approver: string;
+        authority_basis: string;
+        decided_at: string;
+        evidence_record_key: string;
+    };
+};
+
+export type PolicyProjection = {
+    key: string;
+    title: string;
+    owner: string;
+    approving_authority: string;
+    current_version: string;
+    current_status: PolicyLifecycleStatus | 'invalid';
+    current_status_label: string;
+    current: PolicyVersion;
+    versions: PolicyVersion[];
+};
+
+export type PolicyRegistry = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    policies: PolicyProjection[];
+    exceptions: Array<Record<string, unknown>>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        policies: number;
+        exceptions: number;
+        evidence_records: number;
+        by_status: Record<PolicyLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        lifecycle_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

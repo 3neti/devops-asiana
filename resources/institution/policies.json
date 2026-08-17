@@ -1,0 +1,235 @@
+{
+    "schema_version": 1,
+    "policies": [
+        {
+            "key": "partnership-governance",
+            "title": "Partnership Governance Policy",
+            "owner": "Managing Partner",
+            "approving_authority": "Partners under the Partnership Agreement",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/partnership-governance-policy.md",
+                    "content_digest": "b45641f3dc3ea3d016ec5ce2388a3f1266d61dbb15374524a7c516fca3bc098a",
+                    "review_frequency": "At least annually and after a constitutional change",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "authority-and-delegation",
+            "title": "Authority and Delegation Policy",
+            "owner": "Managing Partner",
+            "approving_authority": "Partners under the Partnership Agreement",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/authority-and-delegation-policy.md",
+                    "content_digest": "e7ff3bc80e3a71b2a8b8abd3050e2ef2a5767568ae0c90e6a4ef212eb3ebd106",
+                    "review_frequency": "At least annually and after a material organizational change",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "client-acceptance",
+            "title": "Client Acceptance Policy",
+            "owner": "Managing Partner",
+            "approving_authority": "Partners or delegated acceptance authority",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/client-acceptance-policy.md",
+                    "content_digest": "1cbd6e7d89b46a7040791e584a988588a16261f8d4e480681ed7e7d1a9b9cf38",
+                    "review_frequency": "Annually",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "engagement",
+            "title": "Engagement Policy",
+            "owner": "Managing Partner",
+            "approving_authority": "Delegated engagement acceptance authority",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/engagement-policy.md",
+                    "content_digest": "baf3e09d3f40a602f5b84e66760556fa76ee16fd74cad6672ab70411b636561a",
+                    "review_frequency": "Annually",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "financial-authority",
+            "title": "Financial Authority Policy",
+            "owner": "Managing Partner / Finance Partner",
+            "approving_authority": "Partners under delegated financial authority",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/financial-authority-policy.md",
+                    "content_digest": "b38948460101dc70b9603a5dbb9fb90e97891b65cf244b10eab176c78272eecf",
+                    "review_frequency": "At least annually",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "information-security",
+            "title": "Information Security Policy",
+            "owner": "Security & Compliance Practice Partner",
+            "approving_authority": "Managing Partner / Partners as delegated",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/information-security-policy.md",
+                    "content_digest": "f3425a2c131737cb931e4833184106eceef2e1aee55ee17374b89019242dfc76",
+                    "review_frequency": "At least annually and after a major security incident",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "production-access",
+            "title": "Production Access Policy",
+            "owner": "Reliability / SRE Practice Partner",
+            "approving_authority": "Managing Partner / delegated security authority",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/production-access-policy.md",
+                    "content_digest": "a5dfbb6ac7a58b94069b4846d9b605df93a2aea2540ba6a839f1d74fab1369fd",
+                    "review_frequency": "At least annually; access reviewed on a risk-based cadence",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "change-management",
+            "title": "Change Management Policy",
+            "owner": "Reliability / SRE Practice Partner",
+            "approving_authority": "Managing Partner / delegated operational authority",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/change-management-policy.md",
+                    "content_digest": "8858819945e2080f6f684e3b37b861410f9d33e4f2eedb717b8ac438b27f28d5",
+                    "review_frequency": "At least annually and after a material failed change",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "incident-management",
+            "title": "Incident Management Policy",
+            "owner": "Reliability / SRE Practice Partner",
+            "approving_authority": "Managing Partner / delegated operational authority",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/incident-management-policy.md",
+                    "content_digest": "5503d0e150d854494f39f3798950ffb6b160a6ea0055b0a96974b2213b3ef567",
+                    "review_frequency": "At least annually and after a Major Incident",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "business-continuity-dr",
+            "title": "Business Continuity and Disaster Recovery Policy",
+            "owner": "Reliability / SRE Practice Partner",
+            "approving_authority": "Managing Partner / delegated operational authority",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/business-continuity-dr-policy.md",
+                    "content_digest": "98cb2cf50650010296318a186d04e3a4e2013c522dea5b031bde9775d19a5ceb",
+                    "review_frequency": "At least annually and after a material continuity event",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "professional-conduct",
+            "title": "Professional Conduct Policy",
+            "owner": "Managing Partner",
+            "approving_authority": "Partners under the Partnership Agreement",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/professional-conduct-policy.md",
+                    "content_digest": "6e4bc9f9d9846fb826f036b0a60cedcd3d9cd00ac78ad3fefcbdffcf0f2093d3",
+                    "review_frequency": "At least annually",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        },
+        {
+            "key": "partner-compensation",
+            "title": "Partner Compensation Policy",
+            "owner": "Managing Partner / Compensation Committee",
+            "approving_authority": "Partners; material architecture changes may be Reserved Matters",
+            "current_version": "0.1",
+            "versions": [
+                {
+                    "version": "0.1",
+                    "status": "draft",
+                    "document_path": "docs/policies/partner-compensation-policy.md",
+                    "content_digest": "a14994d656a5cbd6c13bfb7f7d52aa192e82b7354fb21d79809037848a0a12d2",
+                    "review_frequency": "At least annually",
+                    "effective_at": null,
+                    "superseded_by": null,
+                    "approval": null
+                }
+            ]
+        }
+    ],
+    "exceptions": [],
+    "evidence_records": []
+}
