@@ -69,13 +69,20 @@ Break-glass is not an elevated ordinary Access Grant. Credential possession does
 
 No emergency access history or secret material is invented in canonical data. Because the Production Access, Authority and Delegation, Information Security, and Incident Management policies remain Draft, the Console correctly reports zero active emergency authority and four activation-readiness gaps.
 
+## Implemented ninth vertical slice
+
+The repository now includes a read-only **Corrective Action Register Compiler** backed by `resources/institution/corrective-actions.json`. It links Incidents, Changes, Break-glass reviews, Access Reviews, Policy Exceptions, and other evidenced findings to an exact governing requirement, risk, one accountable owner, explicit assignment, remediation plan, append-only due-date history, progress, escalation, completion claim, independent verification, disposition, closure, and Evidence Records.
+
+Source and remediation lifecycles remain independent: source closure never closes or erases corrective work. An owner may claim completion but may not verify their own work. Successful verification only makes closure eligible; a separate authority and evidence record closes it. Overdue work is visible and requires escalation, while a date change requires its own authority, reason, and evidence.
+
+No Corrective Actions are invented in canonical data. Because the Authority and Delegation Policy remains Draft, the Console correctly reports zero actions and one base assignment-readiness gap. Source-specific policies are evaluated when a corresponding record is added.
+
 ## Recommended next vertical slice
 
-Build a **Corrective Action Register** linking findings from Incidents, failed Changes, Break-glass reviews, access reviews, continuity exercises, and Policy Exceptions to one accountable owner, due date, verification standard, escalation state, completion evidence, and separate closure decision. Corrective work must not disappear merely because its source record closes.
+Build a **Continuity Exercise Record** linking an approved exercise scope to service dependencies, recovery objectives, backups, recovery points, restore execution, observed RTO/RPO performance, gaps, Corrective Actions, independent verification, and evidence. Do not invent Client-specific recovery objectives.
 
 ## Subsequent slices
 
-1. Continuity Exercise Record linking recovery objectives, dependencies, backups, restore tests, observed results, gaps, and evidence.
-2. Responsibility Coverage projection linking policy-required offices and authorities to current qualified holders and exposing vacancies.
+1. Responsibility Coverage projection linking policy-required offices and authorities to current qualified holders and exposing vacancies.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

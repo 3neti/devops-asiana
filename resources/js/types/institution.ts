@@ -673,3 +673,88 @@ export type BreakGlassAccessCompiler = {
     principles: string[];
     prohibited_content: string;
 };
+
+export type CorrectiveActionLifecycleStatus =
+    | 'proposed'
+    | 'assigned'
+    | 'in_progress'
+    | 'pending_verification'
+    | 'verified'
+    | 'closed'
+    | 'cancelled'
+    | 'superseded';
+
+export type CorrectiveActionProjection = {
+    key: string;
+    title: string;
+    lifecycle_status: CorrectiveActionLifecycleStatus;
+    lifecycle_status_label: string;
+    source_type_label: string;
+    source_resolved: boolean;
+    governing_policy_operative: boolean;
+    current_due_at: string | null;
+    overdue: boolean;
+    escalation_current: boolean;
+    may_close_corrective_action: boolean;
+    operational_status:
+        | 'proposed'
+        | 'assigned'
+        | 'active'
+        | 'overdue'
+        | 'awaiting_verification'
+        | 'ready_for_closure'
+        | 'closed_verified'
+        | 'blocked_closure'
+        | 'cancelled'
+        | 'superseded';
+    source?: {
+        type: string;
+        key: string;
+        finding: string;
+    };
+    owner?: {
+        key: string;
+        name: string;
+        role: string;
+    };
+};
+
+export type CorrectiveActionCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        applies_to: string[];
+        required_for_assignment: boolean;
+        title: string;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    }>;
+    record_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    corrective_actions: CorrectiveActionProjection[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        corrective_actions: number;
+        evidence_records: number;
+        overdue: number;
+        awaiting_verification: number;
+        ready_for_closure: number;
+        by_lifecycle_status: Record<CorrectiveActionLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+    boundary: string;
+};

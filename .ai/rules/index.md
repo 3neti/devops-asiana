@@ -10,6 +10,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/Changes/**,resources/institution/changes.json | .ai/rules/changes-institution.md |
 | app/Changes/**,resources/institution/changes.json,resources/js/pages/Changes/** | .ai/rules/changes.md |
 | app/ClientAcceptance/** | .ai/rules/client-acceptance.md |
+| app/CorrectiveActions/**,resources/institution/corrective-actions.json,resources/js/pages/CorrectiveActions/**,tests/**/*CorrectiveAction* | .ai/rules/corrective-actions.md |
 | docs/** | .ai/rules/docs.md |
 | app/Engagements/** | .ai/rules/engagements.md |
 | resources/js/pages/FirmConsole/** | .ai/rules/firm-console.md |

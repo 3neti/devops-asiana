@@ -1,0 +1,109 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "assignment-and-escalation-authority",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "applies_to": ["all"],
+            "required_for_assignment": true
+        },
+        {
+            "purpose": "incident-remediation",
+            "key": "incident-management",
+            "version": "0.1",
+            "applies_to": ["incident"],
+            "required_for_assignment": false
+        },
+        {
+            "purpose": "change-remediation",
+            "key": "change-management",
+            "version": "0.1",
+            "applies_to": ["change"],
+            "required_for_assignment": false
+        },
+        {
+            "purpose": "access-remediation",
+            "key": "production-access",
+            "version": "0.1",
+            "applies_to": ["production_access", "break_glass_access"],
+            "required_for_assignment": false
+        },
+        {
+            "purpose": "security-remediation",
+            "key": "information-security",
+            "version": "0.1",
+            "applies_to": ["other_finding"],
+            "required_for_assignment": false
+        }
+    ],
+    "record_requirements": [
+        {
+            "key": "source-finding",
+            "label": "Source Finding",
+            "question": "Which durable institutional record or evidenced finding created the obligation to remediate?"
+        },
+        {
+            "key": "governing-requirement",
+            "label": "Governing Requirement",
+            "question": "Which exact policy version, requirement, and control govern the corrective work?"
+        },
+        {
+            "key": "risk",
+            "label": "Risk & Priority",
+            "question": "What harm is being controlled, who owns the risk, and what residual risk persists if work is delayed?"
+        },
+        {
+            "key": "accountable-owner",
+            "label": "Accountable Owner",
+            "question": "Which one person accepts accountability for delivering the corrective outcome?"
+        },
+        {
+            "key": "assignment",
+            "label": "Assignment Authority",
+            "question": "Who assigned the work, under what authority, when was it accepted, and where is the evidence?"
+        },
+        {
+            "key": "remediation-plan",
+            "label": "Remediation Plan",
+            "question": "What bounded outcome, acceptance criteria, steps, dependencies, and constraints define completion?"
+        },
+        {
+            "key": "due-date-history",
+            "label": "Due-date History",
+            "question": "What is the current due date and what authorized, reasoned, evidenced history produced it?"
+        },
+        {
+            "key": "progress",
+            "label": "Progress Record",
+            "question": "What attributable append-only updates and supporting evidence show current progress or blockers?"
+        },
+        {
+            "key": "completion-claim",
+            "label": "Completion Claim",
+            "question": "Who claims the outcome is complete, when, against which criteria, and with what evidence?"
+        },
+        {
+            "key": "independent-verification",
+            "label": "Independent Verification",
+            "question": "Who other than the accountable owner tested the outcome against the declared standard?"
+        },
+        {
+            "key": "escalation",
+            "label": "Escalation",
+            "question": "When work becomes overdue or materially blocked, who was informed under what authority and evidence?"
+        },
+        {
+            "key": "closure",
+            "label": "Closure Decision",
+            "question": "Who separately closed the verified action, under what authority, reason, time, and evidence?"
+        },
+        {
+            "key": "disposition",
+            "label": "Cancellation or Supersession",
+            "question": "If remediation will not proceed as written, what explicit authority and evidence preserves that disposition?"
+        }
+    ],
+    "corrective_actions": [],
+    "evidence_records": []
+}

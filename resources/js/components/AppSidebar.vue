@@ -2,6 +2,7 @@
 import { Link, usePage } from '@inertiajs/vue3';
 import {
     BriefcaseBusiness,
+    CircleCheckBig,
     GitPullRequestArrow,
     KeyRound,
     Landmark,
@@ -27,6 +28,7 @@ import { dashboard } from '@/routes';
 import { index as breakGlassAccess } from '@/routes/break-glass-access';
 import { index as changes } from '@/routes/changes';
 import { index as clientAcceptance } from '@/routes/client-acceptance';
+import { index as correctiveActions } from '@/routes/corrective-actions';
 import { index as engagements } from '@/routes/engagements';
 import { index as incidents } from '@/routes/incidents';
 import { index as policyRegistry } from '@/routes/policy-registry';
@@ -73,6 +75,11 @@ const mainNavItems: NavItem[] = [
         title: 'Incidents',
         href: incidents(),
         icon: Siren,
+    },
+    {
+        title: 'Corrective Actions',
+        href: correctiveActions(),
+        icon: CircleCheckBig,
     },
 ];
 

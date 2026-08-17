@@ -88,6 +88,11 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Communication Owner      | Person accountable for timely, factual, authorized Incident communications                         |
 | Service Restoration      | Verified recovery of the defined operational state; distinct from Incident closure                |
 | Notification Decision    | Attributable decision to notify, not notify, or continue evaluating a defined audience             |
+| Finding                  | Attributable observation of a material gap, failed control, or condition requiring disposition     |
+| Corrective Action        | Durable institutional obligation to remedy an evidenced Finding under one accountable owner         |
+| Completion Claim         | Owner's evidenced assertion that declared Corrective Action acceptance criteria have been met        |
+| Corrective Action Verification | Independent test of a Completion Claim against its declared verification standard              |
+| Due-date History         | Append-only record of initial and revised dates, each with authority, reason, time, and evidence      |
 | Post-Incident Review     | Blameless review of impact, timeline, conditions, controls, decisions, recovery, and communications |
 | Corrective Action        | Owned work addressing an identified contributing condition or control gap                         |
 | Capital Account          | Record of a Partner's capital position, distinct from compensation                                |

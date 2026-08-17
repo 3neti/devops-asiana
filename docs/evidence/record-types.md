@@ -33,6 +33,13 @@
 | Deployment Evidence        | artifact, target, actor, time, output, result                    |
 | Incident Timeline          | observations, decisions, actions, communications, state changes  |
 | Post-Incident Review       | impact, contributing conditions, learning, corrective actions    |
+| Corrective Action Assignment | source finding, governing requirement, risk, owner, assigner, authority, acceptance, due date |
+| Corrective Action Progress | action, contributor, progress or blocker, time, supporting evidence |
+| Due-date Change           | prior date, revised date, actor, authority, reason, decision time |
+| Corrective Action Escalation | overdue or blocked condition, actor, authority, audience, reason, time |
+| Completion Claim          | owner, acceptance criteria, claimed outcome, time, supporting evidence |
+| Corrective Action Verification | independent verifier, standard, observed result, outcome, time |
+| Corrective Action Closure | verified action, closer, authority, reason, time, resulting state |
 | Backup Verification        | expected scope, observed status, gaps, remediation               |
 | Restore Test               | recovery point, environment, outcome, timing, disposal           |
 | Security Review            | scope, findings, risk decisions, remediation                     |

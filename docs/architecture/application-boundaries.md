@@ -15,6 +15,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Access       | ordinary grants, emergency Break-glass authority, reviews, expiry, revocation |
 | Changes      | classification, review, recovery, deployment, verification        |
 | Incidents    | detection, declaration, command, timeline, disclosure, restoration, review, corrective action |
+| Corrective Actions | source findings, singular ownership, due-date history, escalation, independent verification, closure |
 | Continuity   | dependencies, backups, restores, exercises, objectives            |
 | Evidence     | immutable index, custody, links, retention, integrity             |
 | Finance      | financial authority, commitments, Firm assets and approvals       |

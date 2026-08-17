@@ -77,3 +77,13 @@ Every declared Incident names exactly one Incident Commander, the Engagement's o
 The timeline is chronological and attributable. Facts, hypotheses, decisions, actions, and state changes remain distinguishable. Preservation precedes destructive remediation where practicable. Notification to the Client, legal advisers, regulators, insurers, or other parties is an explicit decision with authority, reason, time, and evidence. A Client-impacting Incident cannot close without recorded Client disclosure.
 
 Service restoration requires verification and a stability observation. It is not closure. Major, Security, and Client-impacting Incidents require a blameless post-incident review and owned, dated corrective actions. Closure is a separate authorized record after final notification decisions, applicable review, corrective-action accountability, and evidence are complete.
+
+## Corrective Action
+
+A Corrective Action is the independent accountability record for remediation arising from an Incident, failed Change, Break-glass review, Access Review, Policy Exception, or other evidenced finding.
+
+```text
+Finding → Assign → Remediate → Claim → Verify → Close
+```
+
+One person owns the outcome. Due dates retain authorized history, overdue work requires escalation, and the owner cannot verify their own completion claim. Closing a source record never closes the Corrective Action. Successful independent verification makes closure eligible; only a separate authorized and evidenced decision closes it.
