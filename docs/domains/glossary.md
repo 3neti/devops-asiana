@@ -64,7 +64,16 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Active Access Authority  | Current permission to use access after every policy, mandate, approval, provisioning, verification, validity, and evidence gate passes |
 | Privileged Access        | Access capable of material security, availability, data, or control impact                        |
 | Change                   | Intentional alteration to a managed system or service                                             |
+| Change Record            | Durable request-through-closure record governing one bounded Change                               |
+| Standard Change          | Repeatable low-risk Change performed under a current pre-authorized definition and eligibility check |
+| Normal Change            | Change requiring specific risk-proportionate technical review and approval                         |
 | Emergency Change         | Expedited Change necessary to prevent or contain material harm                                    |
+| Change Approval          | Explicit authorized decision on a particular Change or Standard Change definition                  |
+| Change Window            | Bounded approved period in which a Change may begin execution                                      |
+| Recovery Plan            | Pre-change strategy, steps, triggers, ownership, and recovery-time expectation for restoring safe service |
+| Change Execution Record  | Evidence of executor, authority, artifact, target, timing, output, and execution result             |
+| Change Verification      | Post-execution comparison of observed production state with approved expected outcomes             |
+| Post-Implementation Review | Structured review required by Change class, risk, failure, impact, or policy                     |
 | Incident                 | Unplanned degradation, interruption, security concern, or material operational risk               |
 | Major Incident           | Incident requiring coordinated command because of impact or complexity                            |
 | Security Incident        | Incident involving suspected compromise of confidentiality, integrity, availability, or control   |

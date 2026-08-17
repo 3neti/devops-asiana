@@ -1,0 +1,102 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "change-management",
+            "key": "change-management",
+            "version": "0.1",
+            "required_for_execution": true
+        },
+        {
+            "purpose": "authority",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "required_for_execution": true
+        },
+        {
+            "purpose": "production-access",
+            "key": "production-access",
+            "version": "0.1",
+            "required_for_execution": true
+        }
+    ],
+    "record_requirements": [
+        {
+            "key": "request",
+            "label": "Request & Rationale",
+            "question": "Is the requested production alteration specific, necessary, attributable, and evidenced before execution?"
+        },
+        {
+            "key": "open-engagement",
+            "label": "Open Engagement",
+            "question": "Does a current Open Engagement permit Client work?"
+        },
+        {
+            "key": "client-mandate",
+            "label": "Client Mandate",
+            "question": "Are the Client, system, environment, and action inside the Engagement mandate?"
+        },
+        {
+            "key": "classification",
+            "label": "Change Classification",
+            "question": "Is the Change honestly classified as Standard, Normal, or Emergency under its actual conditions?"
+        },
+        {
+            "key": "risk",
+            "label": "Risk & Impact",
+            "question": "Are likelihood, impact, affected services, Client impact, risk owner, and residual risk explicit?"
+        },
+        {
+            "key": "technical-review",
+            "label": "Technical Review",
+            "question": "Has an identified reviewer assessed the plan, dependencies, tests, monitoring, and recovery?"
+        },
+        {
+            "key": "authority",
+            "label": "Required Approval",
+            "question": "Has each authority required by the Change class and risk made an explicit evidenced decision?"
+        },
+        {
+            "key": "recovery",
+            "label": "Recovery Plan",
+            "question": "Is rollback or recovery viable, owned, rehearsable, triggered by explicit conditions, and evidenced?"
+        },
+        {
+            "key": "backup",
+            "label": "Backup / Recoverability",
+            "question": "Was the required backup or recovery point independently confirmed before execution?"
+        },
+        {
+            "key": "schedule",
+            "label": "Execution Window",
+            "question": "Is the execution window bounded with communication, monitoring, and abort conditions?"
+        },
+        {
+            "key": "executor-access",
+            "label": "Executor Authority",
+            "question": "Does the named executor have a current Active Access Grant matching this Engagement, system, and environment?"
+        },
+        {
+            "key": "execution",
+            "label": "Execution Record",
+            "question": "Does execution record actor, authority, artifact, target, timestamps, output, result, and evidence?"
+        },
+        {
+            "key": "verification",
+            "label": "Independent Verification",
+            "question": "Was the observed production state compared with expected outcomes after execution?"
+        },
+        {
+            "key": "communication",
+            "label": "Communication & Disclosure",
+            "question": "Were required Client and Firm communications recorded, including failure or emergency disclosure?"
+        },
+        {
+            "key": "closure",
+            "label": "Outcome & Closure",
+            "question": "Are outcome, follow-up, post-implementation review, evidence, and authorized closure explicit?"
+        }
+    ],
+    "change_records": [],
+    "evidence_records": []
+}

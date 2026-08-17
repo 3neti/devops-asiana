@@ -45,13 +45,21 @@ Only a complete `Active` grant creates usable authority. `Approved` does not mea
 
 No Access Grants are invented in canonical data. Because no canonical Engagement is Open and the Production Access, Authority and Delegation, and Information Security policies remain Draft, the Console correctly reports zero active authority and three policy-readiness gaps.
 
+## Implemented sixth vertical slice
+
+The repository now includes a read-only **Production Change Record Compiler** backed by `resources/institution/changes.json`. It binds request, Open Engagement, Client Mandate, Change classification, risk, technical review, approval path, recovery plan, backup confirmation, execution window, named executor, Active Access Grant, execution, verification, communication, outcome, post-implementation review, closure, Policy Exception references, and Evidence Records.
+
+Only a complete `Scheduled` Change inside its approved window creates execution authority. An Active Access Grant allows its holder to use bounded access but never authorizes a particular alteration. Approval does not imply scheduling; scheduling does not prove execution; deployment does not imply approval; and execution does not imply verification or closure. Standard Changes require a current eligible pre-authorized definition. Normal Changes require specific Client and Firm approval. Emergency Changes require material-harm justification, expedited emergency authority, disclosure, and retrospective review without waiving recovery or evidence.
+
+No Change Records are invented in canonical data. Because no canonical Engagement is Open, no Production Access Grant is Active, and the Change Management, Authority and Delegation, and Production Access policies remain Draft, the Console correctly reports zero executable Changes and three policy-readiness gaps.
+
 ## Recommended next vertical slice
 
-Build **Production Change Record** as an Engagement- and Client-Mandate-scoped action record. It should separate request, risk classification, technical review, required approval, recovery plan, backup confirmation, execution, verification, evidence, and closure. Deployment must never imply approval, and an Active Access Grant must not by itself authorize a specific change.
+Build **Incident Record** around declaration and professional disclosure. It should preserve event-to-incident classification, severity, Incident Commander, Responsible Partner, technical lead, communication owner, Client impact, containment, recovery, notification decisions, timeline, evidence, post-incident review, and corrective actions. Service restoration must not imply Incident closure.
 
 ## Subsequent slices
 
-1. Incident Record preserving declaration, severity, command, disclosure decisions, timeline, recovery, review, and corrective actions.
-2. Break-glass Access Record with emergency justification, tightly bounded elevation, complete logging, automatic expiry, and retrospective review.
+1. Break-glass Access Record with emergency justification, tightly bounded elevation, complete logging, automatic expiry, and retrospective review.
+2. Corrective Action tracking that links incidents, failed Changes, reviews, owners, due dates, verification, and closure evidence.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

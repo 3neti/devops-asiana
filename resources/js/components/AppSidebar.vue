@@ -2,6 +2,7 @@
 import { Link, usePage } from '@inertiajs/vue3';
 import {
     BriefcaseBusiness,
+    GitPullRequestArrow,
     KeyRound,
     Landmark,
     ScrollText,
@@ -21,6 +22,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as changes } from '@/routes/changes';
 import { index as clientAcceptance } from '@/routes/client-acceptance';
 import { index as engagements } from '@/routes/engagements';
 import { index as policyRegistry } from '@/routes/policy-registry';
@@ -52,6 +54,11 @@ const mainNavItems: NavItem[] = [
         title: 'Production Access',
         href: productionAccess(),
         icon: KeyRound,
+    },
+    {
+        title: 'Changes',
+        href: changes(),
+        icon: GitPullRequestArrow,
     },
 ];
 

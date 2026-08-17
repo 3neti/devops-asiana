@@ -418,3 +418,92 @@ export type ProductionAccessCompiler = {
     principles: string[];
     boundary: string;
 };
+
+export type ChangeLifecycleStatus =
+    | 'requested'
+    | 'under_review'
+    | 'approved'
+    | 'scheduled'
+    | 'executing'
+    | 'verifying'
+    | 'closed'
+    | 'failed'
+    | 'rolled_back'
+    | 'cancelled'
+    | 'rejected';
+
+export type ChangeProjection = {
+    key: string;
+    title: string;
+    lifecycle_status: ChangeLifecycleStatus;
+    lifecycle_status_label: string;
+    change_type: 'standard' | 'normal' | 'emergency';
+    change_type_label: string;
+    engagement_key: string;
+    engagement_title: string | null;
+    client_name: string | null;
+    access_grant_key: string;
+    access_grant_title: string | null;
+    may_execute_change: boolean;
+    window_state:
+        'before_window' | 'within_window' | 'after_window' | 'undefined';
+    operational_status:
+        | 'authorized_for_execution'
+        | 'blocked_scheduled_change'
+        | 'approved_not_scheduled'
+        | 'execution_in_progress'
+        | 'awaiting_verification'
+        | 'closed_verified'
+        | 'failed'
+        | 'rolled_back'
+        | 'cancelled'
+        | 'rejected'
+        | 'pending';
+    executor?: {
+        key: string;
+        name: string;
+    };
+    scope?: {
+        system: string;
+        environment: string;
+        service: string;
+        components: string[];
+        expected_outcome: string;
+    };
+};
+
+export type ChangeCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        required_for_execution: boolean;
+        title: string;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    }>;
+    record_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    change_records: ChangeProjection[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        change_records: number;
+        evidence_records: number;
+        executable_authority: number;
+        by_lifecycle_status: Record<ChangeLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

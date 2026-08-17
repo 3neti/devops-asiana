@@ -17,7 +17,15 @@
 | Access Verification        | verifier, observed permissions, comparison result, verification time |
 | Access Suspension / Revocation / Closure | grant, actor, authority, reason, effective time, resulting state |
 | Access Review              | population, reviewer, disposition, remediation                   |
-| Change Record              | request through closure, including recovery and verification     |
+| Change Request             | requestor, rationale, desired outcome, Client source, Engagement, scope, time |
+| Change Classification      | class, classifier, authority, rationale, Standard definition or emergency basis |
+| Technical Review           | reviewer, competence, implementation, dependencies, tests, monitoring, recovery, recommendation |
+| Change Approval            | Change, approval type, outcome, approver, authority, reason, decision time |
+| Recovery Plan              | strategy, steps, triggers, owner, recovery time, recovery point, confirmation |
+| Change Execution Record    | executor, authority, artifact, target, window, output, timestamps, result |
+| Change Verification        | verifier, expected state, observed state, independence, result, time |
+| Change Outcome / Closure   | result, impact, communications, follow-up, closure authority, evidence completeness |
+| Post-Implementation Review | Change, findings, corrective actions, owner, review time         |
 | Deployment Evidence        | artifact, target, actor, time, output, result                    |
 | Incident Timeline          | observations, decisions, actions, communications, state changes  |
 | Post-Incident Review       | impact, contributing conditions, learning, corrective actions    |
