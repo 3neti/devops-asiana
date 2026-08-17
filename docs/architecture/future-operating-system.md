@@ -37,13 +37,21 @@ The compiler preserves separate states for proposal, review, approval, opening, 
 
 No Engagements are invented in canonical data. The Console exposes the ten-part opening standard, the distinction between Client Mandate, Firm Authority, and Specific Approval, the empty Engagement register, and the current Draft-policy readiness gaps.
 
+## Implemented fifth vertical slice
+
+The repository now includes a read-only **Production Access Grant Compiler** backed by `resources/institution/production-access.json`. It binds a named person and named account to an Open Engagement, Client Mandate, system, environment, permission set, purpose, risk, prerequisites, Client approval, Firm approval, validity, credential custody, activity logging, provisioning, verification, lifecycle control, and Evidence Records.
+
+Only a complete `Active` grant creates usable authority. `Approved` does not mean provisioned; `Provisioned` does not mean verified or active; technical possession never substitutes for institutional authority. Privileged grants require an independent approval and an explicit high-risk boundary. Credential secrets are rejected from canonical records. Break-glass access is intentionally outside the ordinary grant lifecycle and requires a future emergency procedure.
+
+No Access Grants are invented in canonical data. Because no canonical Engagement is Open and the Production Access, Authority and Delegation, and Information Security policies remain Draft, the Console correctly reports zero active authority and three policy-readiness gaps.
+
 ## Recommended next vertical slice
 
-Build **Production Access Grant** as an Engagement-scoped authority record. It should bind a named actor, current Engagement, Client Mandate, system and environment, privilege, purpose, approving authority, effective period, credential handling, revocation, review, and evidence. Technical possession of credentials must never imply an Access Grant.
+Build **Production Change Record** as an Engagement- and Client-Mandate-scoped action record. It should separate request, risk classification, technical review, required approval, recovery plan, backup confirmation, execution, verification, evidence, and closure. Deployment must never imply approval, and an Active Access Grant must not by itself authorize a specific change.
 
 ## Subsequent slices
 
-1. Change Record from request through independent verification and evidence.
-2. Incident command, timeline, disclosure decisions, and corrective actions.
+1. Incident Record preserving declaration, severity, command, disclosure decisions, timeline, recovery, review, and corrective actions.
+2. Break-glass Access Record with emergency justification, tightly bounded elevation, complete logging, automatic expiry, and retrospective review.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

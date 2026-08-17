@@ -329,3 +329,92 @@ export type EngagementCompiler = {
     };
     principles: string[];
 };
+
+export type AccessGrantLifecycleStatus =
+    | 'requested'
+    | 'under_review'
+    | 'approved'
+    | 'provisioned'
+    | 'active'
+    | 'suspended'
+    | 'expired'
+    | 'revoked'
+    | 'closed'
+    | 'rejected'
+    | 'withdrawn';
+
+export type AccessGrantProjection = {
+    key: string;
+    title: string;
+    lifecycle_status: AccessGrantLifecycleStatus;
+    lifecycle_status_label: string;
+    grant_type: 'standard' | 'privileged';
+    grant_type_label: string;
+    engagement_key: string;
+    engagement_title: string | null;
+    client_name: string | null;
+    may_use_access: boolean;
+    temporal_state: 'not_started' | 'within_validity' | 'past_expiry';
+    operational_status:
+        | 'active_authority'
+        | 'blocked_active_grant'
+        | 'approved_not_provisioned'
+        | 'provisioned_not_active'
+        | 'suspended'
+        | 'expired'
+        | 'revoked'
+        | 'closed'
+        | 'pending';
+    actor?: {
+        key: string;
+        name: string;
+        actor_type: 'person';
+        account_type: 'named';
+        firm_relationship: string;
+    };
+    scope?: {
+        system: string;
+        environment: string;
+        account_identifier: string;
+        permission_set: string[];
+        purpose: string;
+        client_mandate_action: string;
+    };
+};
+
+export type ProductionAccessCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        required_for_activation: boolean;
+        title: string;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    }>;
+    grant_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    access_grants: AccessGrantProjection[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        access_grants: number;
+        evidence_records: number;
+        active_authority: number;
+        by_lifecycle_status: Record<AccessGrantLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+    boundary: string;
+};

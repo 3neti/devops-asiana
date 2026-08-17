@@ -1,0 +1,92 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "production-access",
+            "key": "production-access",
+            "version": "0.1",
+            "required_for_activation": true
+        },
+        {
+            "purpose": "authority",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "required_for_activation": true
+        },
+        {
+            "purpose": "information-security",
+            "key": "information-security",
+            "version": "0.1",
+            "required_for_activation": true
+        }
+    ],
+    "grant_requirements": [
+        {
+            "key": "named-identity",
+            "label": "Named Identity",
+            "question": "Is the recipient an identified person using an individually attributable account?"
+        },
+        {
+            "key": "open-engagement",
+            "label": "Open Engagement",
+            "question": "Does a current Open Engagement permit Client work?"
+        },
+        {
+            "key": "client-mandate",
+            "label": "Client Mandate",
+            "question": "Are the Client, system, environment, and permitted action inside the Engagement mandate?"
+        },
+        {
+            "key": "least-privilege",
+            "label": "Least Privilege",
+            "question": "Are permissions no broader and duration no longer than the stated purpose requires?"
+        },
+        {
+            "key": "purpose",
+            "label": "Legitimate Purpose",
+            "question": "Is the operational need specific, current, and linked to the Engagement?"
+        },
+        {
+            "key": "identity-controls",
+            "label": "Identity Controls",
+            "question": "Are identity verification, MFA, device, and training prerequisites explicit and satisfied?"
+        },
+        {
+            "key": "approval",
+            "label": "Required Approvals",
+            "question": "Are Client system-owner and Firm access approvals explicit, authorized, and evidenced?"
+        },
+        {
+            "key": "privileged-approval",
+            "label": "Privileged Approval",
+            "question": "Does privileged access have independent enhanced approval and high-risk action boundaries?"
+        },
+        {
+            "key": "validity",
+            "label": "Validity & Review",
+            "question": "Are start, expiry, review, suspension, and revocation mechanics explicit?"
+        },
+        {
+            "key": "credential-custody",
+            "label": "Credential Custody",
+            "question": "Are Client ownership, approved storage, rotation, and custody explicit without recording secrets?"
+        },
+        {
+            "key": "provisioning",
+            "label": "Provisioning",
+            "question": "Was the approved grant provisioned through a controlled mechanism with evidence?"
+        },
+        {
+            "key": "verification",
+            "label": "Independent Verification",
+            "question": "Were effective permissions verified without performing an unauthorized production action?"
+        },
+        {
+            "key": "logging-evidence",
+            "label": "Logging & Evidence",
+            "question": "Are use logging, approval, provisioning, verification, review, and revocation evidence required and linked?"
+        }
+    ],
+    "access_grants": [],
+    "evidence_records": []
+}

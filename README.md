@@ -76,7 +76,7 @@ Technology / IP   →    platform / scheme  →   owned infrastructure  →  del
 
 ## Current state
 
-The repository now contains four thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
+The repository now contains five thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
 
 Canonical policy identity and lifecycle metadata live in `resources/institution/policies.json`, while policy content remains in `docs/policies/`. `ResolvePolicyRegistry` verifies version references, content integrity after review begins, explicit approvals, exception scope and expiry, and Evidence Record links. The Policy Register makes those distinctions visible without granting approval authority to an authenticated application user. The full `docs/` hierarchy remains available through the generated, sanitized document browser.
 
@@ -84,8 +84,10 @@ Canonical Client Acceptance standards and records live in `resources/institution
 
 Canonical Engagement Opening standards and records live in `resources/institution/engagements.json`. `ResolveEngagements` cross-resolves accepted Client status, exactly one current Responsible Partner, scope, Client Mandate, risk classification and acceptance, commercial and operating boundaries, Firm approval, opening verification, exact policy versions, and evidence. No Engagements are invented. Approval and opening remain separate, and the current Draft Engagement and Authority policies prevent operative opening.
 
+Canonical Production Access standards and records live in `resources/institution/production-access.json`. `ResolveProductionAccess` cross-resolves a named person and account against an Open Engagement, Client Mandate, least-privilege scope, risk, identity controls, Client and Firm approvals, validity, provisioning, independent verification, activity logging, exact policy versions, and evidence. Approval, provisioning, verification, activation, review, suspension, revocation, and closure remain separate institutional facts. Credential secrets are prohibited from canonical records, and break-glass access remains a separate future emergency path. No Access Grants are invented while no canonical Engagement is Open and the governing policies remain Draft.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is Production Access Grant as a named, time-bounded, Engagement-scoped authority record with approval, review, revocation, and evidence.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a Production Change Record: Engagement- and mandate-scoped, risk-classified, explicitly approved, recoverable, executed, verified, and evidenced without inferring approval from deployment.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

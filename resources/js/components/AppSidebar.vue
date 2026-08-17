@@ -2,6 +2,7 @@
 import { Link, usePage } from '@inertiajs/vue3';
 import {
     BriefcaseBusiness,
+    KeyRound,
     Landmark,
     ScrollText,
     UserRoundCheck,
@@ -23,6 +24,7 @@ import { dashboard } from '@/routes';
 import { index as clientAcceptance } from '@/routes/client-acceptance';
 import { index as engagements } from '@/routes/engagements';
 import { index as policyRegistry } from '@/routes/policy-registry';
+import { index as productionAccess } from '@/routes/production-access';
 import type { InstitutionalNavigationGroup, NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -45,6 +47,11 @@ const mainNavItems: NavItem[] = [
         title: 'Engagements',
         href: engagements(),
         icon: BriefcaseBusiness,
+    },
+    {
+        title: 'Production Access',
+        href: productionAccess(),
+        icon: KeyRound,
     },
 ];
 

@@ -57,6 +57,11 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Audit Trail              | Ordered, attributable history of material state and action                                        |
 | Production Environment   | Live environment whose behavior or data affects real operations or Clients                        |
 | Access Grant             | Recorded authority for a named identity to access a defined resource                              |
+| Access Request           | Proposal for a named, scoped, purposeful, time-bounded Access Grant                                |
+| Access Approval          | Explicit Client or Firm authority decision on a specific Access Request                            |
+| Access Provisioning Record | Evidence that approved permissions were technically assigned after required approvals           |
+| Access Verification      | Independent comparison of observed access against the approved permission set                      |
+| Active Access Authority  | Current permission to use access after every policy, mandate, approval, provisioning, verification, validity, and evidence gate passes |
 | Privileged Access        | Access capable of material security, availability, data, or control impact                        |
 | Change                   | Intentional alteration to a managed system or service                                             |
 | Emergency Change         | Expedited Change necessary to prevent or contain material harm                                    |

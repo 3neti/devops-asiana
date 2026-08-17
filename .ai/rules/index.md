@@ -16,3 +16,5 @@ Before planning or editing, find the row whose globs match the file's path and r
 | resources/js/pages/Policies/** | .ai/rules/pages-policies.md |
 | app/Partnership/** | .ai/rules/partnership.md |
 | app/Policies/**,resources/institution/policies.json,resources/js/pages/Policies/** | .ai/rules/policies.md |
+| app/ProductionAccess/**,resources/institution/production-access.json | .ai/rules/production-access-institution.md |
+| app/ProductionAccess/**,resources/institution/production-access.json,resources/js/pages/ProductionAccess/** | .ai/rules/production-access.md |

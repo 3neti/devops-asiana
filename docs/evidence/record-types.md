@@ -11,7 +11,11 @@
 | Engagement Approval        | outcome, approved scope and terms, approver, authority, conditions, decision time |
 | Engagement Opening Record  | approved Engagement, opener, authority, prerequisite verification, activation time |
 | Authority Grant            | grantor, grantee, scope, limit, duration, revocation             |
-| Access Grant               | identity, system, privilege, purpose, approvals, validity        |
+| Access Request             | named identity, Engagement, Client Mandate, system, environment, permission set, purpose, risk, validity |
+| Access Approval            | approval type, outcome, approver, authority basis, reason, decision time |
+| Access Provisioning Record | approved grant, provisioner, mechanism, named account, assigned permissions, provisioning time |
+| Access Verification        | verifier, observed permissions, comparison result, verification time |
+| Access Suspension / Revocation / Closure | grant, actor, authority, reason, effective time, resulting state |
 | Access Review              | population, reviewer, disposition, remediation                   |
 | Change Record              | request through closure, including recovery and verification     |
 | Deployment Evidence        | artifact, target, actor, time, output, result                    |
