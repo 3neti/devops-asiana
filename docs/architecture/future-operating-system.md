@@ -29,14 +29,21 @@ The repository now includes a read-only **Client Acceptance Compiler** backed by
 
 No Prospective Clients are invented in canonical data. Hypothetical test fixtures prove that acceptance and rejection are explicit decisions; review activity, Engagement references, access, or performed work cannot imply acceptance. Accepted outcomes are blocked when required assessments remain unresolved or the governing policy is not Effective. The Console currently exposes that the Client Acceptance Policy remains Draft and therefore the control is not ready for operative decisions.
 
+## Implemented fourth vertical slice
+
+The repository now includes a read-only **Engagement Opening Compiler** backed by `resources/institution/engagements.json`. It cross-resolves each Engagement against current Client Acceptance, the resolved Partnership, exact Engagement and Authority policy versions, and Engagement Evidence Records.
+
+The compiler preserves separate states for proposal, review, approval, opening, suspension, closure, and withdrawal. An Open record permits Client work only when the Client remains accepted; required policies are Effective; exactly one current, known Responsible Partner is evidenced; scope and exclusions are complete; a current Client Mandate identifies bounded systems, environments, requestors, and permitted actions; risk classification, ownership, acceptance authority, and evidence are explicit; commercial and operating terms are defined; Firm approval is explicit and evidenced; and a later Opening Record verifies the gate. Approval cannot be inferred from opening or execution, and approval alone does not imply that work may begin.
+
+No Engagements are invented in canonical data. The Console exposes the ten-part opening standard, the distinction between Client Mandate, Firm Authority, and Specific Approval, the empty Engagement register, and the current Draft-policy readiness gaps.
+
 ## Recommended next vertical slice
 
-Build **Engagement Opening** as the controlling authorization boundary for material Client work. It should require an accepted Client, exactly one Responsible Partner, defined scope and exclusions, Client and Firm responsibilities, authorized requestors, environments and systems, Client Mandate, risk classification, approval authority, effective period, transition duties, and evidence. Opening an Engagement must remain distinct from accepting the Client.
+Build **Production Access Grant** as an Engagement-scoped authority record. It should bind a named actor, current Engagement, Client Mandate, system and environment, privilege, purpose, approving authority, effective period, credential handling, revocation, review, and evidence. Technical possession of credentials must never imply an Access Grant.
 
 ## Subsequent slices
 
-1. Production Access Grant linked to Engagement and authority.
-2. Change Record from request through independent verification and evidence.
-3. Incident command, timeline, disclosure decisions, and corrective actions.
+1. Change Record from request through independent verification and evidence.
+2. Incident command, timeline, disclosure decisions, and corrective actions.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

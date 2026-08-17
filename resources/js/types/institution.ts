@@ -254,3 +254,78 @@ export type ClientAcceptanceCompiler = {
     };
     principles: string[];
 };
+
+export type EngagementLifecycleStatus =
+    | 'proposed'
+    | 'under_review'
+    | 'approved'
+    | 'open'
+    | 'suspended'
+    | 'closed'
+    | 'withdrawn';
+
+export type EngagementProjection = {
+    key: string;
+    title: string;
+    client_key: string;
+    client_name: string | null;
+    lifecycle_status: EngagementLifecycleStatus;
+    lifecycle_status_label: string;
+    operational_status:
+        | 'pending'
+        | 'approved_not_open'
+        | 'open_engagement'
+        | 'blocked_opening'
+        | 'suspended'
+        | 'closed';
+    may_perform_client_work: boolean;
+    responsible_partner: {
+        partner_key: string;
+        partner_name: string;
+        effective_from: string;
+        effective_until: string | null;
+        evidence_record_key: string;
+    } | null;
+    scope?: {
+        purpose: string;
+        services: string[];
+        deliverables: string[];
+        exclusions: string[];
+    };
+};
+
+export type EngagementCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        title: string;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        required_for_opening: boolean;
+        operative: boolean;
+    }>;
+    opening_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    engagements: EngagementProjection[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        engagements: number;
+        evidence_records: number;
+        open_for_client_work: number;
+        by_lifecycle_status: Record<EngagementLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

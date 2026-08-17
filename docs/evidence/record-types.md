@@ -5,7 +5,11 @@
 | Governance Decision Record | proposal, quorum, conflicts, vote, decision, executor            |
 | Client Acceptance Review   | identity, required assessments, findings, conflicts, related parties, reviewers, supporting sources |
 | Client Acceptance Record   | outcome, reason, risk, conditions, decision-maker, authority, validity, decision evidence |
-| Engagement Approval        | approved scope, terms, Responsible Partner, effective period     |
+| Responsible Partner Assignment | Partner, Engagement, effective period, authority, reason, handover |
+| Client Mandate             | Client grantor, authority basis, systems, environments, actions, requestors, validity |
+| Risk Acceptance            | classification, risk owner, accepted risk, approver, authority, controls, decision time |
+| Engagement Approval        | outcome, approved scope and terms, approver, authority, conditions, decision time |
+| Engagement Opening Record  | approved Engagement, opener, authority, prerequisite verification, activation time |
 | Authority Grant            | grantor, grantee, scope, limit, duration, revocation             |
 | Access Grant               | identity, system, privilege, purpose, approvals, validity        |
 | Access Review              | population, reviewer, disposition, remediation                   |

@@ -8,6 +8,10 @@ The governing Client Acceptance Policy must be Effective before the compiler wil
 
 An Engagement is the controlling unit of material Client work. It defines commercial and operational scope, authority, systems, data, responsibilities, and evidence requirements. Exactly one Responsible Partner is assigned throughout the Engagement's active life, including a recorded handover if responsibility changes.
 
+The repository-backed Engagement definition separates lifecycle, Client identity, Responsible Partner assignment history, scope, professional roles, Client Mandate, risk classification and acceptance, commercial terms, effective period, operating boundaries, Firm approval, Opening Record, and Evidence Records. The compiler cross-resolves these facts rather than trusting a self-declared `open` state.
+
+Engagement Approval and Engagement Opening are distinct institutional events. Approval records a decision by the Firm under delegated authority. Opening records that an authorized actor subsequently verified the prerequisites and activated the Engagement. An approved Engagement is not yet open; execution or an Opening Record cannot silently create approval. Only a current `Open` Engagement for which every gate remains satisfied permits Client work.
+
 The Responsible Partner is the root of professional accountability, not necessarily the approver of every action. Security, Change, financial, or other authorities may approve within their domains, and authorized professionals may execute. The Responsible Partner ensures that the correct authority, staffing, escalation, and Client communication exist.
 
 ## Client Mandate
@@ -23,6 +27,7 @@ Contribution attribution may identify Originating, Relationship, Responsible, an
 Key invariants for future software:
 
 - work cannot become active without an accepted Client and approved Engagement;
+- approval does not imply opening, opening does not imply approval, and neither is inferred from performed work;
 - Client acceptance cannot be inferred from review activity, commercial discussion, an Engagement reference, access, or performed work;
 - accepted or rejected decisions identify the decision-maker, authority basis, validity where applicable, and decision evidence;
 - material conflicts and related-party relationships are disclosed and disposed rather than silently ignored;

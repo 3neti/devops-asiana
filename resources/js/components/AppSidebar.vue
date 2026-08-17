@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { Landmark, ScrollText, UserRoundCheck } from '@lucide/vue';
+import {
+    BriefcaseBusiness,
+    Landmark,
+    ScrollText,
+    UserRoundCheck,
+} from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import InstitutionalDocumentNav from '@/components/InstitutionalDocumentNav.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -16,6 +21,7 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import { index as clientAcceptance } from '@/routes/client-acceptance';
+import { index as engagements } from '@/routes/engagements';
 import { index as policyRegistry } from '@/routes/policy-registry';
 import type { InstitutionalNavigationGroup, NavItem } from '@/types';
 
@@ -34,6 +40,11 @@ const mainNavItems: NavItem[] = [
         title: 'Client Acceptance',
         href: clientAcceptance(),
         icon: UserRoundCheck,
+    },
+    {
+        title: 'Engagements',
+        href: engagements(),
+        icon: BriefcaseBusiness,
     },
 ];
 

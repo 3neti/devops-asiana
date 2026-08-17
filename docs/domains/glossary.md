@@ -26,8 +26,11 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Prospective Client       | Candidate not yet accepted as a Client                                                            |
 | Client Acceptance Decision | Explicit authorized decision to accept, conditionally accept, or reject a Prospective Client     |
 | Engagement               | Approved boundary for material Client work                                                        |
+| Engagement Approval      | Explicit Firm decision to approve, conditionally approve, or reject a defined Engagement           |
+| Engagement Opening Record | Evidence that an authorized actor verified prerequisites and activated an approved Engagement      |
 | Matter                   | Candidate future subdivision of an Engagement for bounded professional work                       |
 | Responsible Partner      | The one Partner professionally accountable for a material Engagement                              |
+| Responsible Partner Assignment | Time-bounded record linking exactly one accountable Partner to an Engagement                 |
 | Originating Partner      | Person credited with introducing or securing the relationship or work                             |
 | Relationship Partner     | Person stewarding the ongoing Client relationship                                                 |
 | Engagement Partner       | Partner leading defined engagement delivery, if distinct                                          |

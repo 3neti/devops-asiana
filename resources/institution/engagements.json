@@ -1,0 +1,71 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "engagement",
+            "key": "engagement",
+            "version": "0.1",
+            "required_for_opening": true
+        },
+        {
+            "purpose": "authority",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "required_for_opening": true
+        }
+    ],
+    "opening_requirements": [
+        {
+            "key": "accepted-client",
+            "label": "Accepted Client",
+            "question": "Does a current, explicit Client Acceptance decision permit Engagement consideration?"
+        },
+        {
+            "key": "responsible-partner",
+            "label": "Responsible Partner",
+            "question": "Is exactly one current Partner accountable for the Engagement?"
+        },
+        {
+            "key": "scope",
+            "label": "Scope & Exclusions",
+            "question": "Are the purpose, services, deliverables, and exclusions explicit?"
+        },
+        {
+            "key": "client-mandate",
+            "label": "Client Mandate",
+            "question": "Has an authorized Client representative granted a bounded, current mandate to the Firm?"
+        },
+        {
+            "key": "firm-authority",
+            "label": "Firm Authority",
+            "question": "Has the Firm approved the Engagement through recorded authority?"
+        },
+        {
+            "key": "commercial-terms",
+            "label": "Commercial Terms",
+            "question": "Are pricing, billing, liability, discount, and duration positions explicit?"
+        },
+        {
+            "key": "risk-accountability",
+            "label": "Risk Accountability",
+            "question": "Are the Engagement risk classification, risk owner, acceptance decision, authority, and evidence explicit?"
+        },
+        {
+            "key": "operating-boundaries",
+            "label": "Operating Boundaries",
+            "question": "Are systems, environments, access, data, change, incident, provider, and escalation boundaries defined?"
+        },
+        {
+            "key": "opening-verification",
+            "label": "Opening Verification",
+            "question": "Did an authorized actor verify every opening prerequisite after approval?"
+        },
+        {
+            "key": "evidence",
+            "label": "Evidence",
+            "question": "Are mandate, approval, responsibility, and opening records linked to complete Evidence Records?"
+        }
+    ],
+    "engagements": [],
+    "evidence_records": []
+}
