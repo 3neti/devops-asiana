@@ -174,4 +174,5 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Policy Exception                       | Temporary, explicit, approved, evidenced, and reviewable deviation from one exact Policy Version requirement                                           |
 | Retention Finding                     | A remediation-bearing outcome from a Retention Review that requires accountable follow-up                                                            |
 | Retention Finding Link                | Explicit, evidenced link from a Retention Finding to an existing Corrective Action; it does not alter either lifecycle                         |
+| Institutional Control Review          | Read-only cross-domain projection that summarizes source compiler gaps without replacing their canonical records                                     |
 | Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |

@@ -1,0 +1,29 @@
+{
+    "schema_version": 1,
+    "controls": [
+        {
+            "key": "evidence-custody",
+            "label": "Evidence Custody",
+            "source": "evidence-custody",
+            "question": "Are Evidence source, custody, retention, integrity, and disposition facts complete?"
+        },
+        {
+            "key": "retention-reviews",
+            "label": "Retention Reviews",
+            "source": "retention-reviews",
+            "question": "Are retention outcomes attributable and policy deviations explicitly approved?"
+        },
+        {
+            "key": "retention-findings",
+            "label": "Retention Findings",
+            "source": "retention-findings",
+            "question": "Are remediation-bearing findings linked to existing Corrective Actions?"
+        },
+        {
+            "key": "corrective-actions",
+            "label": "Corrective Actions",
+            "source": "corrective-actions",
+            "question": "Are institutional remediation obligations governed and independently verifiable?"
+        }
+    ]
+}

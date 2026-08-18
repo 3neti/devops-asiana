@@ -132,8 +132,10 @@ Canonical Retention Review records live in `resources/institution/retention-revi
 
 Canonical Retention Finding Links live in `resources/institution/retention-finding-links.json`. `ResolveRetentionFindingLinks` connects resolved remediation-bearing Retention Reviews to existing Corrective Actions with explicit attribution and Evidence. It never creates, assigns, verifies, or closes a Corrective Action.
 
+Canonical Institutional Control Review configuration lives in `resources/institution/institutional-control-review.json`. `ResolveInstitutionalControlReview` provides a read-only summary of custody, retention, finding, and remediation gaps while preserving each source compiler as canonical. It does not grant authority, accept risk, create exceptions, or close remediation.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Institutional Control Review Compiler that summarizes unresolved custody, retention, policy, and remediation gaps without replacing their source compilers.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control Review Evidence Export Compiler that emits a stable, reviewable report projection without becoming a generic reporting or audit platform.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

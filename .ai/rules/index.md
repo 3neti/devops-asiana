@@ -28,6 +28,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/Incidents/**,resources/institution/incidents.json,resources/js/pages/Incidents/**,tests/**/*Incident* | .ai/rules/incidents.md |
 | app/RoleActivations/**,resources/institution/role-activations.json,app/IdentityAndRoles/** | .ai/rules/institution-identity-and-roles.md |
 | resources/institution/** | .ai/rules/institution.md |
+| app/InstitutionalControls/** | .ai/rules/institutional-controls.md |
 | app/MatterClosures/** | .ai/rules/matter-closures.md |
 | app/MatterEvents/** | .ai/rules/matter-events.md |
 | app/Matters/** | .ai/rules/matters.md |

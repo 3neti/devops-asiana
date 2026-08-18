@@ -210,3 +210,7 @@ Each slice should add only the UI and infrastructure needed to exercise its rule
 ## Retention findings and corrective actions
 
 The repository now includes a read-only **Retention Finding and Corrective-Action Link Compiler** backed by `resources/institution/retention-finding-links.json`. It links only resolved remediation-bearing Retention Reviews to existing Corrective Actions, preserving linker, time, reason, and review-attached Evidence. The link does not create, assign, verify, or close remediation; Corrective Action governance remains independent.
+
+## Institutional control review
+
+The repository now includes a read-only **Institutional Control Review Compiler** backed by `resources/institution/institutional-control-review.json`. It summarizes conflicts and gaps from Evidence Custody, Retention Reviews, Retention Findings, and Corrective Actions into an attention-oriented projection. The summary preserves each source category and never replaces source history, grants authority, accepts risk, creates exceptions, or closes remediation.
