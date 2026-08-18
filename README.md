@@ -124,8 +124,10 @@ Canonical Matter Events live in `resources/institution/matter-events.json`. `Res
 
 Canonical Matter Closure links live in `resources/institution/matter-closures.json`. `ResolveMatterClosures` requires an admitted closure Event, explicit Matter and Corrective Action links, and separate Evidence. It reports outstanding remediation without closing or erasing Corrective Actions; remediation retains its own owner, verification, authority, and closure lifecycle.
 
+Canonical Evidence Index records live in `resources/institution/evidence-index.json`. `ResolveEvidenceIndex` preserves explicit Client → Engagement → Matter → artifact → Evidence traceability paths. It is a read-only interrogation projection; missing links remain visible and the index never creates authority, approval, or workflow state.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Client and Engagement Evidence Index Compiler that makes institutional traceability queryable without becoming a generic search or workflow engine.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Evidence Custody and Retention Compiler for source, custody, retention, integrity, and disposition facts.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

@@ -189,8 +189,14 @@ The repository now includes a read-only **Matter Closure and Corrective-Action L
 
 Corrective Actions retain their own accountable owner, due-date history, completion claim, independent verification, authority, and closure. Matter closure never implies remediation closure, and remediation closure never rewrites Matter history.
 
+## Client and Engagement Evidence Index
+
+The repository now includes a read-only **Client and Engagement Evidence Index Compiler** backed by `resources/institution/evidence-index.json`. It preserves explicit Client, Engagement, Matter, artifact, and Evidence references so the Firm can interrogate where proof for institutional work resides.
+
+The index is a traceability projection, not a source of authority or workflow state. Missing links remain visible, and the index never infers a Client, Engagement, Matter, approval, or Evidence record from a neighboring artifact.
+
 ## Recommended next vertical slice
 
-Build a narrow **Client and Engagement Evidence Index Compiler**. It should make the Matter, Engagement, Client Mandate, authority, and Evidence chain queryable without introducing a generic search or workflow engine.
+Build a narrow **Evidence Custody and Retention Compiler**. It should add source, custody, retention, integrity, and disposition facts to indexed Evidence without turning the repository into a document-management or generic search platform.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

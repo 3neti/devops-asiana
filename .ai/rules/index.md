@@ -18,6 +18,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | {app/DecisionRecords/**,resources/institution/decision-records.json,resources/js/pages/DecisionRecords/**,tests/**/*DecisionRecord*} | .ai/rules/decision-records.md |
 | docs/** | .ai/rules/docs.md |
 | app/Engagements/** | .ai/rules/engagements.md |
+| app/EvidenceIndex/** | .ai/rules/evidence-index.md |
 | resources/js/pages/FirmConsole/** | .ai/rules/firm-console.md |
 | app/FormationBootstrap/** | .ai/rules/formation-bootstrap.md |
 | app/FormationCompletion/** | .ai/rules/formation-completion.md |

@@ -166,3 +166,5 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Closure Verification                    | Independent confirmation that a Matter's closure disposition is supported and complete                                                               |
 | Matter Closure Projection               | Resolved projection of a verified Matter closure and its linked outstanding remediation obligations                                                  |
 | Corrective Action Link                  | Explicit reference from a Matter Closure to a separately governed institutional remediation record                                                   |
+| Evidence Index                         | Read-only projection of explicit artifact, institutional path, and Evidence links                                                                     |
+| Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |

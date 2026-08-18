@@ -1,0 +1,22 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "artifact",
+            "label": "Artifact",
+            "question": "What institutional artifact is being indexed?"
+        },
+        {
+            "key": "path",
+            "label": "Traceability Path",
+            "question": "Are Client, Engagement, and Matter references preserved where applicable?"
+        },
+        {
+            "key": "evidence",
+            "label": "Evidence Links",
+            "question": "Which Evidence Records prove the artifact?"
+        }
+    ],
+    "records": [],
+    "evidence_records": []
+}
