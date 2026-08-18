@@ -1,0 +1,26 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "action",
+            "label": "Admitted Action",
+            "question": "Does the review reference an admitted Control Review Action?"
+        },
+        {
+            "key": "completion",
+            "label": "Completion Claim",
+            "question": "Is a separate completion claim present?"
+        },
+        {
+            "key": "verification",
+            "label": "Independent Verification",
+            "question": "Is successful independent verification evidenced after completion?"
+        },
+        {
+            "key": "authority",
+            "label": "Closure Authority",
+            "question": "Is closure authority and review Evidence explicit?"
+        }
+    ],
+    "reviews": []
+}

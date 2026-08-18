@@ -40,6 +40,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Control Review Sign-off | attributable independent review of an exact export, distinct from approval or risk acceptance |
 | Control Review Actions  | bounded, evidenced follow-up authorized from an admitted sign-off                          |
 | Control Action Outcomes | progress, blocked state, completion claims, and verification references without inferred closure |
+| Control Closure Eligibility | prerequisite report for action closure, without issuing closure decisions              |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -81,6 +82,8 @@ Control Review Sign-off resolution is downstream of the exact export. `ResolveCo
 Control Review Action resolution is downstream of an admitted Sign-off. `ResolveControlReviewActions` requires a reviewed control scope, explicit owner, due date, authority basis, reason, and Evidence. It records bounded follow-up only; it never creates, assigns, verifies, or closes a Corrective Action implicitly.
 
 Control Review Action Outcome resolution is downstream of admitted Actions. `ResolveControlReviewActionOutcomes` records progress, blocked state, completion claims, and verification references with explicit actor, time, summary, and Evidence. Completion claims are not verification, verification references are not closure authorization, and no completion or closure is inferred.
+
+Control Review Closure Eligibility resolution is downstream of Actions and Outcomes. `ResolveControlReviewClosureEligibility` reports whether an action has a completion claim, successful independent verification after completion, explicit closure authority, and closure Evidence. It emits no closure decision and never mutates or closes an action.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

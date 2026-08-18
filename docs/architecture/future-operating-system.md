@@ -230,3 +230,7 @@ The repository now includes a read-only **Control Review Action Register Compile
 ## Control review action outcomes
 
 The repository now includes a read-only **Control Review Action Outcome Compiler** backed by `resources/institution/control-review-action-outcomes.json`. It records progress, blocked state, completion claims, and verification references for admitted actions. Completion claims remain distinct from independent verification, and verification references never authorize closure.
+
+## Control review closure eligibility
+
+The repository now includes a read-only **Control Review Action Closure Eligibility Compiler** backed by `resources/institution/control-review-closure-eligibility.json`. It checks completion claim, successful independent verification chronology, explicit closure authority, and closure Evidence as separate prerequisites. Eligibility is only a report; no action is closed or mutated.

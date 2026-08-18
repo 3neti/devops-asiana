@@ -179,4 +179,5 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Control Review Sign-off               | Attributable review of an exact Control Review Evidence Export; it is not approval, risk acceptance, or remediation closure                           |
 | Control Review Action                 | Explicitly bounded follow-up linked to an admitted Sign-off, with owner, due date, authority basis, reason, and Evidence                            |
 | Control Action Outcome                | Evidence-bearing progress, blocked state, completion claim, or verification reference for a Control Review Action; it does not imply closure            |
+| Control Closure Eligibility           | Read-only prerequisite projection for closure that requires completion, independent verification, authority, and Evidence without issuing closure        |
 | Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |
