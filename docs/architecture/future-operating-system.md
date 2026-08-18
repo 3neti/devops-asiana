@@ -246,3 +246,7 @@ The repository now includes a read-only **Control Review Closure Reconciliation 
 ## Institutional control review history
 
 The repository now includes a read-only **Institutional Control History Export Compiler** backed by `resources/institution/control-history.json`. It projects an append-only chronology across closure eligibility reviews, closure decisions, and closure reconciliations. Each History Event retains source kind, source reference, actor, timestamp, and state while unsupported or incomplete chronology remains visible as a gap. Payloads and secrets are excluded, and the projection never creates authority, approval, closure, remediation, or workflow state. Future work may add integrity anchors to this history without turning it into a generic audit platform.
+
+## Institutional control history integrity
+
+The repository now includes a read-only **Control History Integrity and Anchor Compiler** using the same canonical history definition. `ResolveInstitutionalControlHistoryIntegrity` derives deterministic SHA-256 event anchors and one ordered history anchor from payload-free identity fields. It makes unstable ordering, duplicate event keys, source mismatches, unsupported algorithms, and inherited history gaps visible without rewriting source records or creating audit workflow, authority, approval, closure, or remediation state.

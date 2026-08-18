@@ -3,6 +3,8 @@
     "history_key": "institutional-control-history-v1",
     "source": "control-review-lifecycle",
     "include_payloads": false,
+    "anchor_algorithm": "sha256",
+    "ordering": ["occurred_at", "event_kind", "event_key"],
     "event_kinds": [
         "eligibility_review",
         "closure_decision",

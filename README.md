@@ -150,8 +150,10 @@ Canonical Control Review Closure Reconciliations live in `resources/institution/
 
 Canonical Institutional Control History configuration lives in `resources/institution/control-history.json`. `ResolveInstitutionalControlHistory` projects an append-only, payload-free chronology across eligibility reviews, closure decisions, and closure reconciliations. It preserves source provenance and reports missing or unsupported events without creating authority, approval, closure, remediation, or workflow state.
 
+Control History integrity uses the same resource to derive deterministic SHA-256 event and history anchors from payload-free identity fields. `ResolveInstitutionalControlHistoryIntegrity` reports ordering, duplicate-key, source, and configuration gaps without mutating history or creating authority, approval, closure, remediation, or workflow state.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control History Integrity and Anchor Compiler that can verify chronology identity and stable source ordering without becoming a workflow or audit platform.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control History Anchor Verification Compiler that can compare a supplied anchor to resolved chronology without becoming a workflow or audit platform.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).
