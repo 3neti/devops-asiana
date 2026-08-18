@@ -32,4 +32,4 @@ Procedures and runbooks must name their governing policy, authorized roles, requ
 | `adr/`          | Durable institutional and technical decisions            |
 | `legal/`        | Matters requiring counsel validation                     |
 
-The executable projections are summarized under [Future operating system](architecture/future-operating-system.md). The [Authority Matrix doctrine](domains/authority-matrix.md) defines the newest compiler boundary. The browser catalogue is generated from this hierarchy; the repository remains canonical.
+The executable projections are summarized under [Future operating system](architecture/future-operating-system.md). The [Decision and Approval Records doctrine](domains/decision-and-approval-records.md) defines the newest compiler boundary. The browser catalogue is generated from this hierarchy; the repository remains canonical.

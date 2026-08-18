@@ -56,6 +56,11 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Reserved Matter          | Constitutional decision requiring special approval                                                |
 | Approval                 | Affirmative authorization by competent authority                                                  |
 | Decision                 | Institutional choice, distinct from its execution                                                 |
+| Proposal                 | Attributable request for an institutional decision, preserving its reason and alternatives        |
+| Decision Record          | Durable proposal-through-outcome record citing exact authority, risk, review, effective time, and Evidence |
+| Effective Decision       | Approved Decision currently within its explicit effective period after every authority and evidence gate passes |
+| Execution Record         | Separate attributable proof that an action permitted by a Decision was performed                  |
+| Decision Verification    | Independent comparison of a recorded execution with the Decision's stated criteria and conditions |
 | Policy                   | Mandatory control requirements deriving authority from the constitution                           |
 | Policy Exception         | Temporary approved deviation from a specific requirement                                          |
 | Procedure                | Repeatable process implementing policy                                                            |

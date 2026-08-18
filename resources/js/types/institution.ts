@@ -1141,3 +1141,77 @@ export type AuthorityMatrixCompiler = {
     };
     principles: string[];
 };
+
+export type DecisionRecordLifecycleStatus =
+    | 'proposed'
+    | 'under_review'
+    | 'decided'
+    | 'effective'
+    | 'superseded'
+    | 'withdrawn';
+
+export type DecisionRecordProjection = {
+    key: string;
+    title: string;
+    lifecycle_status: DecisionRecordLifecycleStatus;
+    lifecycle_status_label: string;
+    context: {
+        type: 'firm_governance' | 'firm_management';
+        subject: string;
+        reference_keys: string[];
+    };
+    materiality: 'routine' | 'material' | 'reserved';
+    proposal: Record<string, unknown>;
+    review: Record<string, unknown> | null;
+    risk: Record<string, unknown>;
+    authority: Record<string, unknown> | null;
+    decision: Record<string, unknown> | null;
+    authority_entry_label: string | null;
+    approver_name: string | null;
+    authority_resolved: boolean;
+    temporal_state: string;
+    may_execute: boolean;
+    execution_occurred: boolean;
+    verification_occurred: boolean;
+};
+
+export type DecisionRecordCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        title: string;
+        required_for_effective_decision: boolean;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    }>;
+    record_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    decision_records: DecisionRecordProjection[];
+    execution_records: Array<Record<string, unknown>>;
+    verification_records: Array<Record<string, unknown>>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        decisions: number;
+        executable_decisions: number;
+        executions: number;
+        verifications: number;
+        evidence_records: number;
+        by_lifecycle: Record<DecisionRecordLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        authority_gaps: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

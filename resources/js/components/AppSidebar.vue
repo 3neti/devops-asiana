@@ -5,6 +5,7 @@ import {
     CircleCheckBig,
     ContactRound,
     DatabaseBackup,
+    FileCheck2,
     GitPullRequestArrow,
     Gavel,
     KeyRound,
@@ -35,6 +36,7 @@ import { index as changes } from '@/routes/changes';
 import { index as clientAcceptance } from '@/routes/client-acceptance';
 import { index as continuityExercises } from '@/routes/continuity-exercises';
 import { index as correctiveActions } from '@/routes/corrective-actions';
+import { index as decisionRecords } from '@/routes/decision-records';
 import { index as engagements } from '@/routes/engagements';
 import { index as identityAndRoles } from '@/routes/identity-and-roles';
 import { index as incidents } from '@/routes/incidents';
@@ -108,6 +110,11 @@ const mainNavItems: NavItem[] = [
         title: 'Authority Matrix',
         href: authorityMatrix(),
         icon: Gavel,
+    },
+    {
+        title: 'Decisions & Approvals',
+        href: decisionRecords(),
+        icon: FileCheck2,
     },
 ];
 

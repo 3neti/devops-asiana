@@ -76,7 +76,7 @@ Technology / IP   →    platform / scheme  →   owned infrastructure  →  del
 
 ## Current state
 
-The repository now contains thirteen thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
+The repository now contains fourteen thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
 
 Canonical policy identity and lifecycle metadata live in `resources/institution/policies.json`, while policy content remains in `docs/policies/`. `ResolvePolicyRegistry` verifies version references, content integrity after review begins, explicit approvals, exception scope and expiry, and Evidence Record links. The Policy Register makes those distinctions visible without granting approval authority to an authenticated application user. The full `docs/` hierarchy remains available through the generated, sanitized document browser.
 
@@ -102,8 +102,10 @@ Canonical Institutional Identities, Roles, and Role Assignments live in `resourc
 
 Canonical Firm Authority rules live in `resources/institution/authority-matrix.json`. `ResolveAuthorityMatrix` resolves each defined decision or approval against an exact constitutional or policy source, Responsibility Coverage, Institutional Identity, authority-bearing Role Assignment, lifecycle, effective time, risk or threshold boundary, separation, delegation limits, and Evidence. Firm Authority never supplies Client Mandate or Specific Approval. The current Matrix grants zero effective authority and explicitly defers seven undecided authority areas rather than inventing roles or thresholds.
 
+Canonical Firm Decision and Approval standards and records live in `resources/institution/decision-records.json`. `ResolveDecisionRecords` requires one exact effective Authority Matrix entry and holder, then preserves proposal, review, risk, decision outcome, effective period, execution permission, later execution, independent verification, and Evidence as separate facts. Execution never supplies approval, Client actions remain outside this Firm-only boundary, and no formation history or Decision Record is invented. The current ledger is empty and exposes three readiness gaps.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Institutional Decision and Approval Record Compiler that cites an Active Matrix entry while keeping proposal, approval, execution, verification, and Evidence separate.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Governance Meeting and Partner Vote Compiler that preserves attendance, quorum, conflicts, recusals, votes, abstentions, Reserved Matter classification, outcome, and Evidence without inventing a 50/50 deadlock rule.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

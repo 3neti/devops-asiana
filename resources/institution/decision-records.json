@@ -1,0 +1,65 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "governance decisions",
+            "key": "partnership-governance",
+            "version": "0.1",
+            "title": "Partnership Governance Policy",
+            "required_for_effective_decision": true
+        },
+        {
+            "purpose": "authority resolution",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "title": "Authority & Delegation Policy",
+            "required_for_effective_decision": true
+        }
+    ],
+    "record_requirements": [
+        {
+            "key": "proposal",
+            "label": "Proposal",
+            "question": "What is proposed, by whom, for what reason, and against which alternatives?"
+        },
+        {
+            "key": "review",
+            "label": "Review",
+            "question": "Who reviewed the proposal, conflicts, and related-party implications?"
+        },
+        {
+            "key": "risk",
+            "label": "Risk",
+            "question": "What risk is classified, who owns it, and who may accept it?"
+        },
+        {
+            "key": "authority",
+            "label": "Authority",
+            "question": "Which exact effective Matrix entry and holder authorize the decision?"
+        },
+        {
+            "key": "decision",
+            "label": "Decision",
+            "question": "What was the explicit outcome, effective period, conditions, and execution permission?"
+        },
+        {
+            "key": "execution",
+            "label": "Execution",
+            "question": "Who performed the separately authorized action, when, and with what result?"
+        },
+        {
+            "key": "verification",
+            "label": "Verification",
+            "question": "Who independently verified execution against explicit criteria?"
+        },
+        {
+            "key": "evidence",
+            "label": "Evidence",
+            "question": "Which durable records prove each material stage occurred?"
+        }
+    ],
+    "decision_records": [],
+    "execution_records": [],
+    "verification_records": [],
+    "evidence_records": []
+}

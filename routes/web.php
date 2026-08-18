@@ -6,6 +6,7 @@ use App\Http\Controllers\ChangeController;
 use App\Http\Controllers\ClientAcceptanceController;
 use App\Http\Controllers\ContinuityExerciseController;
 use App\Http\Controllers\CorrectiveActionController;
+use App\Http\Controllers\DecisionRecordController;
 use App\Http\Controllers\EngagementController;
 use App\Http\Controllers\FirmConsoleController;
 use App\Http\Controllers\IdentityAndRoleController;
@@ -32,6 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('responsibility-coverage', ResponsibilityCoverageController::class)->name('responsibility-coverage.index');
     Route::get('identity-and-roles', IdentityAndRoleController::class)->name('identity-and-roles.index');
     Route::get('authority-matrix', AuthorityMatrixController::class)->name('authority-matrix.index');
+    Route::get('decision-records', DecisionRecordController::class)->name('decision-records.index');
     Route::get('documents/{document}', [InstitutionalDocumentController::class, 'show'])
         ->where('document', '.*')
         ->name('institutional-documents.show');

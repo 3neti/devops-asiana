@@ -107,8 +107,14 @@ The Matrix resolves Firm Authority only. Client Mandate and Specific Approval re
 
 Three constitution-derived entries are Approved but inactive. Four policy-derived entries remain Design. Privileged emergency-access approval remains vacant. Seven additional authority areas—including commercial, financial, people, legal, credentials, data export, and external communication—are explicitly deferred instead of being filled with invented powers or thresholds. The current Matrix therefore grants zero effective Firm Authority.
 
+## Implemented fourteenth vertical slice
+
+The repository now includes a read-only **Institutional Decision and Approval Record Compiler** backed by `resources/institution/decision-records.json`. It resolves Firm governance and management decisions through an exact effective Authority Matrix entry and holder, while keeping proposal, conflicts and related-party review, risk ownership and acceptance, outcome, effective period, conditions, execution permission, later execution, independent verification, and Evidence as separate facts.
+
+Execution cannot backfill approval. Approval may permit execution without asserting that it occurred. Verification cannot be performed by the executor or rewrite the original Decision. Matrix entries requiring Client Mandate are outside this Firm-only compiler. Known formation facts are not fabricated as historical decisions, so the canonical ledger remains empty. The Console exposes that both governing policies are Draft and no Matrix entry is effective.
+
 ## Recommended next vertical slice
 
-Build a narrow **Institutional Decision and Approval Record Compiler**. A record should cite one exact Active Authority Matrix entry and resolved holder, then preserve proposal, review, risk, approval outcome, effective decision time, Evidence, later execution, and verification as separate facts. Start with Firm governance and management decisions; do not build a generalized workflow engine or infer Client authorization.
+Build a narrow **Governance Meeting and Partner Vote Compiler**. It should project proposals requiring collective Partnership action into recorded attendance, quorum, conflicts, recusals, votes, abstentions, Reserved Matter classification, outcome, and Evidence, then emit an eligible Decision Record without silently resolving the known 50/50 deadlock question. Do not build a generic meeting or parliamentary-procedure system.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.
