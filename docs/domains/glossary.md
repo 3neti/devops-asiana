@@ -181,4 +181,5 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Control Action Outcome                | Evidence-bearing progress, blocked state, completion claim, or verification reference for a Control Review Action; it does not imply closure            |
 | Control Closure Eligibility           | Read-only prerequisite projection for closure that requires completion, independent verification, authority, and Evidence without issuing closure        |
 | Control Closure Decision             | Explicit closed, deferred, or rejected admission after eligibility review; it is separate from and does not mutate the Action                         |
+| Control Closure Reconciliation      | Read-only comparison of an admitted closure decision with downstream state; discrepancies remain explicit and sources are not rewritten                 |
 | Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |

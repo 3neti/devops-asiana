@@ -19,6 +19,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/ControlDecisions/** | .ai/rules/control-decisions.md |
 | app/ControlExports/** | .ai/rules/control-exports.md |
 | app/ControlOutcomes/** | .ai/rules/control-outcomes.md |
+| app/ControlReconciliation/** | .ai/rules/control-reconciliation.md |
 | app/ControlSignoffs/** | .ai/rules/control-signoffs.md |
 | app/CorrectiveActions/**,resources/institution/corrective-actions.json,resources/js/pages/CorrectiveActions/**,tests/**/*CorrectiveAction* | .ai/rules/corrective-actions.md |
 | {app/DecisionRecords/**,resources/institution/decision-records.json,resources/js/pages/DecisionRecords/**,tests/**/*DecisionRecord*} | .ai/rules/decision-records.md |

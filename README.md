@@ -146,8 +146,10 @@ Canonical Control Review Closure Eligibility records live in `resources/institut
 
 Canonical Control Review Closure Decisions live in `resources/institution/control-review-closure-decisions.json`. `ResolveControlReviewClosureDecisions` admits explicit closed, deferred, or rejected decisions against exact eligibility reviews. Closed decisions require eligibility and separate authority/Evidence; the underlying Action is never mutated by the compiler.
 
+Canonical Control Review Closure Reconciliations live in `resources/institution/control-review-closure-reconciliations.json`. `ResolveControlReviewClosureReconciliations` compares admitted decisions with explicit downstream state and preserves discrepancies with attribution and Evidence. It never rewrites the decision, action, or remediation source.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control Review Closure Reconciliation Compiler that compares admitted closure decisions with downstream remediation state without rewriting either source.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Institutional Control Review History Export that provides append-only chronology across these projections without becoming a workflow or audit platform.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

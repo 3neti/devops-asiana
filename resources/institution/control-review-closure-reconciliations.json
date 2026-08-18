@@ -1,0 +1,26 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "decision",
+            "label": "Admitted Decision",
+            "question": "Does reconciliation reference an admitted closure decision?"
+        },
+        {
+            "key": "downstream",
+            "label": "Downstream State",
+            "question": "Is downstream action state explicitly reported as open, closed, or unknown?"
+        },
+        {
+            "key": "reconciliation",
+            "label": "Reconciliation Basis",
+            "question": "Are reconciler, time, and basis explicit?"
+        },
+        {
+            "key": "evidence",
+            "label": "Reconciliation Evidence",
+            "question": "Is reconciliation Evidence explicit?"
+        }
+    ],
+    "reconciliations": []
+}
