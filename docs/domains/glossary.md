@@ -177,4 +177,5 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Institutional Control Review          | Read-only cross-domain projection that summarizes source compiler gaps without replacing their canonical records                                     |
 | Control Review Evidence Export        | Stable, allowlisted, payload-free projection of an Institutional Control Review                                                                       |
 | Control Review Sign-off               | Attributable review of an exact Control Review Evidence Export; it is not approval, risk acceptance, or remediation closure                           |
+| Control Review Action                 | Explicitly bounded follow-up linked to an admitted Sign-off, with owner, due date, authority basis, reason, and Evidence                            |
 | Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |

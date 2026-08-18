@@ -222,3 +222,7 @@ The repository now includes a read-only **Control Review Evidence Export Compile
 ## Control review sign-off
 
 The repository now includes a read-only **Control Review Sign-off Compiler** backed by `resources/institution/control-review-signoffs.json`. It records an attributable review of an exact export snapshot, requires separate Evidence, and forces the reviewer to acknowledge that sign-off is not approval or risk acceptance. Findings remain visible and source lifecycles remain unchanged.
+
+## Control review action register
+
+The repository now includes a read-only **Control Review Action Register Compiler** backed by `resources/institution/control-review-actions.json`. It admits bounded follow-up only when an action references an admitted Sign-off and a control within that Sign-off's reviewed scope, with explicit owner, due date, authority basis, reason, and Evidence. It is not a generic task system and does not create or close Corrective Actions implicitly.

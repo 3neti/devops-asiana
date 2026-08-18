@@ -38,6 +38,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Institutional Controls  | read-only cross-domain review of custody, retention, findings, and remediation gaps          |
 | Control Review Export   | stable, allowlisted, payload-free projection of Institutional Control Review                  |
 | Control Review Sign-off | attributable independent review of an exact export, distinct from approval or risk acceptance |
+| Control Review Actions  | bounded, evidenced follow-up authorized from an admitted sign-off                          |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -75,6 +76,8 @@ Institutional Control Review resolution is downstream of those source compilers.
 Control Review Evidence Export resolution is downstream of Institutional Control Review. `ResolveControlReviewEvidenceExport` emits a deterministic, allowlisted projection with source identity and gap provenance. Payloads and secrets are forbidden, and exporting never changes source lifecycle, authority, risk acceptance, exceptions, or remediation.
 
 Control Review Sign-off resolution is downstream of the exact export. `ResolveControlReviewSignoffs` requires an exact export key and status snapshot, attributable reviewer/basis/time, explicit acknowledgement that review is not approval or risk acceptance, and separate Evidence. A sign-off cannot suppress export findings or create authority, exceptions, or remediation closure.
+
+Control Review Action resolution is downstream of an admitted Sign-off. `ResolveControlReviewActions` requires a reviewed control scope, explicit owner, due date, authority basis, reason, and Evidence. It records bounded follow-up only; it never creates, assigns, verifies, or closes a Corrective Action implicitly.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

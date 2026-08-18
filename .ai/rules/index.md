@@ -14,6 +14,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/ClientAcceptance/** | .ai/rules/client-acceptance.md |
 | app/ClientMandates/** | .ai/rules/client-mandates.md |
 | app/Continuity/**,resources/institution/continuity-exercises.json,resources/js/pages/ContinuityExercises/**,tests/**/*ContinuityExercise* | .ai/rules/continuity-exercises.md |
+| app/ControlActions/** | .ai/rules/control-actions.md |
 | app/ControlExports/** | .ai/rules/control-exports.md |
 | app/ControlSignoffs/** | .ai/rules/control-signoffs.md |
 | app/CorrectiveActions/**,resources/institution/corrective-actions.json,resources/js/pages/CorrectiveActions/**,tests/**/*CorrectiveAction* | .ai/rules/corrective-actions.md |

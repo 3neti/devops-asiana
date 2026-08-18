@@ -1,0 +1,26 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "signoff",
+            "label": "Admitted Sign-off",
+            "question": "Does the action reference an admitted Control Review Sign-off?"
+        },
+        {
+            "key": "scope",
+            "label": "Control Scope",
+            "question": "Is the action bounded to a control reviewed by that sign-off?"
+        },
+        {
+            "key": "accountability",
+            "label": "Action Accountability",
+            "question": "Are owner, due date, authority basis, and reason explicit?"
+        },
+        {
+            "key": "evidence",
+            "label": "Action Evidence",
+            "question": "Is the action Evidence reference explicit?"
+        }
+    ],
+    "actions": []
+}
