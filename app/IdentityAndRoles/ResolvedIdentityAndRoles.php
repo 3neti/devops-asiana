@@ -78,6 +78,7 @@ final readonly class ResolvedIdentityAndRoles
                 'Approval does not activate an assignment; effective time, evidence, and lifecycle remain explicit.',
                 'A formation date alone does not activate an assignment; a verified Firm Commencement basis is required.',
                 'Firm Commencement does not activate every formation assignment; each holder assumption is separately admitted.',
+                'A transition changes one assignment through a separate admission; a terminal transition exposes a vacancy and never transfers authority.',
                 'A professional role carries responsibility but does not bind the Firm unless a separate authority source says so.',
                 'Ending an assignment does not erase its history or silently transfer it to another person.',
             ],

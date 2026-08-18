@@ -6,6 +6,7 @@ use App\FormationCompletion\ResolvedFormationCompletion;
 use App\Partnership\ResolvedPartnership;
 use App\ResponsibilityCoverage\ResolvedResponsibilityCoverage;
 use App\RoleActivations\ResolvedRoleActivations;
+use App\RoleTransitions\ResolvedRoleTransitions;
 use DateTimeImmutable;
 use Illuminate\Support\Carbon;
 use Throwable;
@@ -19,6 +20,7 @@ final class ResolveIdentityAndRoles
         ?DateTimeImmutable $asOf = null,
         ?ResolvedFormationCompletion $formationCompletion = null,
         ?ResolvedRoleActivations $roleActivations = null,
+        ?ResolvedRoleTransitions $roleTransitions = null,
     ): ResolvedIdentityAndRoles {
         /** @var list<array{code: string, message: string}> $conflicts */
         $conflicts = [];
@@ -47,6 +49,7 @@ final class ResolveIdentityAndRoles
             ->firstWhere('permits_formation_derived_assignments', true);
         $firmEffectiveAt = $this->date($commencementBasis['effective_at'] ?? null);
         $activationAdmissions = $this->indexByAssignmentKey($roleActivations->assignmentActivationAdmissions ?? []);
+        $transitionAdmissions = $this->indexByAssignmentKey($roleTransitions->assignmentTransitionAdmissions ?? []);
 
         if ($firmEffectiveAt === null && $this->usesFormationEffectiveDate($definition->assignments)) {
             $activationGaps[] = $this->issue(
@@ -62,6 +65,7 @@ final class ResolveIdentityAndRoles
             evidenceKeys: $evidenceKeys,
             firmEffectiveAt: $firmEffectiveAt,
             activationAdmissions: $activationAdmissions,
+            transitionAdmissions: $transitionAdmissions,
             asOf: $effectiveAt,
             lifecycleCounts: $assignmentLifecycleCounts,
             conflicts: $conflicts,
@@ -191,6 +195,7 @@ final class ResolveIdentityAndRoles
      * @param  array<string, array<string, mixed>>  $roles
      * @param  list<string>  $evidenceKeys
      * @param  array<string, array<string, mixed>>  $activationAdmissions
+     * @param  array<string, array<string, mixed>>  $transitionAdmissions
      * @param  array<string, int>  $lifecycleCounts
      * @param  list<array{code: string, message: string}>  $conflicts
      * @param  list<array{code: string, message: string}>  $activationGaps
@@ -210,6 +215,7 @@ final class ResolveIdentityAndRoles
         array $evidenceKeys,
         ?Carbon $firmEffectiveAt,
         array $activationAdmissions,
+        array $transitionAdmissions,
         Carbon $asOf,
         array &$lifecycleCounts,
         array &$conflicts,
@@ -255,6 +261,7 @@ final class ResolveIdentityAndRoles
             $basis = is_array($assignment['basis'] ?? null) ? $assignment['basis'] : [];
             $basisType = $basis['type'] ?? null;
             $activationAdmission = $activationAdmissions[$key] ?? null;
+            $transitionAdmission = $transitionAdmissions[$key] ?? null;
             $basisValid = in_array($basisType, ['formation', 'appointment', 'delegation'], true)
                 && is_string($basis['reference'] ?? null) && $basis['reference'] !== '';
             if (! $basisValid) {
@@ -291,6 +298,9 @@ final class ResolveIdentityAndRoles
             if ($basisType === 'formation' && $activationAdmission !== null && $status === AssignmentLifecycleStatus::Approved) {
                 $effectiveStatus = AssignmentLifecycleStatus::Active;
             }
+            if ($transitionAdmission !== null) {
+                $effectiveStatus = AssignmentLifecycleStatus::tryFrom((string) ($transitionAdmission['effective_lifecycle_status'] ?? '')) ?? $effectiveStatus;
+            }
             if ($basisType === 'formation' && $status === AssignmentLifecycleStatus::Active && $activationAdmission === null) {
                 $activationGaps[] = $this->issue(
                     'formation_assignment_activation_not_admitted',
@@ -326,6 +336,8 @@ final class ResolveIdentityAndRoles
                 'role_name' => $role['name'] ?? $roleKey,
                 'activation_admitted' => $activationAdmission !== null,
                 'activation_admission_key' => $activationAdmission['key'] ?? null,
+                'transition_admitted' => $transitionAdmission !== null,
+                'transition_admission_key' => $transitionAdmission['key'] ?? null,
                 'effective_at_resolved' => $effectiveFrom?->toIso8601String(),
                 'temporal_state' => $this->temporalState($effectiveFrom, $expiresAt, $asOf),
                 'operative' => $operative,
@@ -362,14 +374,20 @@ final class ResolveIdentityAndRoles
 
         foreach ($roles as $role) {
             $assignments = $assignmentsByRole[$role['key']] ?? [];
-            $currentAssignments = array_values(array_filter(
+            $rawCurrentAssignments = array_values(array_filter(
                 $assignments,
                 static fn (array $assignment): bool => ! in_array($assignment['lifecycle_status'] ?? null, ['ended', 'revoked'], true),
             ));
+            $currentAssignments = array_values(array_filter(
+                $rawCurrentAssignments,
+                static fn (array $assignment): bool => ! in_array($assignment['effective_lifecycle_status'] ?? $assignment['lifecycle_status'] ?? null, ['ended', 'revoked'], true),
+            ));
             $recordedHolderKeys = array_values(array_unique(array_column($currentAssignments, 'identity_key')));
+            $rawHolderKeys = array_values(array_unique(array_column($rawCurrentAssignments, 'identity_key')));
             $requirement = $coverageRequirements[$role['responsibility_requirement_key']] ?? null;
             $expectedHolderKeys = array_values($requirement['holder_keys'] ?? []);
-            $matchesCoverage = $recordedHolderKeys === $expectedHolderKeys;
+            $transitionedOut = $currentAssignments === [] && $rawHolderKeys === $expectedHolderKeys && $rawCurrentAssignments !== [];
+            $matchesCoverage = $recordedHolderKeys === $expectedHolderKeys || $transitionedOut;
             if (! $matchesCoverage) {
                 $holderMismatches[] = $this->issue(
                     'role_holder_mismatch',
@@ -382,7 +400,7 @@ final class ResolveIdentityAndRoles
             );
             $coverageStatus = match (true) {
                 ! $matchesCoverage => 'conflicted',
-                ($requirement['coverage_status'] ?? null) === 'vacant' => 'vacant',
+                ($requirement['coverage_status'] ?? null) === 'vacant' || $transitionedOut => 'vacant',
                 $operativeAssignments !== [] => 'covered',
                 $currentAssignments !== [] => 'pending_activation',
                 default => 'vacant',
@@ -393,6 +411,7 @@ final class ResolveIdentityAndRoles
                 'expected_holder_keys' => $expectedHolderKeys,
                 'recorded_holder_keys' => $recordedHolderKeys,
                 'recorded_holder_names' => array_column($currentAssignments, 'identity_name'),
+                'transitioned_out' => $transitionedOut,
                 'coverage_status' => $coverageStatus,
                 'operative_assignment_count' => count($operativeAssignments),
             ];
@@ -417,7 +436,7 @@ final class ResolveIdentityAndRoles
             $current = array_filter(
                 $assignments,
                 static fn (array $assignment): bool => ($assignment['role_key'] ?? null) === $roleKey
-                    && ! in_array($assignment['lifecycle_status'] ?? null, ['ended', 'revoked'], true),
+                    && ! in_array($assignment['effective_lifecycle_status'] ?? $assignment['lifecycle_status'] ?? null, ['ended', 'revoked'], true),
             );
             if (count($current) > 1) {
                 $conflicts[] = $this->issue('exclusive_role_overlap', "Exclusive role {$role['name']} has multiple current assignments.");
@@ -592,7 +611,8 @@ final class ResolveIdentityAndRoles
         $indexed = [];
 
         foreach ($records as $record) {
-            if (($record['activates_exact_assignment'] ?? false) === true && is_string($record['assignment_key'] ?? null)) {
+            if ((($record['activates_exact_assignment'] ?? false) === true || ($record['source_type'] ?? null) === 'role_transition')
+                && is_string($record['assignment_key'] ?? null)) {
                 $indexed[$record['assignment_key']] = $record;
             }
         }

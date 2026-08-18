@@ -31,6 +31,10 @@ test('authenticated users can inspect canonical identities roles and assignments
             ->where('roleActivations.counts.admitted_activations', 0)
             ->where('roleActivations.counts.pending_assignments', 8)
             ->has('roleActivations.reports.activation_gaps', 9)
+            ->where('roleTransitions.compiler_status', 'consistent')
+            ->where('roleTransitions.counts.transition_records', 0)
+            ->where('roleTransitions.counts.effective_transitions', 0)
+            ->where('roleTransitions.counts.vacancies', 0)
             ->etc()
         );
 });

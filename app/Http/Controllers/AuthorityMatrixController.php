@@ -16,6 +16,8 @@ use App\ResponsibilityCoverage\ResolveResponsibilityCoverage;
 use App\ResponsibilityCoverage\ResponsibilityCoverageRepository;
 use App\RoleActivations\ResolveRoleActivations;
 use App\RoleActivations\RoleActivationRepository;
+use App\RoleTransitions\ResolveRoleTransitions;
+use App\RoleTransitions\RoleTransitionRepository;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -29,6 +31,7 @@ class AuthorityMatrixController extends Controller
         PartnershipDefinitionRepository $partnership,
         PolicyRegistryRepository $policies,
         RoleActivationRepository $roleActivations,
+        RoleTransitionRepository $roleTransitions,
         ResolveAuthorityMatrix $resolveAuthorityMatrix,
         ResolveFormationCompletion $resolveFormationCompletion,
         ResolveIdentityAndRoles $resolveIdentityAndRoles,
@@ -36,6 +39,7 @@ class AuthorityMatrixController extends Controller
         ResolvePartnership $resolvePartnership,
         ResolvePolicyRegistry $resolvePolicyRegistry,
         ResolveRoleActivations $resolveRoleActivations,
+        ResolveRoleTransitions $resolveRoleTransitions,
     ): Response {
         $resolvedPartnership = $resolvePartnership->handle($partnership->current());
         $resolvedFormationCompletion = $resolveFormationCompletion->handle($formationCompletion->current(), $resolvedPartnership);
@@ -47,12 +51,14 @@ class AuthorityMatrixController extends Controller
         );
         $identityDefinition = $identityAndRoles->current();
         $resolvedRoleActivations = $resolveRoleActivations->handle($roleActivations->current(), $identityDefinition, $resolvedFormationCompletion);
+        $resolvedRoleTransitions = $resolveRoleTransitions->handle($roleTransitions->current(), $identityDefinition);
         $resolvedIdentities = $resolveIdentityAndRoles->handle(
             $identityDefinition,
             $resolvedPartnership,
             $resolvedCoverage,
             formationCompletion: $resolvedFormationCompletion,
             roleActivations: $resolvedRoleActivations,
+            roleTransitions: $resolvedRoleTransitions,
         );
 
         return Inertia::render('AuthorityMatrix/Index', [

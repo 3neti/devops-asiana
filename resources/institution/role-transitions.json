@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "exact-assignment",
+            "label": "Exact assignment snapshot",
+            "question": "Which one historical Role Assignment is being transitioned?"
+        },
+        {
+            "key": "competent-decision",
+            "label": "Competent decision",
+            "question": "Who had authority to approve the suspension, resignation, removal, revocation, or ending?"
+        },
+        {
+            "key": "effective-transition",
+            "label": "Effective transition",
+            "question": "When does the changed lifecycle take effect, and was it recorded afterward?"
+        },
+        {
+            "key": "successor-separation",
+            "label": "Successor separation",
+            "question": "Was a successor independently admitted, or is the resulting vacancy explicit?"
+        },
+        {
+            "key": "transition-evidence",
+            "label": "Transition Evidence",
+            "question": "What separately proves the decision, transition, verification, and resulting vacancy?"
+        }
+    ],
+    "transition_records": [],
+    "evidence_records": []
+}

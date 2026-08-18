@@ -14,6 +14,8 @@ use App\ResponsibilityCoverage\ResolveResponsibilityCoverage;
 use App\ResponsibilityCoverage\ResponsibilityCoverageRepository;
 use App\RoleActivations\ResolveRoleActivations;
 use App\RoleActivations\RoleActivationRepository;
+use App\RoleTransitions\ResolveRoleTransitions;
+use App\RoleTransitions\RoleTransitionRepository;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -26,12 +28,14 @@ class IdentityAndRoleController extends Controller
         PartnershipDefinitionRepository $partnership,
         PolicyRegistryRepository $policies,
         RoleActivationRepository $roleActivations,
+        RoleTransitionRepository $roleTransitions,
         ResolveIdentityAndRoles $resolveIdentityAndRoles,
         ResolveFormationCompletion $resolveFormationCompletion,
         ResolveResponsibilityCoverage $resolveResponsibilityCoverage,
         ResolvePartnership $resolvePartnership,
         ResolvePolicyRegistry $resolvePolicyRegistry,
         ResolveRoleActivations $resolveRoleActivations,
+        ResolveRoleTransitions $resolveRoleTransitions,
     ): Response {
         $resolvedPartnership = $resolvePartnership->handle($partnership->current());
         $resolvedFormationCompletion = $resolveFormationCompletion->handle($formationCompletion->current(), $resolvedPartnership);
@@ -47,15 +51,18 @@ class IdentityAndRoleController extends Controller
             $identityDefinition,
             $resolvedFormationCompletion,
         );
+        $resolvedRoleTransitions = $resolveRoleTransitions->handle($roleTransitions->current(), $identityDefinition);
 
         return Inertia::render('IdentityAndRoles/Index', [
             'roleActivations' => $resolvedRoleActivations->toArray(),
+            'roleTransitions' => $resolvedRoleTransitions->toArray(),
             'identityAndRoles' => $resolveIdentityAndRoles->handle(
                 $identityDefinition,
                 $resolvedPartnership,
                 $resolvedResponsibilities,
                 formationCompletion: $resolvedFormationCompletion,
                 roleActivations: $resolvedRoleActivations,
+                roleTransitions: $resolvedRoleTransitions,
             )->toArray(),
         ]);
     }

@@ -153,8 +153,14 @@ The repository now includes a read-only **Founding Role Activation Compiler** ba
 
 An admission activates only its exact assignment. Canonical assignment history remains Approved while the identity compiler projects the admitted effective lifecycle as Active. The admission itself grants no Firm Authority; a professional responsibility remains non-authoritative, while an Office becomes only eligible for separate Authority Matrix resolution. Canonical state records no assumptions, so all eight founding assignments remain pending without inferred activation.
 
+## Role Assignment transitions
+
+The repository now includes a read-only **Role Assignment Transition Compiler** backed by `resources/institution/role-transitions.json`. It preserves exact assignment snapshots and admits only evidenced suspension, resignation, removal, revocation, or ending records with a competent decision, effective chronology, independent verification, and separate Evidence.
+
+Terminal transitions project a vacancy and retain the outgoing assignment's history. A possible successor is never treated as appointed or active merely because a transition names them; the compiler reports that successor as pending separate admission. Transition admissions never grant Firm Authority, and suspension disables operation without silently changing the holder or transferring the Office.
+
 ## Recommended next vertical slice
 
-Build a narrow **Role Assignment Transition Compiler** for suspension, resignation, removal, revocation, and ordinary ending. It should preserve the competent decision source, holder notice or acknowledgment where applicable, effective time, Evidence, resulting vacancy, and any separately admitted successor. Disposition must never erase assignment history, transfer an Office automatically, or imply that a successor inherits the predecessor's authority.
+Build a narrow **Successor Appointment and Role Admission Compiler**. It should create a new exact assignment for a Role only through explicit appointment authority, qualification, approval, holder acceptance, activation, and Evidence. A vacancy should remain visible until that separate successor path is complete.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

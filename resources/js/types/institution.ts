@@ -1102,6 +1102,8 @@ export type RoleAssignment = {
     expires_at: string | null;
     activation_admitted: boolean;
     activation_admission_key: string | null;
+    transition_admitted: boolean;
+    transition_admission_key: string | null;
     operative: boolean;
     grants_firm_authority: boolean;
     temporal_state: string;
@@ -1184,6 +1186,53 @@ export type RoleActivationCompiler = {
         activation_gaps: Array<{ code: string; message: string }>;
         acceptance_gaps: Array<{ code: string; message: string }>;
         verification_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};
+
+export type RoleTransitionCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    transition_records: Array<Record<string, unknown>>;
+    assignment_transition_admissions: Array<{
+        key: string;
+        transition_record_key: string;
+        assignment_key: string;
+        transition_type: string;
+        effective_lifecycle_status: AssignmentLifecycleStatus;
+        effective_at: string;
+        successor_status: string;
+        grants_firm_authority: false;
+    }>;
+    scheduled_transitions: Array<Record<string, unknown>>;
+    vacancies: Array<{
+        key: string;
+        assignment_key: string;
+        role_key: string;
+        outgoing_identity_key: string;
+        effective_at: string;
+        successor_status: string;
+        requires_separate_successor_admission: true;
+    }>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        transition_records: number;
+        effective_transitions: number;
+        scheduled_transitions: number;
+        vacancies: number;
+        evidence_records: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        transition_gaps: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
         evidence_gaps: Array<{ code: string; message: string }>;
     };
     principles: string[];

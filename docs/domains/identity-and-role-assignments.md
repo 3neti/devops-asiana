@@ -94,6 +94,12 @@ Role holders are reconciled against the Responsibility Coverage Compiler. A mism
 
 Active assignment and disposition records require Evidence. Appointment, suspension, ending, and revocation should eventually remain append-only institutional history. Database persistence is deferred until lifecycle and authority requirements justify it.
 
+### Role transitions and vacancies
+
+`resources/institution/role-transitions.json` records lifecycle changes separately from the canonical assignment. `ResolveRoleTransitions` requires an exact assignment snapshot, a competent decision, effective and recording chronology, independent verification, and distinct Evidence for decision, transition, and verification. Resignation and removal resolve to an ended lifecycle; revocation resolves to Revoked; suspension disables operation without changing the holder.
+
+The transition projection never erases the original assignment. A terminal transition emits a vacancy unless a successor assignment is separately identified, appointed, and admitted through its own controls. Naming a possible successor is therefore a visible pending condition, not a transfer of the outgoing holder's Office or authority.
+
 ## Next boundary
 
-A future Role Assignment Transition Compiler should preserve suspension, resignation, removal, revocation, ending, successor appointment, and resulting responsibility coverage as distinct attributable events. Ending one assignment must create a visible vacancy when no independently admitted successor exists; it must never transfer a Role or authority silently.
+The next boundary is a separate successor appointment and admission path. It must bind a new assignment to the same Role only through an explicit basis, qualification, approval, activation, and Evidence; no transition record may make succession automatic.

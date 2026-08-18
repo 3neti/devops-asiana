@@ -10,6 +10,7 @@ use App\Policies\ResolvePolicyRegistry;
 use App\ResponsibilityCoverage\ResolveResponsibilityCoverage;
 use App\ResponsibilityCoverage\ResponsibilityCoverageDefinition;
 use App\RoleActivations\ResolvedRoleActivations;
+use App\RoleTransitions\ResolvedRoleTransitions;
 use DateTimeImmutable;
 
 function identityRoleDefinition(): IdentityAndRoleDefinition
@@ -62,6 +63,7 @@ function resolveIdentityRoles(
     ?PartnershipDefinition $partnership = null,
     bool $formationCommenced = true,
     ?ResolvedRoleActivations $roleActivations = null,
+    ?ResolvedRoleTransitions $roleTransitions = null,
 ): array {
     $partnershipDefinition = $partnership ?? identityRolePartnershipDefinition();
     $resolvedPartnership = (new ResolvePartnership)->handle($partnershipDefinition);
@@ -80,7 +82,31 @@ function resolveIdentityRoles(
             ? identityRoleFormationCompletion($partnershipDefinition->formation['firm']['effective_date'])
             : null,
         $roleActivations,
+        $roleTransitions,
     )->toArray();
+}
+
+function identityRoleTransition(string $assignmentKey, string $status): ResolvedRoleTransitions
+{
+    return new ResolvedRoleTransitions(
+        schemaVersion: 1,
+        requirements: [],
+        transitionRecords: [],
+        assignmentTransitionAdmissions: [[
+            'key' => "transition::{$assignmentKey}",
+            'source_type' => 'role_transition',
+            'assignment_key' => $assignmentKey,
+            'effective_lifecycle_status' => $status,
+            'effective_at' => '2026-08-02T10:00:00+08:00',
+        ]],
+        scheduledTransitions: [],
+        vacancies: [],
+        evidenceRecords: [],
+        conflicts: [],
+        transitionGaps: [],
+        decisionGaps: [],
+        evidenceGaps: [],
+    );
 }
 
 function identityRoleActivation(string $assignmentKey, string $roleKey, string $identityKey): ResolvedRoleActivations
@@ -255,6 +281,23 @@ test('declaring a formation assignment active does not replace holder assumption
     expect($assignment['operative'])->toBeFalse()
         ->and(array_column($resolved['reports']['activation_gaps'], 'code'))
         ->toContain('formation_assignment_activation_not_admitted');
+});
+
+test('an admitted ending transition makes the exact assignment non-operative', function () {
+    $resolved = resolveIdentityRoles(
+        identityRoleDefinition(),
+        identityRoleEffectivePartnership(),
+        roleTransitions: identityRoleTransition('client-delivery-angelica', 'ended'),
+    );
+    $assignment = collect($resolved['assignments'])->firstWhere('key', 'client-delivery-angelica');
+    $role = collect($resolved['roles'])->firstWhere('key', 'client-delivery');
+
+    expect($assignment['transition_admitted'])->toBeTrue()
+        ->and($assignment['effective_lifecycle_status'])->toBe('ended')
+        ->and($assignment['operative'])->toBeFalse()
+        ->and($assignment['grants_firm_authority'])->toBeFalse()
+        ->and($role['coverage_status'])->toBe('vacant')
+        ->and($role['transitioned_out'])->toBeTrue();
 });
 
 test('a Firm effective date does not activate formation assignments without verified commencement', function () {

@@ -15,12 +15,14 @@ import { show as showDocument } from '@/routes/institutional-documents';
 import type {
     IdentityAndRoleCompiler,
     RoleActivationCompiler,
+    RoleTransitionCompiler,
     ResponsibilityCoverageStatus,
 } from '@/types';
 
 const props = defineProps<{
     identityAndRoles: IdentityAndRoleCompiler;
     roleActivations: RoleActivationCompiler;
+    roleTransitions: RoleTransitionCompiler;
 }>();
 
 defineOptions({
@@ -276,6 +278,97 @@ function activationAdmitted(assignmentKey: string): boolean {
                             </dt>
                         </div>
                     </dl>
+                </div>
+            </section>
+
+            <section
+                class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900"
+            >
+                <div
+                    class="flex flex-col justify-between gap-4 sm:flex-row sm:items-start"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-semibold tracking-[0.18em] text-indigo-700 uppercase dark:text-indigo-400"
+                        >
+                            Role transition compiler
+                        </p>
+                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                            Lifecycle changes preserve history and expose
+                            vacancies
+                        </h2>
+                        <p
+                            class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
+                        >
+                            Suspension, resignation, removal, revocation, and
+                            ending are separately evidenced transitions. A
+                            successor is never inferred from the outgoing
+                            holder.
+                        </p>
+                    </div>
+                    <dl class="grid shrink-0 grid-cols-3 gap-2 text-center">
+                        <div
+                            class="rounded-lg bg-slate-50 px-4 py-3 dark:bg-slate-950"
+                        >
+                            <dd class="text-xl font-semibold">
+                                {{ roleTransitions.counts.transition_records }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Recorded
+                            </dt>
+                        </div>
+                        <div
+                            class="rounded-lg bg-slate-50 px-4 py-3 dark:bg-slate-950"
+                        >
+                            <dd
+                                class="text-xl font-semibold text-amber-700 dark:text-amber-300"
+                            >
+                                {{
+                                    roleTransitions.counts.effective_transitions
+                                }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Effective
+                            </dt>
+                        </div>
+                        <div
+                            class="rounded-lg bg-slate-50 px-4 py-3 dark:bg-slate-950"
+                        >
+                            <dd
+                                class="text-xl font-semibold text-rose-700 dark:text-rose-300"
+                            >
+                                {{ roleTransitions.counts.vacancies }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Vacancies
+                            </dt>
+                        </div>
+                    </dl>
+                </div>
+                <div
+                    v-if="roleTransitions.counts.vacancies > 0"
+                    class="mt-5 grid gap-3 md:grid-cols-2"
+                >
+                    <article
+                        v-for="vacancy in roleTransitions.vacancies"
+                        :key="vacancy.key"
+                        class="rounded-xl border border-rose-600/20 bg-rose-50/70 p-4 dark:bg-rose-950/20"
+                    >
+                        <p
+                            class="text-xs font-semibold tracking-wide text-rose-700 uppercase dark:text-rose-300"
+                        >
+                            Vacancy requires separate successor admission
+                        </p>
+                        <p class="mt-2 text-sm font-semibold">
+                            {{ vacancy.role_key }}
+                        </p>
+                        <p
+                            class="mt-1 text-xs text-slate-600 dark:text-slate-400"
+                        >
+                            Effective {{ vacancy.effective_at }} ·
+                            {{ label(vacancy.successor_status) }}
+                        </p>
+                    </article>
                 </div>
             </section>
 

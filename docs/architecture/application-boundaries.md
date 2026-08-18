@@ -25,6 +25,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Practices               | professional capability and leadership classifications                                               |
 | People                  | identity, roles, assignments, joiner/mover/leaver state                                              |
 | Responsibility Coverage | required offices, authorities, qualifications, separation, concentration, and succession gaps        |
+| Role Transitions        | evidenced suspension, resignation, removal, revocation, ending, vacancy, and successor separation    |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -36,6 +37,8 @@ Formation bootstrap deliberately precedes policy activation. A verified ratifica
 Formation completion deliberately precedes formation-derived assignment activation. A date, executed draft, application login, policy state, or observed operation cannot substitute for the exact commencement basis. Commencement does not activate an assignment; it only supplies a verified constitutional and temporal prerequisite.
 
 Role activation is an independent admission boundary after commencement. It snapshots one exact formation assignment, preserves the holder's acceptance and another recognized person's verification, and links distinct Evidence for acceptance, verification, and activation. Its output may make only that assignment operationally Active. The admission explicitly grants no Firm Authority; an Office merely becomes eligible for the separate Authority Matrix to evaluate.
+
+Role transition is a separate admission boundary after assignment activation or appointment. `ResolveRoleTransitions` snapshots one exact assignment, validates a competent decision, effective chronology, independent verification, and distinct Evidence, then projects only the bounded lifecycle change. Terminal transitions emit a vacancy unless a successor is separately admitted; a successor declaration never transfers authority automatically. Suspension preserves the assignment while disabling operation.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 
