@@ -140,6 +140,11 @@ final class ResolveGovernanceMeetings
             $evidenceGaps[] = $this->issue('missing_meeting_minutes_evidence', "Concluded meeting {$key} lacks complete minutes Evidence.");
         }
         $meetingPrerequisitesComplete = count($conflicts) + count($meetingGaps) + count($authorityGaps) + count($evidenceGaps) === $meetingIssueCount;
+        $meetingEvidenceRecordKeys = array_values(array_filter([
+            $notice['evidence_record_key'] ?? null,
+            ...array_column($attendance, 'evidence_record_key'),
+            $meeting['minutes_evidence_record_key'] ?? null,
+        ], 'is_string'));
         $agendaItems = [];
         $agendaKeys = [];
 
@@ -150,6 +155,7 @@ final class ResolveGovernanceMeetings
                 $partners,
                 $authority,
                 $evidence,
+                $meetingEvidenceRecordKeys,
                 $decisionRules,
                 $reservedMatters,
                 $presentPartnerKeys,
@@ -224,6 +230,7 @@ final class ResolveGovernanceMeetings
      * @param  array<string, array<string, mixed>>  $partners
      * @param  array<string, array<string, mixed>>  $authority
      * @param  array<string, array<string, mixed>>  $evidence
+     * @param  list<string>  $meetingEvidenceRecordKeys
      * @param  array<string, mixed>  $decisionRules
      * @param  list<array<string, string>>  $reservedMatters
      * @param  list<string>  $presentPartnerKeys
@@ -235,7 +242,7 @@ final class ResolveGovernanceMeetings
      * @param  list<array{code: string, message: string}>  $evidenceGaps
      * @return array<string, mixed>
      */
-    private function resolveAgendaItem(string $meetingKey, array $item, array $partners, array $authority, array $evidence, array $decisionRules, array $reservedMatters, array $presentPartnerKeys, int $presentWeight, bool $meetingPrerequisitesComplete, bool $policiesOperative, ?GovernanceMeetingLifecycleStatus $meetingLifecycle, ?Carbon $concludedAt, Carbon $asOf, array &$agendaKeys, array &$outcomeCounts, array &$conflicts, array &$meetingGaps, array &$authorityGaps, array &$evidenceGaps): array
+    private function resolveAgendaItem(string $meetingKey, array $item, array $partners, array $authority, array $evidence, array $meetingEvidenceRecordKeys, array $decisionRules, array $reservedMatters, array $presentPartnerKeys, int $presentWeight, bool $meetingPrerequisitesComplete, bool $policiesOperative, ?GovernanceMeetingLifecycleStatus $meetingLifecycle, ?Carbon $concludedAt, Carbon $asOf, array &$agendaKeys, array &$outcomeCounts, array &$conflicts, array &$meetingGaps, array &$authorityGaps, array &$evidenceGaps): array
     {
         $issueCount = count($conflicts) + count($meetingGaps) + count($authorityGaps) + count($evidenceGaps);
         $key = (string) ($item['key'] ?? '');
@@ -346,6 +353,13 @@ final class ResolveGovernanceMeetings
             && $concludedAt !== null
             && ! $concludedAt->isAfter($asOf)
             && $derivedOutcome === 'adopted';
+        $sourceEvidenceRecordKeys = array_values(array_unique(array_filter([
+            ...$meetingEvidenceRecordKeys,
+            is_array($proposal) ? ($proposal['evidence_record_key'] ?? null) : null,
+            ...array_column($disclosures, 'evidence_record_key'),
+            ...array_column($votes, 'evidence_record_key'),
+            $item['outcome_evidence_record_key'] ?? null,
+        ], 'is_string')));
         $candidate = $candidateEligible ? [
             'source_type' => 'governance_meeting',
             'meeting_key' => $meetingKey,
@@ -361,6 +375,7 @@ final class ResolveGovernanceMeetings
             'outcome' => 'approved',
             'decided_at' => $item['outcome_recorded_at'] ?? $concludedAt->toIso8601String(),
             'evidence_record_key' => $item['outcome_evidence_record_key'] ?? null,
+            'source_evidence_record_keys' => $sourceEvidenceRecordKeys,
             'canonical_decision_record_created' => false,
         ] : null;
 

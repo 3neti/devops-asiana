@@ -58,6 +58,7 @@
             "question": "Which durable records prove each material stage occurred?"
         }
     ],
+    "collective_admission_records": [],
     "decision_records": [],
     "execution_records": [],
     "verification_records": [],

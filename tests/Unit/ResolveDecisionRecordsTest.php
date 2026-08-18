@@ -3,6 +3,7 @@
 use App\AuthorityMatrix\ResolvedAuthorityMatrix;
 use App\DecisionRecords\DecisionRecordDefinition;
 use App\DecisionRecords\ResolveDecisionRecords;
+use App\GovernanceMeetings\ResolvedGovernanceMeetings;
 use App\Policies\ResolvedPolicyRegistry;
 use DateTimeImmutable;
 
@@ -76,6 +77,108 @@ function effectiveDecisionAuthority(bool $requiresClientMandate = false): Resolv
     );
 }
 
+function collectiveDecisionAuthority(): ResolvedAuthorityMatrix
+{
+    $authority = effectiveDecisionAuthority();
+
+    return new ResolvedAuthorityMatrix(
+        1,
+        ['operative' => true],
+        [],
+        [...$authority->entries, [
+            'key' => 'founding-partner-reserved-matter-participation',
+            'action_label' => 'Decide a Reserved Matter collectively',
+            'grants_firm_authority' => true,
+            'effective_holder_keys' => ['lester-hurtado', 'angelica-santos'],
+            'effective_holder_names' => ['Lester B. Hurtado', 'Angelica Anaïs C. Santos'],
+            'scope' => ['client_mandate_required' => false],
+            'separation' => ['self_approval_permitted' => false],
+        ]],
+        [], [], ['active' => 2], ['effective' => 2], [], [], [], [], [],
+    );
+}
+
+/** @return array<string, mixed> */
+function collectiveCandidate(): array
+{
+    return [
+        'source_type' => 'governance_meeting',
+        'meeting_key' => 'meeting-formation-001',
+        'agenda_item_key' => 'agenda-firm-name',
+        'title' => 'Approve the Firm name',
+        'context' => ['type' => 'firm_governance'],
+        'materiality' => 'reserved',
+        'collective_authority' => [
+            'authority_matrix_entry_key' => 'founding-partner-reserved-matter-participation',
+            'participant_identity_keys' => ['lester-hurtado', 'angelica-santos'],
+        ],
+        'vote_tally' => ['for' => 100, 'against' => 0, 'abstain' => 0],
+        'outcome' => 'approved',
+        'decided_at' => '2026-08-18T09:50:00+08:00',
+        'evidence_record_key' => 'meeting-outcome-evidence',
+        'source_evidence_record_keys' => ['meeting-notice-evidence', 'vote-lester-evidence', 'vote-anais-evidence', 'meeting-outcome-evidence'],
+        'canonical_decision_record_created' => false,
+    ];
+}
+
+function governanceWithCollectiveCandidate(): ResolvedGovernanceMeetings
+{
+    return new ResolvedGovernanceMeetings(
+        1, [], [], [], [], [], [[
+            'key' => 'meeting-formation-001',
+            'agenda_items' => [['decision_record_candidate' => collectiveCandidate()]],
+        ]], [], [], [], [], [], [], [], [],
+    );
+}
+
+/** @return array<string, mixed> */
+function collectiveSourceSnapshot(): array
+{
+    $candidate = collectiveCandidate();
+
+    return [
+        'title' => $candidate['title'],
+        'materiality' => $candidate['materiality'],
+        'participant_identity_keys' => $candidate['collective_authority']['participant_identity_keys'],
+        'vote_tally' => $candidate['vote_tally'],
+        'authority_matrix_entry_key' => $candidate['collective_authority']['authority_matrix_entry_key'],
+        'decided_at' => $candidate['decided_at'],
+        'outcome_evidence_record_key' => $candidate['evidence_record_key'],
+        'source_evidence_record_keys' => $candidate['source_evidence_record_keys'],
+    ];
+}
+
+/** @return array<string, mixed> */
+function collectiveDecision(): array
+{
+    $decision = completeDecision();
+    $decision['key'] = 'decision-firm-name';
+    $decision['title'] = 'Approve the Firm name';
+    $decision['context'] = ['type' => 'firm_governance', 'subject' => 'Firm name', 'reference_keys' => []];
+    $decision['materiality'] = 'reserved';
+    $decision['authority'] = ['basis_type' => 'collective_governance', 'collective_admission_key' => 'admission-firm-name'];
+    $decision['decision']['decided_at'] = '2026-08-18T09:50:00+08:00';
+    $decision['decision']['effective_at'] = '2026-08-18T10:00:00+08:00';
+
+    return $decision;
+}
+
+/** @return array<string, mixed> */
+function collectiveAdmission(): array
+{
+    return [
+        'key' => 'admission-firm-name',
+        'lifecycle_status' => 'admitted',
+        'decision_record_key' => 'decision-firm-name',
+        'meeting_key' => 'meeting-formation-001',
+        'agenda_item_key' => 'agenda-firm-name',
+        'source_snapshot' => collectiveSourceSnapshot(),
+        'recorded_by_identity_key' => 'angelica-santos',
+        'recorded_at' => '2026-08-18T10:05:00+08:00',
+        'evidence_record_key' => 'evidence-admission',
+    ];
+}
+
 /** @return array<string, mixed> */
 function completeDecision(): array
 {
@@ -137,6 +240,7 @@ function decisionDefinitionWith(array $changes): DecisionRecordDefinition
         $definition->schemaVersion,
         $definition->governingPolicies,
         $definition->recordRequirements,
+        $changes['collectiveAdmissions'] ?? $definition->collectiveAdmissions,
         $changes['decisions'] ?? $definition->decisions,
         $changes['executions'] ?? $definition->executions,
         $changes['verifications'] ?? $definition->verifications,
@@ -145,12 +249,13 @@ function decisionDefinitionWith(array $changes): DecisionRecordDefinition
 }
 
 /** @return array<string, mixed> */
-function resolveDecisionFixture(DecisionRecordDefinition $definition, ?ResolvedAuthorityMatrix $authority = null): array
+function resolveDecisionFixture(DecisionRecordDefinition $definition, ?ResolvedAuthorityMatrix $authority = null, ?ResolvedGovernanceMeetings $governanceMeetings = null): array
 {
     return (new ResolveDecisionRecords)->handle(
         $definition,
         effectiveDecisionPolicies(),
         $authority ?? effectiveDecisionAuthority(),
+        $governanceMeetings,
         new DateTimeImmutable('2026-08-18T12:00:00+08:00'),
     )->toArray();
 }
@@ -185,6 +290,73 @@ test('a complete decision under an effective holder becomes executable without i
         ->and($resolved['compiler_status'])->toBe('consistent');
 });
 
+test('an admitted collective meeting outcome becomes an exact approval basis', function () {
+    $resolved = resolveDecisionFixture(decisionDefinitionWith([
+        'collectiveAdmissions' => [collectiveAdmission()],
+        'decisions' => [collectiveDecision()],
+        'evidence' => [
+            decisionEvidence('evidence-admission', 'Collective Admission Record', 'Angelica Anaïs C. Santos'),
+            decisionEvidence('evidence-proposal', 'Proposal Record', 'Lester B. Hurtado'),
+            decisionEvidence('evidence-review', 'Review Record', 'Angelica Anaïs C. Santos'),
+            decisionEvidence('evidence-decision', 'Decision Record', 'Angelica Anaïs C. Santos'),
+        ],
+    ]), collectiveDecisionAuthority(), governanceWithCollectiveCandidate());
+
+    expect($resolved['collective_admission_records'][0]['grants_collective_approval_basis'])->toBeTrue()
+        ->and($resolved['decision_records'][0]['authority_basis_type'])->toBe('collective_governance')
+        ->and($resolved['decision_records'][0]['collective_participant_identity_keys'])->toBe(['lester-hurtado', 'angelica-santos'])
+        ->and($resolved['decision_records'][0]['authority_resolved'])->toBeTrue()
+        ->and($resolved['decision_records'][0]['may_execute'])->toBeTrue()
+        ->and($resolved['counts']['collective_admissions'])->toBe(1)
+        ->and($resolved['counts']['available_collective_candidates'])->toBe(0);
+});
+
+test('a governance candidate never creates or approves a decision implicitly', function () {
+    $resolved = resolveDecisionFixture(decisionDefinitionWith([]), collectiveDecisionAuthority(), governanceWithCollectiveCandidate());
+
+    expect($resolved['counts']['decisions'])->toBe(0)
+        ->and($resolved['counts']['collective_admissions'])->toBe(0)
+        ->and($resolved['counts']['available_collective_candidates'])->toBe(1);
+});
+
+test('a contradictory collective source snapshot is rejected', function () {
+    $admission = collectiveAdmission();
+    $admission['source_snapshot']['vote_tally']['for'] = 50;
+    $resolved = resolveDecisionFixture(decisionDefinitionWith([
+        'collectiveAdmissions' => [$admission],
+        'decisions' => [collectiveDecision()],
+        'evidence' => [
+            decisionEvidence('evidence-admission', 'Collective Admission Record', 'Angelica Anaïs C. Santos'),
+            decisionEvidence('evidence-proposal', 'Proposal Record', 'Lester B. Hurtado'),
+            decisionEvidence('evidence-review', 'Review Record', 'Angelica Anaïs C. Santos'),
+            decisionEvidence('evidence-decision', 'Decision Record', 'Angelica Anaïs C. Santos'),
+        ],
+    ]), collectiveDecisionAuthority(), governanceWithCollectiveCandidate());
+
+    expect($resolved['collective_admission_records'][0]['grants_collective_approval_basis'])->toBeFalse()
+        ->and($resolved['decision_records'][0]['may_execute'])->toBeFalse()
+        ->and(array_column($resolved['reports']['conflicts'], 'code'))->toContain('collective_source_snapshot_mismatch');
+});
+
+test('a collective source cannot be admitted twice', function () {
+    $duplicate = collectiveAdmission();
+    $duplicate['key'] = 'admission-firm-name-duplicate';
+    $resolved = resolveDecisionFixture(decisionDefinitionWith([
+        'collectiveAdmissions' => [collectiveAdmission(), $duplicate],
+        'decisions' => [collectiveDecision()],
+        'evidence' => [
+            decisionEvidence('evidence-admission', 'Collective Admission Record', 'Angelica Anaïs C. Santos'),
+            decisionEvidence('evidence-proposal', 'Proposal Record', 'Lester B. Hurtado'),
+            decisionEvidence('evidence-review', 'Review Record', 'Angelica Anaïs C. Santos'),
+            decisionEvidence('evidence-decision', 'Decision Record', 'Angelica Anaïs C. Santos'),
+        ],
+    ]), collectiveDecisionAuthority(), governanceWithCollectiveCandidate());
+
+    expect(array_column($resolved['collective_admission_records'], 'grants_collective_approval_basis'))->toBe([false, false])
+        ->and(array_column($resolved['reports']['conflicts'], 'code'))->toContain('duplicate_collective_source_admission')
+        ->and($resolved['decision_records'][0]['may_execute'])->toBeFalse();
+});
+
 test('draft governing policy blocks an otherwise complete effective decision', function () {
     $definition = decisionDefinitionWith([
         'decisions' => [completeDecision()],
@@ -203,6 +375,7 @@ test('draft governing policy blocks an otherwise complete effective decision', f
         $definition,
         $draftPolicies,
         effectiveDecisionAuthority(),
+        null,
         new DateTimeImmutable('2026-08-18T12:00:00+08:00'),
     )->toArray();
 

@@ -6,6 +6,8 @@ use App\AuthorityMatrix\AuthorityMatrixRepository;
 use App\AuthorityMatrix\ResolveAuthorityMatrix;
 use App\DecisionRecords\DecisionRecordRepository;
 use App\DecisionRecords\ResolveDecisionRecords;
+use App\GovernanceMeetings\GovernanceMeetingRepository;
+use App\GovernanceMeetings\ResolveGovernanceMeetings;
 use App\IdentityAndRoles\IdentityAndRoleRepository;
 use App\IdentityAndRoles\ResolveIdentityAndRoles;
 use App\Partnership\PartnershipDefinitionRepository;
@@ -21,12 +23,14 @@ class DecisionRecordController extends Controller
 {
     public function __invoke(
         DecisionRecordRepository $decisionRecords,
+        GovernanceMeetingRepository $governanceMeetings,
         AuthorityMatrixRepository $authorityMatrix,
         IdentityAndRoleRepository $identityAndRoles,
         ResponsibilityCoverageRepository $responsibilityCoverage,
         PartnershipDefinitionRepository $partnership,
         PolicyRegistryRepository $policies,
         ResolveDecisionRecords $resolveDecisionRecords,
+        ResolveGovernanceMeetings $resolveGovernanceMeetings,
         ResolveAuthorityMatrix $resolveAuthorityMatrix,
         ResolveIdentityAndRoles $resolveIdentityAndRoles,
         ResolveResponsibilityCoverage $resolveResponsibilityCoverage,
@@ -44,12 +48,19 @@ class DecisionRecordController extends Controller
             $resolvedCoverage,
             $resolvedIdentities,
         );
+        $resolvedGovernanceMeetings = $resolveGovernanceMeetings->handle(
+            $governanceMeetings->current(),
+            $resolvedPartnership,
+            $resolvedPolicies,
+            $resolvedAuthority,
+        );
 
         return Inertia::render('DecisionRecords/Index', [
             'decisionRecords' => $resolveDecisionRecords->handle(
                 $decisionRecords->current(),
                 $resolvedPolicies,
                 $resolvedAuthority,
+                $resolvedGovernanceMeetings,
             )->toArray(),
         ]);
     }

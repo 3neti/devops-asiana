@@ -121,8 +121,14 @@ The compiler never accepts copied meeting weights, treats silence as neither con
 
 No historical Meeting Records are invented. Ordinary and Reserved Matter quorum and approval mechanics remain UNRESOLVED, the deadlock mechanism remains UNRESOLVED and subject to counsel review, both governing policies remain Draft, and collective constitutional authority remains inactive.
 
+## Implemented sixteenth vertical slice
+
+The Decision Record compiler now includes a read-only **Collective Governance Decision Admission Compiler** backed by `collective_admission_records` in `resources/institution/decision-records.json`. It discovers only fully resolved Governance Meeting candidates, requires one explicit and evidenced admission addressed to one existing Decision Record, and preserves an exact source snapshot containing every participant, vote tally, Authority Matrix entry, decision time, outcome Evidence, and all source Evidence references.
+
+A candidate does not create a Decision Record. Admission does not make a decision effective or executable. Duplicate source or target admissions and contradictory snapshots are rejected. Collective authority is rechecked against the current Authority Matrix, while the existing single-holder approval path remains unchanged. Canonical state contains no invented meetings, admissions, or decisions; the Console truthfully shows zero records.
+
 ## Recommended next vertical slice
 
-Build a narrow **Collective Governance Decision Admission Compiler**. It should allow the Decision Record compiler to accept one exact adopted Meeting agenda item as a collective approval basis, preserve every voter and Evidence reference, prevent duplicate or contradictory admission, and leave single-holder authority rules unchanged. Do not create canonical records automatically or weaken the Authority Matrix boundary.
+Build a narrow **Policy Approval and Activation Admission Compiler**. It should allow an exact effective Firm Decision Record to support one Policy Version approval while preserving approval, effective date, publication, and Evidence as separate facts. It must never infer policy effectiveness from an approval outcome, a repository commit, or rendered documentation.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

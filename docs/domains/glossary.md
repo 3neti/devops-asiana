@@ -69,6 +69,7 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Abstention               | Express attributable decision not to vote for or against; never affirmative consent               |
 | Governance Deadlock      | Failure to reach a required outcome under equal or otherwise blocking governance positions         |
 | Decision Record Candidate | Non-canonical projection of a fully resolved governance outcome awaiting explicit admission to the Decision ledger |
+| Collective Admission Record | Explicit, evidenced bridge that admits one exact eligible Governance Meeting outcome as the collective approval basis for one canonical Decision Record |
 | Policy                   | Mandatory control requirements deriving authority from the constitution                           |
 | Policy Exception         | Temporary approved deviation from a specific requirement                                          |
 | Procedure                | Repeatable process implementing policy                                                            |

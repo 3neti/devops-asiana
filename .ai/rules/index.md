@@ -4,6 +4,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 
 | Applies to | Rule file |
 | --- | --- |
+| app/DecisionRecords/** | .ai/rules/app-decision-records.md |
 | app/Policies/** | .ai/rules/app-policies.md |
 | app/** | .ai/rules/app.md |
 | app/AuthorityMatrix/**,resources/institution/authority-matrix.json,resources/js/pages/AuthorityMatrix/**,tests/**/*AuthorityMatrix* | .ai/rules/authority-matrix.md |

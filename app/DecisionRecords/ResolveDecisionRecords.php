@@ -3,6 +3,7 @@
 namespace App\DecisionRecords;
 
 use App\AuthorityMatrix\ResolvedAuthorityMatrix;
+use App\GovernanceMeetings\ResolvedGovernanceMeetings;
 use App\Policies\ResolvedPolicyRegistry;
 use DateTimeImmutable;
 use Illuminate\Support\Carbon;
@@ -14,6 +15,7 @@ final class ResolveDecisionRecords
         DecisionRecordDefinition $definition,
         ResolvedPolicyRegistry $policies,
         ResolvedAuthorityMatrix $authorityMatrix,
+        ?ResolvedGovernanceMeetings $governanceMeetings = null,
         ?DateTimeImmutable $asOf = null,
     ): ResolvedDecisionRecords {
         /** @var list<array{code: string, message: string}> $conflicts */
@@ -24,12 +26,28 @@ final class ResolveDecisionRecords
         $decisionGaps = [];
         /** @var list<array{code: string, message: string}> $evidenceGaps */
         $evidenceGaps = [];
+        /** @var list<array{code: string, message: string}> $admissionGaps */
+        $admissionGaps = [];
         /** @var list<array{code: string, message: string}> $readinessGaps */
         $readinessGaps = [];
         $effectiveAt = Carbon::instance($asOf ?? new DateTimeImmutable);
         $policyIndex = $this->indexByKey($policies->policies);
         $authorityIndex = $this->indexByKey($authorityMatrix->entries);
         $evidenceIndex = $this->indexByKey($definition->evidenceRecords);
+        $collectiveCandidates = $this->collectiveCandidates($governanceMeetings);
+        $collectiveAdmissions = $this->resolveCollectiveAdmissions(
+            $definition->collectiveAdmissions,
+            $collectiveCandidates,
+            $this->indexByKey($definition->decisions),
+            $evidenceIndex,
+            $effectiveAt,
+            $conflicts,
+            $admissionGaps,
+            $evidenceGaps,
+        );
+        $collectiveAdmissionIndex = $this->indexByKey($collectiveAdmissions);
+        $admittedSourceKeys = array_column(array_filter($collectiveAdmissions, static fn (array $admission): bool => $admission['grants_collective_approval_basis'] === true), 'source_key');
+        $availableCollectiveCandidates = array_values(array_filter($collectiveCandidates, static fn (array $candidate): bool => ! in_array($candidate['source_key'], $admittedSourceKeys, true)));
         $governingPolicies = $this->resolveGoverningPolicies($definition->governingPolicies, $policyIndex, $readinessGaps, $conflicts);
         $governingPoliciesOperative = array_all($governingPolicies, static fn (array $policy): bool => $policy['operative'] === true);
 
@@ -48,6 +66,7 @@ final class ResolveDecisionRecords
             $decisions[] = $this->resolveDecision(
                 $decision,
                 $authorityIndex,
+                $collectiveAdmissionIndex,
                 $evidenceIndex,
                 $governingPoliciesOperative,
                 $effectiveAt,
@@ -76,6 +95,8 @@ final class ResolveDecisionRecords
             $definition->schemaVersion,
             $governingPolicies,
             $definition->recordRequirements,
+            $collectiveAdmissions,
+            $availableCollectiveCandidates,
             $decisions,
             $executions,
             $verifications,
@@ -85,6 +106,7 @@ final class ResolveDecisionRecords
             $authorityGaps,
             $decisionGaps,
             $evidenceGaps,
+            $admissionGaps,
             $readinessGaps,
         );
     }
@@ -92,6 +114,7 @@ final class ResolveDecisionRecords
     /**
      * @param  array<string, mixed>  $decision
      * @param  array<string, array<string, mixed>>  $authorityIndex
+     * @param  array<string, array<string, mixed>>  $collectiveAdmissions
      * @param  array<string, array<string, mixed>>  $evidenceIndex
      * @param  list<string>  $decisionKeys
      * @param  array<string, int>  $lifecycleCounts
@@ -101,7 +124,7 @@ final class ResolveDecisionRecords
      * @param  list<array{code: string, message: string}>  $evidenceGaps
      * @return array<string, mixed>
      */
-    private function resolveDecision(array $decision, array $authorityIndex, array $evidenceIndex, bool $governingPoliciesOperative, Carbon $asOf, array &$decisionKeys, array &$lifecycleCounts, array &$conflicts, array &$authorityGaps, array &$decisionGaps, array &$evidenceGaps): array
+    private function resolveDecision(array $decision, array $authorityIndex, array $collectiveAdmissions, array $evidenceIndex, bool $governingPoliciesOperative, Carbon $asOf, array &$decisionKeys, array &$lifecycleCounts, array &$conflicts, array &$authorityGaps, array &$decisionGaps, array &$evidenceGaps): array
     {
         $conflictCount = count($conflicts);
         $gapCount = count($authorityGaps) + count($decisionGaps) + count($evidenceGaps);
@@ -127,7 +150,14 @@ final class ResolveDecisionRecords
         $risk = $decision['risk'] ?? [];
         $authority = $decision['authority'] ?? null;
         $outcome = $decision['decision'] ?? null;
-        $authorityEntry = is_array($authority) ? ($authorityIndex[$authority['authority_matrix_entry_key'] ?? ''] ?? null) : null;
+        $authorityBasisType = is_array($authority) ? ($authority['basis_type'] ?? 'single_holder') : null;
+        $collectiveAdmission = $authorityBasisType === 'collective_governance'
+            ? ($collectiveAdmissions[$authority['collective_admission_key'] ?? ''] ?? null)
+            : null;
+        $authorityEntryKey = $authorityBasisType === 'collective_governance'
+            ? ($collectiveAdmission['source_snapshot']['authority_matrix_entry_key'] ?? null)
+            : (is_array($authority) ? ($authority['authority_matrix_entry_key'] ?? null) : null);
+        $authorityEntry = is_string($authorityEntryKey) ? ($authorityIndex[$authorityEntryKey] ?? null) : null;
         $approverKey = is_array($authority) ? ($authority['approver_identity_key'] ?? null) : null;
         $proposerKey = is_array($proposal) ? ($proposal['proposed_by_identity_key'] ?? null) : null;
         $materiality = $decision['materiality'] ?? null;
@@ -141,7 +171,22 @@ final class ResolveDecisionRecords
             $conflicts[] = $this->issue('invalid_decision_materiality', "Decision {$key} has an invalid materiality.");
         }
 
-        if ($authorityEntry === null) {
+        if (! in_array($authorityBasisType, ['single_holder', 'collective_governance'], true)) {
+            $conflicts[] = $this->issue('invalid_authority_basis_type', "Decision {$key} has an unsupported authority basis type.");
+        } elseif ($authorityBasisType === 'collective_governance') {
+            if ($collectiveAdmission === null || ($collectiveAdmission['grants_collective_approval_basis'] ?? false) !== true || ($collectiveAdmission['decision_record_key'] ?? null) !== $key) {
+                $authorityGaps[] = $this->issue('missing_collective_admission', "Decision {$key} lacks an admitted collective Governance Meeting outcome addressed to this exact record.");
+            } elseif (($decision['title'] ?? null) !== ($collectiveAdmission['source_snapshot']['title'] ?? null)
+                || $contextType !== 'firm_governance'
+                || $materiality !== ($collectiveAdmission['source_snapshot']['materiality'] ?? null)
+                || ($outcome['decided_at'] ?? null) !== ($collectiveAdmission['source_snapshot']['decided_at'] ?? null)) {
+                $conflicts[] = $this->issue('collective_decision_projection_mismatch', "Decision {$key} contradicts its admitted collective source.");
+            }
+            $participantKeys = $collectiveAdmission['source_snapshot']['participant_identity_keys'] ?? [];
+            if ($authorityEntry === null || ($authorityEntry['grants_firm_authority'] ?? false) !== true || array_diff($participantKeys, $authorityEntry['effective_holder_keys'] ?? []) !== []) {
+                $authorityGaps[] = $this->issue('inactive_collective_decision_authority', "Decision {$key} lacks effective collective authority for every admitted participant.");
+            }
+        } elseif ($authorityEntry === null) {
             $authorityGaps[] = $this->issue('missing_decision_authority', "Decision {$key} does not cite a known Authority Matrix entry.");
         } else {
             if (($authorityEntry['grants_firm_authority'] ?? false) !== true) {
@@ -226,8 +271,14 @@ final class ResolveDecisionRecords
             ...$decision,
             'lifecycle_status_label' => $lifecycle?->label() ?? 'Invalid',
             'authority_entry_label' => $authorityEntry['action_label'] ?? null,
-            'approver_name' => $authorityEntry !== null ? $this->holderName($authorityEntry, $approverKey) : null,
-            'authority_resolved' => $authorityEntry !== null && ($authorityEntry['grants_firm_authority'] ?? false) === true && in_array($approverKey, $authorityEntry['effective_holder_keys'] ?? [], true),
+            'authority_basis_type' => $authorityBasisType,
+            'collective_participant_identity_keys' => $collectiveAdmission['source_snapshot']['participant_identity_keys'] ?? [],
+            'collective_vote_tally' => $collectiveAdmission['source_snapshot']['vote_tally'] ?? null,
+            'collective_source_evidence_record_keys' => $collectiveAdmission['source_snapshot']['source_evidence_record_keys'] ?? [],
+            'approver_name' => $authorityBasisType === 'single_holder' && $authorityEntry !== null ? $this->holderName($authorityEntry, $approverKey) : null,
+            'authority_resolved' => $authorityBasisType === 'collective_governance'
+                ? $collectiveAdmission !== null && ($collectiveAdmission['grants_collective_approval_basis'] ?? false) === true && $authorityEntry !== null && ($authorityEntry['grants_firm_authority'] ?? false) === true && array_diff($collectiveAdmission['source_snapshot']['participant_identity_keys'] ?? [], $authorityEntry['effective_holder_keys'] ?? []) === []
+                : $authorityEntry !== null && ($authorityEntry['grants_firm_authority'] ?? false) === true && in_array($approverKey, $authorityEntry['effective_holder_keys'] ?? [], true),
             'temporal_state' => $this->temporalState($effectiveFrom, $expiresAt, $asOf),
             'may_execute' => $mayExecute,
             'execution_occurred' => false,
@@ -315,6 +366,121 @@ final class ResolveDecisionRecords
         }
 
         return $resolved;
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private function collectiveCandidates(?ResolvedGovernanceMeetings $governanceMeetings): array
+    {
+        if ($governanceMeetings === null) {
+            return [];
+        }
+
+        $candidates = [];
+        foreach ($governanceMeetings->meetings as $meeting) {
+            foreach ($meeting['agenda_items'] ?? [] as $agendaItem) {
+                $candidate = $agendaItem['decision_record_candidate'] ?? null;
+                if (is_array($candidate)) {
+                    $candidates[] = [
+                        ...$candidate,
+                        'source_key' => $candidate['meeting_key'].'::'.$candidate['agenda_item_key'],
+                    ];
+                }
+            }
+        }
+
+        return $candidates;
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $records
+     * @param  list<array<string, mixed>>  $candidates
+     * @param  array<string, array<string, mixed>>  $decisions
+     * @param  array<string, array<string, mixed>>  $evidence
+     * @param  list<array{code: string, message: string}>  $conflicts
+     * @param  list<array{code: string, message: string}>  $admissionGaps
+     * @param  list<array{code: string, message: string}>  $evidenceGaps
+     * @return list<array<string, mixed>>
+     */
+    private function resolveCollectiveAdmissions(array $records, array $candidates, array $decisions, array $evidence, Carbon $asOf, array &$conflicts, array &$admissionGaps, array &$evidenceGaps): array
+    {
+        $resolved = [];
+        $keys = [];
+        $candidateIndex = [];
+        $sourceOccurrences = array_count_values(array_map(static fn (array $record): string => (string) ($record['meeting_key'] ?? '').'::'.(string) ($record['agenda_item_key'] ?? ''), $records));
+        $decisionOccurrences = array_count_values(array_map(static fn (array $record): string => (string) ($record['decision_record_key'] ?? ''), $records));
+        foreach ($candidates as $candidate) {
+            $candidateIndex[$candidate['source_key']] = $candidate;
+        }
+
+        foreach ($records as $record) {
+            $issueCount = count($conflicts) + count($admissionGaps) + count($evidenceGaps);
+            $key = (string) ($record['key'] ?? '');
+            $sourceKey = (string) ($record['meeting_key'] ?? '').'::'.(string) ($record['agenda_item_key'] ?? '');
+            $decisionKey = (string) ($record['decision_record_key'] ?? '');
+            $lifecycle = CollectiveAdmissionLifecycleStatus::tryFrom((string) ($record['lifecycle_status'] ?? ''));
+            $candidate = $candidateIndex[$sourceKey] ?? null;
+
+            if ($key === '' || in_array($key, $keys, true)) {
+                $conflicts[] = $this->issue('invalid_collective_admission_key', 'A collective admission has a missing or duplicate key.');
+            }
+            if (($sourceOccurrences[$sourceKey] ?? 0) > 1) {
+                $conflicts[] = $this->issue('duplicate_collective_source_admission', "Governance source {$sourceKey} is admitted more than once.");
+            }
+            if ($decisionKey === '' || ($decisionOccurrences[$decisionKey] ?? 0) > 1) {
+                $conflicts[] = $this->issue('duplicate_collective_target_admission', 'A Decision Record is missing or receives more than one collective admission.');
+            }
+            $keys[] = $key;
+            if ($lifecycle === null) {
+                $conflicts[] = $this->issue('invalid_collective_admission_lifecycle', "Collective admission {$key} has an invalid lifecycle state.");
+            }
+            if (! isset($decisions[$decisionKey])) {
+                $admissionGaps[] = $this->issue('collective_admission_target_missing', "Collective admission {$key} does not address an existing Decision Record.");
+            }
+            if ($candidate === null) {
+                $admissionGaps[] = $this->issue('collective_candidate_missing', "Collective admission {$key} does not cite an eligible Governance Meeting candidate.");
+            } elseif (($record['source_snapshot'] ?? null) !== $this->collectiveSourceSnapshot($candidate)) {
+                $conflicts[] = $this->issue('collective_source_snapshot_mismatch', "Collective admission {$key} contradicts its Governance Meeting source.");
+            }
+            if (! $this->hasEvidence($record['evidence_record_key'] ?? null, $evidence)) {
+                $evidenceGaps[] = $this->issue('missing_collective_admission_evidence', "Collective admission {$key} lacks a complete Evidence Record.");
+            }
+            $recordedAt = $this->date($record['recorded_at'] ?? null);
+            $decidedAt = $this->date($candidate['decided_at'] ?? null);
+            if ($recordedAt === null || $recordedAt->isAfter($asOf) || ($decidedAt !== null && $recordedAt->isBefore($decidedAt))) {
+                $conflicts[] = $this->issue('invalid_collective_admission_time', "Collective admission {$key} has an invalid recording time.");
+            }
+
+            $valid = $lifecycle === CollectiveAdmissionLifecycleStatus::Admitted
+                && count($conflicts) + count($admissionGaps) + count($evidenceGaps) === $issueCount;
+            $resolved[] = [
+                ...$record,
+                'lifecycle_status_label' => $lifecycle?->label() ?? 'Invalid',
+                'source_key' => $sourceKey,
+                'grants_collective_approval_basis' => $valid,
+            ];
+        }
+
+        return $resolved;
+    }
+
+    /**
+     * @param  array<string, mixed>  $candidate
+     * @return array<string, mixed>
+     */
+    private function collectiveSourceSnapshot(array $candidate): array
+    {
+        return [
+            'title' => $candidate['title'],
+            'materiality' => $candidate['materiality'],
+            'participant_identity_keys' => $candidate['collective_authority']['participant_identity_keys'],
+            'vote_tally' => $candidate['vote_tally'],
+            'authority_matrix_entry_key' => $candidate['collective_authority']['authority_matrix_entry_key'],
+            'decided_at' => $candidate['decided_at'],
+            'outcome_evidence_record_key' => $candidate['evidence_record_key'],
+            'source_evidence_record_keys' => $candidate['source_evidence_record_keys'] ?? [$candidate['evidence_record_key']],
+        ];
     }
 
     /**

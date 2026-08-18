@@ -491,6 +491,8 @@ export type ChangeCompiler = {
         label: string;
         question: string;
     }>;
+    collective_admission_records: Array<Record<string, unknown>>;
+    available_collective_candidates: Array<Record<string, unknown>>;
     change_records: ChangeProjection[];
     evidence_records: Array<Record<string, unknown>>;
     counts: {
@@ -1200,6 +1202,8 @@ export type DecisionRecordCompiler = {
     evidence_records: Array<Record<string, unknown>>;
     counts: {
         decisions: number;
+        collective_admissions: number;
+        available_collective_candidates: number;
         executable_decisions: number;
         executions: number;
         verifications: number;
@@ -1211,6 +1215,7 @@ export type DecisionRecordCompiler = {
         authority_gaps: Array<{ code: string; message: string }>;
         decision_gaps: Array<{ code: string; message: string }>;
         evidence_gaps: Array<{ code: string; message: string }>;
+        admission_gaps: Array<{ code: string; message: string }>;
         readiness_gaps: Array<{ code: string; message: string }>;
     };
     principles: string[];

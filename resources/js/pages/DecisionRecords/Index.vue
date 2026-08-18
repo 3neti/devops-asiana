@@ -11,6 +11,7 @@ import {
 } from '@lucide/vue';
 import { index as authorityMatrixIndex } from '@/routes/authority-matrix';
 import { index as decisionRecordsIndex } from '@/routes/decision-records';
+import { index as governanceMeetingsIndex } from '@/routes/governance-meetings';
 import type { DecisionRecordCompiler } from '@/types';
 
 defineProps<{ decisionRecords: DecisionRecordCompiler }>();
@@ -122,6 +123,68 @@ const stages = [
                     </div>
                 </div>
             </header>
+
+            <section
+                class="grid gap-5 rounded-2xl border border-indigo-200 bg-indigo-50/60 p-5 sm:p-6 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-center dark:border-indigo-900 dark:bg-indigo-950/20"
+            >
+                <div>
+                    <p
+                        class="text-xs font-semibold tracking-[0.16em] text-indigo-700 uppercase dark:text-indigo-300"
+                    >
+                        Governance Meeting
+                    </p>
+                    <p class="mt-2 font-serif text-xl font-semibold">
+                        {{
+                            decisionRecords.counts
+                                .available_collective_candidates
+                        }}
+                        eligible outcomes
+                    </p>
+                    <Link
+                        :href="governanceMeetingsIndex()"
+                        class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-indigo-700 hover:underline dark:text-indigo-300"
+                    >
+                        Inspect meetings <ArrowRight class="size-4" />
+                    </Link>
+                </div>
+                <ArrowRight class="hidden size-5 text-indigo-400 lg:block" />
+                <div>
+                    <p
+                        class="text-xs font-semibold tracking-[0.16em] text-indigo-700 uppercase dark:text-indigo-300"
+                    >
+                        Explicit admission
+                    </p>
+                    <p class="mt-2 font-serif text-xl font-semibold">
+                        {{
+                            decisionRecords.counts.collective_admissions
+                        }}
+                        admitted sources
+                    </p>
+                    <p
+                        class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400"
+                    >
+                        Exact source snapshot, target Decision Record, recorder,
+                        time, and Evidence.
+                    </p>
+                </div>
+                <ArrowRight class="hidden size-5 text-indigo-400 lg:block" />
+                <div>
+                    <p
+                        class="text-xs font-semibold tracking-[0.16em] text-indigo-700 uppercase dark:text-indigo-300"
+                    >
+                        Canonical decision
+                    </p>
+                    <p class="mt-2 font-serif text-xl font-semibold">
+                        Never inferred
+                    </p>
+                    <p
+                        class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400"
+                    >
+                        Admission supplies collective approval basis; it does
+                        not create or execute the decision.
+                    </p>
+                </div>
+            </section>
 
             <section
                 class="rounded-2xl border border-amber-600/20 bg-amber-50 p-5 dark:bg-amber-950/30"
