@@ -1,0 +1,456 @@
+{
+    "schema_version": 1,
+    "governing_policy": {
+        "key": "authority-and-delegation",
+        "version": "0.1"
+    },
+    "domains": [
+        {
+            "key": "partnership-governance",
+            "label": "Partnership Governance",
+            "actions": [
+                {
+                    "key": "participate-reserved-matter",
+                    "label": "Participate in a Reserved Matter decision",
+                    "stage": "decision"
+                }
+            ]
+        },
+        {
+            "key": "firm-management",
+            "label": "Firm Management",
+            "actions": [
+                {
+                    "key": "exercise-ordinary-management",
+                    "label": "Exercise ordinary Firm management",
+                    "stage": "execution"
+                }
+            ]
+        },
+        {
+            "key": "emergency-access",
+            "label": "Emergency Access",
+            "actions": [
+                {
+                    "key": "approve-privileged-emergency-access",
+                    "label": "Approve privileged emergency access",
+                    "stage": "approval"
+                }
+            ]
+        },
+        {
+            "key": "production-access",
+            "label": "Production Access",
+            "actions": [
+                {
+                    "key": "approve-production-access",
+                    "label": "Approve production access",
+                    "stage": "approval"
+                }
+            ]
+        },
+        {
+            "key": "production-change",
+            "label": "Production Change",
+            "actions": [
+                {
+                    "key": "approve-high-risk-change",
+                    "label": "Approve a high-risk production Change",
+                    "stage": "approval"
+                }
+            ]
+        },
+        {
+            "key": "incident-communication",
+            "label": "Incident Communication",
+            "actions": [
+                {
+                    "key": "authorize-client-incident-disclosure",
+                    "label": "Authorize Client Incident disclosure",
+                    "stage": "approval"
+                }
+            ]
+        },
+        {
+            "key": "continuity",
+            "label": "Business Continuity",
+            "actions": [
+                {
+                    "key": "approve-continuity-exercise",
+                    "label": "Approve a continuity exercise",
+                    "stage": "approval"
+                }
+            ]
+        }
+    ],
+    "entries": [
+        {
+            "key": "founding-partner-reserved-matter-participation",
+            "domain_key": "partnership-governance",
+            "action_key": "participate-reserved-matter",
+            "responsibility_requirement_key": "constitutional-governance",
+            "authority_source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.constitutional-governance"
+            },
+            "holder_rule": {
+                "type": "partner_status",
+                "key": "Founding Partner"
+            },
+            "scope": {
+                "authority_boundary": "firm_authority_only",
+                "client_mandate_required": false,
+                "specific_approval_required": false,
+                "risk_boundary": "Reserved Matters listed by the Partnership Constitution only",
+                "thresholds": {
+                    "monetary_status": "not_applicable",
+                    "monetary_limit": null,
+                    "risk_levels": []
+                },
+                "exclusions": [
+                    "No unilateral Reserved Matter outcome",
+                    "No ordinary operational authority from Founding Partner status alone"
+                ]
+            },
+            "separation": {
+                "self_approval_permitted": false,
+                "execution_separate": true,
+                "independent_verification_required": false
+            },
+            "delegation": {
+                "permitted": false,
+                "subdelegation_permitted": false,
+                "requires_explicit_assignment": true,
+                "maximum_duration_days": null
+            },
+            "lifecycle_status": "approved",
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "evidence_record_key": null
+        },
+        {
+            "key": "managing-partner-ordinary-management",
+            "domain_key": "firm-management",
+            "action_key": "exercise-ordinary-management",
+            "responsibility_requirement_key": "managing-partner-office",
+            "authority_source": {
+                "type": "constitution",
+                "reference": "constitution.offices.managing-partner"
+            },
+            "holder_rule": {
+                "type": "role",
+                "key": "managing-partner"
+            },
+            "scope": {
+                "authority_boundary": "firm_authority_only",
+                "client_mandate_required": false,
+                "specific_approval_required": false,
+                "risk_boundary": "Ordinary Firm operations subject to policy, delegated thresholds, and Reserved Matters",
+                "thresholds": {
+                    "monetary_status": "not_applicable",
+                    "monetary_limit": null,
+                    "risk_levels": []
+                },
+                "exclusions": [
+                    "Reserved Matters",
+                    "Commercial or financial commitments outside separately approved thresholds",
+                    "Client actions without Client Mandate"
+                ]
+            },
+            "separation": {
+                "self_approval_permitted": false,
+                "execution_separate": false,
+                "independent_verification_required": false
+            },
+            "delegation": {
+                "permitted": false,
+                "subdelegation_permitted": false,
+                "requires_explicit_assignment": true,
+                "maximum_duration_days": null
+            },
+            "lifecycle_status": "approved",
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "evidence_record_key": null
+        },
+        {
+            "key": "privileged-emergency-access-approval",
+            "domain_key": "emergency-access",
+            "action_key": "approve-privileged-emergency-access",
+            "responsibility_requirement_key": "privileged-emergency-access",
+            "authority_source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.privileged-emergency-access"
+            },
+            "holder_rule": {
+                "type": "role",
+                "key": "privileged-emergency-access-approver"
+            },
+            "scope": {
+                "authority_boundary": "firm_authority_only",
+                "client_mandate_required": true,
+                "specific_approval_required": true,
+                "risk_boundary": "One defined emergency, minimum privilege, and absolute expiry",
+                "thresholds": {
+                    "monetary_status": "not_applicable",
+                    "monetary_limit": null,
+                    "risk_levels": ["high", "critical"]
+                },
+                "exclusions": [
+                    "Standing privileged access",
+                    "Self-approval",
+                    "Silent extension"
+                ]
+            },
+            "separation": {
+                "self_approval_permitted": false,
+                "execution_separate": true,
+                "independent_verification_required": true
+            },
+            "delegation": {
+                "permitted": false,
+                "subdelegation_permitted": false,
+                "requires_explicit_assignment": true,
+                "maximum_duration_days": null
+            },
+            "lifecycle_status": "approved",
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "evidence_record_key": null
+        },
+        {
+            "key": "production-access-approval",
+            "domain_key": "production-access",
+            "action_key": "approve-production-access",
+            "responsibility_requirement_key": "production-access-approval",
+            "authority_source": {
+                "type": "policy",
+                "key": "production-access",
+                "version": "0.1"
+            },
+            "holder_rule": {
+                "type": "requirement_holders",
+                "key": "production-access-approval"
+            },
+            "scope": {
+                "authority_boundary": "firm_authority_only",
+                "client_mandate_required": true,
+                "specific_approval_required": true,
+                "risk_boundary": "Named identity, account, system, environment, permissions, purpose, and validity",
+                "thresholds": {
+                    "monetary_status": "not_applicable",
+                    "monetary_limit": null,
+                    "risk_levels": ["low", "moderate", "high", "critical"]
+                },
+                "exclusions": [
+                    "Shared credentials",
+                    "Unbounded or inherited access"
+                ]
+            },
+            "separation": {
+                "self_approval_permitted": false,
+                "execution_separate": true,
+                "independent_verification_required": true
+            },
+            "delegation": {
+                "permitted": false,
+                "subdelegation_permitted": false,
+                "requires_explicit_assignment": true,
+                "maximum_duration_days": null
+            },
+            "lifecycle_status": "design",
+            "effective_at": null,
+            "effective_at_source": "authority_source.effective_at",
+            "expires_at": null,
+            "evidence_record_key": null
+        },
+        {
+            "key": "high-risk-change-approval",
+            "domain_key": "production-change",
+            "action_key": "approve-high-risk-change",
+            "responsibility_requirement_key": "high-risk-change-approval",
+            "authority_source": {
+                "type": "policy",
+                "key": "change-management",
+                "version": "0.1"
+            },
+            "holder_rule": {
+                "type": "requirement_holders",
+                "key": "high-risk-change-approval"
+            },
+            "scope": {
+                "authority_boundary": "firm_authority_only",
+                "client_mandate_required": true,
+                "specific_approval_required": true,
+                "risk_boundary": "One high-risk production Change with reviewed recovery and verification",
+                "thresholds": {
+                    "monetary_status": "not_applicable",
+                    "monetary_limit": null,
+                    "risk_levels": ["high", "critical"]
+                },
+                "exclusions": [
+                    "Execution",
+                    "Verification",
+                    "Waiver of recovery"
+                ]
+            },
+            "separation": {
+                "self_approval_permitted": false,
+                "execution_separate": true,
+                "independent_verification_required": true
+            },
+            "delegation": {
+                "permitted": false,
+                "subdelegation_permitted": false,
+                "requires_explicit_assignment": true,
+                "maximum_duration_days": null
+            },
+            "lifecycle_status": "design",
+            "effective_at": null,
+            "effective_at_source": "authority_source.effective_at",
+            "expires_at": null,
+            "evidence_record_key": null
+        },
+        {
+            "key": "client-incident-disclosure-approval",
+            "domain_key": "incident-communication",
+            "action_key": "authorize-client-incident-disclosure",
+            "responsibility_requirement_key": "incident-disclosure-authority",
+            "authority_source": {
+                "type": "policy",
+                "key": "incident-management",
+                "version": "0.1"
+            },
+            "holder_rule": {
+                "type": "requirement_holders",
+                "key": "incident-disclosure-authority"
+            },
+            "scope": {
+                "authority_boundary": "firm_authority_only",
+                "client_mandate_required": true,
+                "specific_approval_required": true,
+                "risk_boundary": "Factual communication for one declared Client-impacting Incident",
+                "thresholds": {
+                    "monetary_status": "not_applicable",
+                    "monetary_limit": null,
+                    "risk_levels": ["moderate", "high", "critical"]
+                },
+                "exclusions": [
+                    "Public or regulatory communication",
+                    "Concealment or misleading statements"
+                ]
+            },
+            "separation": {
+                "self_approval_permitted": false,
+                "execution_separate": true,
+                "independent_verification_required": false
+            },
+            "delegation": {
+                "permitted": false,
+                "subdelegation_permitted": false,
+                "requires_explicit_assignment": true,
+                "maximum_duration_days": null
+            },
+            "lifecycle_status": "design",
+            "effective_at": null,
+            "effective_at_source": "authority_source.effective_at",
+            "expires_at": null,
+            "evidence_record_key": null
+        },
+        {
+            "key": "continuity-exercise-approval",
+            "domain_key": "continuity",
+            "action_key": "approve-continuity-exercise",
+            "responsibility_requirement_key": "continuity-exercise-approval",
+            "authority_source": {
+                "type": "policy",
+                "key": "business-continuity-dr",
+                "version": "0.1"
+            },
+            "holder_rule": {
+                "type": "requirement_holders",
+                "key": "continuity-exercise-approval"
+            },
+            "scope": {
+                "authority_boundary": "firm_authority_only",
+                "client_mandate_required": true,
+                "specific_approval_required": true,
+                "risk_boundary": "One safe exercise against approved service-specific objectives",
+                "thresholds": {
+                    "monetary_status": "not_applicable",
+                    "monetary_limit": null,
+                    "risk_levels": ["low", "moderate", "high"]
+                },
+                "exclusions": [
+                    "Invented RTO or RPO",
+                    "Production impact outside approved plan",
+                    "Self-verification"
+                ]
+            },
+            "separation": {
+                "self_approval_permitted": false,
+                "execution_separate": true,
+                "independent_verification_required": true
+            },
+            "delegation": {
+                "permitted": false,
+                "subdelegation_permitted": false,
+                "requires_explicit_assignment": true,
+                "maximum_duration_days": null
+            },
+            "lifecycle_status": "design",
+            "effective_at": null,
+            "effective_at_source": "authority_source.effective_at",
+            "expires_at": null,
+            "evidence_record_key": null
+        }
+    ],
+    "deferred_decisions": [
+        {
+            "key": "commercial-commitments",
+            "label": "Commercial commitments and contract signature",
+            "state": "unresolved",
+            "reason": "No approved commitment categories, contract-signature roles, or thresholds exist."
+        },
+        {
+            "key": "financial-authority",
+            "label": "Expenditure, procurement, banking instructions, discounts, and write-offs",
+            "state": "unresolved",
+            "reason": "No approved monetary thresholds or dual-approval rules exist."
+        },
+        {
+            "key": "people-authority",
+            "label": "Hiring, termination, and compensation commitments",
+            "state": "unresolved",
+            "reason": "No approved people-authority matrix or employment classification framework exists."
+        },
+        {
+            "key": "borrowing-and-guarantees",
+            "label": "Borrowing and guarantees",
+            "state": "counsel_review",
+            "reason": "Reserved Matter boundaries and Partner power to bind the General Partnership require counsel."
+        },
+        {
+            "key": "litigation-and-settlement",
+            "label": "Litigation and settlement",
+            "state": "counsel_review",
+            "reason": "No authority, threshold, or escalation mechanics have been approved."
+        },
+        {
+            "key": "credentials-and-data-export",
+            "label": "Credential issuance and data export",
+            "state": "unresolved",
+            "reason": "No approved authority roles or risk thresholds exist beyond specific access controls."
+        },
+        {
+            "key": "external-communication",
+            "label": "Public and regulatory communication",
+            "state": "unresolved",
+            "reason": "Client Incident disclosure does not confer public or regulatory communication authority."
+        }
+    ],
+    "evidence_records": []
+}

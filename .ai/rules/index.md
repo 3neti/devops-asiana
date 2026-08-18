@@ -6,6 +6,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | --- | --- |
 | app/Policies/** | .ai/rules/app-policies.md |
 | app/** | .ai/rules/app.md |
+| app/AuthorityMatrix/**,resources/institution/authority-matrix.json,resources/js/pages/AuthorityMatrix/**,tests/**/*AuthorityMatrix* | .ai/rules/authority-matrix.md |
 | app/BreakGlassAccess/**,resources/institution/break-glass-access.json,resources/js/pages/BreakGlassAccess/**,tests/**/*BreakGlass* | .ai/rules/break-glass-access.md |
 | app/Changes/**,resources/institution/changes.json | .ai/rules/changes-institution.md |
 | app/Changes/**,resources/institution/changes.json,resources/js/pages/Changes/** | .ai/rules/changes.md |

@@ -99,8 +99,16 @@ Partner status, employment or service classification, application authentication
 
 The eight formation-derived assignments are Approved but not Active because the Firm effective date remains unresolved. The Console therefore exposes seven Roles pending activation, two vacancies, two unresolved relationship classifications, and zero effective Firm Authority without inventing a date, identity, successor, or delegation.
 
+## Implemented thirteenth vertical slice
+
+The repository now includes a read-only **Authority Matrix Compiler** backed by `resources/institution/authority-matrix.json`. It resolves seven grounded Firm actions against exact constitutional or policy sources, Responsibility Coverage, Institutional Identities, authority-bearing Role Assignments, lifecycle, effective period, risk and threshold boundary, separation, delegation limits, and Evidence.
+
+The Matrix resolves Firm Authority only. Client Mandate and Specific Approval remain independent gates, and every entry explicitly reports that it cannot authorize a Client action. Personal Founding Partner rights resolve through Partner status; Managing Partner authority resolves through the Office; professional-responsibility Roles cannot substitute for either. Draft policies and Design entries create no authority, unresolved thresholds block authority, and an Active entry without evidence remains non-operative.
+
+Three constitution-derived entries are Approved but inactive. Four policy-derived entries remain Design. Privileged emergency-access approval remains vacant. Seven additional authority areas—including commercial, financial, people, legal, credentials, data export, and external communication—are explicitly deferred instead of being filled with invented powers or thresholds. The current Matrix therefore grants zero effective Firm Authority.
+
 ## Recommended next vertical slice
 
-Build a narrow **Authority Matrix Compiler** over `ResolvedIdentityAndRoles`. Define named authority domains and actions, source hierarchy, risk or threshold bounds, approval and execution separation, effective periods, delegation limits, and evidence. Start with Firm Authority only; preserve Client Mandate and Specific Approval as independent gates and do not attempt a generalized authorization engine.
+Build a narrow **Institutional Decision and Approval Record Compiler**. A record should cite one exact Active Authority Matrix entry and resolved holder, then preserve proposal, review, risk, approval outcome, effective decision time, Evidence, later execution, and verification as separate facts. Start with Firm governance and management decisions; do not build a generalized workflow engine or infer Client authorization.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorityMatrixController;
 use App\Http\Controllers\BreakGlassAccessController;
 use App\Http\Controllers\ChangeController;
 use App\Http\Controllers\ClientAcceptanceController;
@@ -30,6 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('continuity-exercises', ContinuityExerciseController::class)->name('continuity-exercises.index');
     Route::get('responsibility-coverage', ResponsibilityCoverageController::class)->name('responsibility-coverage.index');
     Route::get('identity-and-roles', IdentityAndRoleController::class)->name('identity-and-roles.index');
+    Route::get('authority-matrix', AuthorityMatrixController::class)->name('authority-matrix.index');
     Route::get('documents/{document}', [InstitutionalDocumentController::class, 'show'])
         ->where('document', '.*')
         ->name('institutional-documents.show');

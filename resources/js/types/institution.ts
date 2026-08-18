@@ -1028,3 +1028,116 @@ export type IdentityAndRoleCompiler = {
     };
     principles: string[];
 };
+
+export type AuthorityEntryLifecycleStatus =
+    'design' | 'approved' | 'active' | 'superseded' | 'retired';
+
+export type AuthorityResolutionStatus =
+    | 'effective'
+    | 'design_only'
+    | 'vacant_holder'
+    | 'pending_activation'
+    | 'blocked'
+    | 'conflicted';
+
+export type AuthorityMatrixEntry = {
+    key: string;
+    domain_key: string;
+    domain_label: string;
+    action_key: string;
+    action_label: string;
+    action_stage: 'decision' | 'approval' | 'execution' | 'verification';
+    responsibility_requirement_key: string;
+    authority_source: Record<string, string>;
+    source_label: string;
+    source_operative: boolean;
+    holder_rule: {
+        type: 'partner_status' | 'role' | 'requirement_holders';
+        key: string;
+    };
+    scope: {
+        authority_boundary: 'firm_authority_only';
+        client_mandate_required: boolean;
+        specific_approval_required: boolean;
+        risk_boundary: string;
+        thresholds: {
+            monetary_status: 'not_applicable' | 'resolved' | 'unresolved';
+            monetary_limit: number | null;
+            risk_levels: string[];
+        };
+        exclusions: string[];
+    };
+    separation: {
+        self_approval_permitted: boolean;
+        execution_separate: boolean;
+        independent_verification_required: boolean;
+    };
+    delegation: {
+        permitted: boolean;
+        subdelegation_permitted: boolean;
+        requires_explicit_assignment: boolean;
+        maximum_duration_days: number | null;
+    };
+    lifecycle_status: AuthorityEntryLifecycleStatus;
+    lifecycle_status_label: string;
+    effective_at_resolved: string | null;
+    temporal_state: string;
+    candidate_holder_keys: string[];
+    candidate_holder_names: string[];
+    effective_holder_keys: string[];
+    effective_holder_names: string[];
+    resolution_status: AuthorityResolutionStatus;
+    grants_firm_authority: boolean;
+    authorizes_client_action: false;
+    client_mandate_gate: 'required_separately' | 'not_applicable';
+    specific_approval_gate: 'required_separately' | 'not_applicable';
+};
+
+export type AuthorityMatrixCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policy: {
+        key: string;
+        version: string;
+        title: string;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    };
+    domains: Array<{
+        key: string;
+        label: string;
+        actions: Array<{
+            key: string;
+            label: string;
+            stage: 'decision' | 'approval' | 'execution' | 'verification';
+        }>;
+    }>;
+    entries: AuthorityMatrixEntry[];
+    deferred_decisions: Array<{
+        key: string;
+        label: string;
+        state: 'unresolved' | 'counsel_review';
+        reason: string;
+    }>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        domains: number;
+        actions: number;
+        entries: number;
+        deferred_decisions: number;
+        effective_entries: number;
+        effective_holders: number;
+        by_lifecycle: Record<AuthorityEntryLifecycleStatus, number>;
+        by_resolution: Record<AuthorityResolutionStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        source_gaps: Array<{ code: string; message: string }>;
+        holder_gaps: Array<{ code: string; message: string }>;
+        boundary_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

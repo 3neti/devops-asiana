@@ -6,6 +6,7 @@ import {
     ContactRound,
     DatabaseBackup,
     GitPullRequestArrow,
+    Gavel,
     KeyRound,
     Landmark,
     ScrollText,
@@ -28,6 +29,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as authorityMatrix } from '@/routes/authority-matrix';
 import { index as breakGlassAccess } from '@/routes/break-glass-access';
 import { index as changes } from '@/routes/changes';
 import { index as clientAcceptance } from '@/routes/client-acceptance';
@@ -101,6 +103,11 @@ const mainNavItems: NavItem[] = [
         title: 'Identity & Roles',
         href: identityAndRoles(),
         icon: ContactRound,
+    },
+    {
+        title: 'Authority Matrix',
+        href: authorityMatrix(),
+        icon: Gavel,
     },
 ];
 

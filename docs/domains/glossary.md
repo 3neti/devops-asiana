@@ -46,6 +46,10 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Technical Lead           | Person directing technical execution within delegated authority                                   |
 | Authority                | Institutional permission to decide, commit, approve, or act                                       |
 | Firm Authority           | Permission granted by the Firm to an actor or office                                              |
+| Authority Domain         | Named institutional area in which distinct decisions or actions may be authorized                 |
+| Authority Matrix         | Versioned rules resolving who may perform a bounded Firm decision or approval under an explicit source |
+| Authority Matrix Entry   | Lifecycle-controlled mapping of one action to its source, holder rule, limits, separation, and evidence |
+| Effective Firm Authority | Current Firm permission after source, holder, policy, time, boundary, and evidence gates all pass |
 | Client Mandate           | Permission granted by a Client to the Firm through an Engagement or valid instruction             |
 | Specific Approval        | Authorization for a particular action within Client Mandate and Firm Authority                    |
 | Delegation               | Bounded transfer of authority from a competent grantor                                            |
