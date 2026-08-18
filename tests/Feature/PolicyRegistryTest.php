@@ -26,5 +26,11 @@ test('authenticated readers can inspect policy lifecycle truth', function () {
             ->where('registry.policies.0.title', 'Partnership Governance Policy')
             ->where('registry.policies.0.current.content_integrity', 'mutable_draft')
             ->has('registry.reports.conflicts', 0)
+            ->where('formationBootstrap.compiler_status', 'consistent_with_gaps')
+            ->where('formationBootstrap.counts.ratifications', 0)
+            ->where('formationBootstrap.counts.policy_approval_bases', 0)
+            ->has('formationBootstrap.reports.formation_gaps', 2)
+            ->has('formationBootstrap.reports.consent_gaps', 1)
+            ->has('formationBootstrap.reports.counsel_review', 1)
         );
 });

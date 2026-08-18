@@ -77,6 +77,7 @@ final readonly class ResolvedPolicyRegistry
             'principles' => [
                 'Approval is an explicit record; publication or use never implies approval.',
                 'An effective Decision Record may support approval only through an exact Policy Approval Admission Record.',
+                'Only an exact verified Formation Ratification may instead supply approval for an allowlisted initial Policy Version.',
                 'Approval, publication, effective date, and activation Evidence remain separate facts.',
                 'Policy content becomes immutable when submitted for review.',
                 'An exception is scoped to an exact policy version and requirement.',

@@ -71,6 +71,8 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Decision Record Candidate              | Non-canonical projection of a fully resolved governance outcome awaiting explicit admission to the Decision ledger                                      |
 | Collective Admission Record            | Explicit, evidenced bridge that admits one exact eligible Governance Meeting outcome as the collective approval basis for one canonical Decision Record |
 | Policy Approval Admission              | Explicit, evidenced bridge admitting one exact effective Firm Decision Record as the approval basis for one Policy Version                              |
+| Formation Ratification                 | Counsel-confirmed, unanimously evidenced constitutional act establishing the approval basis for exact allowlisted initial Policy Versions                |
+| Initial Policy Approval Basis          | Narrow projection from verified Formation Ratification; it supplies neither publication nor activation                                                  |
 | Policy Publication Record              | Evidence that one exact controlled Policy Version and content digest were published; publication supplies neither approval nor activation               |
 | Policy Activation Record               | Explicit record connecting an admitted approval, verified publication, effective date, actor, and Evidence for one Policy Version                       |
 | Policy                                 | Mandatory control requirements deriving authority from the constitution                                                                                 |

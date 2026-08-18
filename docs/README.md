@@ -32,4 +32,4 @@ Procedures and runbooks must name their governing policy, authorized roles, requ
 | `adr/`          | Durable institutional and technical decisions            |
 | `legal/`        | Matters requiring counsel validation                     |
 
-The executable projections are summarized under [Future operating system](architecture/future-operating-system.md). The [Policy Approval and Activation doctrine](domains/policy-approval-and-activation.md) defines the newest compiler boundary. The browser catalogue is generated from this hierarchy; the repository remains canonical.
+The executable projections are summarized under [Future operating system](architecture/future-operating-system.md). The [Formation Ratification and Initial Policy Bootstrap doctrine](domains/formation-ratification-and-policy-bootstrap.md) defines the newest compiler boundary. The browser catalogue is generated from this hierarchy; the repository remains canonical.

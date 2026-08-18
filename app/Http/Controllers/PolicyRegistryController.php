@@ -6,6 +6,8 @@ use App\AuthorityMatrix\AuthorityMatrixRepository;
 use App\AuthorityMatrix\ResolveAuthorityMatrix;
 use App\DecisionRecords\DecisionRecordRepository;
 use App\DecisionRecords\ResolveDecisionRecords;
+use App\FormationBootstrap\FormationBootstrapRepository;
+use App\FormationBootstrap\ResolveFormationBootstrap;
 use App\GovernanceMeetings\GovernanceMeetingRepository;
 use App\GovernanceMeetings\ResolveGovernanceMeetings;
 use App\IdentityAndRoles\IdentityAndRoleRepository;
@@ -23,6 +25,7 @@ class PolicyRegistryController extends Controller
 {
     public function __invoke(
         PolicyRegistryRepository $registries,
+        FormationBootstrapRepository $formationBootstrap,
         DecisionRecordRepository $decisionRecords,
         GovernanceMeetingRepository $governanceMeetings,
         AuthorityMatrixRepository $authorityMatrix,
@@ -30,6 +33,7 @@ class PolicyRegistryController extends Controller
         ResponsibilityCoverageRepository $responsibilityCoverage,
         PartnershipDefinitionRepository $partnership,
         ResolvePolicyRegistry $resolvePolicyRegistry,
+        ResolveFormationBootstrap $resolveFormationBootstrap,
         ResolveDecisionRecords $resolveDecisionRecords,
         ResolveGovernanceMeetings $resolveGovernanceMeetings,
         ResolveAuthorityMatrix $resolveAuthorityMatrix,
@@ -38,8 +42,16 @@ class PolicyRegistryController extends Controller
         ResolvePartnership $resolvePartnership,
     ): Response {
         $policyDefinition = $registries->current();
-        $basePolicies = $resolvePolicyRegistry->handle($policyDefinition);
         $resolvedPartnership = $resolvePartnership->handle($partnership->current());
+        $resolvedFormationBootstrap = $resolveFormationBootstrap->handle(
+            $formationBootstrap->current(),
+            $resolvedPartnership,
+            $policyDefinition,
+        );
+        $basePolicies = $resolvePolicyRegistry->handle(
+            $policyDefinition,
+            formationBootstrap: $resolvedFormationBootstrap,
+        );
         $resolvedCoverage = $resolveResponsibilityCoverage->handle($responsibilityCoverage->current(), $resolvedPartnership, $basePolicies);
         $resolvedIdentities = $resolveIdentityAndRoles->handle($identityAndRoles->current(), $resolvedPartnership, $resolvedCoverage);
         $resolvedAuthority = $resolveAuthorityMatrix->handle($authorityMatrix->current(), $resolvedPartnership, $basePolicies, $resolvedCoverage, $resolvedIdentities);
@@ -47,7 +59,12 @@ class PolicyRegistryController extends Controller
         $resolvedDecisionRecords = $resolveDecisionRecords->handle($decisionRecords->current(), $basePolicies, $resolvedAuthority, $resolvedGovernanceMeetings);
 
         return Inertia::render('Policies/Index', [
-            'registry' => $resolvePolicyRegistry->handle($policyDefinition, decisionRecords: $resolvedDecisionRecords)->toArray(),
+            'formationBootstrap' => $resolvedFormationBootstrap->toArray(),
+            'registry' => $resolvePolicyRegistry->handle(
+                $policyDefinition,
+                decisionRecords: $resolvedDecisionRecords,
+                formationBootstrap: $resolvedFormationBootstrap,
+            )->toArray(),
         ]);
     }
 }

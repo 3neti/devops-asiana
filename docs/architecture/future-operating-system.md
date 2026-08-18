@@ -133,8 +133,14 @@ The Policy Registry now includes a read-only **Policy Approval and Activation Ad
 
 An eligible Decision does not approve policy automatically. Approval does not imply publication or activation. Publication, Git history, rendering, and operational use do not imply effectiveness. Duplicate Decision or Policy Version admissions, contradictory snapshots, content mismatches, and activation chronology conflicts are rejected. Canonical state remains twelve Draft policies with no invented approvals, publications, or activations.
 
+## Implemented eighteenth vertical slice
+
+The repository now includes a read-only **Formation Ratification and Initial Policy Bootstrap Compiler** backed by `resources/institution/formation-bootstrap.json`. It cross-resolves the Partnership, a counsel-confirmed executed formation instrument, the exact Firm effective date, explicit consent from every Founding Partner, an exact allowlist containing only Partnership Governance Policy 0.1 and Authority and Delegation Policy 0.1, and complete Evidence.
+
+A verified ratification emits only a narrow initial-policy approval basis. Publication, activation, effective date, implementation, and operational authority remain separate. Missing consent, unconfirmed legal mechanics, content mismatch, extra policies, chronology conflicts, and incomplete Evidence prevent the basis from issuing. Canonical state contains no invented instrument, date, consent, ratification, or Evidence, so the Console exposes the open formation and counsel decisions.
+
 ## Recommended next vertical slice
 
-Build a narrow **Formation Ratification and Initial Policy Bootstrap Compiler**. It should model the counsel-reviewed constitutional act that can ratify initial governance facts and activate the first Partnership Governance and Authority & Delegation policies without circularly relying on those same policies. It must expose unresolved legal implementation and must not invent a formation date, quorum rule, approval threshold, or executed Partnership Agreement.
+Build a narrow **Formation Completion and Firm Commencement Compiler**. It should reconcile the executed constitutional instrument with required registration or commencement facts, principal office, effective date, founding identities, and expressly unresolved capital contributions. It should emit a commencement projection that formation-derived Offices and assignments can consume, while refusing to treat a drafted agreement, application login, policy activation, or economic allocation as proof that the Firm legally exists. Statutory form, registration sequence, effective-date mechanics, and evidence requirements must remain counsel-confirmed rather than invented.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

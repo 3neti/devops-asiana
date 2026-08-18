@@ -137,9 +137,11 @@ export type PolicyVersion = {
     effective_at: string | null;
     superseded_by: string | null;
     approval_admission_key?: string | null;
+    formation_ratification_key?: string | null;
     publication_record_key?: string | null;
     activation_record_key?: string | null;
     approval_admitted: boolean;
+    formation_ratified: boolean;
     publication_verified: boolean;
     activation_verified: boolean;
     operative: boolean;
@@ -151,6 +153,43 @@ export type PolicyVersion = {
         decided_at: string;
         evidence_record_key: string;
     };
+};
+
+export type FormationBootstrap = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    eligible_policy_versions: Array<{
+        policy_key: string;
+        policy_version: string;
+    }>;
+    consent_rule: {
+        state: 'resolved' | 'unresolved';
+        method: string | null;
+        legal_state: 'counsel_confirmed' | 'counsel_review';
+        counsel_confirmation_reference: string | null;
+    };
+    ratification_records: Array<Record<string, unknown>>;
+    policy_approval_bases: Array<Record<string, unknown>>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        ratifications: number;
+        policy_approval_bases: number;
+        evidence_records: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        formation_gaps: Array<{ code: string; message: string }>;
+        consent_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        counsel_review: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
 };
 
 export type PolicyProjection = {

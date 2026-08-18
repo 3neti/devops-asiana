@@ -1,0 +1,48 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "executed-formation-instrument",
+            "label": "Executed formation instrument",
+            "question": "Which counsel-confirmed Partnership Agreement constitutes the Firm?"
+        },
+        {
+            "key": "firm-effective-date",
+            "label": "Firm effective date",
+            "question": "When did the Partnership become effective under the formation instrument?"
+        },
+        {
+            "key": "founder-consent",
+            "label": "Founding Partner consent",
+            "question": "Did every Founding Partner explicitly consent under the confirmed formation rule?"
+        },
+        {
+            "key": "initial-policy-content",
+            "label": "Initial policy content",
+            "question": "Which exact controlled governance and authority Policy Versions were ratified?"
+        },
+        {
+            "key": "ratification-evidence",
+            "label": "Ratification Evidence",
+            "question": "What proves instrument execution, individual consent, ratification, publication, and later activation?"
+        }
+    ],
+    "eligible_policy_versions": [
+        {
+            "policy_key": "partnership-governance",
+            "policy_version": "0.1"
+        },
+        {
+            "policy_key": "authority-and-delegation",
+            "policy_version": "0.1"
+        }
+    ],
+    "consent_rule": {
+        "state": "unresolved",
+        "method": null,
+        "legal_state": "counsel_review",
+        "counsel_confirmation_reference": null
+    },
+    "ratification_records": [],
+    "evidence_records": []
+}

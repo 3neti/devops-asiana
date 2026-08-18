@@ -32,6 +32,7 @@
 | Intellectual property     | How are pre-existing 3neti/ODTI IP, Client work product, and Firm-created operating IP separated?                                                                     | Open   |
 | Dissolution               | What triggers, priorities, Client transitions, records custody, asset disposition, and continuing duties apply?                                                       | Open   |
 | 50/50 deadlock            | What resolution mechanism protects equal governance without unintended dissolution or authority consequences?                                                         | Open   |
-| Initial policy bootstrap  | What formation or constitutional ratification validly approves and activates the first governance and authority policies without circular reliance on those policies? | Open   |
+| Initial policy bootstrap  | What formation or constitutional ratification validly supplies approval for the first governance and authority policies, and what legal form and evidence must it preserve? | Open   |
+| Firm commencement         | Which executed instruments, registrations, dates, principal-office facts, and evidence establish when the Partnership may commence and its Offices become operative?     | Open   |
 
 The register owner shall add counsel advice, decision references, affected documents, and closure evidence without replacing the original question. Legal advice itself may require privileged storage outside this repository.

@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\DecisionRecords\ResolvedDecisionRecords;
+use App\FormationBootstrap\ResolvedFormationBootstrap;
 use DateTimeImmutable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
@@ -17,6 +18,7 @@ final class ResolvePolicyRegistry
         PolicyRegistryDefinition $definition,
         ?DateTimeImmutable $asOf = null,
         ?ResolvedDecisionRecords $decisionRecords = null,
+        ?ResolvedFormationBootstrap $formationBootstrap = null,
     ): ResolvedPolicyRegistry {
         $conflicts = [];
         $lifecycleGaps = [];
@@ -32,6 +34,7 @@ final class ResolvePolicyRegistry
         );
         $this->validateEvidenceRecords($definition->evidenceRecords, $evidenceGaps);
         $policyVersionIndex = $this->policyVersionIndex($definition->policies);
+        $bootstrapApprovalIndex = $this->bootstrapApprovalIndex($formationBootstrap);
         $decisionCandidates = $this->policyDecisionCandidates($decisionRecords, $policyVersionIndex);
         $approvalAdmissions = $this->resolveApprovalAdmissions(
             $definition->approvalAdmissions,
@@ -58,6 +61,7 @@ final class ResolvePolicyRegistry
             $definition->activationRecords,
             $policyVersionIndex,
             $approvalAdmissionIndex,
+            $bootstrapApprovalIndex,
             $publicationIndex,
             $evidenceKeys,
             $effectiveAt,
@@ -115,6 +119,7 @@ final class ResolvePolicyRegistry
                     versionsByNumber: $versionsByNumber,
                     evidenceKeys: $evidenceKeys,
                     approvalAdmissions: $approvalAdmissionIndex,
+                    bootstrapApprovals: $bootstrapApprovalIndex,
                     publications: $publicationIndex,
                     activations: $activationIndex,
                     asOf: $effectiveAt,
@@ -176,6 +181,7 @@ final class ResolvePolicyRegistry
      * @param  array<string, array<string, mixed>>  $versionsByNumber
      * @param  list<string>  $evidenceKeys
      * @param  array<string, array<string, mixed>>  $approvalAdmissions
+     * @param  array<string, array<string, mixed>>  $bootstrapApprovals
      * @param  array<string, array<string, mixed>>  $publications
      * @param  array<string, array<string, mixed>>  $activations
      * @param  list<array{code: string, message: string}>  $conflicts
@@ -189,6 +195,7 @@ final class ResolvePolicyRegistry
         array $versionsByNumber,
         array $evidenceKeys,
         array $approvalAdmissions,
+        array $bootstrapApprovals,
         array $publications,
         array $activations,
         Carbon $asOf,
@@ -201,6 +208,10 @@ final class ResolvePolicyRegistry
         $documentPath = (string) ($version['document_path'] ?? '');
         $targetKey = $this->policyVersionKey($policy->key, $versionNumber);
         $approvalAdmission = $approvalAdmissions[$version['approval_admission_key'] ?? ''] ?? null;
+        $bootstrapApproval = $bootstrapApprovals[$targetKey] ?? null;
+        $formationRatificationKey = $version['formation_ratification_key'] ?? null;
+        $bootstrapApprovalVerified = ($bootstrapApproval['grants_initial_policy_approval_basis'] ?? false) === true
+            && ($bootstrapApproval['ratification_record_key'] ?? null) === $formationRatificationKey;
         $publication = $publications[$version['publication_record_key'] ?? ''] ?? null;
         $activation = $activations[$version['activation_record_key'] ?? ''] ?? null;
 
@@ -220,10 +231,10 @@ final class ResolvePolicyRegistry
             conflicts: $conflicts,
         );
 
-        if ($status?->requiresApproval() === true && ($approvalAdmission['grants_policy_approval_basis'] ?? false) !== true) {
+        if ($status?->requiresApproval() === true && ($approvalAdmission['grants_policy_approval_basis'] ?? false) !== true && ! $bootstrapApprovalVerified) {
             $lifecycleGaps[] = $this->issue(
                 'missing_policy_approval',
-                "{$policy->title} version {$versionNumber} is {$status->label()} without an admitted effective Decision Record.",
+                "{$policy->title} version {$versionNumber} is {$status->label()} without an admitted effective Decision Record or verified Formation Ratification basis.",
             );
         }
 
@@ -262,7 +273,7 @@ final class ResolvePolicyRegistry
         $effectiveDate = $this->date($version['effective_at'] ?? null);
         $operative = $status === PolicyLifecycleStatus::Effective
             && $contentIntegrity === 'verified'
-            && ($approvalAdmission['grants_policy_approval_basis'] ?? false) === true
+            && (($approvalAdmission['grants_policy_approval_basis'] ?? false) === true || $bootstrapApprovalVerified)
             && ($publication['publication_verified'] ?? false) === true
             && ($activation['activation_verified'] ?? false) === true
             && $effectiveDate !== null
@@ -273,6 +284,7 @@ final class ResolvePolicyRegistry
             'status_label' => $status?->label() ?? 'Invalid',
             'content_integrity' => $contentIntegrity,
             'approval_admitted' => ($approvalAdmission['grants_policy_approval_basis'] ?? false) === true,
+            'formation_ratified' => $bootstrapApprovalVerified,
             'publication_verified' => ($publication['publication_verified'] ?? false) === true,
             'activation_verified' => ($activation['activation_verified'] ?? false) === true,
             'operative' => $operative,
@@ -299,6 +311,19 @@ final class ResolvePolicyRegistry
                     'content_digest' => $version['content_digest'] ?? null,
                     'effective_at' => $version['effective_at'] ?? null,
                 ];
+            }
+        }
+
+        return $index;
+    }
+
+    /** @return array<string, array<string, mixed>> */
+    private function bootstrapApprovalIndex(?ResolvedFormationBootstrap $formationBootstrap): array
+    {
+        $index = [];
+        foreach ($formationBootstrap->policyApprovals ?? [] as $approval) {
+            if (is_string($approval['target_key'] ?? null)) {
+                $index[$approval['target_key']] = $approval;
             }
         }
 
@@ -454,6 +479,7 @@ final class ResolvePolicyRegistry
      * @param  list<array<string, mixed>>  $records
      * @param  array<string, array<string, mixed>>  $policyVersions
      * @param  array<string, array<string, mixed>>  $approvalAdmissions
+     * @param  array<string, array<string, mixed>>  $bootstrapApprovals
      * @param  array<string, array<string, mixed>>  $publications
      * @param  list<string>  $evidenceKeys
      * @param  list<array{code: string, message: string}>  $conflicts
@@ -461,7 +487,7 @@ final class ResolvePolicyRegistry
      * @param  list<array{code: string, message: string}>  $evidenceGaps
      * @return list<array<string, mixed>>
      */
-    private function resolveActivationRecords(array $records, array $policyVersions, array $approvalAdmissions, array $publications, array $evidenceKeys, Carbon $asOf, array &$conflicts, array &$activationGaps, array &$evidenceGaps): array
+    private function resolveActivationRecords(array $records, array $policyVersions, array $approvalAdmissions, array $bootstrapApprovals, array $publications, array $evidenceKeys, Carbon $asOf, array &$conflicts, array &$activationGaps, array &$evidenceGaps): array
     {
         $resolved = [];
         $keys = [];
@@ -473,6 +499,7 @@ final class ResolvePolicyRegistry
             $targetKey = $targets[$index];
             $version = $policyVersions[$targetKey] ?? null;
             $approval = $approvalAdmissions[$record['approval_admission_key'] ?? ''] ?? null;
+            $bootstrapApproval = $bootstrapApprovals[$targetKey] ?? null;
             $publication = $publications[$record['publication_record_key'] ?? ''] ?? null;
             if ($key === '' || in_array($key, $keys, true)) {
                 $conflicts[] = $this->issue('invalid_policy_activation_key', 'A Policy Activation Record has a missing or duplicate key.');
@@ -484,7 +511,10 @@ final class ResolvePolicyRegistry
             if ($version === null) {
                 $activationGaps[] = $this->issue('policy_activation_target_missing', "Policy Activation {$key} references an unknown Policy Version.");
             }
-            if (($approval['grants_policy_approval_basis'] ?? false) !== true || ($approval['target_key'] ?? null) !== $targetKey) {
+            $regularApprovalValid = ($approval['grants_policy_approval_basis'] ?? false) === true && ($approval['target_key'] ?? null) === $targetKey;
+            $bootstrapApprovalValid = ($bootstrapApproval['grants_initial_policy_approval_basis'] ?? false) === true
+                && ($bootstrapApproval['ratification_record_key'] ?? null) === ($record['formation_ratification_key'] ?? null);
+            if (! $regularApprovalValid && ! $bootstrapApprovalValid) {
                 $activationGaps[] = $this->issue('activation_without_admitted_approval', "Policy Activation {$key} lacks the exact admitted approval basis.");
             }
             if (($publication['publication_verified'] ?? false) !== true || ($publication['target_key'] ?? null) !== $targetKey) {
@@ -498,11 +528,13 @@ final class ResolvePolicyRegistry
             }
             $recordedAt = $this->date($record['recorded_at'] ?? null);
             $admissionRecordedAt = $this->date($approval['recorded_at'] ?? null);
+            $ratifiedAt = $this->date($bootstrapApproval['ratified_at'] ?? null);
             $publishedAt = $this->date($publication['published_at'] ?? null);
             $effectiveDate = $this->date($record['effective_at'] ?? null);
             if ($recordedAt === null
                 || $recordedAt->isAfter($asOf)
                 || ($admissionRecordedAt !== null && $publishedAt !== null && $publishedAt->isBefore($admissionRecordedAt))
+                || ($ratifiedAt !== null && $publishedAt !== null && $publishedAt->isBefore($ratifiedAt))
                 || ($publishedAt !== null && $recordedAt->isBefore($publishedAt))
                 || ($effectiveDate !== null && $effectiveDate->isBefore($recordedAt))) {
                 $conflicts[] = $this->issue('invalid_policy_activation_time', "Policy Activation {$key} has an invalid chronology.");

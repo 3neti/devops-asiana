@@ -8,6 +8,7 @@ import {
     FileCheck2,
     FileClock,
     Fingerprint,
+    Landmark,
     Scale,
     ShieldAlert,
 } from '@lucide/vue';
@@ -15,12 +16,14 @@ import { index as decisionRecordsIndex } from '@/routes/decision-records';
 import { show as showDocument } from '@/routes/institutional-documents';
 import { index as policyRegistry } from '@/routes/policy-registry';
 import type {
+    FormationBootstrap,
     PolicyLifecycleStatus,
     PolicyProjection,
     PolicyRegistry,
 } from '@/types';
 
 defineProps<{
+    formationBootstrap: FormationBootstrap;
     registry: PolicyRegistry;
 }>();
 
@@ -180,6 +183,116 @@ function statusClass(status: PolicyProjection['current_status']): string {
             </header>
 
             <section
+                class="rounded-2xl border border-violet-200 bg-violet-50/60 p-5 sm:p-6 dark:border-violet-900 dark:bg-violet-950/20"
+            >
+                <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+                    <div>
+                        <div
+                            class="flex items-center gap-2 text-violet-700 dark:text-violet-300"
+                        >
+                            <Landmark class="size-4" />
+                            <p
+                                class="text-xs font-semibold tracking-[0.18em] uppercase"
+                            >
+                                Constitutional bootstrap
+                            </p>
+                        </div>
+                        <h2 class="mt-3 font-serif text-2xl font-semibold">
+                            Formation may approve the first control policies,
+                            but cannot activate them silently.
+                        </h2>
+                        <p
+                            class="mt-3 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
+                        >
+                            A counsel-confirmed Partnership Agreement, the
+                            resolved formation date, unanimous evidenced
+                            Founding Partner consent, and exact controlled
+                            policy content must converge first. Publication and
+                            activation remain separate records in this register.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 self-start text-center">
+                        <div
+                            class="rounded-xl border border-violet-200 bg-white p-3 dark:border-violet-900 dark:bg-slate-900"
+                        >
+                            <p class="text-xl font-semibold">
+                                {{ formationBootstrap.counts.ratifications }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Ratifications
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-violet-200 bg-white p-3 dark:border-violet-900 dark:bg-slate-900"
+                        >
+                            <p class="text-xl font-semibold">
+                                {{
+                                    formationBootstrap.counts
+                                        .policy_approval_bases
+                                }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Approval bases
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-violet-200 bg-white p-3 dark:border-violet-900 dark:bg-slate-900"
+                        >
+                            <p class="text-xl font-semibold">
+                                {{
+                                    formationBootstrap.compiler_status ===
+                                    'consistent'
+                                        ? 'Ready'
+                                        : formationBootstrap.compiler_status ===
+                                            'consistent_with_gaps'
+                                          ? 'Open'
+                                          : 'Conflict'
+                                }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Formation state
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    v-if="
+                        formationBootstrap.reports.formation_gaps.length > 0 ||
+                        formationBootstrap.reports.consent_gaps.length > 0 ||
+                        formationBootstrap.reports.conflicts.length > 0 ||
+                        formationBootstrap.reports.evidence_gaps.length > 0 ||
+                        formationBootstrap.reports.counsel_review.length > 0
+                    "
+                    class="mt-5 border-t border-violet-200 pt-4 dark:border-violet-900"
+                >
+                    <p
+                        class="text-xs font-semibold tracking-wide text-violet-800 uppercase dark:text-violet-300"
+                    >
+                        Decisions still required
+                    </p>
+                    <ul
+                        class="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2 dark:text-slate-300"
+                    >
+                        <li
+                            v-for="finding in [
+                                ...formationBootstrap.reports.conflicts,
+                                ...formationBootstrap.reports.formation_gaps,
+                                ...formationBootstrap.reports.consent_gaps,
+                                ...formationBootstrap.reports.evidence_gaps,
+                                ...formationBootstrap.reports.counsel_review,
+                            ]"
+                            :key="`${finding.code}-${finding.message}`"
+                            class="rounded-lg bg-white/80 px-3 py-2 dark:bg-slate-900/80"
+                        >
+                            {{ finding.message }}
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section
                 class="rounded-2xl border border-teal-200 bg-teal-50/60 p-5 sm:p-6 dark:border-teal-900 dark:bg-teal-950/20"
             >
                 <div class="flex flex-col gap-5 lg:flex-row lg:items-center">
@@ -244,9 +357,10 @@ function statusClass(status: PolicyProjection['current_status']): string {
                     class="mt-5 flex flex-col gap-3 border-t border-teal-200 pt-4 text-sm leading-6 text-slate-600 sm:flex-row sm:items-center sm:justify-between dark:border-teal-900 dark:text-slate-400"
                 >
                     <p>
-                        An effective Firm Decision is eligible evidence of
-                        approval only after exact admission. Neither Git
-                        publication nor approval alone makes policy operative.
+                        An effective Firm Decision requires exact admission.
+                        Only the two allowlisted initial policies may instead
+                        cite verified Formation Ratification. Neither path,
+                        publication, nor approval alone makes policy operative.
                     </p>
                     <Link
                         :href="decisionRecordsIndex()"
