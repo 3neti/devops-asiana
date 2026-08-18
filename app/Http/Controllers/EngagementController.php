@@ -14,6 +14,8 @@ use App\FormationCompletion\FormationCompletionRepository;
 use App\FormationCompletion\ResolveFormationCompletion;
 use App\IdentityAndRoles\IdentityAndRoleRepository;
 use App\IdentityAndRoles\ResolveIdentityAndRoles;
+use App\Matters\MatterRepository;
+use App\Matters\ResolveMatters;
 use App\Partnership\PartnershipDefinitionRepository;
 use App\Partnership\ResolvePartnership;
 use App\Policies\PolicyRegistryRepository;
@@ -34,6 +36,7 @@ class EngagementController extends Controller
     public function __invoke(
         AuthorityMatrixRepository $authorityMatrix,
         ClientMandateRepository $clientMandates,
+        MatterRepository $matters,
         EngagementRepository $engagements,
         ClientAcceptanceRepository $clientAcceptance,
         FormationCompletionRepository $formationCompletion,
@@ -46,6 +49,7 @@ class EngagementController extends Controller
         SuccessorAppointmentRepository $successorAppointments,
         ResolveAuthorityMatrix $resolveAuthorityMatrix,
         ResolveClientMandates $resolveClientMandates,
+        ResolveMatters $resolveMatters,
         ResolveEngagements $resolveEngagements,
         ResolveClientAcceptance $resolveClientAcceptance,
         ResolveFormationCompletion $resolveFormationCompletion,
@@ -73,6 +77,7 @@ class EngagementController extends Controller
         return Inertia::render('Engagements/Index', [
             'engagements' => $resolvedEngagements->toArray(),
             'clientMandates' => $resolveClientMandates->handle($clientMandates->current(), $resolvedEngagements, $resolvedAuthority)->toArray(),
+            'matters' => $resolveMatters->handle($matters->current(), $resolvedEngagements)->toArray(),
         ]);
     }
 }

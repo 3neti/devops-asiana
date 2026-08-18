@@ -24,6 +24,9 @@ test('authenticated users can inspect the canonical Engagement Opening gate', fu
             ->where('clientMandates.compiler_status', 'consistent')
             ->where('clientMandates.counts.action_requests', 0)
             ->where('clientMandates.counts.permitted_actions', 0)
+            ->where('matters.compiler_status', 'consistent')
+            ->where('matters.counts.matters', 0)
+            ->where('matters.counts.active_matters', 0)
             ->etc()
         );
 });

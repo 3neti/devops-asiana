@@ -28,6 +28,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Role Transitions        | evidenced suspension, resignation, removal, revocation, ending, vacancy, and successor separation    |
 | Successor Appointments  | separate successor appointment, qualification, acceptance, activation, vacancy closure, and evidence |
 | Client Mandates         | Client authorization boundaries, action requests, Specific Approval, and permitted-action projections |
+| Matters                 | bounded professional work, singular Responsible Partner, scope, risk, escalation, and evidence       |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -45,6 +46,8 @@ Role transition is a separate admission boundary after assignment activation or 
 Successor appointment is a further admission boundary after a terminal Role transition. `ResolveSuccessorAppointments` requires an effective predecessor vacancy, an exact new assignment snapshot, independent Role qualification, attributable appointment approval, holder acceptance, activation chronology, independent verification, and separate Evidence for each material fact. Its projection supplies a new assignment and activation admission, overrides coverage only for the newly admitted holder, and grants no Firm Authority. The canonical identity-and-role registry remains unchanged; vacancy closure is visible only when the successor is independently admitted.
 
 Client Mandate resolution is downstream of Engagement and Firm Authority resolution. `ResolveClientMandates` evaluates a bounded action request against an Engagement open for Client work, the exact Client Mandate action/system/environment boundary, an effective Authority Matrix entry and holder, separate Specific Approval, and Evidence. It emits only a permitted-action projection; it never expands an Engagement, creates Firm Authority, or treats technical access or execution as Client authorization.
+
+Matter resolution is downstream of Engagement resolution. `ResolveMatters` distinguishes a bounded piece of professional work from both the Client relationship and its parent Engagement. It requires exactly one Responsible Partner reconciled with the Engagement, explicit scope and exclusions, risk classification and acceptance, escalation contacts and triggers, and Evidence. A Matter projection never creates an Engagement, Client Mandate, Firm Authority, or permission to perform Client work.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

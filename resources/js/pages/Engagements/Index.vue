@@ -19,11 +19,13 @@ import type {
     ClientMandateCompiler,
     EngagementCompiler,
     EngagementProjection,
+    MatterCompiler,
 } from '@/types';
 
 defineProps<{
     engagements: EngagementCompiler;
     clientMandates: ClientMandateCompiler;
+    matters: MatterCompiler;
 }>();
 
 defineOptions({
@@ -238,6 +240,58 @@ function statusClass(
                             </dd>
                             <dt class="text-[10px] text-slate-500 uppercase">
                                 Permitted
+                            </dt>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+
+            <section
+                class="rounded-2xl border border-amber-600/20 bg-amber-50/60 p-5 sm:p-6 dark:bg-amber-950/20"
+            >
+                <div
+                    class="flex flex-col justify-between gap-4 sm:flex-row sm:items-start"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-semibold tracking-[0.18em] text-amber-700 uppercase dark:text-amber-300"
+                        >
+                            Matter accountability compiler
+                        </p>
+                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                            Client, Engagement, and Matter remain distinct
+                        </h2>
+                        <p
+                            class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
+                        >
+                            A Matter is bounded professional work inside an
+                            Engagement. It preserves exactly one Responsible
+                            Partner, explicit scope, risk ownership and
+                            acceptance, escalation, and Evidence without
+                            becoming a generic ticket.
+                        </p>
+                    </div>
+                    <dl class="grid shrink-0 grid-cols-2 gap-2 text-center">
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd class="text-xl font-semibold">
+                                {{ matters.counts.matters }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Matters
+                            </dt>
+                        </div>
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd
+                                class="text-xl font-semibold text-amber-700 dark:text-amber-300"
+                            >
+                                {{ matters.counts.active_matters }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Accountable
                             </dt>
                         </div>
                     </dl>

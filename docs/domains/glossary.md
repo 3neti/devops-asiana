@@ -158,3 +158,6 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Client Mandate                          | A bounded authorization granted by a Client to the Firm for identified systems, environments, actions, requestors, and validity period             |
 | Specific Approval                       | Separate authorization for one particular Client action inside a current Engagement and Client Mandate                                             |
 | Permitted Action                        | Resolved projection showing that Engagement, mandate, Firm Authority, Specific Approval, and Evidence gates all hold                              |
+| Matter                                  | A bounded piece of professional work inside an Engagement with its own scope, accountability, risk, escalation, and evidence                      |
+| Matter Scope                            | Purpose, work boundary, deliverables, and exclusions defining the bounded work                                                                      |
+| Matter Accountability                   | The singular Responsible Partner and explicit risk/escalation ownership for a Matter                                                                  |

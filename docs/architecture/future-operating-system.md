@@ -171,8 +171,14 @@ The repository now includes a read-only **Client Mandate and Engagement-Bound Au
 
 The compiler emits a permitted-action projection rather than blanket permission. Firm Authority never supplies Client authorization; an Open Engagement never authorizes every action; technical access and execution never prove either gate. The canonical register contains no action requests until the Firm has an evidenced institutional matter to evaluate.
 
+## Matter and Responsible-Partner accountability
+
+The repository now includes a read-only **Matter and Responsible-Partner Accountability Compiler** backed by `resources/institution/matters.json`. It distinguishes a bounded piece of professional work from the Client relationship and parent Engagement, requiring an open Engagement, exactly one Responsible Partner reconciled with that Engagement, explicit scope and exclusions, risk classification and acceptance, escalation contacts and triggers, and Evidence.
+
+An accountable Matter projection does not create an Engagement, Client Mandate, Firm Authority, or action permission. It gives the Firm a durable answer to which Partner owns professional accountability for a bounded piece of work while preserving operational and approval boundaries.
+
 ## Recommended next vertical slice
 
-Build a narrow **Matter and Responsible-Partner Accountability Compiler**. It should distinguish the Client relationship, Engagement, and bounded Matter while preserving exactly one Responsible Partner, scope, risk, escalation, and Evidence for each material piece of professional work.
+Build a narrow **Matter Event and Evidence Compiler**. It should record bounded Matter events—decisions, changes, incidents, reviews, and closure—without collapsing them into a generic workflow or erasing the parent Engagement's accountability history.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

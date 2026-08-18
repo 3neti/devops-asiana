@@ -118,8 +118,10 @@ Canonical Successor Appointments live in `resources/institution/successor-appoin
 
 Canonical Client action requests live in `resources/institution/client-mandates.json`. `ResolveClientMandates` resolves only bounded permitted actions: an Open Engagement, current Client Mandate for the exact action/system/environment, effective Firm Authority for the named actor, separate Specific Approval, and Evidence must all hold. Firm Authority does not supply Client authorization, and technical access or execution never proves permission.
 
+Canonical Matters live in `resources/institution/matters.json`. `ResolveMatters` distinguishes a bounded piece of professional work from the Client relationship and parent Engagement. An accountable Matter requires an open Engagement, exactly one Responsible Partner reconciled with that Engagement, explicit scope, risk ownership and acceptance, escalation, and Evidence. It does not create Client Mandate, Firm Authority, or generic ticket permission.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Matter and Responsible-Partner Accountability Compiler that distinguishes Client, Engagement, and bounded professional Matter without collapsing responsibility into a generic ticket.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Matter Event and Evidence Compiler for decisions, changes, incidents, reviews, and closure inside an existing Matter.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

@@ -453,6 +453,32 @@ export type ClientMandateCompiler = {
     principles: string[];
 };
 
+export type MatterCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    requirements: Array<{ key: string; label: string; question: string }>;
+    matters: Array<Record<string, unknown>>;
+    accountability_projections: Array<Record<string, unknown>>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        matters: number;
+        accountability_projections: number;
+        active_matters: number;
+        evidence_records: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        engagement_gaps: Array<{ code: string; message: string }>;
+        responsibility_gaps: Array<{ code: string; message: string }>;
+        scope_gaps: Array<{ code: string; message: string }>;
+        risk_gaps: Array<{ code: string; message: string }>;
+        escalation_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};
+
 export type AccessGrantLifecycleStatus =
     | 'requested'
     | 'under_review'

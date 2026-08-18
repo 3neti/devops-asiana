@@ -1,0 +1,37 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "engagement",
+            "label": "Open Engagement",
+            "question": "Is the Matter inside an Engagement open for Client work?"
+        },
+        {
+            "key": "responsible-partner",
+            "label": "Responsible Partner",
+            "question": "Is exactly one Responsible Partner recorded and reconciled with the Engagement?"
+        },
+        {
+            "key": "scope",
+            "label": "Matter Scope",
+            "question": "Are purpose, work boundary, deliverables, and exclusions explicit?"
+        },
+        {
+            "key": "risk",
+            "label": "Risk Accountability",
+            "question": "Are risk classification, owner, acceptance, and authority explicit?"
+        },
+        {
+            "key": "escalation",
+            "label": "Escalation",
+            "question": "Are triggers, contacts, and response expectations defined?"
+        },
+        {
+            "key": "evidence",
+            "label": "Evidence",
+            "question": "Can the Matter's accountability and boundaries be proven?"
+        }
+    ],
+    "matters": [],
+    "evidence_records": []
+}
