@@ -34,6 +34,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Evidence Index          | explicit Client, Engagement, Matter, artifact, and Evidence traceability projections          |
 | Evidence Custody        | source, custody, retention, integrity, and Evidence lifecycle facts                            |
 | Retention Reviews       | attributable retention review outcomes and explicit Policy Exception references              |
+| Retention Findings      | explicit links from remediation-bearing retention reviews to existing Corrective Actions     |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -63,6 +64,8 @@ Evidence Index resolution is a read-only traceability projection. `ResolveEviden
 Evidence Custody resolution is downstream of that index. `ResolveEvidenceCustody` requires each custody record to reference indexed Evidence, identify its source and custodian, preserve attributable custody events, and state retention, integrity verification, and disposition facts separately. It stores no payloads or secrets and never erases a disposed or superseded item from the institutional index.
 
 Retention Review resolution is downstream of Evidence Custody and the Policy Registry. `ResolveRetentionReviews` requires a known custody record, indexed review Evidence, explicit reviewer/time/basis/outcome, and an approved or active Policy Exception when a deviation is required. A review never silently extends retention, activates a policy, closes corrective action, or changes custody disposition.
+
+Retention Finding Link resolution is downstream of Retention Reviews and Corrective Actions. `ResolveRetentionFindingLinks` accepts only a resolved review with a remediation-bearing outcome, an existing Corrective Action, explicit linkage attribution and reason, and Evidence attached to the review. Linkage never creates, assigns, verifies, or closes remediation.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

@@ -1,0 +1,26 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "finding",
+            "label": "Retention Finding",
+            "question": "Does the link reference a resolved review with a remediation outcome?"
+        },
+        {
+            "key": "action",
+            "label": "Corrective Action",
+            "question": "Does the link reference an existing Corrective Action?"
+        },
+        {
+            "key": "linkage",
+            "label": "Linkage Basis",
+            "question": "Are linker, time, and reason explicit?"
+        },
+        {
+            "key": "evidence",
+            "label": "Link Evidence",
+            "question": "Does the link cite Evidence already attached to the review?"
+        }
+    ],
+    "links": []
+}

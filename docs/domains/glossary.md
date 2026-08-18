@@ -168,9 +168,10 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Corrective Action Link                  | Explicit reference from a Matter Closure to a separately governed institutional remediation record                                                   |
 | Evidence Index                         | Read-only projection of explicit artifact, institutional path, and Evidence links                                                                     |
 | Evidence Custody                       | Explicit source, custodian, custody history, retention, integrity, and disposition facts for an indexed Evidence item                                  |
-| Retention Review                       | Scheduled, attributable review of whether an Evidence item remains subject to its stated retention basis                                               |
+| Retention Review                       | Attributable review of an Evidence Custody record that records compliance, disposition need, or a separately approved exception requirement            |
 | Integrity Verification                  | Explicit verification of an Evidence item's digest using a named algorithm, time, and verifier                                                       |
 | Evidence Disposition                    | Explicit retained, disposed, or superseded state that never erases the institutional Evidence Index                                                  |
-| Retention Review                       | Attributable review of an Evidence Custody record that records compliance, disposition need, or a separately approved exception requirement            |
 | Policy Exception                       | Temporary, explicit, approved, evidenced, and reviewable deviation from one exact Policy Version requirement                                           |
+| Retention Finding                     | A remediation-bearing outcome from a Retention Review that requires accountable follow-up                                                            |
+| Retention Finding Link                | Explicit, evidenced link from a Retention Finding to an existing Corrective Action; it does not alter either lifecycle                         |
 | Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |

@@ -39,6 +39,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/ProductionAccess/**,resources/institution/production-access.json | .ai/rules/production-access-institution.md |
 | app/ProductionAccess/**,resources/institution/production-access.json,resources/js/pages/ProductionAccess/** | .ai/rules/production-access.md |
 | app/ResponsibilityCoverage/**,resources/institution/responsibility-coverage.json,resources/js/pages/ResponsibilityCoverage/**,tests/**/*ResponsibilityCoverage* | .ai/rules/responsibility-coverage.md |
+| app/RetentionFindings/** | .ai/rules/retention-findings.md |
 | app/RetentionReviews/** | .ai/rules/retention-reviews.md |
 | app/RoleTransitions/**,resources/institution/role-transitions.json,app/IdentityAndRoles/** | .ai/rules/role-transitions-institution-identity-and-roles.md |
 | {app/SuccessorAppointments/**,app/IdentityAndRoles/**,resources/institution/successor-appointments.json} | .ai/rules/successor-appointments-identity-and-roles-institution.md |
