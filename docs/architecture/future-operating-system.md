@@ -234,3 +234,7 @@ The repository now includes a read-only **Control Review Action Outcome Compiler
 ## Control review closure eligibility
 
 The repository now includes a read-only **Control Review Action Closure Eligibility Compiler** backed by `resources/institution/control-review-closure-eligibility.json`. It checks completion claim, successful independent verification chronology, explicit closure authority, and closure Evidence as separate prerequisites. Eligibility is only a report; no action is closed or mutated.
+
+## Control review closure decisions
+
+The repository now includes a read-only **Control Review Closure Decision Compiler** backed by `resources/institution/control-review-closure-decisions.json`. It admits explicit closed, deferred, or rejected decisions against exact eligibility reviews. A closed decision requires eligibility, authority, reason, time, and separate Evidence; the underlying Action remains an independent historical record.

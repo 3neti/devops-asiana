@@ -144,8 +144,10 @@ Canonical Control Review Action Outcomes live in `resources/institution/control-
 
 Canonical Control Review Closure Eligibility records live in `resources/institution/control-review-closure-eligibility.json`. `ResolveControlReviewClosureEligibility` reports whether completion, independent verification chronology, closure authority, and closure Evidence prerequisites hold. It never issues closure or mutates an action.
 
+Canonical Control Review Closure Decisions live in `resources/institution/control-review-closure-decisions.json`. `ResolveControlReviewClosureDecisions` admits explicit closed, deferred, or rejected decisions against exact eligibility reviews. Closed decisions require eligibility and separate authority/Evidence; the underlying Action is never mutated by the compiler.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control Review Closure Decision Compiler that admits a separate authorized closure decision without conflating eligibility with closure.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control Review Closure Reconciliation Compiler that compares admitted closure decisions with downstream remediation state without rewriting either source.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

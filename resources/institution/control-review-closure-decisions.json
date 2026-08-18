@@ -1,0 +1,26 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "eligibility",
+            "label": "Eligibility Basis",
+            "question": "Does the decision reference an exact closure eligibility review?"
+        },
+        {
+            "key": "outcome",
+            "label": "Closure Decision",
+            "question": "Is the decision closed, deferred, or rejected explicit?"
+        },
+        {
+            "key": "authority",
+            "label": "Decision Authority",
+            "question": "Are decision maker, time, authority basis, and reason explicit?"
+        },
+        {
+            "key": "evidence",
+            "label": "Decision Evidence",
+            "question": "Is separate closure decision Evidence explicit?"
+        }
+    ],
+    "decisions": []
+}
