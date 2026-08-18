@@ -7,6 +7,7 @@ use App\Partnership\ResolvedPartnership;
 use App\ResponsibilityCoverage\ResolvedResponsibilityCoverage;
 use App\RoleActivations\ResolvedRoleActivations;
 use App\RoleTransitions\ResolvedRoleTransitions;
+use App\SuccessorAppointments\ResolvedSuccessorAppointments;
 use DateTimeImmutable;
 use Illuminate\Support\Carbon;
 use Throwable;
@@ -21,6 +22,7 @@ final class ResolveIdentityAndRoles
         ?ResolvedFormationCompletion $formationCompletion = null,
         ?ResolvedRoleActivations $roleActivations = null,
         ?ResolvedRoleTransitions $roleTransitions = null,
+        ?ResolvedSuccessorAppointments $successorAppointments = null,
     ): ResolvedIdentityAndRoles {
         /** @var list<array{code: string, message: string}> $conflicts */
         $conflicts = [];
@@ -40,7 +42,14 @@ final class ResolveIdentityAndRoles
         $roleCoverageCounts = array_fill_keys(['covered', 'vacant', 'pending_activation', 'conflicted'], 0);
         $partners = $this->indexByKey($partnership->formation['founding_partners'] ?? []);
         $coverageRequirements = $this->indexByKey($responsibilityCoverage->requirements);
-        $evidenceKeys = $this->validateEvidence($definition->evidenceRecords, $conflicts, $evidenceGaps);
+        foreach ($successorAppointments->coverageHolderOverrides ?? [] as $roleKey => $holderKeys) {
+            if (isset($coverageRequirements[$roleKey])) {
+                $coverageRequirements[$roleKey]['holder_keys'] = $holderKeys;
+            }
+        }
+        $assignmentRecords = [...$definition->assignments, ...($successorAppointments->assignmentAdmissions ?? [])];
+        $evidenceRecords = [...$definition->evidenceRecords, ...($successorAppointments->evidenceRecords ?? [])];
+        $evidenceKeys = $this->validateEvidence($evidenceRecords, $conflicts, $evidenceGaps);
         $identities = $this->resolveIdentities($definition->identities, $partners, $conflicts, $identityGaps);
         $identityIndex = $this->indexByKey($identities);
         $roles = $this->validateRoles($definition->roles, $coverageRequirements, $conflicts);
@@ -48,10 +57,13 @@ final class ResolveIdentityAndRoles
         $commencementBasis = collect($formationCompletion->officeActivationBases ?? [])
             ->firstWhere('permits_formation_derived_assignments', true);
         $firmEffectiveAt = $this->date($commencementBasis['effective_at'] ?? null);
-        $activationAdmissions = $this->indexByAssignmentKey($roleActivations->assignmentActivationAdmissions ?? []);
+        $activationAdmissions = $this->indexByAssignmentKey([
+            ...($roleActivations->assignmentActivationAdmissions ?? []),
+            ...($successorAppointments->activationAdmissions ?? []),
+        ]);
         $transitionAdmissions = $this->indexByAssignmentKey($roleTransitions->assignmentTransitionAdmissions ?? []);
 
-        if ($firmEffectiveAt === null && $this->usesFormationEffectiveDate($definition->assignments)) {
+        if ($firmEffectiveAt === null && $this->usesFormationEffectiveDate($assignmentRecords)) {
             $activationGaps[] = $this->issue(
                 'formation_commencement_unverified',
                 'Formation-derived assignments cannot activate until a verified Firm Commencement basis is effective.',
@@ -59,7 +71,7 @@ final class ResolveIdentityAndRoles
         }
 
         $assignments = $this->resolveAssignments(
-            assignments: $definition->assignments,
+            assignments: $assignmentRecords,
             identities: $identityIndex,
             roles: $roleIndex,
             evidenceKeys: $evidenceKeys,
@@ -86,7 +98,7 @@ final class ResolveIdentityAndRoles
             identities: $identities,
             roles: $resolvedRoles,
             assignments: $assignments,
-            evidenceRecords: $definition->evidenceRecords,
+            evidenceRecords: $evidenceRecords,
             assignmentLifecycleCounts: $assignmentLifecycleCounts,
             roleCoverageCounts: $roleCoverageCounts,
             conflicts: $conflicts,
@@ -295,7 +307,7 @@ final class ResolveIdentityAndRoles
             }
 
             $effectiveStatus = $status;
-            if ($basisType === 'formation' && $activationAdmission !== null && $status === AssignmentLifecycleStatus::Approved) {
+            if (in_array($basisType, ['formation', 'appointment'], true) && $activationAdmission !== null && $status === AssignmentLifecycleStatus::Approved) {
                 $effectiveStatus = AssignmentLifecycleStatus::Active;
             }
             if ($transitionAdmission !== null) {
@@ -450,8 +462,9 @@ final class ResolveIdentityAndRoles
      */
     private function resolveEffectiveFrom(array $assignment, ?Carbon $firmEffectiveAt, ?array $activationAdmission): ?Carbon
     {
-        if (($assignment['effective_at_source'] ?? null) === 'formation.firm.effective_date') {
-            return $this->date($activationAdmission['effective_at'] ?? null) ?? $firmEffectiveAt;
+        if ($activationAdmission !== null) {
+            return $this->date($activationAdmission['effective_at'] ?? null)
+                ?? (($assignment['effective_at_source'] ?? null) === 'formation.firm.effective_date' ? $firmEffectiveAt : null);
         }
 
         return $this->date($assignment['effective_at'] ?? null);

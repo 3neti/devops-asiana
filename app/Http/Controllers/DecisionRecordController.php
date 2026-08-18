@@ -22,6 +22,8 @@ use App\RoleActivations\ResolveRoleActivations;
 use App\RoleActivations\RoleActivationRepository;
 use App\RoleTransitions\ResolveRoleTransitions;
 use App\RoleTransitions\RoleTransitionRepository;
+use App\SuccessorAppointments\ResolveSuccessorAppointments;
+use App\SuccessorAppointments\SuccessorAppointmentRepository;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -38,6 +40,7 @@ class DecisionRecordController extends Controller
         PolicyRegistryRepository $policies,
         RoleActivationRepository $roleActivations,
         RoleTransitionRepository $roleTransitions,
+        SuccessorAppointmentRepository $successorAppointments,
         ResolveDecisionRecords $resolveDecisionRecords,
         ResolveFormationCompletion $resolveFormationCompletion,
         ResolveGovernanceMeetings $resolveGovernanceMeetings,
@@ -48,6 +51,7 @@ class DecisionRecordController extends Controller
         ResolvePolicyRegistry $resolvePolicyRegistry,
         ResolveRoleActivations $resolveRoleActivations,
         ResolveRoleTransitions $resolveRoleTransitions,
+        ResolveSuccessorAppointments $resolveSuccessorAppointments,
     ): Response {
         $resolvedPartnership = $resolvePartnership->handle($partnership->current());
         $resolvedFormationCompletion = $resolveFormationCompletion->handle($formationCompletion->current(), $resolvedPartnership);
@@ -56,6 +60,7 @@ class DecisionRecordController extends Controller
         $identityDefinition = $identityAndRoles->current();
         $resolvedRoleActivations = $resolveRoleActivations->handle($roleActivations->current(), $identityDefinition, $resolvedFormationCompletion);
         $resolvedRoleTransitions = $resolveRoleTransitions->handle($roleTransitions->current(), $identityDefinition);
+        $resolvedSuccessorAppointments = $resolveSuccessorAppointments->handle($successorAppointments->current(), $identityDefinition, $resolvedPartnership, $resolvedRoleTransitions);
         $resolvedIdentities = $resolveIdentityAndRoles->handle(
             $identityDefinition,
             $resolvedPartnership,
@@ -63,6 +68,7 @@ class DecisionRecordController extends Controller
             formationCompletion: $resolvedFormationCompletion,
             roleActivations: $resolvedRoleActivations,
             roleTransitions: $resolvedRoleTransitions,
+            successorAppointments: $resolvedSuccessorAppointments,
         );
         $resolvedAuthority = $resolveAuthorityMatrix->handle(
             $authorityMatrix->current(),

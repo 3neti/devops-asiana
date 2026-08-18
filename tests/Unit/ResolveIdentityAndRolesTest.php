@@ -11,6 +11,7 @@ use App\ResponsibilityCoverage\ResolveResponsibilityCoverage;
 use App\ResponsibilityCoverage\ResponsibilityCoverageDefinition;
 use App\RoleActivations\ResolvedRoleActivations;
 use App\RoleTransitions\ResolvedRoleTransitions;
+use App\SuccessorAppointments\ResolvedSuccessorAppointments;
 use DateTimeImmutable;
 
 function identityRoleDefinition(): IdentityAndRoleDefinition
@@ -64,6 +65,7 @@ function resolveIdentityRoles(
     bool $formationCommenced = true,
     ?ResolvedRoleActivations $roleActivations = null,
     ?ResolvedRoleTransitions $roleTransitions = null,
+    ?ResolvedSuccessorAppointments $successorAppointments = null,
 ): array {
     $partnershipDefinition = $partnership ?? identityRolePartnershipDefinition();
     $resolvedPartnership = (new ResolvePartnership)->handle($partnershipDefinition);
@@ -83,7 +85,39 @@ function resolveIdentityRoles(
             : null,
         $roleActivations,
         $roleTransitions,
+        $successorAppointments,
     )->toArray();
+}
+
+function successorIdentityRoleVacancy(): ResolvedRoleTransitions
+{
+    return new ResolvedRoleTransitions(
+        schemaVersion: 1,
+        requirements: [],
+        transitionRecords: [],
+        assignmentTransitionAdmissions: [[
+            'key' => 'transition::client-delivery-angelica',
+            'source_type' => 'role_transition',
+            'assignment_key' => 'client-delivery-angelica',
+            'effective_lifecycle_status' => 'ended',
+            'effective_at' => '2026-08-02T10:00:00+08:00',
+        ]],
+        scheduledTransitions: [],
+        vacancies: [[
+            'key' => 'client-delivery-angelica::vacancy',
+            'assignment_key' => 'client-delivery-angelica',
+            'role_key' => 'client-delivery',
+            'outgoing_identity_key' => 'angelica-santos',
+            'effective_at' => '2026-08-02T10:00:00+08:00',
+            'successor_status' => 'no_successor_recorded',
+            'requires_separate_successor_admission' => true,
+        ]],
+        evidenceRecords: [],
+        conflicts: [],
+        transitionGaps: [],
+        decisionGaps: [],
+        evidenceGaps: [],
+    );
 }
 
 function identityRoleTransition(string $assignmentKey, string $status): ResolvedRoleTransitions
@@ -130,6 +164,58 @@ function identityRoleActivation(string $assignmentKey, string $roleKey, string $
         activationGaps: [],
         acceptanceGaps: [],
         verificationGaps: [],
+        evidenceGaps: [],
+    );
+}
+
+function identityRoleSuccessorAdmission(): ResolvedSuccessorAppointments
+{
+    return new ResolvedSuccessorAppointments(
+        schemaVersion: 1,
+        requirements: [],
+        appointmentRecords: [],
+        assignmentAdmissions: [[
+            'key' => 'client-delivery-lester-successor',
+            'role_key' => 'client-delivery',
+            'identity_key' => 'lester-hurtado',
+            'lifecycle_status' => 'approved',
+            'basis' => ['type' => 'appointment', 'reference' => 'future.client-delivery.successor'],
+            'approval' => [
+                'approver' => 'angelica-santos',
+                'authority_basis' => 'successor appointment authority',
+                'outcome' => 'approved',
+                'decided_at' => '2026-08-03T09:00:00+08:00',
+                'evidence_record_key' => 'successor-activation',
+            ],
+            'evidence_record_key' => 'successor-activation',
+        ]],
+        activationAdmissions: [[
+            'key' => 'successor-client-delivery-lester-001::client-delivery-lester-successor',
+            'source_type' => 'successor_appointment',
+            'assignment_key' => 'client-delivery-lester-successor',
+            'role_key' => 'client-delivery',
+            'identity_key' => 'lester-hurtado',
+            'effective_at' => '2026-08-03T10:00:00+08:00',
+            'activates_exact_assignment' => true,
+            'grants_firm_authority' => false,
+        ]],
+        coverageHolderOverrides: ['client-delivery' => ['lester-hurtado']],
+        evidenceRecords: [[
+            'key' => 'successor-activation',
+            'record_type' => 'Successor Appointment Evidence',
+            'approval' => 'Successor appointment admission',
+            'subject' => 'client-delivery-lester-successor',
+            'actor' => 'angelica-santos',
+            'occurred_at' => '2026-08-03T12:00:00+08:00',
+            'source' => 'Successor Appointment',
+            'reason' => 'Activate successor assignment.',
+            'state' => 'accepted',
+            'supporting_evidence' => ['successor-appointment'],
+        ]],
+        conflicts: [],
+        appointmentGaps: [],
+        approvalGaps: [],
+        acceptanceGaps: [],
         evidenceGaps: [],
     );
 }
@@ -215,6 +301,21 @@ test('it exposes canonical identities roles assignments and activation gaps', fu
         ->and($resolved['counts']['by_role_coverage']['vacant'])->toBe(2)
         ->and($resolved['reports']['activation_gaps'])->toHaveCount(1)
         ->and($resolved['reports']['holder_mismatches'])->toBeEmpty();
+});
+
+test('successor admissions merge as a new active assignment without granting authority', function () {
+    $resolved = resolveIdentityRoles(
+        formationCommenced: true,
+        roleTransitions: successorIdentityRoleVacancy(),
+        successorAppointments: identityRoleSuccessorAdmission(),
+    );
+    $assignment = collect($resolved['assignments'])->firstWhere('key', 'client-delivery-lester-successor');
+
+    expect($assignment['operational_status'])->toBe('active')
+        ->and($assignment['operative'])->toBeTrue()
+        ->and($assignment['grants_firm_authority'])->toBeFalse()
+        ->and(collect($resolved['roles'])->firstWhere('key', 'client-delivery')['recorded_holder_keys'])
+        ->toBe(['lester-hurtado']);
 });
 
 test('identity derives professional status without becoming a login or employment classification', function () {

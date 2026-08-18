@@ -16,6 +16,7 @@ import type {
     IdentityAndRoleCompiler,
     RoleActivationCompiler,
     RoleTransitionCompiler,
+    SuccessorAppointmentCompiler,
     ResponsibilityCoverageStatus,
 } from '@/types';
 
@@ -23,6 +24,7 @@ const props = defineProps<{
     identityAndRoles: IdentityAndRoleCompiler;
     roleActivations: RoleActivationCompiler;
     roleTransitions: RoleTransitionCompiler;
+    successorAppointments: SuccessorAppointmentCompiler;
 }>();
 
 defineOptions({
@@ -369,6 +371,64 @@ function activationAdmitted(assignmentKey: string): boolean {
                             {{ label(vacancy.successor_status) }}
                         </p>
                     </article>
+                </div>
+            </section>
+
+            <section
+                class="rounded-2xl border border-teal-600/20 bg-teal-50/60 p-5 sm:p-6 dark:bg-teal-950/20"
+            >
+                <div
+                    class="flex flex-col justify-between gap-4 sm:flex-row sm:items-start"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-semibold tracking-[0.18em] text-teal-700 uppercase dark:text-teal-300"
+                        >
+                            Successor appointment compiler
+                        </p>
+                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                            A vacancy closes only through a new admitted
+                            assignment
+                        </h2>
+                        <p
+                            class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
+                        >
+                            Appointment authority, qualification, approval,
+                            holder acceptance, activation, and Evidence are
+                            evaluated independently. No successor inherits the
+                            predecessor's Office or Firm Authority.
+                        </p>
+                    </div>
+                    <dl class="grid shrink-0 grid-cols-2 gap-2 text-center">
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd class="text-xl font-semibold">
+                                {{
+                                    successorAppointments.counts
+                                        .appointment_records
+                                }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Recorded
+                            </dt>
+                        </div>
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd
+                                class="text-xl font-semibold text-teal-700 dark:text-teal-300"
+                            >
+                                {{
+                                    successorAppointments.counts
+                                        .activation_admissions
+                                }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Admitted
+                            </dt>
+                        </div>
+                    </dl>
                 </div>
             </section>
 

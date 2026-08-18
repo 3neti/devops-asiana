@@ -35,6 +35,10 @@ test('authenticated users can inspect canonical identities roles and assignments
             ->where('roleTransitions.counts.transition_records', 0)
             ->where('roleTransitions.counts.effective_transitions', 0)
             ->where('roleTransitions.counts.vacancies', 0)
+            ->where('successorAppointments.compiler_status', 'consistent')
+            ->where('successorAppointments.counts.appointment_records', 0)
+            ->where('successorAppointments.counts.assignment_admissions', 0)
+            ->where('successorAppointments.counts.activation_admissions', 0)
             ->etc()
         );
 });

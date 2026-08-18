@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "vacancy-or-appointment-basis",
+            "label": "Vacancy or appointment basis",
+            "question": "Which exact predecessor transition or constitutional appointment permits this new assignment?"
+        },
+        {
+            "key": "qualified-successor",
+            "label": "Qualified successor",
+            "question": "Does the proposed holder satisfy the Role qualification independently?"
+        },
+        {
+            "key": "appointment-approval",
+            "label": "Appointment approval",
+            "question": "Who had authority to appoint the successor and what Evidence proves it?"
+        },
+        {
+            "key": "holder-acceptance",
+            "label": "Holder acceptance",
+            "question": "Did the proposed holder accept the new exact assignment?"
+        },
+        {
+            "key": "activation-evidence",
+            "label": "Activation Evidence",
+            "question": "What proves the new assignment became operative without inheriting the predecessor's authority?"
+        }
+    ],
+    "appointment_records": [],
+    "evidence_records": []
+}

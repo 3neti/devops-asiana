@@ -1238,6 +1238,47 @@ export type RoleTransitionCompiler = {
     principles: string[];
 };
 
+export type SuccessorAppointmentCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    requirements: Array<{ key: string; label: string; question: string }>;
+    appointment_records: Array<Record<string, unknown>>;
+    assignment_admissions: Array<{
+        key: string;
+        role_key: string;
+        identity_key: string;
+        lifecycle_status: AssignmentLifecycleStatus;
+        predecessor_assignment_key: string;
+    }>;
+    activation_admissions: Array<{
+        key: string;
+        assignment_key: string;
+        role_key: string;
+        identity_key: string;
+        effective_at: string;
+        activates_exact_assignment: true;
+        grants_firm_authority: false;
+    }>;
+    coverage_holder_overrides: Record<string, string[]>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        appointment_records: number;
+        assignment_admissions: number;
+        activation_admissions: number;
+        coverage_overrides: number;
+        evidence_records: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        appointment_gaps: Array<{ code: string; message: string }>;
+        approval_gaps: Array<{ code: string; message: string }>;
+        acceptance_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};
+
 export type AuthorityEntryLifecycleStatus =
     'design' | 'approved' | 'active' | 'superseded' | 'retired';
 

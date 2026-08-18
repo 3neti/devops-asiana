@@ -24,6 +24,8 @@ use App\RoleActivations\ResolveRoleActivations;
 use App\RoleActivations\RoleActivationRepository;
 use App\RoleTransitions\ResolveRoleTransitions;
 use App\RoleTransitions\RoleTransitionRepository;
+use App\SuccessorAppointments\ResolveSuccessorAppointments;
+use App\SuccessorAppointments\SuccessorAppointmentRepository;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -41,6 +43,7 @@ class PolicyRegistryController extends Controller
         PartnershipDefinitionRepository $partnership,
         RoleActivationRepository $roleActivations,
         RoleTransitionRepository $roleTransitions,
+        SuccessorAppointmentRepository $successorAppointments,
         ResolvePolicyRegistry $resolvePolicyRegistry,
         ResolveFormationBootstrap $resolveFormationBootstrap,
         ResolveFormationCompletion $resolveFormationCompletion,
@@ -52,6 +55,7 @@ class PolicyRegistryController extends Controller
         ResolvePartnership $resolvePartnership,
         ResolveRoleActivations $resolveRoleActivations,
         ResolveRoleTransitions $resolveRoleTransitions,
+        ResolveSuccessorAppointments $resolveSuccessorAppointments,
     ): Response {
         $policyDefinition = $registries->current();
         $resolvedPartnership = $resolvePartnership->handle($partnership->current());
@@ -69,6 +73,7 @@ class PolicyRegistryController extends Controller
         $identityDefinition = $identityAndRoles->current();
         $resolvedRoleActivations = $resolveRoleActivations->handle($roleActivations->current(), $identityDefinition, $resolvedFormationCompletion);
         $resolvedRoleTransitions = $resolveRoleTransitions->handle($roleTransitions->current(), $identityDefinition);
+        $resolvedSuccessorAppointments = $resolveSuccessorAppointments->handle($successorAppointments->current(), $identityDefinition, $resolvedPartnership, $resolvedRoleTransitions);
         $resolvedIdentities = $resolveIdentityAndRoles->handle(
             $identityDefinition,
             $resolvedPartnership,
@@ -76,6 +81,7 @@ class PolicyRegistryController extends Controller
             formationCompletion: $resolvedFormationCompletion,
             roleActivations: $resolvedRoleActivations,
             roleTransitions: $resolvedRoleTransitions,
+            successorAppointments: $resolvedSuccessorAppointments,
         );
         $resolvedAuthority = $resolveAuthorityMatrix->handle($authorityMatrix->current(), $resolvedPartnership, $basePolicies, $resolvedCoverage, $resolvedIdentities);
         $resolvedGovernanceMeetings = $resolveGovernanceMeetings->handle($governanceMeetings->current(), $resolvedPartnership, $basePolicies, $resolvedAuthority);

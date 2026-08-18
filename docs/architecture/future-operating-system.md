@@ -159,8 +159,14 @@ The repository now includes a read-only **Role Assignment Transition Compiler** 
 
 Terminal transitions project a vacancy and retain the outgoing assignment's history. A possible successor is never treated as appointed or active merely because a transition names them; the compiler reports that successor as pending separate admission. Transition admissions never grant Firm Authority, and suspension disables operation without silently changing the holder or transferring the Office.
 
+## Successor appointments and role admission
+
+The repository now includes a read-only **Successor Appointment and Role Admission Compiler** backed by `resources/institution/successor-appointments.json`. It requires an effective predecessor vacancy, an exact new assignment snapshot, independent qualification, attributable appointment approval, holder acceptance, activation chronology, independent verification, and separate Evidence for each material fact.
+
+The compiler projects a new assignment and activation admission without rewriting the canonical identity-and-role registry. It closes coverage only for the separately admitted holder, preserves the predecessor's ended history, and grants no Firm Authority. A successor therefore cannot inherit an Office, authority, governance, capital, or compensation merely through relationship to the outgoing holder.
+
 ## Recommended next vertical slice
 
-Build a narrow **Successor Appointment and Role Admission Compiler**. It should create a new exact assignment for a Role only through explicit appointment authority, qualification, approval, holder acceptance, activation, and Evidence. A vacancy should remain visible until that separate successor path is complete.
+Build a narrow **Client Mandate and Engagement-Bound Authority Compiler**. It should keep Firm Authority, Client Mandate, Engagement scope, risk classification, and Specific Approval as separate gates for a proposed Client action. The compiler should answer which authority and mandate facts permit a bounded action without turning access, a title, or an Engagement into blanket permission.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

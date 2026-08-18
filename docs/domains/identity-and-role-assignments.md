@@ -102,4 +102,6 @@ The transition projection never erases the original assignment. A terminal trans
 
 ## Next boundary
 
-The next boundary is a separate successor appointment and admission path. It must bind a new assignment to the same Role only through an explicit basis, qualification, approval, activation, and Evidence; no transition record may make succession automatic.
+The repository now includes a separate successor appointment and admission path in `resources/institution/successor-appointments.json`. `ResolveSuccessorAppointments` binds a new assignment to the same Role only through an effective predecessor vacancy, an exact assignment snapshot, independent qualification, appointment approval, holder acceptance, activation, independent verification, and distinct Evidence. The projection closes coverage only for that new holder; it does not rewrite the predecessor or grant Firm Authority.
+
+No transition record may make succession automatic. A successor's Partner status, governance, capital, compensation, Office authority, and Client Mandate remain separate facts and are never inferred from the predecessor.
