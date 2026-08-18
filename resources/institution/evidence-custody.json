@@ -1,0 +1,31 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "source",
+            "label": "Source and Custodian",
+            "question": "Is source and current custodian explicit?"
+        },
+        {
+            "key": "custody",
+            "label": "Custody History",
+            "question": "Is custody append-only and attributable?"
+        },
+        {
+            "key": "retention",
+            "label": "Retention",
+            "question": "Is retention policy and review date explicit?"
+        },
+        {
+            "key": "integrity",
+            "label": "Integrity",
+            "question": "Is integrity algorithm, digest, and verification explicit?"
+        },
+        {
+            "key": "disposition",
+            "label": "Disposition",
+            "question": "Is retention, disposal, or supersession explicit and evidenced?"
+        }
+    ],
+    "records": []
+}

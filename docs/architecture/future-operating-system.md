@@ -197,6 +197,8 @@ The index is a traceability projection, not a source of authority or workflow st
 
 ## Recommended next vertical slice
 
-Build a narrow **Evidence Custody and Retention Compiler**. It should add source, custody, retention, integrity, and disposition facts to indexed Evidence without turning the repository into a document-management or generic search platform.
+The repository now includes a read-only **Evidence Custody and Retention Compiler** backed by `resources/institution/evidence-custody.json`. It resolves source and custodian facts, append-only custody history, explicit retention and review dates, integrity verification, and disposition for Evidence already present in the Evidence Index. Custody is a lifecycle projection, not document storage: payloads and secrets remain outside this boundary, and disposal or supersession never erases institutional history.
+
+The next boundary should connect explicit retention gaps and review outcomes to Policy Exceptions and corrective action without creating a generic records-management system.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

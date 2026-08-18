@@ -167,4 +167,8 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Matter Closure Projection               | Resolved projection of a verified Matter closure and its linked outstanding remediation obligations                                                  |
 | Corrective Action Link                  | Explicit reference from a Matter Closure to a separately governed institutional remediation record                                                   |
 | Evidence Index                         | Read-only projection of explicit artifact, institutional path, and Evidence links                                                                     |
+| Evidence Custody                       | Explicit source, custodian, custody history, retention, integrity, and disposition facts for an indexed Evidence item                                  |
+| Retention Review                       | Scheduled, attributable review of whether an Evidence item remains subject to its stated retention basis                                               |
+| Integrity Verification                  | Explicit verification of an Evidence item's digest using a named algorithm, time, and verifier                                                       |
+| Evidence Disposition                    | Explicit retained, disposed, or superseded state that never erases the institutional Evidence Index                                                  |
 | Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |

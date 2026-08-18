@@ -32,6 +32,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Matter Events           | append-only decisions, changes, incidents, reviews, closure, chronology, and Evidence               |
 | Matter Closures         | independently verified closure projections linked to separate Corrective Actions               |
 | Evidence Index          | explicit Client, Engagement, Matter, artifact, and Evidence traceability projections          |
+| Evidence Custody        | source, custody, retention, integrity, and Evidence lifecycle facts                            |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -57,6 +58,8 @@ Matter Event resolution is downstream of Matter resolution. `ResolveMatterEvents
 Matter Closure resolution is downstream of Matter Event and Corrective Action resolution. `ResolveMatterClosures` requires an admitted closure Event, explicit Matter and Corrective Action links, and separate closure Evidence. It reports whether linked remediation is complete but never closes or erases Corrective Actions; their own accountable owner, verification, authority, and closure remain independent.
 
 Evidence Index resolution is a read-only traceability projection. `ResolveEvidenceIndex` indexes explicit Client, Engagement, Matter, artifact, and Evidence references, preserving gaps when a path or Evidence link is missing. It answers where proof is attached to institutional work without becoming a source of authority, approval, or generic workflow state.
+
+Evidence Custody resolution is downstream of that index. `ResolveEvidenceCustody` requires each custody record to reference indexed Evidence, identify its source and custodian, preserve attributable custody events, and state retention, integrity verification, and disposition facts separately. It stores no payloads or secrets and never erases a disposed or superseded item from the institutional index.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 
