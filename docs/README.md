@@ -32,4 +32,4 @@ Procedures and runbooks must name their governing policy, authorized roles, requ
 | `adr/`          | Durable institutional and technical decisions            |
 | `legal/`        | Matters requiring counsel validation                     |
 
-The current executable projection is documented under [Partnership compiler](architecture/partnership-compiler.md) and [Firm Console](architecture/firm-console.md). The browser catalogue is generated from this hierarchy; the repository remains canonical.
+The executable projections are summarized under [Future operating system](architecture/future-operating-system.md). The [Identity and Role Assignments doctrine](domains/identity-and-role-assignments.md) defines the newest compiler boundary. The browser catalogue is generated from this hierarchy; the repository remains canonical.

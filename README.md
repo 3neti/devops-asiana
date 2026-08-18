@@ -76,7 +76,7 @@ Technology / IP   →    platform / scheme  →   owned infrastructure  →  del
 
 ## Current state
 
-The repository now contains eleven thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
+The repository now contains twelve thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
 
 Canonical policy identity and lifecycle metadata live in `resources/institution/policies.json`, while policy content remains in `docs/policies/`. `ResolvePolicyRegistry` verifies version references, content integrity after review begins, explicit approvals, exception scope and expiry, and Evidence Record links. The Policy Register makes those distinctions visible without granting approval authority to an authenticated application user. The full `docs/` hierarchy remains available through the generated, sanitized document browser.
 
@@ -98,8 +98,10 @@ Canonical Continuity Exercise standards and records live in `resources/instituti
 
 Canonical Responsibility Coverage requirements live in `resources/institution/responsibility-coverage.json`. `ResolveResponsibilityCoverage` derives current holders from the Partnership, resolves exact policy lifecycle state, preserves office-based and personal constitutional authority as separate sources, and reports vacancies, qualification gaps, prohibited combinations, sole-holder concentration exposure, succession gaps, and requirements pending policy activation. Draft policies do not create operative authority or live vacancies.
 
+Canonical Institutional Identities, Roles, and Role Assignments live in `resources/institution/identity-and-roles.json`. `ResolveIdentityAndRoles` derives names and Partner status from Partnership truth, reconciles recorded holders with Responsibility Coverage, and preserves identity, Partner status, employment relationship, authentication, system accounts, Office, professional responsibility, and delegated authority as separate concepts. The eight founding assignments remain Approved but non-operative until the unresolved Firm effective date is supplied; no login, title, or professional responsibility creates Firm Authority.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is an Institutional Identity & Role Assignment Compiler introducing stable identities and explicit, evidenced, time-bounded appointments and delegations without conflating them with authentication, Partner status, or employment.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Authority Matrix Compiler that consumes resolved identities and assignments while keeping Firm Authority, Client Mandate, and Specific Approval separate.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

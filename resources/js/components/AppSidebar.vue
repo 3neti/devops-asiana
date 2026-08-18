@@ -3,6 +3,7 @@ import { Link, usePage } from '@inertiajs/vue3';
 import {
     BriefcaseBusiness,
     CircleCheckBig,
+    ContactRound,
     DatabaseBackup,
     GitPullRequestArrow,
     KeyRound,
@@ -33,6 +34,7 @@ import { index as clientAcceptance } from '@/routes/client-acceptance';
 import { index as continuityExercises } from '@/routes/continuity-exercises';
 import { index as correctiveActions } from '@/routes/corrective-actions';
 import { index as engagements } from '@/routes/engagements';
+import { index as identityAndRoles } from '@/routes/identity-and-roles';
 import { index as incidents } from '@/routes/incidents';
 import { index as policyRegistry } from '@/routes/policy-registry';
 import { index as productionAccess } from '@/routes/production-access';
@@ -94,6 +96,11 @@ const mainNavItems: NavItem[] = [
         title: 'Responsibility Coverage',
         href: responsibilityCoverage(),
         icon: UsersRound,
+    },
+    {
+        title: 'Identity & Roles',
+        href: identityAndRoles(),
+        icon: ContactRound,
     },
 ];
 

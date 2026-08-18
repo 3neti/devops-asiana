@@ -19,6 +19,11 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Managing Partner         | Partner delegated ordinary management of the Firm                                                 |
 | Management Office        | Transferable institutional office distinct from its current holder                                |
 | Role                     | Named institutional function that may carry responsibilities and delegated authority              |
+| Institutional Identity   | Stable Firm reference to a recognized person, separate from Partner status, employment, login, and system accounts |
+| Role Assignment          | Historical, attributable, time-bounded record linking an Institutional Identity to a Role under an explicit basis |
+| Office Appointment       | Role Assignment to a transferable institutional Office; distinct from personal constitutional status |
+| Professional Responsibility Assignment | Assignment of accountable stewardship that does not by itself grant authority to bind the Firm |
+| Delegated Authority Assignment | Explicit, approved, evidenced, scoped, and expiring assignment capable of carrying Firm Authority |
 | Responsibility           | Accountable institutional outcome assigned to one or more Roles or people                         |
 | Responsibility Gap       | Required responsibility or office with no current qualified holder                                |
 | Responsibility Coverage  | Resolved view of whether a required office, responsibility, or authority has sufficient qualified holders under an operative source |

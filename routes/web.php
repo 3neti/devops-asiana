@@ -7,6 +7,7 @@ use App\Http\Controllers\ContinuityExerciseController;
 use App\Http\Controllers\CorrectiveActionController;
 use App\Http\Controllers\EngagementController;
 use App\Http\Controllers\FirmConsoleController;
+use App\Http\Controllers\IdentityAndRoleController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\InstitutionalDocumentController;
 use App\Http\Controllers\PolicyRegistryController;
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('corrective-actions', CorrectiveActionController::class)->name('corrective-actions.index');
     Route::get('continuity-exercises', ContinuityExerciseController::class)->name('continuity-exercises.index');
     Route::get('responsibility-coverage', ResponsibilityCoverageController::class)->name('responsibility-coverage.index');
+    Route::get('identity-and-roles', IdentityAndRoleController::class)->name('identity-and-roles.index');
     Route::get('documents/{document}', [InstitutionalDocumentController::class, 'show'])
         ->where('document', '.*')
         ->name('institutional-documents.show');

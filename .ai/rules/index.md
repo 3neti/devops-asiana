@@ -15,6 +15,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | docs/** | .ai/rules/docs.md |
 | app/Engagements/** | .ai/rules/engagements.md |
 | resources/js/pages/FirmConsole/** | .ai/rules/firm-console.md |
+| app/IdentityAndRoles/**,resources/institution/identity-and-roles.json,resources/js/pages/IdentityAndRoles/** | .ai/rules/identity-and-roles.md |
 | app/Incidents/**,resources/institution/incidents.json,resources/js/pages/Incidents/**,tests/**/*Incident* | .ai/rules/incidents.md |
 | resources/institution/** | .ai/rules/institution.md |
 | resources/js/pages/ClientAcceptance/** | .ai/rules/pages-client-acceptance.md |

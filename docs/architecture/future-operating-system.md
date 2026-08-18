@@ -91,10 +91,16 @@ The repository now includes a read-only **Responsibility Coverage Compiler** bac
 
 Draft policies expose future design requirements but do not create authority or live vacancies. Current assignments are not copied into the coverage definition. The compiler derives them from canonical Partnership truth, and concentration reporting never silently revokes an otherwise valid appointment.
 
+## Implemented twelfth vertical slice
+
+The repository now includes a read-only **Institutional Identity & Role Assignment Compiler** backed by `resources/institution/identity-and-roles.json`. It recognizes the two known founders through stable cross-references to Partnership Formation, defines Offices, professional-responsibility Roles, and delegated-authority Roles, and reconciles explicit Role Assignments against Responsibility Coverage.
+
+Partner status, employment or service classification, application authentication, system accounts, Office appointment, professional responsibility, and delegated authority remain separate. A professional-responsibility assignment never grants Firm Authority by itself. An Office or delegation may contribute authority only when its assignment is Active, temporally valid, qualified, explicitly based, properly approved where required, and evidenced; delegation additionally requires bounded scope and expiry.
+
+The eight formation-derived assignments are Approved but not Active because the Firm effective date remains unresolved. The Console therefore exposes seven Roles pending activation, two vacancies, two unresolved relationship classifications, and zero effective Firm Authority without inventing a date, identity, successor, or delegation.
+
 ## Recommended next vertical slice
 
-Build an **Institutional Identity & Role Assignment Compiler** that introduces stable person identities beyond the Founding Partners and explicit, evidenced, time-bounded office appointments, professional-role assignments, and delegated-authority grants. Keep Partner status, employment relationship, office, professional responsibility, system account, and application authentication separate.
-
-After identity and assignments, use those resolved records to replace the current founding-only holder boundary before attempting a generalized Institutional Authority Engine.
+Build a narrow **Authority Matrix Compiler** over `ResolvedIdentityAndRoles`. Define named authority domains and actions, source hierarchy, risk or threshold bounds, approval and execution separation, effective periods, delegation limits, and evidence. Start with Firm Authority only; preserve Client Mandate and Specific Approval as independent gates and do not attempt a generalized authorization engine.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

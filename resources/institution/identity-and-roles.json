@@ -1,0 +1,320 @@
+{
+    "schema_version": 1,
+    "identities": [
+        {
+            "key": "lester-hurtado",
+            "subject_type": "person",
+            "partnership_person_key": "lester-hurtado",
+            "lifecycle_status": "recognized",
+            "authentication_binding": null,
+            "employment_relationship": {
+                "state": "unresolved",
+                "classification": null
+            },
+            "system_account_keys": []
+        },
+        {
+            "key": "angelica-santos",
+            "subject_type": "person",
+            "partnership_person_key": "angelica-santos",
+            "lifecycle_status": "recognized",
+            "authentication_binding": null,
+            "employment_relationship": {
+                "state": "unresolved",
+                "classification": null
+            },
+            "system_account_keys": []
+        }
+    ],
+    "roles": [
+        {
+            "key": "managing-partner",
+            "name": "Managing Partner",
+            "category": "office",
+            "authority_attachment": "office",
+            "responsibility_requirement_key": "managing-partner-office",
+            "exclusive": true,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner"
+            ],
+            "responsibilities": [
+                "Day-to-day administration",
+                "Staffing and work allocation",
+                "Operational supervision",
+                "Implementation of approved policies"
+            ]
+        },
+        {
+            "key": "partnership-strategy",
+            "name": "Partnership Strategy",
+            "category": "professional_responsibility",
+            "authority_attachment": "none",
+            "responsibility_requirement_key": "partnership-strategy",
+            "exclusive": false,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner"
+            ],
+            "responsibilities": ["Set institutional strategy jointly"]
+        },
+        {
+            "key": "business-development",
+            "name": "Business Development",
+            "category": "professional_responsibility",
+            "authority_attachment": "none",
+            "responsibility_requirement_key": "business-development",
+            "exclusive": false,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Develop institutional opportunities without exceeding commercial authority"
+            ]
+        },
+        {
+            "key": "client-origination",
+            "name": "Client Origination",
+            "category": "professional_responsibility",
+            "authority_attachment": "none",
+            "responsibility_requirement_key": "client-origination",
+            "exclusive": false,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Originate relationships while preserving Firm ownership of Clients"
+            ]
+        },
+        {
+            "key": "ecosystem-relationships",
+            "name": "Strategic Ecosystem Relationships",
+            "category": "professional_responsibility",
+            "authority_attachment": "none",
+            "responsibility_requirement_key": "ecosystem-relationships",
+            "exclusive": false,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Steward ODTI and 3neti relationships without compromising professional independence"
+            ]
+        },
+        {
+            "key": "client-delivery",
+            "name": "Client Delivery",
+            "category": "professional_responsibility",
+            "authority_attachment": "professional_role",
+            "responsibility_requirement_key": "client-delivery",
+            "exclusive": false,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Maintain delivery organization and professional service quality"
+            ]
+        },
+        {
+            "key": "cloud-operations",
+            "name": "Cloud Operations",
+            "category": "professional_responsibility",
+            "authority_attachment": "professional_role",
+            "responsibility_requirement_key": "cloud-operations",
+            "exclusive": false,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Provide accountable interim leadership for Cloud Operations"
+            ]
+        },
+        {
+            "key": "security-compliance",
+            "name": "Security & Compliance",
+            "category": "professional_responsibility",
+            "authority_attachment": "professional_role",
+            "responsibility_requirement_key": "security-compliance",
+            "exclusive": false,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Own professional Security & Compliance responsibility when assigned"
+            ]
+        },
+        {
+            "key": "privileged-emergency-access-approver",
+            "name": "Privileged Emergency Access Approver",
+            "category": "delegated_authority",
+            "authority_attachment": "delegation",
+            "responsibility_requirement_key": "privileged-emergency-access",
+            "exclusive": false,
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Approve privileged emergency access within an explicit, bounded delegation"
+            ]
+        }
+    ],
+    "assignments": [
+        {
+            "key": "managing-partner-angelica",
+            "role_key": "managing-partner",
+            "identity_key": "angelica-santos",
+            "lifecycle_status": "approved",
+            "basis": {
+                "type": "formation",
+                "reference": "formation.founding_partners.angelica-santos.offices.managing-partner"
+            },
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "authority_scope": null,
+            "approval": null,
+            "evidence_record_key": null,
+            "disposition": null
+        },
+        {
+            "key": "partnership-strategy-lester",
+            "role_key": "partnership-strategy",
+            "identity_key": "lester-hurtado",
+            "lifecycle_status": "approved",
+            "basis": {
+                "type": "formation",
+                "reference": "constitution.responsibility_assignments.partnership-strategy"
+            },
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "authority_scope": null,
+            "approval": null,
+            "evidence_record_key": null,
+            "disposition": null
+        },
+        {
+            "key": "partnership-strategy-angelica",
+            "role_key": "partnership-strategy",
+            "identity_key": "angelica-santos",
+            "lifecycle_status": "approved",
+            "basis": {
+                "type": "formation",
+                "reference": "constitution.responsibility_assignments.partnership-strategy"
+            },
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "authority_scope": null,
+            "approval": null,
+            "evidence_record_key": null,
+            "disposition": null
+        },
+        {
+            "key": "business-development-lester",
+            "role_key": "business-development",
+            "identity_key": "lester-hurtado",
+            "lifecycle_status": "approved",
+            "basis": {
+                "type": "formation",
+                "reference": "constitution.responsibility_assignments.business-development"
+            },
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "authority_scope": null,
+            "approval": null,
+            "evidence_record_key": null,
+            "disposition": null
+        },
+        {
+            "key": "client-origination-lester",
+            "role_key": "client-origination",
+            "identity_key": "lester-hurtado",
+            "lifecycle_status": "approved",
+            "basis": {
+                "type": "formation",
+                "reference": "constitution.responsibility_assignments.client-origination"
+            },
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "authority_scope": null,
+            "approval": null,
+            "evidence_record_key": null,
+            "disposition": null
+        },
+        {
+            "key": "ecosystem-relationships-lester",
+            "role_key": "ecosystem-relationships",
+            "identity_key": "lester-hurtado",
+            "lifecycle_status": "approved",
+            "basis": {
+                "type": "formation",
+                "reference": "constitution.responsibility_assignments.ecosystem-relationships"
+            },
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "authority_scope": null,
+            "approval": null,
+            "evidence_record_key": null,
+            "disposition": null
+        },
+        {
+            "key": "client-delivery-angelica",
+            "role_key": "client-delivery",
+            "identity_key": "angelica-santos",
+            "lifecycle_status": "approved",
+            "basis": {
+                "type": "formation",
+                "reference": "constitution.responsibility_assignments.client-delivery"
+            },
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "authority_scope": null,
+            "approval": null,
+            "evidence_record_key": null,
+            "disposition": null
+        },
+        {
+            "key": "cloud-operations-angelica",
+            "role_key": "cloud-operations",
+            "identity_key": "angelica-santos",
+            "lifecycle_status": "approved",
+            "basis": {
+                "type": "formation",
+                "reference": "constitution.responsibility_assignments.cloud-operations"
+            },
+            "effective_at": null,
+            "effective_at_source": "formation.firm.effective_date",
+            "expires_at": null,
+            "authority_scope": null,
+            "approval": null,
+            "evidence_record_key": null,
+            "disposition": null
+        }
+    ],
+    "evidence_records": []
+}

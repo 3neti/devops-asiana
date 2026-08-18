@@ -942,3 +942,89 @@ export type ResponsibilityCoverageCompiler = {
     };
     principles: string[];
 };
+
+export type AssignmentLifecycleStatus =
+    'proposed' | 'approved' | 'active' | 'suspended' | 'ended' | 'revoked';
+
+export type InstitutionalIdentity = {
+    key: string;
+    subject_type: 'person';
+    partnership_person_key: string;
+    lifecycle_status: 'recognized' | 'inactive' | 'archived';
+    display_name: string;
+    partner_status: string | null;
+    authentication_binding: Record<string, unknown> | null;
+    authentication_bound: boolean;
+    employment_relationship: {
+        state: 'resolved' | 'unresolved';
+        classification: string | null;
+    };
+    system_account_keys: string[];
+    institutional_status: string;
+};
+
+export type InstitutionalRole = {
+    key: string;
+    name: string;
+    category: 'office' | 'professional_responsibility' | 'delegated_authority';
+    authority_attachment:
+        'office' | 'professional_role' | 'delegation' | 'none';
+    responsibility_requirement_key: string;
+    exclusive: boolean;
+    qualified_partner_statuses: string[];
+    responsibilities: string[];
+    expected_holder_keys: string[];
+    recorded_holder_keys: string[];
+    recorded_holder_names: string[];
+    coverage_status: ResponsibilityCoverageStatus;
+    operative_assignment_count: number;
+};
+
+export type RoleAssignment = {
+    key: string;
+    role_key: string;
+    role_name: string;
+    identity_key: string;
+    identity_name: string;
+    lifecycle_status: AssignmentLifecycleStatus;
+    lifecycle_status_label: string;
+    basis: {
+        type: 'formation' | 'appointment' | 'delegation';
+        reference: string;
+    };
+    effective_at: string | null;
+    effective_at_source: string | null;
+    effective_at_resolved: string | null;
+    expires_at: string | null;
+    operative: boolean;
+    grants_firm_authority: boolean;
+    temporal_state: string;
+    operational_status: string;
+};
+
+export type IdentityAndRoleCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    identities: InstitutionalIdentity[];
+    roles: InstitutionalRole[];
+    assignments: RoleAssignment[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        identities: number;
+        roles: number;
+        assignments: number;
+        authority_effective: number;
+        authentication_bindings: number;
+        by_assignment_lifecycle: Record<AssignmentLifecycleStatus, number>;
+        by_role_coverage: Record<ResponsibilityCoverageStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        identity_gaps: Array<{ code: string; message: string }>;
+        activation_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        holder_mismatches: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};
