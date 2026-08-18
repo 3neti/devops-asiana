@@ -226,3 +226,7 @@ The repository now includes a read-only **Control Review Sign-off Compiler** bac
 ## Control review action register
 
 The repository now includes a read-only **Control Review Action Register Compiler** backed by `resources/institution/control-review-actions.json`. It admits bounded follow-up only when an action references an admitted Sign-off and a control within that Sign-off's reviewed scope, with explicit owner, due date, authority basis, reason, and Evidence. It is not a generic task system and does not create or close Corrective Actions implicitly.
+
+## Control review action outcomes
+
+The repository now includes a read-only **Control Review Action Outcome Compiler** backed by `resources/institution/control-review-action-outcomes.json`. It records progress, blocked state, completion claims, and verification references for admitted actions. Completion claims remain distinct from independent verification, and verification references never authorize closure.

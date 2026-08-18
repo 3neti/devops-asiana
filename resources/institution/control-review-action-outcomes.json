@@ -1,0 +1,26 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "action",
+            "label": "Admitted Action",
+            "question": "Does the outcome reference an admitted Control Review Action?"
+        },
+        {
+            "key": "outcome",
+            "label": "Action Outcome",
+            "question": "Is the progress, blocked state, completion claim, or verification reference explicit?"
+        },
+        {
+            "key": "independence",
+            "label": "Verification Independence",
+            "question": "Is verification distinct from the action owner?"
+        },
+        {
+            "key": "evidence",
+            "label": "Outcome Evidence",
+            "question": "Is Evidence explicit for the outcome?"
+        }
+    ],
+    "outcomes": []
+}
