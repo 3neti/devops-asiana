@@ -1,0 +1,8 @@
+{
+    "schema_version": 1,
+    "verification_key": "institutional-control-history-anchor-verification-v1",
+    "source": "institutional-control-history-v1-integrity",
+    "algorithm": "sha256",
+    "supplied_history_anchor": null,
+    "supplied_event_anchors": []
+}

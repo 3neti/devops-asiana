@@ -45,6 +45,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Control Closure Reconciliation | comparison of admitted decisions with explicit downstream state without source mutation |
 | Control History             | append-only chronology projection across eligibility, decisions, and reconciliation        |
 | Control History Integrity   | deterministic payload-free event and chronology anchors with visible ordering gaps            |
+| Control History Verification | compares supplied event and chronology anchors with resolved integrity without mutation        |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -96,6 +97,8 @@ Control Review Closure Reconciliation resolution compares admitted Closure Decis
 Institutional Control History resolution is a read-only chronology projection across eligibility reviews, closure decisions, and closure reconciliations. `ResolveInstitutionalControlHistory` preserves source references, actors, timestamps, and states while reporting unsupported or incomplete events. Payloads and secrets remain excluded; history does not create authority, approval, closure, remediation, or workflow state.
 
 Control History Integrity resolution is downstream of that chronology. `ResolveInstitutionalControlHistoryIntegrity` hashes only allowlisted event identity fields using fixed ordering, emits event and history anchors, and reports ordering, duplicate-key, source, and configuration gaps. Anchoring is an integrity projection only; it never mutates history or creates authority, approval, closure, remediation, or workflow state.
+
+Control History Anchor Verification resolution is downstream of the integrity projection. `ResolveInstitutionalControlHistoryAnchorVerification` compares a supplied history anchor and optional event-anchor set with the resolved values, exposing missing, mismatched, unexpected, or invalid inputs. Verification is not acceptance of risk, evidence admission, authority, approval, or workflow state.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

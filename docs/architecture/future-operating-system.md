@@ -250,3 +250,7 @@ The repository now includes a read-only **Institutional Control History Export C
 ## Institutional control history integrity
 
 The repository now includes a read-only **Control History Integrity and Anchor Compiler** using the same canonical history definition. `ResolveInstitutionalControlHistoryIntegrity` derives deterministic SHA-256 event anchors and one ordered history anchor from payload-free identity fields. It makes unstable ordering, duplicate event keys, source mismatches, unsupported algorithms, and inherited history gaps visible without rewriting source records or creating audit workflow, authority, approval, closure, or remediation state.
+
+## Institutional control history anchor verification
+
+The repository now includes a read-only **Control History Anchor Verification Compiler** backed by `resources/institution/control-history-anchor-verification.json`. `ResolveInstitutionalControlHistoryAnchorVerification` compares a supplied history anchor and optional event-anchor set with the resolved integrity projection. Missing, invalid, mismatched, unexpected, and duplicate supplied anchors remain explicit findings; the canonical configuration intentionally supplies none, so the current state is not verified. Verification does not admit Evidence, accept risk, grant authority, or mutate history.

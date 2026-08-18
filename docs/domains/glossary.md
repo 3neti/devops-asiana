@@ -98,6 +98,7 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Institutional Control History          | Append-only chronology projection of control-review lifecycle records, preserving source provenance without creating authority or workflow state          |
 | History Event                          | Payload-free chronological record retaining an event kind, source reference, actor, timestamp, and state                                                   |
 | History Anchor                         | Deterministic digest of payload-free History Event identity or an ordered History projection         |
+| Anchor Verification                    | Read-only comparison of supplied History Anchors with resolved anchors, preserving mismatch or absence as explicit findings |
 | Audit Trail                            | Ordered, attributable history of material state and action                                                                                              |
 | Production Environment                 | Live environment whose behavior or data affects real operations or Clients                                                                              |
 | Access Grant                           | Recorded authority for a named identity to access a defined resource                                                                                    |

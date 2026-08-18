@@ -152,8 +152,10 @@ Canonical Institutional Control History configuration lives in `resources/instit
 
 Control History integrity uses the same resource to derive deterministic SHA-256 event and history anchors from payload-free identity fields. `ResolveInstitutionalControlHistoryIntegrity` reports ordering, duplicate-key, source, and configuration gaps without mutating history or creating authority, approval, closure, remediation, or workflow state.
 
+Canonical Control History Anchor Verification configuration lives in `resources/institution/control-history-anchor-verification.json`. `ResolveInstitutionalControlHistoryAnchorVerification` compares supplied history and event anchors with resolved integrity output. The current canonical configuration supplies no anchors, so verification remains explicitly unresolved; comparison never admits Evidence, accepts risk, grants authority, or mutates history.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control History Anchor Verification Compiler that can compare a supplied anchor to resolved chronology without becoming a workflow or audit platform.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control History Verification Evidence Link Compiler that can associate an external verification artifact without turning verification into authority or a generic audit platform.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).
