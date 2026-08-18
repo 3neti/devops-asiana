@@ -201,4 +201,8 @@ The repository now includes a read-only **Evidence Custody and Retention Compile
 
 The next boundary should connect explicit retention gaps and review outcomes to Policy Exceptions and corrective action without creating a generic records-management system.
 
+## Retention review and policy exceptions
+
+The repository now includes a read-only **Retention Review and Policy Exception Compiler** backed by `resources/institution/retention-reviews.json`. It records an attributable review outcome against known Evidence Custody and indexed Evidence. A deviation outcome must name an already approved or active Policy Exception; the compiler never creates approval, extends retention silently, or changes custody disposition. Future work may connect review findings to Corrective Actions while retaining each lifecycle as a separate record.
+
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

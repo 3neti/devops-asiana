@@ -1,0 +1,31 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "custody",
+            "label": "Custody Reference",
+            "question": "Does the review address one known Evidence Custody record?"
+        },
+        {
+            "key": "review",
+            "label": "Review Basis",
+            "question": "Are reviewer, time, and review basis explicit?"
+        },
+        {
+            "key": "outcome",
+            "label": "Review Outcome",
+            "question": "Is the retention outcome explicit?"
+        },
+        {
+            "key": "exception",
+            "label": "Policy Exception",
+            "question": "If policy deviation is required, is an approved exception referenced?"
+        },
+        {
+            "key": "evidence",
+            "label": "Review Evidence",
+            "question": "Does the review cite indexed Evidence?"
+        }
+    ],
+    "reviews": []
+}

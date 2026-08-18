@@ -128,8 +128,10 @@ Canonical Evidence Index records live in `resources/institution/evidence-index.j
 
 Canonical Evidence Custody records live in `resources/institution/evidence-custody.json`. `ResolveEvidenceCustody` adds explicit source, custodian, custody history, retention review, integrity verification, and disposition facts to indexed Evidence. It does not store payloads or secrets, infer retention, or erase institutional history when Evidence is disposed or superseded.
 
+Canonical Retention Review records live in `resources/institution/retention-reviews.json`. `ResolveRetentionReviews` requires an attributable review against known Evidence Custody and indexed Evidence. A deviation must reference an approved or active Policy Exception; review, exception approval, custody, disposition, and corrective action remain separate facts.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Policy Exception and Retention Review Compiler that connects explicit control gaps to accountable, temporary, reviewable exceptions.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Retention Finding and Corrective-Action Link Compiler that connects review findings to existing remediation records without closing either lifecycle implicitly.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

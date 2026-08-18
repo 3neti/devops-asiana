@@ -171,4 +171,6 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Retention Review                       | Scheduled, attributable review of whether an Evidence item remains subject to its stated retention basis                                               |
 | Integrity Verification                  | Explicit verification of an Evidence item's digest using a named algorithm, time, and verifier                                                       |
 | Evidence Disposition                    | Explicit retained, disposed, or superseded state that never erases the institutional Evidence Index                                                  |
+| Retention Review                       | Attributable review of an Evidence Custody record that records compliance, disposition need, or a separately approved exception requirement            |
+| Policy Exception                       | Temporary, explicit, approved, evidenced, and reviewable deviation from one exact Policy Version requirement                                           |
 | Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |
