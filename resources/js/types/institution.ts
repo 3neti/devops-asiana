@@ -430,6 +430,29 @@ export type EngagementCompiler = {
     principles: string[];
 };
 
+export type ClientMandateCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    requirements: Array<{ key: string; label: string; question: string }>;
+    action_requests: Array<Record<string, unknown>>;
+    permitted_actions: Array<Record<string, unknown>>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        action_requests: number;
+        permitted_actions: number;
+        evidence_records: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        mandate_gaps: Array<{ code: string; message: string }>;
+        authority_gaps: Array<{ code: string; message: string }>;
+        approval_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};
+
 export type AccessGrantLifecycleStatus =
     | 'requested'
     | 'under_review'

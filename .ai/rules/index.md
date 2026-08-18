@@ -12,6 +12,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/Changes/**,resources/institution/changes.json | .ai/rules/changes-institution.md |
 | app/Changes/**,resources/institution/changes.json,resources/js/pages/Changes/** | .ai/rules/changes.md |
 | app/ClientAcceptance/** | .ai/rules/client-acceptance.md |
+| app/ClientMandates/** | .ai/rules/client-mandates.md |
 | app/Continuity/**,resources/institution/continuity-exercises.json,resources/js/pages/ContinuityExercises/**,tests/**/*ContinuityExercise* | .ai/rules/continuity-exercises.md |
 | app/CorrectiveActions/**,resources/institution/corrective-actions.json,resources/js/pages/CorrectiveActions/**,tests/**/*CorrectiveAction* | .ai/rules/corrective-actions.md |
 | {app/DecisionRecords/**,resources/institution/decision-records.json,resources/js/pages/DecisionRecords/**,tests/**/*DecisionRecord*} | .ai/rules/decision-records.md |

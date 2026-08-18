@@ -15,10 +15,15 @@ import {
 } from '@lucide/vue';
 import { index as engagementsIndex } from '@/routes/engagements';
 import { show as showDocument } from '@/routes/institutional-documents';
-import type { EngagementCompiler, EngagementProjection } from '@/types';
+import type {
+    ClientMandateCompiler,
+    EngagementCompiler,
+    EngagementProjection,
+} from '@/types';
 
 defineProps<{
     engagements: EngagementCompiler;
+    clientMandates: ClientMandateCompiler;
 }>();
 
 defineOptions({
@@ -187,6 +192,57 @@ function statusClass(
                     </dl>
                 </div>
             </header>
+
+            <section
+                class="rounded-2xl border border-indigo-600/20 bg-indigo-50/60 p-5 sm:p-6 dark:bg-indigo-950/20"
+            >
+                <div
+                    class="flex flex-col justify-between gap-4 sm:flex-row sm:items-start"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-semibold tracking-[0.18em] text-indigo-700 uppercase dark:text-indigo-300"
+                        >
+                            Client mandate and authority compiler
+                        </p>
+                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                            Firm Authority is not Client authorization
+                        </h2>
+                        <p
+                            class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
+                        >
+                            A bounded Client action requires an Open Engagement,
+                            a current mandate for the exact system and
+                            environment, effective Firm Authority for the named
+                            actor, separate Specific Approval, and Evidence.
+                        </p>
+                    </div>
+                    <dl class="grid shrink-0 grid-cols-2 gap-2 text-center">
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd class="text-xl font-semibold">
+                                {{ clientMandates.counts.action_requests }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Requests
+                            </dt>
+                        </div>
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd
+                                class="text-xl font-semibold text-indigo-700 dark:text-indigo-300"
+                            >
+                                {{ clientMandates.counts.permitted_actions }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Permitted
+                            </dt>
+                        </div>
+                    </dl>
+                </div>
+            </section>
 
             <section
                 v-if="engagements.reports.readiness_gaps.length > 0"

@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "open-engagement",
+            "label": "Open Engagement",
+            "question": "Is the action bound to an Engagement currently open for Client work?"
+        },
+        {
+            "key": "bounded-mandate",
+            "label": "Bounded Client Mandate",
+            "question": "Does the Client mandate cover this action, system, and environment now?"
+        },
+        {
+            "key": "firm-authority",
+            "label": "Firm Authority",
+            "question": "Does the named actor hold effective Firm Authority for this action?"
+        },
+        {
+            "key": "specific-approval",
+            "label": "Specific Approval",
+            "question": "Is this particular action separately approved where required?"
+        },
+        {
+            "key": "evidence",
+            "label": "Evidence",
+            "question": "Can each gate be proven by attributable Evidence?"
+        }
+    ],
+    "action_requests": [],
+    "evidence_records": []
+}

@@ -155,3 +155,6 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Successor Appointment Record            | Explicit record proposing and admitting a new holder for a vacated Role; it never renames or inherits the predecessor's assignment                  |
 | Assignment Admission                    | Resolved projection that one exact Role Assignment passed its appointment, approval, acceptance, activation, and evidence gates                    |
 | Vacancy Closure                         | The state in which a transition-created vacancy is covered by a separately admitted successor assignment; it is not inferred from intent           |
+| Client Mandate                          | A bounded authorization granted by a Client to the Firm for identified systems, environments, actions, requestors, and validity period             |
+| Specific Approval                       | Separate authorization for one particular Client action inside a current Engagement and Client Mandate                                             |
+| Permitted Action                        | Resolved projection showing that Engagement, mandate, Firm Authority, Specific Approval, and Evidence gates all hold                              |

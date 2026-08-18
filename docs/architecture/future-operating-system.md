@@ -165,8 +165,14 @@ The repository now includes a read-only **Successor Appointment and Role Admissi
 
 The compiler projects a new assignment and activation admission without rewriting the canonical identity-and-role registry. It closes coverage only for the separately admitted holder, preserves the predecessor's ended history, and grants no Firm Authority. A successor therefore cannot inherit an Office, authority, governance, capital, or compensation merely through relationship to the outgoing holder.
 
+## Client Mandate and Engagement-bound authority
+
+The repository now includes a read-only **Client Mandate and Engagement-Bound Authority Compiler** backed by `resources/institution/client-mandates.json`. It evaluates action requests only when an Engagement is open for Client work, the Client Mandate covers the exact action, system, and environment, the named actor holds effective Firm Authority for that action, a separate Specific Approval exists, and Evidence is present.
+
+The compiler emits a permitted-action projection rather than blanket permission. Firm Authority never supplies Client authorization; an Open Engagement never authorizes every action; technical access and execution never prove either gate. The canonical register contains no action requests until the Firm has an evidenced institutional matter to evaluate.
+
 ## Recommended next vertical slice
 
-Build a narrow **Client Mandate and Engagement-Bound Authority Compiler**. It should keep Firm Authority, Client Mandate, Engagement scope, risk classification, and Specific Approval as separate gates for a proposed Client action. The compiler should answer which authority and mandate facts permit a bounded action without turning access, a title, or an Engagement into blanket permission.
+Build a narrow **Matter and Responsible-Partner Accountability Compiler**. It should distinguish the Client relationship, Engagement, and bounded Matter while preserving exactly one Responsible Partner, scope, risk, escalation, and Evidence for each material piece of professional work.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.
