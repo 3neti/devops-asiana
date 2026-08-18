@@ -24,3 +24,4 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/Policies/**,resources/institution/policies.json,resources/js/pages/Policies/** | .ai/rules/policies.md |
 | app/ProductionAccess/**,resources/institution/production-access.json | .ai/rules/production-access-institution.md |
 | app/ProductionAccess/**,resources/institution/production-access.json,resources/js/pages/ProductionAccess/** | .ai/rules/production-access.md |
+| app/ResponsibilityCoverage/**,resources/institution/responsibility-coverage.json,resources/js/pages/ResponsibilityCoverage/**,tests/**/*ResponsibilityCoverage* | .ai/rules/responsibility-coverage.md |

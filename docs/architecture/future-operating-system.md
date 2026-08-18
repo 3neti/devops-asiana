@@ -85,10 +85,16 @@ Backup success does not prove restorability. The compiler never supplies generic
 
 No Continuity Exercise, recovery objective, backup, or resilience claim is invented in canonical data. Because the Business Continuity and Disaster Recovery, Authority and Delegation, and Information Security policies remain Draft, the Console correctly reports zero exercises and three approval-readiness gaps.
 
+## Implemented eleventh vertical slice
+
+The repository now includes a read-only **Responsibility Coverage Compiler** backed by `resources/institution/responsibility-coverage.json`. It resolves constitutional offices and responsibility assignments from `ResolvedPartnership`, resolves exact policy lifecycle state from `ResolvedPolicyRegistry`, distinguishes office, personal constitutional, professional-role, delegated, and non-authority attachments, and reports live vacancies, qualification gaps, prohibited combinations, sole-holder concentration exposure, succession gaps, and requirements pending policy activation.
+
+Draft policies expose future design requirements but do not create authority or live vacancies. Current assignments are not copied into the coverage definition. The compiler derives them from canonical Partnership truth, and concentration reporting never silently revokes an otherwise valid appointment.
+
 ## Recommended next vertical slice
 
-Build a **Responsibility Coverage Compiler** that derives required offices, authorities, and professional responsibilities from the Partnership and operative policies; resolves current qualified holders; distinguishes personal constitutional rights from office-based authority; and reports vacancies, conflicts, concentration risk, and missing succession coverage.
+Build an **Institutional Identity & Role Assignment Compiler** that introduces stable person identities beyond the Founding Partners and explicit, evidenced, time-bounded office appointments, professional-role assignments, and delegated-authority grants. Keep Partner status, employment relationship, office, professional responsibility, system account, and application authentication separate.
 
-After Responsibility Coverage, prefer a thin institutional identity and role-assignment registry before introducing write workflows or generalized authorization.
+After identity and assignments, use those resolved records to replace the current founding-only holder boundary before attempting a generalized Institutional Authority Engine.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

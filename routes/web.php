@@ -11,6 +11,7 @@ use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\InstitutionalDocumentController;
 use App\Http\Controllers\PolicyRegistryController;
 use App\Http\Controllers\ProductionAccessController;
+use App\Http\Controllers\ResponsibilityCoverageController;
 use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'Welcome')->name('home');
@@ -26,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('incidents', IncidentController::class)->name('incidents.index');
     Route::get('corrective-actions', CorrectiveActionController::class)->name('corrective-actions.index');
     Route::get('continuity-exercises', ContinuityExerciseController::class)->name('continuity-exercises.index');
+    Route::get('responsibility-coverage', ResponsibilityCoverageController::class)->name('responsibility-coverage.index');
     Route::get('documents/{document}', [InstitutionalDocumentController::class, 'show'])
         ->where('document', '.*')
         ->name('institutional-documents.show');

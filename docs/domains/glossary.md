@@ -21,6 +21,10 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Role                     | Named institutional function that may carry responsibilities and delegated authority              |
 | Responsibility           | Accountable institutional outcome assigned to one or more Roles or people                         |
 | Responsibility Gap       | Required responsibility or office with no current qualified holder                                |
+| Responsibility Coverage  | Resolved view of whether a required office, responsibility, or authority has sufficient qualified holders under an operative source |
+| Responsibility Vacancy   | Operative responsibility requirement with fewer qualified holders than its recorded minimum       |
+| Concentration Exposure   | Review signal that one person is sole holder of several material requirements; not an automatic authority revocation |
+| Succession Coverage      | Distinct qualified alternate recorded for a responsibility whose continuity requires one           |
 | Practice                 | Professional capability classification, not necessarily a department                              |
 | Client                   | Person or organization formally accepted by the Firm                                              |
 | Prospective Client       | Candidate not yet accepted as a Client                                                            |

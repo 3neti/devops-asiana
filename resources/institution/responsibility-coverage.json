@@ -1,0 +1,503 @@
+{
+    "schema_version": 1,
+    "concentration_review_threshold": 3,
+    "requirements": [
+        {
+            "key": "managing-partner-office",
+            "label": "Managing Partner",
+            "category": "office",
+            "criticality": "constitutional",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.offices.managing-partner"
+            },
+            "holder_source": {
+                "type": "office",
+                "key": "managing-partner"
+            },
+            "authority_attachment": "office",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": 1
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner"
+            ],
+            "responsibilities": [
+                "Day-to-day administration",
+                "Staffing and work allocation",
+                "Operational supervision",
+                "Implementation of approved policies"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "partnership-strategy",
+            "label": "Partnership Strategy",
+            "category": "responsibility",
+            "criticality": "constitutional",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.partnership-strategy"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "partnership-strategy"
+            },
+            "authority_attachment": "partner_status",
+            "required_holders": {
+                "minimum": 2,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner"
+            ],
+            "responsibilities": ["Set institutional strategy jointly"],
+            "concentration_review": false,
+            "succession": {
+                "required": false,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "constitutional-governance",
+            "label": "Constitutional Governance",
+            "category": "authority",
+            "criticality": "constitutional",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.constitutional-governance"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "constitutional-governance"
+            },
+            "authority_attachment": "partner_status",
+            "required_holders": {
+                "minimum": 2,
+                "maximum": null
+            },
+            "qualified_partner_statuses": ["Founding Partner"],
+            "responsibilities": [
+                "Exercise personal Founding Partner participation in Reserved Matters"
+            ],
+            "concentration_review": false,
+            "succession": {
+                "required": false,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "day-to-day-management",
+            "label": "Day-to-Day Management",
+            "category": "responsibility",
+            "criticality": "material",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.day-to-day-management"
+            },
+            "holder_source": {
+                "type": "office",
+                "key": "managing-partner"
+            },
+            "authority_attachment": "office",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": 1
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner"
+            ],
+            "responsibilities": [
+                "Run ordinary Firm operations subject to policy and Reserved Matters"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "business-development",
+            "label": "Business Development",
+            "category": "responsibility",
+            "criticality": "important",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.business-development"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "business-development"
+            },
+            "authority_attachment": "none",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Develop institutional opportunities without exceeding commercial authority"
+            ],
+            "concentration_review": false,
+            "succession": {
+                "required": false,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "client-origination",
+            "label": "Client Origination",
+            "category": "responsibility",
+            "criticality": "important",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.client-origination"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "client-origination"
+            },
+            "authority_attachment": "none",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Originate relationships while preserving Firm ownership of Clients"
+            ],
+            "concentration_review": false,
+            "succession": {
+                "required": false,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "ecosystem-relationships",
+            "label": "Strategic Ecosystem Relationships",
+            "category": "responsibility",
+            "criticality": "important",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.ecosystem-relationships"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "ecosystem-relationships"
+            },
+            "authority_attachment": "none",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Steward ODTI and 3neti relationships without compromising professional independence"
+            ],
+            "concentration_review": false,
+            "succession": {
+                "required": false,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "client-delivery",
+            "label": "Client Delivery",
+            "category": "responsibility",
+            "criticality": "material",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.client-delivery"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "client-delivery"
+            },
+            "authority_attachment": "professional_role",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Maintain delivery organization and professional service quality"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "cloud-operations",
+            "label": "Cloud Operations",
+            "category": "responsibility",
+            "criticality": "material",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.cloud-operations"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "cloud-operations"
+            },
+            "authority_attachment": "professional_role",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Provide accountable interim leadership for Cloud Operations"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "security-compliance",
+            "label": "Security & Compliance",
+            "category": "responsibility",
+            "criticality": "material",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.security-compliance"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "security-compliance"
+            },
+            "authority_attachment": "professional_role",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner"
+            ],
+            "responsibilities": [
+                "Own security and compliance professional practice responsibility"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "privileged-emergency-access",
+            "label": "Privileged Emergency Access Approval",
+            "category": "authority",
+            "criticality": "material",
+            "source": {
+                "type": "constitution",
+                "reference": "constitution.responsibility_assignments.privileged-emergency-access"
+            },
+            "holder_source": {
+                "type": "responsibility",
+                "key": "privileged-emergency-access"
+            },
+            "authority_attachment": "delegation",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner"
+            ],
+            "responsibilities": [
+                "Approve emergency privileged access only within recorded authority"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "production-access-approval",
+            "label": "Production Access Approval",
+            "category": "authority",
+            "criticality": "material",
+            "source": {
+                "type": "policy",
+                "key": "production-access",
+                "version": "0.1"
+            },
+            "holder_source": {
+                "type": "unassigned"
+            },
+            "authority_attachment": "delegation",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Approve privileged production access within Client Mandate and risk limits"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "high-risk-change-approval",
+            "label": "High-Risk Change Approval",
+            "category": "authority",
+            "criticality": "material",
+            "source": {
+                "type": "policy",
+                "key": "change-management",
+                "version": "0.1"
+            },
+            "holder_source": {
+                "type": "unassigned"
+            },
+            "authority_attachment": "delegation",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Approve high-risk production changes independently from execution where required"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "incident-disclosure-authority",
+            "label": "Client Incident Disclosure Authority",
+            "category": "authority",
+            "criticality": "material",
+            "source": {
+                "type": "policy",
+                "key": "incident-management",
+                "version": "0.1"
+            },
+            "holder_source": {
+                "type": "unassigned"
+            },
+            "authority_attachment": "delegation",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Authorize and own Client incident communications without concealment"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        },
+        {
+            "key": "continuity-exercise-approval",
+            "label": "Continuity Exercise Approval",
+            "category": "authority",
+            "criticality": "material",
+            "source": {
+                "type": "policy",
+                "key": "business-continuity-dr",
+                "version": "0.1"
+            },
+            "holder_source": {
+                "type": "unassigned"
+            },
+            "authority_attachment": "delegation",
+            "required_holders": {
+                "minimum": 1,
+                "maximum": null
+            },
+            "qualified_partner_statuses": [
+                "Founding Partner",
+                "Equity Partner",
+                "Service Partner",
+                "Principal"
+            ],
+            "responsibilities": [
+                "Approve continuity exercises within Firm Authority and Client Mandate"
+            ],
+            "concentration_review": true,
+            "succession": {
+                "required": true,
+                "alternate_holder_keys": []
+            }
+        }
+    ],
+    "separation_constraints": [
+        {
+            "key": "emergency-access-approval-independent-from-cloud-operations",
+            "left_requirement_key": "privileged-emergency-access",
+            "right_requirement_key": "cloud-operations",
+            "reason": "Emergency access approval must remain independent from the operational function likely to execute the access."
+        },
+        {
+            "key": "high-risk-change-approval-independent-from-cloud-operations",
+            "left_requirement_key": "high-risk-change-approval",
+            "right_requirement_key": "cloud-operations",
+            "reason": "High-risk Change approval must remain independent from the operational function likely to execute the Change."
+        }
+    ]
+}

@@ -835,3 +835,110 @@ export type ContinuityExerciseCompiler = {
     };
     principles: string[];
 };
+
+export type ResponsibilityCoverageStatus =
+    'covered' | 'vacant' | 'pending_activation' | 'conflicted';
+
+export type ResponsibilityRequirement = {
+    key: string;
+    label: string;
+    category: 'office' | 'responsibility' | 'authority';
+    criticality: 'constitutional' | 'material' | 'important';
+    source: {
+        type: 'constitution' | 'policy';
+        reference?: string;
+        key?: string;
+        version?: string;
+    };
+    source_status: 'operative' | PolicyLifecycleStatus | 'missing' | 'invalid';
+    source_label: string;
+    holder_source: {
+        type: 'office' | 'responsibility' | 'unassigned';
+        key?: string;
+    };
+    authority_attachment:
+        | 'office'
+        | 'partner_status'
+        | 'professional_role'
+        | 'delegation'
+        | 'none';
+    required_holders: {
+        minimum: number;
+        maximum: number | null;
+    };
+    qualified_partner_statuses: string[];
+    responsibilities: string[];
+    concentration_review: boolean;
+    succession: {
+        required: boolean;
+        alternate_holder_keys: string[];
+    };
+    holder_keys: string[];
+    holder_names: string[];
+    alternate_holder_keys: string[];
+    alternate_holder_names: string[];
+    coverage_status: ResponsibilityCoverageStatus;
+    sole_holder: boolean;
+};
+
+export type ResponsibilityCoverageCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    concentration_review_threshold: number;
+    requirements: ResponsibilityRequirement[];
+    separation_constraints: Array<{
+        key: string;
+        left_requirement_key: string;
+        right_requirement_key: string;
+        reason: string;
+        status: 'satisfied' | 'violated' | 'pending_activation' | 'invalid';
+        overlapping_holder_keys: string[];
+    }>;
+    counts: {
+        requirements: number;
+        covered: number;
+        vacant: number;
+        pending_activation: number;
+        conflicted: number;
+        succession_gaps: number;
+        concentration_exposures: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        vacancies: Array<{
+            code: string;
+            requirement_key: string;
+            message: string;
+        }>;
+        qualification_gaps: Array<{
+            code: string;
+            requirement_key: string;
+            message: string;
+        }>;
+        succession_gaps: Array<{
+            code: string;
+            requirement_key: string;
+            message: string;
+        }>;
+        concentration_exposures: Array<{
+            code: string;
+            holder_key: string;
+            holder_name: string;
+            requirement_keys: string[];
+            message: string;
+        }>;
+        separation_conflicts: Array<{
+            code: string;
+            constraint_key: string;
+            holder_keys: string[];
+            message: string;
+        }>;
+        pending_requirements: Array<{
+            code: string;
+            requirement_key: string;
+            message: string;
+        }>;
+    };
+    principles: string[];
+};

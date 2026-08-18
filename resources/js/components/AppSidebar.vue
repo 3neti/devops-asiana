@@ -11,6 +11,7 @@ import {
     ShieldAlert,
     Siren,
     UserRoundCheck,
+    UsersRound,
 } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import InstitutionalDocumentNav from '@/components/InstitutionalDocumentNav.vue';
@@ -35,6 +36,7 @@ import { index as engagements } from '@/routes/engagements';
 import { index as incidents } from '@/routes/incidents';
 import { index as policyRegistry } from '@/routes/policy-registry';
 import { index as productionAccess } from '@/routes/production-access';
+import { index as responsibilityCoverage } from '@/routes/responsibility-coverage';
 import type { InstitutionalNavigationGroup, NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -87,6 +89,11 @@ const mainNavItems: NavItem[] = [
         title: 'Continuity Exercises',
         href: continuityExercises(),
         icon: DatabaseBackup,
+    },
+    {
+        title: 'Responsibility Coverage',
+        href: responsibilityCoverage(),
+        icon: UsersRound,
     },
 ];
 
