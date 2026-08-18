@@ -1,0 +1,144 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "meeting and decision discipline",
+            "key": "partnership-governance",
+            "version": "0.1",
+            "title": "Partnership Governance Policy",
+            "required_for_conclusion": true
+        },
+        {
+            "purpose": "constitutional authority resolution",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "title": "Authority & Delegation Policy",
+            "required_for_conclusion": true
+        }
+    ],
+    "meeting_requirements": [
+        {
+            "key": "notice-agenda",
+            "label": "Notice & Agenda",
+            "question": "Was notice appropriate to every matter and was the agenda fixed before deliberation?"
+        },
+        {
+            "key": "attendance",
+            "label": "Attendance",
+            "question": "Which governing Partners were present, absent, or present for only part of the meeting?"
+        },
+        {
+            "key": "quorum",
+            "label": "Quorum",
+            "question": "Which resolved constitutional rule establishes that the meeting may transact business?"
+        },
+        {
+            "key": "conflicts",
+            "label": "Conflicts",
+            "question": "Did each participant disclose conflicts and related-party interests before deliberation?"
+        },
+        {
+            "key": "recusals",
+            "label": "Recusals",
+            "question": "Who was excluded from deliberation or voting on a specific agenda item, and why?"
+        },
+        {
+            "key": "votes",
+            "label": "Votes",
+            "question": "Did every vote, opposition, and abstention remain attributable to one eligible Partner?"
+        },
+        {
+            "key": "outcome",
+            "label": "Outcome",
+            "question": "Does the recorded outcome follow the applicable resolved threshold without treating silence as consent?"
+        },
+        {
+            "key": "deadlock",
+            "label": "Deadlock",
+            "question": "If no outcome can be reached, which expressly adopted mechanism governs next steps?"
+        },
+        {
+            "key": "evidence",
+            "label": "Evidence",
+            "question": "Which durable records prove notice, attendance, disclosure, votes, and outcome?"
+        }
+    ],
+    "decision_rules": {
+        "ordinary": {
+            "quorum": {
+                "state": "unresolved",
+                "required_governance_weight": null
+            },
+            "approval": {
+                "state": "unresolved",
+                "basis": null,
+                "required_governance_weight": null
+            }
+        },
+        "reserved": {
+            "quorum": {
+                "state": "unresolved",
+                "required_governance_weight": null
+            },
+            "approval": {
+                "state": "unresolved",
+                "basis": null,
+                "required_governance_weight": null
+            }
+        },
+        "deadlock": {
+            "state": "unresolved",
+            "mechanism": null,
+            "decision_reference": "governance-deadlock",
+            "counsel_review": true
+        }
+    },
+    "reserved_matter_catalog": [
+        {
+            "key": "admit-equity-partners",
+            "label": "Admission of Equity Partners"
+        },
+        {
+            "key": "create-partner-classes",
+            "label": "Creation of Partner classes"
+        },
+        {
+            "key": "material-ownership-capital-change",
+            "label": "Material ownership or capital changes"
+        },
+        {
+            "key": "amend-partnership-agreement",
+            "label": "Amendment of the Partnership Agreement"
+        },
+        {
+            "key": "amend-founder-protections",
+            "label": "Amendment of Founder protections"
+        },
+        {
+            "key": "merger-sale-dissolution",
+            "label": "Merger, sale of substantially all assets, or dissolution"
+        },
+        {
+            "key": "major-borrowing-guarantees",
+            "label": "Major borrowing or guarantees"
+        },
+        {
+            "key": "material-related-party-transaction",
+            "label": "Material related-party transactions"
+        },
+        {
+            "key": "strategic-assets-ip-disposition",
+            "label": "Disposition of strategic assets or intellectual property"
+        },
+        {
+            "key": "fundamental-business-change",
+            "label": "Fundamental change of business"
+        },
+        {
+            "key": "material-compensation-change",
+            "label": "Material change to Partner compensation architecture"
+        }
+    ],
+    "meeting_records": [],
+    "evidence_records": []
+}

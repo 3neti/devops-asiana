@@ -61,6 +61,14 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Effective Decision       | Approved Decision currently within its explicit effective period after every authority and evidence gate passes |
 | Execution Record         | Separate attributable proof that an action permitted by a Decision was performed                  |
 | Decision Verification    | Independent comparison of a recorded execution with the Decision's stated criteria and conditions |
+| Governance Meeting       | Recorded collective Partnership proceeding with notice, attendance, agenda, deliberation, votes, outcome, and Evidence |
+| Quorum                   | Resolved constitutional minimum participation required before a governance body may transact defined business |
+| Conflict Declaration     | Attributable statement of no conflict or disclosure of a potentially impairing interest before deliberation |
+| Recusal                  | Agenda-item-specific exclusion from deliberation or voting because of a declared conflict or governing rule |
+| Partner Vote             | Attributable choice of for, against, or abstain by an eligible governing Partner on one agenda item |
+| Abstention               | Express attributable decision not to vote for or against; never affirmative consent               |
+| Governance Deadlock      | Failure to reach a required outcome under equal or otherwise blocking governance positions         |
+| Decision Record Candidate | Non-canonical projection of a fully resolved governance outcome awaiting explicit admission to the Decision ledger |
 | Policy                   | Mandatory control requirements deriving authority from the constitution                           |
 | Policy Exception         | Temporary approved deviation from a specific requirement                                          |
 | Procedure                | Repeatable process implementing policy                                                            |

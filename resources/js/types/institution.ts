@@ -1215,3 +1215,74 @@ export type DecisionRecordCompiler = {
     };
     principles: string[];
 };
+
+export type GovernanceMeetingLifecycleStatus =
+    | 'scheduled'
+    | 'convened'
+    | 'deliberating'
+    | 'concluded'
+    | 'adjourned'
+    | 'cancelled';
+
+export type GovernanceRule = {
+    state: 'resolved' | 'unresolved' | 'counsel_review';
+    required_governance_weight?: number | null;
+    basis?: 'total_governance_weight' | null;
+};
+
+export type GovernanceMeetingCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        title: string;
+        required_for_conclusion: boolean;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    }>;
+    meeting_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    decision_rules: {
+        ordinary: { quorum: GovernanceRule; approval: GovernanceRule };
+        reserved: { quorum: GovernanceRule; approval: GovernanceRule };
+        deadlock: {
+            state: 'resolved' | 'unresolved' | 'counsel_review';
+            mechanism: string | null;
+            decision_reference: string;
+            counsel_review: boolean;
+        };
+    };
+    reserved_matter_catalog: Array<{ key: string; label: string }>;
+    governing_partners: Array<{
+        key: string;
+        name: string;
+        partner_status: string;
+        governance_weight: number;
+    }>;
+    meeting_records: Array<Record<string, unknown>>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        governing_partners: number;
+        governance_weight: number;
+        reserved_matters: number;
+        meetings: number;
+        decision_record_candidates: number;
+        by_lifecycle: Record<GovernanceMeetingLifecycleStatus, number>;
+        by_outcome: Record<string, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        meeting_gaps: Array<{ code: string; message: string }>;
+        authority_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

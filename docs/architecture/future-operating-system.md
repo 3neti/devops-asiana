@@ -113,8 +113,16 @@ The repository now includes a read-only **Institutional Decision and Approval Re
 
 Execution cannot backfill approval. Approval may permit execution without asserting that it occurred. Verification cannot be performed by the executor or rewrite the original Decision. Matrix entries requiring Client Mandate are outside this Firm-only compiler. Known formation facts are not fabricated as historical decisions, so the canonical ledger remains empty. The Console exposes that both governing policies are Draft and no Matrix entry is effective.
 
+## Implemented fifteenth vertical slice
+
+The repository now includes a read-only **Governance Meeting and Partner Vote Compiler** backed by `resources/institution/governance-meetings.json`. It derives the two Founding Partners and their equal governance weight from Partnership Formation, validates its Reserved Matter catalogue against Resolved Partnership truth, and preserves notice, agenda, attendance, quorum, conflict declarations, related-party disclosure, recusals, votes, abstentions, outcome, minutes, authority, and Evidence as distinct facts.
+
+The compiler never accepts copied meeting weights, treats silence as neither consent nor abstention, rejects votes by recused Partners, compares the recorded outcome with the weighted result, and exposes a 50/50 split as unresolved deadlock rather than manufacturing a casting vote or remedy. A fully resolved, adopted, evidenced outcome may emit a non-canonical Decision Record candidate; it never writes to the canonical ledger.
+
+No historical Meeting Records are invented. Ordinary and Reserved Matter quorum and approval mechanics remain UNRESOLVED, the deadlock mechanism remains UNRESOLVED and subject to counsel review, both governing policies remain Draft, and collective constitutional authority remains inactive.
+
 ## Recommended next vertical slice
 
-Build a narrow **Governance Meeting and Partner Vote Compiler**. It should project proposals requiring collective Partnership action into recorded attendance, quorum, conflicts, recusals, votes, abstentions, Reserved Matter classification, outcome, and Evidence, then emit an eligible Decision Record without silently resolving the known 50/50 deadlock question. Do not build a generic meeting or parliamentary-procedure system.
+Build a narrow **Collective Governance Decision Admission Compiler**. It should allow the Decision Record compiler to accept one exact adopted Meeting agenda item as a collective approval basis, preserve every voter and Evidence reference, prevent duplicate or contradictory admission, and leave single-holder authority rules unchanged. Do not create canonical records automatically or weaken the Authority Matrix boundary.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

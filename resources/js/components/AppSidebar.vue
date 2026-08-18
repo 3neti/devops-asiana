@@ -15,6 +15,7 @@ import {
     Siren,
     UserRoundCheck,
     UsersRound,
+    Vote,
 } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import InstitutionalDocumentNav from '@/components/InstitutionalDocumentNav.vue';
@@ -38,6 +39,7 @@ import { index as continuityExercises } from '@/routes/continuity-exercises';
 import { index as correctiveActions } from '@/routes/corrective-actions';
 import { index as decisionRecords } from '@/routes/decision-records';
 import { index as engagements } from '@/routes/engagements';
+import { index as governanceMeetings } from '@/routes/governance-meetings';
 import { index as identityAndRoles } from '@/routes/identity-and-roles';
 import { index as incidents } from '@/routes/incidents';
 import { index as policyRegistry } from '@/routes/policy-registry';
@@ -115,6 +117,11 @@ const mainNavItems: NavItem[] = [
         title: 'Decisions & Approvals',
         href: decisionRecords(),
         icon: FileCheck2,
+    },
+    {
+        title: 'Governance Meetings',
+        href: governanceMeetings(),
+        icon: Vote,
     },
 ];
 

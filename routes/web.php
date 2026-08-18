@@ -9,6 +9,7 @@ use App\Http\Controllers\CorrectiveActionController;
 use App\Http\Controllers\DecisionRecordController;
 use App\Http\Controllers\EngagementController;
 use App\Http\Controllers\FirmConsoleController;
+use App\Http\Controllers\GovernanceMeetingController;
 use App\Http\Controllers\IdentityAndRoleController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\InstitutionalDocumentController;
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('identity-and-roles', IdentityAndRoleController::class)->name('identity-and-roles.index');
     Route::get('authority-matrix', AuthorityMatrixController::class)->name('authority-matrix.index');
     Route::get('decision-records', DecisionRecordController::class)->name('decision-records.index');
+    Route::get('governance-meetings', GovernanceMeetingController::class)->name('governance-meetings.index');
     Route::get('documents/{document}', [InstitutionalDocumentController::class, 'show'])
         ->where('document', '.*')
         ->name('institutional-documents.show');
