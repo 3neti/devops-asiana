@@ -1,0 +1,26 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "export",
+            "label": "Export Snapshot",
+            "question": "Does the sign-off identify the exact export key and status reviewed?"
+        },
+        {
+            "key": "reviewer",
+            "label": "Independent Review",
+            "question": "Are reviewer identity, role, time, and review basis explicit?"
+        },
+        {
+            "key": "boundary",
+            "label": "Approval Boundary",
+            "question": "Does the reviewer acknowledge that sign-off is not approval or risk acceptance?"
+        },
+        {
+            "key": "evidence",
+            "label": "Sign-off Evidence",
+            "question": "Is the sign-off Evidence reference explicit?"
+        }
+    ],
+    "signoffs": []
+}

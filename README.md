@@ -136,8 +136,10 @@ Canonical Institutional Control Review configuration lives in `resources/institu
 
 Canonical Control Review Evidence Export configuration lives in `resources/institution/control-review-evidence-export.json`. `ResolveControlReviewEvidenceExport` emits a stable, allowlisted, payload-free projection of the Institutional Control Review with gap provenance. It is not a generic reporting or audit platform and never changes source lifecycle or authority.
 
+Canonical Control Review Sign-off records live in `resources/institution/control-review-signoffs.json`. `ResolveControlReviewSignoffs` records attributable review of an exact export snapshot with separate Evidence and an explicit no-approval boundary. Sign-off cannot suppress findings, accept risk, create exceptions, or close remediation.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control Review Sign-off Compiler that records independent review of an exported control report without turning viewing into approval or risk acceptance.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control Review Action Register Compiler that records explicitly authorized follow-up without collapsing review into remediation closure.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

@@ -218,3 +218,7 @@ The repository now includes a read-only **Institutional Control Review Compiler*
 ## Control review evidence export
 
 The repository now includes a read-only **Control Review Evidence Export Compiler** backed by `resources/institution/control-review-evidence-export.json`. It emits a deterministic, field-allowlisted projection of the Institutional Control Review with source identity and gap provenance while excluding payloads and secrets. The export is a report projection, not a generic audit platform or a new source of institutional truth.
+
+## Control review sign-off
+
+The repository now includes a read-only **Control Review Sign-off Compiler** backed by `resources/institution/control-review-signoffs.json`. It records an attributable review of an exact export snapshot, requires separate Evidence, and forces the reviewer to acknowledge that sign-off is not approval or risk acceptance. Findings remain visible and source lifecycles remain unchanged.
