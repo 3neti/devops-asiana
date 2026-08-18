@@ -46,6 +46,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Control History             | append-only chronology projection across eligibility, decisions, and reconciliation        |
 | Control History Integrity   | deterministic payload-free event and chronology anchors with visible ordering gaps            |
 | Control History Verification | compares supplied event and chronology anchors with resolved integrity without mutation        |
+| Control History Evidence Links | associates external verification artifact references with exact comparison snapshots          |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -99,6 +100,8 @@ Institutional Control History resolution is a read-only chronology projection ac
 Control History Integrity resolution is downstream of that chronology. `ResolveInstitutionalControlHistoryIntegrity` hashes only allowlisted event identity fields using fixed ordering, emits event and history anchors, and reports ordering, duplicate-key, source, and configuration gaps. Anchoring is an integrity projection only; it never mutates history or creates authority, approval, closure, remediation, or workflow state.
 
 Control History Anchor Verification resolution is downstream of the integrity projection. `ResolveInstitutionalControlHistoryAnchorVerification` compares a supplied history anchor and optional event-anchor set with the resolved values, exposing missing, mismatched, unexpected, or invalid inputs. Verification is not acceptance of risk, evidence admission, authority, approval, or workflow state.
+
+Control History Verification Evidence Link resolution is downstream of Anchor Verification. `ResolveInstitutionalControlHistoryVerificationEvidenceLinks` associates an external artifact and Evidence reference with an exact verification snapshot, preserving linker, time, reason, and snapshot identity. It excludes payloads, does not admit or validate the external artifact, and never turns a link into authority, approval, risk acceptance, or workflow state.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

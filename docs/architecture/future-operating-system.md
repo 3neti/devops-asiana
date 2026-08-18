@@ -254,3 +254,7 @@ The repository now includes a read-only **Control History Integrity and Anchor C
 ## Institutional control history anchor verification
 
 The repository now includes a read-only **Control History Anchor Verification Compiler** backed by `resources/institution/control-history-anchor-verification.json`. `ResolveInstitutionalControlHistoryAnchorVerification` compares a supplied history anchor and optional event-anchor set with the resolved integrity projection. Missing, invalid, mismatched, unexpected, and duplicate supplied anchors remain explicit findings; the canonical configuration intentionally supplies none, so the current state is not verified. Verification does not admit Evidence, accept risk, grant authority, or mutate history.
+
+## Control history verification evidence links
+
+The repository now includes a read-only **Control History Verification Evidence Link Compiler** backed by `resources/institution/control-history-verification-evidence-links.json`. It associates an external artifact reference and Evidence reference with an exact verification snapshot, preserving attribution, chronology, reason, and anchor identity. The canonical registry is empty; links to unverified comparisons remain visible as gaps, and no artifact payload is stored or admitted. This boundary does not grant authority, accept risk, close remediation, or create workflow state.
