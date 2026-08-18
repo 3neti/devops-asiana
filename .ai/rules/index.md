@@ -19,6 +19,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/Engagements/** | .ai/rules/engagements.md |
 | resources/js/pages/FirmConsole/** | .ai/rules/firm-console.md |
 | app/FormationBootstrap/** | .ai/rules/formation-bootstrap.md |
+| app/FormationCompletion/** | .ai/rules/formation-completion.md |
 | {app/GovernanceMeetings/**,resources/institution/governance-meetings.json,resources/js/pages/GovernanceMeetings/**,tests/**/*GovernanceMeeting*} | .ai/rules/governance-meetings.md |
 | app/IdentityAndRoles/**,resources/institution/identity-and-roles.json,resources/js/pages/IdentityAndRoles/** | .ai/rules/identity-and-roles.md |
 | app/Incidents/**,resources/institution/incidents.json,resources/js/pages/Incidents/**,tests/**/*Incident* | .ai/rules/incidents.md |

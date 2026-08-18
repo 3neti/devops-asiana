@@ -97,7 +97,7 @@ The repository now includes a read-only **Institutional Identity & Role Assignme
 
 Partner status, employment or service classification, application authentication, system accounts, Office appointment, professional responsibility, and delegated authority remain separate. A professional-responsibility assignment never grants Firm Authority by itself. An Office or delegation may contribute authority only when its assignment is Active, temporally valid, qualified, explicitly based, properly approved where required, and evidenced; delegation additionally requires bounded scope and expiry.
 
-The eight formation-derived assignments are Approved but not Active because the Firm effective date remains unresolved. The Console therefore exposes seven Roles pending activation, two vacancies, two unresolved relationship classifications, and zero effective Firm Authority without inventing a date, identity, successor, or delegation.
+The eight formation-derived assignments are Approved but not Active because verified Firm Commencement remains unresolved. A Firm effective date alone is insufficient. The Console therefore exposes seven Roles pending activation, two vacancies, two unresolved relationship classifications, and zero effective Firm Authority without inventing a date, identity, successor, or delegation.
 
 ## Implemented thirteenth vertical slice
 
@@ -139,8 +139,16 @@ The repository now includes a read-only **Formation Ratification and Initial Pol
 
 A verified ratification emits only a narrow initial-policy approval basis. Publication, activation, effective date, implementation, and operational authority remain separate. Missing consent, unconfirmed legal mechanics, content mismatch, extra policies, chronology conflicts, and incomplete Evidence prevent the basis from issuing. Canonical state contains no invented instrument, date, consent, ratification, or Evidence, so the Console exposes the open formation and counsel decisions.
 
+## Implemented nineteenth vertical slice
+
+The repository now includes a read-only **Formation Completion and Firm Commencement Compiler** backed by `resources/institution/formation-completion.json`. It reconciles exact Partnership identity, jurisdiction, legal form, principal office, effective date and Founding Partners with a counsel-confirmed legal requirement set, executed constitutional instrument, separate initial capital references, chronology, and Evidence.
+
+The compiler does not prescribe Philippine registration steps. Counsel must identify the exact applicable record types, and a Commencement Record must evidence every and only those types. Governance weight, Partner economics, Firm Allocation, login, policy state, and observed operations cannot prove capital initialization or legal commencement. A verified future commencement remains scheduled rather than operative.
+
+Only a verified effective Commencement Record emits a formation-derived assignment activation basis. `ResolveIdentityAndRoles` now consumes that basis: a populated Firm effective date alone cannot activate the Managing Partner office or any formation-derived professional responsibility. Canonical state remains unresolved and emits no activation basis.
+
 ## Recommended next vertical slice
 
-Build a narrow **Formation Completion and Firm Commencement Compiler**. It should reconcile the executed constitutional instrument with required registration or commencement facts, principal office, effective date, founding identities, and expressly unresolved capital contributions. It should emit a commencement projection that formation-derived Offices and assignments can consume, while refusing to treat a drafted agreement, application login, policy activation, or economic allocation as proof that the Firm legally exists. Statutory form, registration sequence, effective-date mechanics, and evidence requirements must remain counsel-confirmed rather than invented.
+Build a narrow **Founding Office Assumption and Role Activation Compiler**. It should admit an exact effective Firm Commencement basis, preserve each holder's explicit acceptance or assumption of an Office or professional responsibility, require assignment-specific Evidence, and activate only the matching formation-derived Role Assignment. Commencement must not silently activate every recorded responsibility, and accepting a professional role must not create Firm Authority unless the Role independently carries an authority attachment.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

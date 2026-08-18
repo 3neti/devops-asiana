@@ -76,7 +76,7 @@ Only an operative Office or delegated-authority assignment may contribute Firm A
 
 The registry recognizes Lester B. Hurtado and Angelica Anaïs C. Santos by reference to the Partnership Formation. It defines nine Roles and records eight formation-derived assignments. Security & Compliance and Privileged Emergency Access Approver remain unassigned.
 
-The assignments are Approved but not Active. Their effective time is derived from the Firm effective date, which remains unresolved. The compiler therefore reports seven assigned Roles as pending activation, two Roles as vacant, and zero effective Firm Authority. It does not invent a formation date or treat the formation records as already operative.
+The assignments are Approved but not Active. Their effective time may be supplied only by a verified Firm Commencement basis, not by a date standing alone. The principal office, Firm effective date, counsel-confirmed legal requirement set, capital initialization, Commencement Record, and Evidence remain unresolved. The compiler therefore reports seven assigned Roles as pending activation, two Roles as vacant, and zero effective Firm Authority. It does not invent commencement or treat formation records as already operative.
 
 Employment or service classification for both founders remains unresolved and separate from their Founding Partner status. Neither Institutional Identity is bound to an application login or system account in the canonical registry.
 

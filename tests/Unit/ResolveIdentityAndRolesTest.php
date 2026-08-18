@@ -1,5 +1,6 @@
 <?php
 
+use App\FormationCompletion\ResolvedFormationCompletion;
 use App\IdentityAndRoles\IdentityAndRoleDefinition;
 use App\IdentityAndRoles\ResolveIdentityAndRoles;
 use App\Partnership\PartnershipDefinition;
@@ -58,8 +59,10 @@ function identityRoleCoverageDefinition(): ResponsibilityCoverageDefinition
 function resolveIdentityRoles(
     ?IdentityAndRoleDefinition $identityAndRoles = null,
     ?PartnershipDefinition $partnership = null,
+    bool $formationCommenced = true,
 ): array {
-    $resolvedPartnership = (new ResolvePartnership)->handle($partnership ?? identityRolePartnershipDefinition());
+    $partnershipDefinition = $partnership ?? identityRolePartnershipDefinition();
+    $resolvedPartnership = (new ResolvePartnership)->handle($partnershipDefinition);
     $resolvedCoverage = (new ResolveResponsibilityCoverage)->handle(
         identityRoleCoverageDefinition(),
         $resolvedPartnership,
@@ -71,7 +74,32 @@ function resolveIdentityRoles(
         $resolvedPartnership,
         $resolvedCoverage,
         new DateTimeImmutable('2026-08-18T12:00:00+08:00'),
+        $formationCommenced && $partnershipDefinition->formation['firm']['effective_date'] !== null
+            ? identityRoleFormationCompletion($partnershipDefinition->formation['firm']['effective_date'])
+            : null,
     )->toArray();
+}
+
+function identityRoleFormationCompletion(string $effectiveAt): ResolvedFormationCompletion
+{
+    return new ResolvedFormationCompletion(
+        schemaVersion: 1,
+        requirements: [],
+        legalRequirementsRule: [],
+        capitalInitialization: [],
+        commencementRecords: [],
+        officeActivationBases: [[
+            'effective_at' => $effectiveAt,
+            'permits_formation_derived_assignments' => true,
+        ]],
+        evidenceRecords: [],
+        conflicts: [],
+        formationGaps: [],
+        legalGaps: [],
+        capitalGaps: [],
+        evidenceGaps: [],
+        counselReview: [],
+    );
 }
 
 /** @param array<string, mixed> $changes */
@@ -183,6 +211,25 @@ test('an operative professional responsibility does not itself grant Firm author
     expect($assignment['operative'])->toBeTrue()
         ->and($assignment['grants_firm_authority'])->toBeFalse()
         ->and($resolved['counts']['authority_effective'])->toBe(0);
+});
+
+test('a Firm effective date does not activate formation assignments without verified commencement', function () {
+    $definition = identityRoleDefinition();
+    $assignments = $definition->assignments;
+    $assignmentIndex = array_search('client-delivery-angelica', array_column($assignments, 'key'), true);
+    $assignments[$assignmentIndex]['lifecycle_status'] = 'active';
+    $assignments[$assignmentIndex]['evidence_record_key'] = 'evidence-client-delivery';
+    $modified = identityRoleModifiedDefinition([
+        'assignments' => $assignments,
+        'evidence_records' => [identityRoleEvidence('evidence-client-delivery')],
+    ]);
+
+    $resolved = resolveIdentityRoles($modified, identityRoleEffectivePartnership(), false);
+    $assignment = collect($resolved['assignments'])->firstWhere('key', 'client-delivery-angelica');
+
+    expect($assignment['operative'])->toBeFalse()
+        ->and(array_column($resolved['reports']['activation_gaps'], 'code'))
+        ->toContain('formation_commencement_unverified');
 });
 
 test('an authentication binding does not create authority', function () {

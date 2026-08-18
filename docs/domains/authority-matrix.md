@@ -98,7 +98,7 @@ The first Matrix defines only seven grounded actions:
 6. Client Incident disclosure approval; and
 7. continuity-exercise approval.
 
-The first three are constitution-derived Approved entries. Reserved Matter participation and ordinary management await the unresolved Firm effective date and operative assignments. Privileged emergency-access authority also has no holder. The four policy-derived entries remain Design because their source policies are Draft.
+The first three are constitution-derived Approved entries. Reserved Matter participation and ordinary management await verified Firm Commencement and operative assignments; a populated effective date alone is insufficient. Privileged emergency-access authority also has no holder. The four policy-derived entries remain Design because their source policies are Draft.
 
 Accordingly, the current Matrix grants zero effective Firm Authority.
 

@@ -73,6 +73,10 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Policy Approval Admission              | Explicit, evidenced bridge admitting one exact effective Firm Decision Record as the approval basis for one Policy Version                              |
 | Formation Ratification                 | Counsel-confirmed, unanimously evidenced constitutional act establishing the approval basis for exact allowlisted initial Policy Versions                |
 | Initial Policy Approval Basis          | Narrow projection from verified Formation Ratification; it supplies neither publication nor activation                                                  |
+| Firm Commencement Record               | Exact, counsel-confirmed and evidenced reconciliation of formation facts required before formation-derived assignments may activate                      |
+| Formation-derived Assignment Basis     | Commencement projection supplying constitutional effective time; it does not itself activate an Office or Role Assignment                               |
+| Legal Requirement Set                  | Case-specific formation and registration record types confirmed by Philippine counsel rather than inferred by software                                  |
+| Capital Initialization Record          | Referenced Evidence of a Founding Partner's initial contribution, separate from governance, compensation, and Engagement economics                      |
 | Policy Publication Record              | Evidence that one exact controlled Policy Version and content digest were published; publication supplies neither approval nor activation               |
 | Policy Activation Record               | Explicit record connecting an admitted approval, verified publication, effective date, actor, and Evidence for one Policy Version                       |
 | Policy                                 | Mandatory control requirements deriving authority from the constitution                                                                                 |

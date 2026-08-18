@@ -7,14 +7,20 @@ import {
     BookOpenCheck,
     Braces,
     CircleHelp,
+    Landmark,
     Scale,
     ShieldCheck,
 } from '@lucide/vue';
 import FirmMap from '@/components/FirmMap.vue';
 import { dashboard } from '@/routes';
-import type { ResolvedPartnership, ResolutionState } from '@/types';
+import type {
+    FormationCompletion,
+    ResolvedPartnership,
+    ResolutionState,
+} from '@/types';
 
 defineProps<{
+    formationCompletion: FormationCompletion;
     partnership: ResolvedPartnership;
 }>();
 
@@ -143,6 +149,127 @@ function stateClass(state: ResolutionState): string {
                     </div>
                 </div>
             </header>
+
+            <section
+                class="rounded-2xl border border-amber-300 bg-amber-50/70 p-5 sm:p-6 dark:border-amber-900 dark:bg-amber-950/20"
+            >
+                <div class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+                    <div>
+                        <div
+                            class="flex items-center gap-2 text-amber-800 dark:text-amber-300"
+                        >
+                            <Landmark class="size-4" />
+                            <p
+                                class="text-xs font-semibold tracking-[0.18em] uppercase"
+                            >
+                                Firm commencement
+                            </p>
+                        </div>
+                        <h2 class="mt-3 font-serif text-2xl font-semibold">
+                            Formation facts do not become operating authority by
+                            implication.
+                        </h2>
+                        <p
+                            class="mt-3 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
+                        >
+                            A counsel-confirmed requirement set, exact principal
+                            office and effective date, both Founding Partners,
+                            separately resolved capital records, and complete
+                            Evidence must converge before formation-derived
+                            Offices can activate.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 self-start text-center">
+                        <div
+                            class="rounded-xl border border-amber-200 bg-white p-3 dark:border-amber-900 dark:bg-slate-900"
+                        >
+                            <p class="text-xl font-semibold">
+                                {{
+                                    formationCompletion.counts
+                                        .verified_commencements
+                                }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Verified records
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-amber-200 bg-white p-3 dark:border-amber-900 dark:bg-slate-900"
+                        >
+                            <p class="text-xl font-semibold">
+                                {{
+                                    formationCompletion.counts
+                                        .office_activation_bases
+                                }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Activation bases
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-amber-200 bg-white p-3 dark:border-amber-900 dark:bg-slate-900"
+                        >
+                            <p class="text-xl font-semibold">
+                                {{
+                                    formationCompletion.firm_commenced
+                                        ? 'Commenced'
+                                        : 'Not verified'
+                                }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Firm state
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-5 grid gap-2 border-t border-amber-200 pt-5 text-xs sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center dark:border-amber-900"
+                >
+                    <div
+                        class="rounded-lg bg-white/80 p-3 text-center font-semibold dark:bg-slate-900/80"
+                    >
+                        Resolved Partnership facts
+                    </div>
+                    <ArrowRight
+                        class="mx-auto hidden size-4 text-amber-700 sm:block"
+                    />
+                    <div
+                        class="rounded-lg bg-white/80 p-3 text-center font-semibold dark:bg-slate-900/80"
+                    >
+                        Counsel-confirmed completion
+                    </div>
+                    <ArrowRight
+                        class="mx-auto hidden size-4 text-amber-700 sm:block"
+                    />
+                    <div
+                        class="rounded-lg bg-white/80 p-3 text-center font-semibold dark:bg-slate-900/80"
+                    >
+                        Formation-derived office activation
+                    </div>
+                </div>
+
+                <ul
+                    v-if="!formationCompletion.firm_commenced"
+                    class="mt-5 grid gap-2 text-sm sm:grid-cols-2"
+                >
+                    <li
+                        v-for="finding in [
+                            ...formationCompletion.reports.conflicts,
+                            ...formationCompletion.reports.formation_gaps,
+                            ...formationCompletion.reports.legal_gaps,
+                            ...formationCompletion.reports.capital_gaps,
+                            ...formationCompletion.reports.evidence_gaps,
+                            ...formationCompletion.reports.counsel_review,
+                        ]"
+                        :key="`${finding.code}-${finding.message}`"
+                        class="rounded-lg bg-white/80 px-3 py-2 text-slate-700 dark:bg-slate-900/80 dark:text-slate-300"
+                    >
+                        {{ finding.message }}
+                    </li>
+                </ul>
+            </section>
 
             <FirmMap
                 :firm="partnership.formation.firm"

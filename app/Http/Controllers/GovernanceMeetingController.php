@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\AuthorityMatrix\AuthorityMatrixRepository;
 use App\AuthorityMatrix\ResolveAuthorityMatrix;
+use App\FormationCompletion\FormationCompletionRepository;
+use App\FormationCompletion\ResolveFormationCompletion;
 use App\GovernanceMeetings\GovernanceMeetingRepository;
 use App\GovernanceMeetings\ResolveGovernanceMeetings;
 use App\IdentityAndRoles\IdentityAndRoleRepository;
@@ -21,12 +23,14 @@ class GovernanceMeetingController extends Controller
 {
     public function __invoke(
         GovernanceMeetingRepository $governanceMeetings,
+        FormationCompletionRepository $formationCompletion,
         AuthorityMatrixRepository $authorityMatrix,
         IdentityAndRoleRepository $identityAndRoles,
         ResponsibilityCoverageRepository $responsibilityCoverage,
         PartnershipDefinitionRepository $partnership,
         PolicyRegistryRepository $policies,
         ResolveGovernanceMeetings $resolveGovernanceMeetings,
+        ResolveFormationCompletion $resolveFormationCompletion,
         ResolveAuthorityMatrix $resolveAuthorityMatrix,
         ResolveIdentityAndRoles $resolveIdentityAndRoles,
         ResolveResponsibilityCoverage $resolveResponsibilityCoverage,
@@ -34,9 +38,15 @@ class GovernanceMeetingController extends Controller
         ResolvePolicyRegistry $resolvePolicyRegistry,
     ): Response {
         $resolvedPartnership = $resolvePartnership->handle($partnership->current());
+        $resolvedFormationCompletion = $resolveFormationCompletion->handle($formationCompletion->current(), $resolvedPartnership);
         $resolvedPolicies = $resolvePolicyRegistry->handle($policies->current());
         $resolvedCoverage = $resolveResponsibilityCoverage->handle($responsibilityCoverage->current(), $resolvedPartnership, $resolvedPolicies);
-        $resolvedIdentities = $resolveIdentityAndRoles->handle($identityAndRoles->current(), $resolvedPartnership, $resolvedCoverage);
+        $resolvedIdentities = $resolveIdentityAndRoles->handle(
+            $identityAndRoles->current(),
+            $resolvedPartnership,
+            $resolvedCoverage,
+            formationCompletion: $resolvedFormationCompletion,
+        );
         $resolvedAuthority = $resolveAuthorityMatrix->handle(
             $authorityMatrix->current(),
             $resolvedPartnership,

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\FormationCompletion\FormationCompletionRepository;
+use App\FormationCompletion\ResolveFormationCompletion;
 use App\Partnership\PartnershipDefinitionRepository;
 use App\Partnership\ResolvePartnership;
 use Inertia\Inertia;
@@ -11,10 +13,18 @@ class FirmConsoleController extends Controller
 {
     public function __invoke(
         PartnershipDefinitionRepository $definitions,
+        FormationCompletionRepository $formationCompletion,
         ResolvePartnership $resolvePartnership,
+        ResolveFormationCompletion $resolveFormationCompletion,
     ): Response {
+        $resolvedPartnership = $resolvePartnership->handle($definitions->current());
+
         return Inertia::render('FirmConsole/Index', [
-            'partnership' => $resolvePartnership->handle($definitions->current())->toArray(),
+            'formationCompletion' => $resolveFormationCompletion->handle(
+                $formationCompletion->current(),
+                $resolvedPartnership,
+            )->toArray(),
+            'partnership' => $resolvedPartnership->toArray(),
         ]);
     }
 }

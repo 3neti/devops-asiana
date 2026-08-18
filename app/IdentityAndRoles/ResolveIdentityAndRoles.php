@@ -2,6 +2,7 @@
 
 namespace App\IdentityAndRoles;
 
+use App\FormationCompletion\ResolvedFormationCompletion;
 use App\Partnership\ResolvedPartnership;
 use App\ResponsibilityCoverage\ResolvedResponsibilityCoverage;
 use DateTimeImmutable;
@@ -15,6 +16,7 @@ final class ResolveIdentityAndRoles
         ResolvedPartnership $partnership,
         ResolvedResponsibilityCoverage $responsibilityCoverage,
         ?DateTimeImmutable $asOf = null,
+        ?ResolvedFormationCompletion $formationCompletion = null,
     ): ResolvedIdentityAndRoles {
         /** @var list<array{code: string, message: string}> $conflicts */
         $conflicts = [];
@@ -39,12 +41,14 @@ final class ResolveIdentityAndRoles
         $identityIndex = $this->indexByKey($identities);
         $roles = $this->validateRoles($definition->roles, $coverageRequirements, $conflicts);
         $roleIndex = $this->indexByKey($roles);
-        $firmEffectiveAt = $this->date($partnership->formation['firm']['effective_date'] ?? null);
+        $commencementBasis = collect($formationCompletion->officeActivationBases ?? [])
+            ->firstWhere('permits_formation_derived_assignments', true);
+        $firmEffectiveAt = $this->date($commencementBasis['effective_at'] ?? null);
 
         if ($firmEffectiveAt === null && $this->usesFormationEffectiveDate($definition->assignments)) {
             $activationGaps[] = $this->issue(
-                'formation_effective_date_unresolved',
-                'Formation-derived assignments cannot activate until the Firm effective date is resolved.',
+                'formation_commencement_unverified',
+                'Formation-derived assignments cannot activate until a verified Firm Commencement basis is effective.',
             );
         }
 

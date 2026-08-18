@@ -1,0 +1,51 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "constitutional-instrument",
+            "label": "Executed constitutional instrument",
+            "question": "Which counsel-confirmed executed Partnership Agreement constitutes the Firm?"
+        },
+        {
+            "key": "legal-requirement-set",
+            "label": "Counsel-confirmed requirement set",
+            "question": "Which formation, registration, and commencement records are legally required in this specific case?"
+        },
+        {
+            "key": "principal-office",
+            "label": "Principal office",
+            "question": "What principal-office fact is stated consistently across institutional and legal records?"
+        },
+        {
+            "key": "firm-effective-date",
+            "label": "Firm effective date",
+            "question": "On what counsel-confirmed date may the Partnership and its formation-derived Offices become operative?"
+        },
+        {
+            "key": "founding-identities",
+            "label": "Founding identities",
+            "question": "Do the commencement records identify every and only the resolved Founding Partners?"
+        },
+        {
+            "key": "capital-initialization",
+            "label": "Capital initialization",
+            "question": "Which separately evidenced initial capital records apply without inference from governance or economics?"
+        }
+    ],
+    "legal_requirements_rule": {
+        "state": "unresolved",
+        "jurisdiction": "Philippines",
+        "legal_form": "General Partnership",
+        "required_record_types": [],
+        "legal_state": "counsel_review",
+        "counsel_confirmation_reference": null
+    },
+    "capital_initialization": {
+        "state": "unresolved",
+        "legal_state": "counsel_review",
+        "counsel_confirmation_reference": null,
+        "contribution_records": []
+    },
+    "commencement_records": [],
+    "evidence_records": []
+}

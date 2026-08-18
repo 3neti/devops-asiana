@@ -72,6 +72,7 @@ final readonly class ResolvedIdentityAndRoles
                 'Institutional identity is not an application login, employee record, Partner status, or system account.',
                 'Partner status, office appointment, professional responsibility, and delegated authority are separate records.',
                 'Approval does not activate an assignment; effective time, evidence, and lifecycle remain explicit.',
+                'A formation date alone does not activate an assignment; a verified Firm Commencement basis is required.',
                 'A professional role carries responsibility but does not bind the Firm unless a separate authority source says so.',
                 'Ending an assignment does not erase its history or silently transfer it to another person.',
             ],

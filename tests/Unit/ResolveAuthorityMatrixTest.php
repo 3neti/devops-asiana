@@ -2,6 +2,7 @@
 
 use App\AuthorityMatrix\AuthorityMatrixDefinition;
 use App\AuthorityMatrix\ResolveAuthorityMatrix;
+use App\FormationCompletion\ResolvedFormationCompletion;
 use App\IdentityAndRoles\IdentityAndRoleDefinition;
 use App\IdentityAndRoles\ResolveIdentityAndRoles;
 use App\Partnership\PartnershipDefinition;
@@ -141,6 +142,9 @@ function resolveAuthorityMatrixCompiler(
         $resolvedPartnership,
         $resolvedCoverage,
         new DateTimeImmutable('2026-08-18T12:00:00+08:00'),
+        $partnership !== null && $partnership->formation['firm']['effective_date'] !== null
+            ? authorityMatrixFormationCompletion($partnership->formation['firm']['effective_date'])
+            : null,
     );
 
     return (new ResolveAuthorityMatrix)->handle(
@@ -151,6 +155,28 @@ function resolveAuthorityMatrixCompiler(
         $resolvedIdentities,
         new DateTimeImmutable('2026-08-18T12:00:00+08:00'),
     )->toArray();
+}
+
+function authorityMatrixFormationCompletion(string $effectiveAt): ResolvedFormationCompletion
+{
+    return new ResolvedFormationCompletion(
+        schemaVersion: 1,
+        requirements: [],
+        legalRequirementsRule: [],
+        capitalInitialization: [],
+        commencementRecords: [],
+        officeActivationBases: [[
+            'effective_at' => $effectiveAt,
+            'permits_formation_derived_assignments' => true,
+        ]],
+        evidenceRecords: [],
+        conflicts: [],
+        formationGaps: [],
+        legalGaps: [],
+        capitalGaps: [],
+        evidenceGaps: [],
+        counselReview: [],
+    );
 }
 
 test('it exposes the canonical matrix without creating effective authority', function () {

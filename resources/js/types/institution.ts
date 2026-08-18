@@ -107,6 +107,50 @@ export type ResolvedPartnership = {
     disclaimer: string;
 };
 
+export type FormationCompletion = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    firm_commenced: boolean;
+    requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    legal_requirements_rule: {
+        state: 'resolved' | 'unresolved';
+        jurisdiction: string;
+        legal_form: string;
+        required_record_types: string[];
+        legal_state: 'counsel_confirmed' | 'counsel_review';
+        counsel_confirmation_reference: string | null;
+    };
+    capital_initialization: {
+        state: 'resolved' | 'unresolved';
+        legal_state: 'counsel_confirmed' | 'counsel_review';
+        counsel_confirmation_reference: string | null;
+        contribution_records: Array<Record<string, unknown>>;
+    };
+    commencement_records: Array<Record<string, unknown>>;
+    office_activation_bases: Array<Record<string, unknown>>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        verified_commencements: number;
+        office_activation_bases: number;
+        evidence_records: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        formation_gaps: Array<{ code: string; message: string }>;
+        legal_gaps: Array<{ code: string; message: string }>;
+        capital_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        counsel_review: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+    disclaimer: string;
+};
+
 export type InstitutionalNavigationGroup = {
     title: string;
     key: string;

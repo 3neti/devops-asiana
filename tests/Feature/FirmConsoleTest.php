@@ -22,5 +22,13 @@ test('partners can inspect the resolved founding state', function () {
             ->where('partnership.projections.economics.firm_allocation.percentage', 20)
             ->has('partnership.reports.decision_gaps', 6)
             ->has('partnership.reports.responsibility_gaps', 2)
+            ->where('formationCompletion.compiler_status', 'consistent_with_gaps')
+            ->where('formationCompletion.firm_commenced', false)
+            ->where('formationCompletion.counts.verified_commencements', 0)
+            ->where('formationCompletion.counts.office_activation_bases', 0)
+            ->has('formationCompletion.reports.formation_gaps', 3)
+            ->has('formationCompletion.reports.legal_gaps', 1)
+            ->has('formationCompletion.reports.capital_gaps', 2)
+            ->has('formationCompletion.reports.counsel_review', 2)
         );
 });
