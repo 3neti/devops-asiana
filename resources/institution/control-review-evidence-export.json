@@ -1,0 +1,16 @@
+{
+    "schema_version": 1,
+    "export_key": "institutional-control-review-v1",
+    "source": "institutional-control-review",
+    "include_gap_messages": true,
+    "include_payloads": false,
+    "included_fields": [
+        "key",
+        "label",
+        "source",
+        "question",
+        "status",
+        "gap_count",
+        "gaps"
+    ]
+}

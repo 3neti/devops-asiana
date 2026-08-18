@@ -36,6 +36,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Retention Reviews       | attributable retention review outcomes and explicit Policy Exception references              |
 | Retention Findings      | explicit links from remediation-bearing retention reviews to existing Corrective Actions     |
 | Institutional Controls  | read-only cross-domain review of custody, retention, findings, and remediation gaps          |
+| Control Review Export   | stable, allowlisted, payload-free projection of Institutional Control Review                  |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -69,6 +70,8 @@ Retention Review resolution is downstream of Evidence Custody and the Policy Reg
 Retention Finding Link resolution is downstream of Retention Reviews and Corrective Actions. `ResolveRetentionFindingLinks` accepts only a resolved review with a remediation-bearing outcome, an existing Corrective Action, explicit linkage attribution and reason, and Evidence attached to the review. Linkage never creates, assigns, verifies, or closes remediation.
 
 Institutional Control Review resolution is downstream of those source compilers. `ResolveInstitutionalControlReview` summarizes each configured control's conflicts and gaps while preserving source categories and messages. It never grants authority, accepts risk, creates exceptions, or closes remediation; each source compiler remains canonical.
+
+Control Review Evidence Export resolution is downstream of Institutional Control Review. `ResolveControlReviewEvidenceExport` emits a deterministic, allowlisted projection with source identity and gap provenance. Payloads and secrets are forbidden, and exporting never changes source lifecycle, authority, risk acceptance, exceptions, or remediation.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

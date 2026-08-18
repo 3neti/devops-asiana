@@ -134,8 +134,10 @@ Canonical Retention Finding Links live in `resources/institution/retention-findi
 
 Canonical Institutional Control Review configuration lives in `resources/institution/institutional-control-review.json`. `ResolveInstitutionalControlReview` provides a read-only summary of custody, retention, finding, and remediation gaps while preserving each source compiler as canonical. It does not grant authority, accept risk, create exceptions, or close remediation.
 
+Canonical Control Review Evidence Export configuration lives in `resources/institution/control-review-evidence-export.json`. `ResolveControlReviewEvidenceExport` emits a stable, allowlisted, payload-free projection of the Institutional Control Review with gap provenance. It is not a generic reporting or audit platform and never changes source lifecycle or authority.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control Review Evidence Export Compiler that emits a stable, reviewable report projection without becoming a generic reporting or audit platform.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control Review Sign-off Compiler that records independent review of an exported control report without turning viewing into approval or risk acceptance.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

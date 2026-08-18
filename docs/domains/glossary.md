@@ -175,4 +175,5 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Retention Finding                     | A remediation-bearing outcome from a Retention Review that requires accountable follow-up                                                            |
 | Retention Finding Link                | Explicit, evidenced link from a Retention Finding to an existing Corrective Action; it does not alter either lifecycle                         |
 | Institutional Control Review          | Read-only cross-domain projection that summarizes source compiler gaps without replacing their canonical records                                     |
+| Control Review Evidence Export        | Stable, allowlisted, payload-free projection of an Institutional Control Review                                                                       |
 | Traceability Path                      | Client → Engagement → Matter → bounded artifact chain preserved for institutional interrogation                                                     |

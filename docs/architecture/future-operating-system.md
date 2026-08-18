@@ -214,3 +214,7 @@ The repository now includes a read-only **Retention Finding and Corrective-Actio
 ## Institutional control review
 
 The repository now includes a read-only **Institutional Control Review Compiler** backed by `resources/institution/institutional-control-review.json`. It summarizes conflicts and gaps from Evidence Custody, Retention Reviews, Retention Findings, and Corrective Actions into an attention-oriented projection. The summary preserves each source category and never replaces source history, grants authority, accepts risk, creates exceptions, or closes remediation.
+
+## Control review evidence export
+
+The repository now includes a read-only **Control Review Evidence Export Compiler** backed by `resources/institution/control-review-evidence-export.json`. It emits a deterministic, field-allowlisted projection of the Institutional Control Review with source identity and gap provenance while excluding payloads and secrets. The export is a report projection, not a generic audit platform or a new source of institutional truth.
