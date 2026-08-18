@@ -156,8 +156,10 @@ Canonical Control History Anchor Verification configuration lives in `resources/
 
 Canonical Control History Verification Evidence Links live in `resources/institution/control-history-verification-evidence-links.json`. `ResolveInstitutionalControlHistoryVerificationEvidenceLinks` associates external artifact and Evidence references with exact verification snapshots while excluding payloads. The registry is currently empty, and links never admit Evidence, accept risk, grant authority, or mutate history.
 
+Canonical Control History Verification Link Reconciliations live in `resources/institution/control-history-verification-link-reconciliations.json`. `ResolveInstitutionalControlHistoryVerificationLinkReconciliations` compares explicit reconciliation records with known links and source verification snapshots. It preserves drift and missing-link findings without correcting sources, admitting artifacts, granting authority, accepting risk, or closing remediation.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control History Verification Link Evidence Reconciliation Compiler that can reconcile linked snapshots with their source verification without becoming an Evidence registry or audit platform.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control History Reconciliation Outcome Compiler that can classify explicit reconciliation outcomes without mutating source links or becoming an Evidence registry or audit platform.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

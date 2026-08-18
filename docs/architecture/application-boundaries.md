@@ -47,6 +47,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Control History Integrity   | deterministic payload-free event and chronology anchors with visible ordering gaps            |
 | Control History Verification | compares supplied event and chronology anchors with resolved integrity without mutation        |
 | Control History Evidence Links | associates external verification artifact references with exact comparison snapshots          |
+| Control History Link Reconciliation | compares explicit link snapshots with source verification without correction               |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -102,6 +103,8 @@ Control History Integrity resolution is downstream of that chronology. `ResolveI
 Control History Anchor Verification resolution is downstream of the integrity projection. `ResolveInstitutionalControlHistoryAnchorVerification` compares a supplied history anchor and optional event-anchor set with the resolved values, exposing missing, mismatched, unexpected, or invalid inputs. Verification is not acceptance of risk, evidence admission, authority, approval, or workflow state.
 
 Control History Verification Evidence Link resolution is downstream of Anchor Verification. `ResolveInstitutionalControlHistoryVerificationEvidenceLinks` associates an external artifact and Evidence reference with an exact verification snapshot, preserving linker, time, reason, and snapshot identity. It excludes payloads, does not admit or validate the external artifact, and never turns a link into authority, approval, risk acceptance, or workflow state.
+
+Control History Verification Link Reconciliation resolution is downstream of the link registry and source Anchor Verification. `ResolveInstitutionalControlHistoryVerificationLinkReconciliations` compares explicit reconciliation records with known link snapshots, preserving drift, missing links, outcome disagreement, and chronology gaps. It never corrects either source, admits the external artifact, grants authority, accepts risk, or closes remediation.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

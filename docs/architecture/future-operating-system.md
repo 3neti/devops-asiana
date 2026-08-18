@@ -258,3 +258,7 @@ The repository now includes a read-only **Control History Anchor Verification Co
 ## Control history verification evidence links
 
 The repository now includes a read-only **Control History Verification Evidence Link Compiler** backed by `resources/institution/control-history-verification-evidence-links.json`. It associates an external artifact reference and Evidence reference with an exact verification snapshot, preserving attribution, chronology, reason, and anchor identity. The canonical registry is empty; links to unverified comparisons remain visible as gaps, and no artifact payload is stored or admitted. This boundary does not grant authority, accept risk, close remediation, or create workflow state.
+
+## Control history verification link reconciliation
+
+The repository now includes a read-only **Control History Verification Link Evidence Reconciliation Compiler** backed by `resources/institution/control-history-verification-link-reconciliations.json`. It compares explicitly supplied reconciliation records with known verification links and the source Anchor Verification snapshot. Unknown links, snapshot drift, invalid chronology, and outcome disagreement remain findings; the compiler never rewrites links, admits artifacts, grants authority, accepts risk, or closes remediation.

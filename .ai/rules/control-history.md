@@ -16,3 +16,6 @@ ResolveInstitutionalControlHistoryAnchorVerification only compares supplied anch
 
 ## Evidence links preserve snapshots without admitting artifacts
 Verification Evidence Links require an exact verification snapshot, attributable linkage, chronology, reason, artifact reference, and Evidence reference. They export no payloads and do not admit Evidence, validate artifacts, accept risk, grant authority, or mutate history.
+
+## Reconciliation compares links without correcting them
+Control History link reconciliation accepts explicit comparison records, checks them against known links and source verification snapshots, preserves drift as findings, and never rewrites links, admits artifacts, grants authority, accepts risk, or closes remediation.
