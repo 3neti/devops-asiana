@@ -148,8 +148,10 @@ Canonical Control Review Closure Decisions live in `resources/institution/contro
 
 Canonical Control Review Closure Reconciliations live in `resources/institution/control-review-closure-reconciliations.json`. `ResolveControlReviewClosureReconciliations` compares admitted decisions with explicit downstream state and preserves discrepancies with attribution and Evidence. It never rewrites the decision, action, or remediation source.
 
+Canonical Institutional Control History configuration lives in `resources/institution/control-history.json`. `ResolveInstitutionalControlHistory` projects an append-only, payload-free chronology across eligibility reviews, closure decisions, and closure reconciliations. It preserves source provenance and reports missing or unsupported events without creating authority, approval, closure, remediation, or workflow state.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Institutional Control Review History Export that provides append-only chronology across these projections without becoming a workflow or audit platform.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The next recommended increment is a narrow Control History Integrity and Anchor Compiler that can verify chronology identity and stable source ordering without becoming a workflow or audit platform.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

@@ -95,6 +95,8 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Risk Acceptance                        | Explicit authorized decision to bear a defined Residual Risk                                                                                            |
 | Residual Risk                          | Risk remaining after applicable Controls                                                                                                                |
 | Evidence                               | Durable proof supporting a material fact or control event                                                                                               |
+| Institutional Control History          | Append-only chronology projection of control-review lifecycle records, preserving source provenance without creating authority or workflow state          |
+| History Event                          | Payload-free chronological record retaining an event kind, source reference, actor, timestamp, and state                                                   |
 | Audit Trail                            | Ordered, attributable history of material state and action                                                                                              |
 | Production Environment                 | Live environment whose behavior or data affects real operations or Clients                                                                              |
 | Access Grant                           | Recorded authority for a named identity to access a defined resource                                                                                    |

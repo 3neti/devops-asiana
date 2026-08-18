@@ -1,0 +1,11 @@
+{
+    "schema_version": 1,
+    "history_key": "institutional-control-history-v1",
+    "source": "control-review-lifecycle",
+    "include_payloads": false,
+    "event_kinds": [
+        "eligibility_review",
+        "closure_decision",
+        "closure_reconciliation"
+    ]
+}

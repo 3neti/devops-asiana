@@ -43,6 +43,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Control Closure Eligibility | prerequisite report for action closure, without issuing closure decisions              |
 | Control Closure Decisions   | separately authorized closed/deferred/rejected admissions after eligibility                |
 | Control Closure Reconciliation | comparison of admitted decisions with explicit downstream state without source mutation |
+| Control History             | append-only chronology projection across eligibility, decisions, and reconciliation        |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -90,6 +91,8 @@ Control Review Closure Eligibility resolution is downstream of Actions and Outco
 Control Review Closure Decision resolution is downstream of Closure Eligibility. `ResolveControlReviewClosureDecisions` requires an exact eligibility review, explicit outcome, decision actor/time/authority/reason, and separate Evidence. A closed admission requires eligibility; the compiler records the decision without mutating the underlying Action.
 
 Control Review Closure Reconciliation resolution compares admitted Closure Decisions with explicit downstream state. `ResolveControlReviewClosureReconciliations` requires an admitted decision, downstream state, reconciler/time/basis, and separate Evidence. Discrepancies remain findings; decisions, actions, and remediation are never rewritten.
+
+Institutional Control History resolution is a read-only chronology projection across eligibility reviews, closure decisions, and closure reconciliations. `ResolveInstitutionalControlHistory` preserves source references, actors, timestamps, and states while reporting unsupported or incomplete events. Payloads and secrets remain excluded; history does not create authority, approval, closure, remediation, or workflow state.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 

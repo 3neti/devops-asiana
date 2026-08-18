@@ -18,6 +18,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | app/ControlClosures/** | .ai/rules/control-closures.md |
 | app/ControlDecisions/** | .ai/rules/control-decisions.md |
 | app/ControlExports/** | .ai/rules/control-exports.md |
+| app/ControlHistory/** | .ai/rules/control-history.md |
 | app/ControlOutcomes/** | .ai/rules/control-outcomes.md |
 | app/ControlReconciliation/** | .ai/rules/control-reconciliation.md |
 | app/ControlSignoffs/** | .ai/rules/control-signoffs.md |
