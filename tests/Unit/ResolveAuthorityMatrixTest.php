@@ -84,6 +84,7 @@ function authorityMatrixEffectivePolicies(ResolvedPolicyRegistry $registry, arra
         $policy['current_status_label'] = 'Effective';
         $policy['current']['status'] = 'effective';
         $policy['current']['effective_at'] = '2026-01-01T00:00:00+08:00';
+        $policy['current']['operative'] = true;
     }
     unset($policy);
 

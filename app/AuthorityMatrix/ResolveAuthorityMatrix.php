@@ -531,10 +531,18 @@ final class ResolveAuthorityMatrix
     {
         $current = is_array($policy['current'] ?? null) ? $policy['current'] : [];
         $effectiveAt = $this->date($current['effective_at'] ?? null);
+        $approval = $current['approval'] ?? null;
+        $legacyApprovalValid = is_array($approval)
+            && ($approval['outcome'] ?? null) === 'approved'
+            && ! empty($approval['approver'])
+            && ! empty($approval['authority_basis'])
+            && ! empty($approval['decided_at'])
+            && ! empty($approval['evidence_record_key']);
 
         return ($policy['current_version'] ?? null) === $version
             && ($policy['current_status'] ?? null) === 'effective'
             && ($current['status'] ?? null) === 'effective'
+            && (($current['operative'] ?? null) === true || $legacyApprovalValid || ! array_key_exists('operative', $current))
             && $effectiveAt !== null
             && ! $effectiveAt->isAfter($asOf);
     }

@@ -11,6 +11,7 @@ import {
     Scale,
     ShieldAlert,
 } from '@lucide/vue';
+import { index as decisionRecordsIndex } from '@/routes/decision-records';
 import { show as showDocument } from '@/routes/institutional-documents';
 import { index as policyRegistry } from '@/routes/policy-registry';
 import type {
@@ -177,6 +178,84 @@ function statusClass(status: PolicyProjection['current_status']): string {
                     </div>
                 </div>
             </header>
+
+            <section
+                class="rounded-2xl border border-teal-200 bg-teal-50/60 p-5 sm:p-6 dark:border-teal-900 dark:bg-teal-950/20"
+            >
+                <div class="flex flex-col gap-5 lg:flex-row lg:items-center">
+                    <div class="min-w-0 flex-1">
+                        <p
+                            class="text-xs font-semibold tracking-[0.18em] text-teal-700 uppercase dark:text-teal-300"
+                        >
+                            Policy authority chain
+                        </p>
+                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                            Approval, publication, and activation are
+                            independent records.
+                        </h2>
+                    </div>
+                    <div class="grid flex-[1.4] gap-2 sm:grid-cols-4">
+                        <div
+                            class="rounded-xl border border-teal-200 bg-white p-3 dark:border-teal-900 dark:bg-slate-900"
+                        >
+                            <p class="text-lg font-semibold">
+                                {{
+                                    registry.counts
+                                        .available_decision_candidates
+                                }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Decision candidates
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-teal-200 bg-white p-3 dark:border-teal-900 dark:bg-slate-900"
+                        >
+                            <p class="text-lg font-semibold">
+                                {{ registry.counts.approval_admissions }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Admissions
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-teal-200 bg-white p-3 dark:border-teal-900 dark:bg-slate-900"
+                        >
+                            <p class="text-lg font-semibold">
+                                {{ registry.counts.publications }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Publications
+                            </p>
+                        </div>
+                        <div
+                            class="rounded-xl border border-teal-200 bg-white p-3 dark:border-teal-900 dark:bg-slate-900"
+                        >
+                            <p class="text-lg font-semibold">
+                                {{ registry.counts.activations }}
+                            </p>
+                            <p class="text-[10px] text-slate-500 uppercase">
+                                Activations
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="mt-5 flex flex-col gap-3 border-t border-teal-200 pt-4 text-sm leading-6 text-slate-600 sm:flex-row sm:items-center sm:justify-between dark:border-teal-900 dark:text-slate-400"
+                >
+                    <p>
+                        An effective Firm Decision is eligible evidence of
+                        approval only after exact admission. Neither Git
+                        publication nor approval alone makes policy operative.
+                    </p>
+                    <Link
+                        :href="decisionRecordsIndex()"
+                        class="inline-flex shrink-0 items-center gap-2 font-semibold text-teal-800 hover:underline dark:text-teal-300"
+                    >
+                        Inspect Decision Records <ArrowRight class="size-4" />
+                    </Link>
+                </div>
+            </section>
 
             <section
                 class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900"

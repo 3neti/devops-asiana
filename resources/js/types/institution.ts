@@ -136,6 +136,13 @@ export type PolicyVersion = {
     review_frequency: string;
     effective_at: string | null;
     superseded_by: string | null;
+    approval_admission_key?: string | null;
+    publication_record_key?: string | null;
+    activation_record_key?: string | null;
+    approval_admitted: boolean;
+    publication_verified: boolean;
+    activation_verified: boolean;
+    operative: boolean;
     approval: null | {
         key: string;
         outcome: 'approved' | 'rejected';
@@ -163,10 +170,18 @@ export type PolicyRegistry = {
     compiler_status:
         'consistent' | 'consistent_with_gaps' | 'conflict_detected';
     policies: PolicyProjection[];
+    policy_approval_admission_records: Array<Record<string, unknown>>;
+    policy_publication_records: Array<Record<string, unknown>>;
+    policy_activation_records: Array<Record<string, unknown>>;
+    available_policy_decision_candidates: Array<Record<string, unknown>>;
     exceptions: Array<Record<string, unknown>>;
     evidence_records: Array<Record<string, unknown>>;
     counts: {
         policies: number;
+        approval_admissions: number;
+        publications: number;
+        activations: number;
+        available_decision_candidates: number;
         exceptions: number;
         evidence_records: number;
         by_status: Record<PolicyLifecycleStatus, number>;
@@ -175,6 +190,8 @@ export type PolicyRegistry = {
         conflicts: Array<{ code: string; message: string }>;
         lifecycle_gaps: Array<{ code: string; message: string }>;
         evidence_gaps: Array<{ code: string; message: string }>;
+        admission_gaps: Array<{ code: string; message: string }>;
+        activation_gaps: Array<{ code: string; message: string }>;
     };
     principles: string[];
 };
@@ -1001,6 +1018,7 @@ export type RoleAssignment = {
     operative: boolean;
     grants_firm_authority: boolean;
     temporal_state: string;
+    institutionally_valid: boolean;
     operational_status: string;
 };
 

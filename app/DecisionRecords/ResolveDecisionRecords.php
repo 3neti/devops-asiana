@@ -260,12 +260,13 @@ final class ResolveDecisionRecords
 
         $withinPeriod = $effectiveFrom !== null && ! $effectiveFrom->isAfter($asOf) && ($expiresAt === null || $expiresAt->isAfter($asOf));
         $complete = count($conflicts) === $conflictCount && count($authorityGaps) + count($decisionGaps) + count($evidenceGaps) === $gapCount;
-        $mayExecute = $complete
+        $institutionallyValid = $complete
             && $governingPoliciesOperative
             && $lifecycle === DecisionRecordLifecycleStatus::Effective
             && $approved
-            && ($outcome['permits_execution'] ?? false) === true
             && $withinPeriod;
+        $mayExecute = $institutionallyValid
+            && ($outcome['permits_execution'] ?? false) === true;
 
         return [
             ...$decision,
@@ -280,6 +281,7 @@ final class ResolveDecisionRecords
                 ? $collectiveAdmission !== null && ($collectiveAdmission['grants_collective_approval_basis'] ?? false) === true && $authorityEntry !== null && ($authorityEntry['grants_firm_authority'] ?? false) === true && array_diff($collectiveAdmission['source_snapshot']['participant_identity_keys'] ?? [], $authorityEntry['effective_holder_keys'] ?? []) === []
                 : $authorityEntry !== null && ($authorityEntry['grants_firm_authority'] ?? false) === true && in_array($approverKey, $authorityEntry['effective_holder_keys'] ?? [], true),
             'temporal_state' => $this->temporalState($effectiveFrom, $expiresAt, $asOf),
+            'institutionally_valid' => $institutionallyValid,
             'may_execute' => $mayExecute,
             'execution_occurred' => false,
             'verification_occurred' => false,
@@ -499,7 +501,8 @@ final class ResolveDecisionRecords
             if (! $versionMatches) {
                 $conflicts[] = $this->issue('governing_policy_mismatch', "Required policy {$requirement['key']} {$requirement['version']} is missing or not current.");
             }
-            $operative = $versionMatches && ($policy['current_status'] ?? null) === 'effective';
+            $operative = $versionMatches && (($policy['current']['operative'] ?? null) === true
+                || (! array_key_exists('operative', $policy['current'] ?? []) && ($policy['current_status'] ?? null) === 'effective'));
             if (($requirement['required_for_effective_decision'] ?? false) === true && ! $operative) {
                 $readinessGaps[] = $this->issue('governing_policy_not_effective', "{$requirement['title']} {$requirement['version']} is not Effective.");
             }

@@ -581,13 +581,13 @@ final class ResolveIncidents
                 $status = PolicyLifecycleStatus::tryFrom((string) ($version['status'] ?? ''));
                 $approval = $version['approval'] ?? null;
                 $effectiveAt = $this->date($version['effective_at'] ?? null);
-                $operative = $status === PolicyLifecycleStatus::Effective
+                $operative = ($version['operative'] ?? false) === true || ($status === PolicyLifecycleStatus::Effective
                     && ($version['content_integrity'] ?? null) === 'verified'
                     && $effectiveAt !== null
                     && $effectiveAt->lessThanOrEqualTo($asOf)
                     && is_array($approval)
                     && ($approval['outcome'] ?? null) === 'approved'
-                    && in_array($approval['evidence_record_key'] ?? null, $evidenceKeys, true);
+                    && in_array($approval['evidence_record_key'] ?? null, $evidenceKeys, true));
             }
             if ($reference['required_for_declaration'] && ! $operative) {
                 $baseOperative = false;

@@ -422,7 +422,8 @@ final class ResolveGovernanceMeetings
             if (! $versionMatches) {
                 $conflicts[] = $this->issue('governance_policy_mismatch', "Required policy {$requirement['key']} {$requirement['version']} is missing or not current.");
             }
-            $operative = $versionMatches && ($policy['current_status'] ?? null) === 'effective';
+            $operative = $versionMatches && (($policy['current']['operative'] ?? null) === true
+                || (! array_key_exists('operative', $policy['current'] ?? []) && ($policy['current_status'] ?? null) === 'effective'));
             if (($requirement['required_for_conclusion'] ?? false) === true && ! $operative) {
                 $readinessGaps[] = $this->issue('governance_policy_not_effective', "{$requirement['title']} {$requirement['version']} is not Effective.");
             }

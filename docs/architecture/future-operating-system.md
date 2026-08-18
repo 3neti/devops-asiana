@@ -127,8 +127,14 @@ The Decision Record compiler now includes a read-only **Collective Governance De
 
 A candidate does not create a Decision Record. Admission does not make a decision effective or executable. Duplicate source or target admissions and contradictory snapshots are rejected. Collective authority is rechecked against the current Authority Matrix, while the existing single-holder approval path remains unchanged. Canonical state contains no invented meetings, admissions, or decisions; the Console truthfully shows zero records.
 
+## Implemented seventeenth vertical slice
+
+The Policy Registry now includes a read-only **Policy Approval and Activation Admission Compiler** backed by explicit approval-admission, publication, and activation records in `resources/institution/policies.json`. It discovers only institutionally valid effective Decision Records that reference one exact Policy Version. Admission preserves an exact Decision snapshot and its own Evidence; publication preserves the controlled document path and digest; activation binds both records to the declared effective date and separate Evidence.
+
+An eligible Decision does not approve policy automatically. Approval does not imply publication or activation. Publication, Git history, rendering, and operational use do not imply effectiveness. Duplicate Decision or Policy Version admissions, contradictory snapshots, content mismatches, and activation chronology conflicts are rejected. Canonical state remains twelve Draft policies with no invented approvals, publications, or activations.
+
 ## Recommended next vertical slice
 
-Build a narrow **Policy Approval and Activation Admission Compiler**. It should allow an exact effective Firm Decision Record to support one Policy Version approval while preserving approval, effective date, publication, and Evidence as separate facts. It must never infer policy effectiveness from an approval outcome, a repository commit, or rendered documentation.
+Build a narrow **Formation Ratification and Initial Policy Bootstrap Compiler**. It should model the counsel-reviewed constitutional act that can ratify initial governance facts and activate the first Partnership Governance and Authority & Delegation policies without circularly relying on those same policies. It must expose unresolved legal implementation and must not invent a formation date, quorum rule, approval threshold, or executed Partnership Agreement.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

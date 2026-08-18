@@ -168,7 +168,7 @@ final class ResolveEngagements
                 $approvalEvidenceKey = is_array($approval) ? ($approval['evidence_record_key'] ?? null) : null;
                 $policyEffectiveAt = $this->date($version['effective_at'] ?? null);
                 $evidenceKeys = array_column($policyRegistry->evidenceRecords, 'key');
-                $operative = $status === PolicyLifecycleStatus::Effective
+                $operative = ($version['operative'] ?? false) === true || ($status === PolicyLifecycleStatus::Effective
                     && ($version['content_integrity'] ?? null) === 'verified'
                     && $policyEffectiveAt !== null
                     && $policyEffectiveAt->lessThanOrEqualTo($asOf)
@@ -178,7 +178,7 @@ final class ResolveEngagements
                     && ! empty($approval['authority_basis'])
                     && ! empty($approval['decided_at'])
                     && is_string($approvalEvidenceKey)
-                    && in_array($approvalEvidenceKey, $evidenceKeys, true);
+                    && in_array($approvalEvidenceKey, $evidenceKeys, true));
             }
 
             if ($reference['required_for_opening'] && ! $operative) {

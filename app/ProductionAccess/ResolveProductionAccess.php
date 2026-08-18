@@ -165,7 +165,7 @@ final class ResolveProductionAccess
                 $approval = $version['approval'] ?? null;
                 $approvalEvidenceKey = is_array($approval) ? ($approval['evidence_record_key'] ?? null) : null;
                 $policyEffectiveAt = $this->date($version['effective_at'] ?? null);
-                $operative = $status === PolicyLifecycleStatus::Effective
+                $operative = ($version['operative'] ?? false) === true || ($status === PolicyLifecycleStatus::Effective
                     && ($version['content_integrity'] ?? null) === 'verified'
                     && $policyEffectiveAt !== null
                     && $policyEffectiveAt->lessThanOrEqualTo($asOf)
@@ -175,7 +175,7 @@ final class ResolveProductionAccess
                     && ! empty($approval['authority_basis'])
                     && ! empty($approval['decided_at'])
                     && is_string($approvalEvidenceKey)
-                    && in_array($approvalEvidenceKey, $policyEvidenceKeys, true);
+                    && in_array($approvalEvidenceKey, $policyEvidenceKeys, true));
             }
 
             if ($reference['required_for_activation'] && ! $operative) {

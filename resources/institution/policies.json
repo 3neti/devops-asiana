@@ -230,6 +230,9 @@
             ]
         }
     ],
+    "policy_approval_admission_records": [],
+    "policy_publication_records": [],
+    "policy_activation_records": [],
     "exceptions": [],
     "evidence_records": []
 }
