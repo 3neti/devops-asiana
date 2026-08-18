@@ -120,8 +120,10 @@ Canonical Client action requests live in `resources/institution/client-mandates.
 
 Canonical Matters live in `resources/institution/matters.json`. `ResolveMatters` distinguishes a bounded piece of professional work from the Client relationship and parent Engagement. An accountable Matter requires an open Engagement, exactly one Responsible Partner reconciled with that Engagement, explicit scope, risk ownership and acceptance, escalation, and Evidence. It does not create Client Mandate, Firm Authority, or generic ticket permission.
 
+Canonical Matter Events live in `resources/institution/matter-events.json`. `ResolveMatterEvents` records append-only decisions, changes, incidents, reviews, and closure against one Matter. Events require an attributable actor, ordered chronology, and Evidence; closure additionally requires an independent verifier. Events never create approval or authority and never erase prior Matter history.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Matter Event and Evidence Compiler for decisions, changes, incidents, reviews, and closure inside an existing Matter.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Matter Closure and Corrective-Action Link Compiler that keeps closure distinct from follow-up obligations.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

@@ -161,3 +161,6 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Matter                                  | A bounded piece of professional work inside an Engagement with its own scope, accountability, risk, escalation, and evidence                      |
 | Matter Scope                            | Purpose, work boundary, deliverables, and exclusions defining the bounded work                                                                      |
 | Matter Accountability                   | The singular Responsible Partner and explicit risk/escalation ownership for a Matter                                                                  |
+| Matter Event                            | An attributable decision, change, incident, review, or closure record bounded to one Matter                                                           |
+| Event Admission                         | Projection that a Matter Event passed parent, type, chronology, and Evidence checks                                                                  |
+| Closure Verification                    | Independent confirmation that a Matter's closure disposition is supported and complete                                                               |

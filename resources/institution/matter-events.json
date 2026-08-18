@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "parent-matter",
+            "label": "Parent Matter",
+            "question": "Does the event reference a known Matter?"
+        },
+        {
+            "key": "event-type",
+            "label": "Event Type",
+            "question": "Is the event a recorded decision, change, incident, review, or closure?"
+        },
+        {
+            "key": "chronology",
+            "label": "Chronology",
+            "question": "Is the event attributable and ordered within the Matter history?"
+        },
+        {
+            "key": "closure-verification",
+            "label": "Closure Verification",
+            "question": "If closing, did another person verify the disposition?"
+        },
+        {
+            "key": "evidence",
+            "label": "Evidence",
+            "question": "Does the event have linked Evidence?"
+        }
+    ],
+    "events": [],
+    "evidence_records": []
+}

@@ -20,12 +20,14 @@ import type {
     EngagementCompiler,
     EngagementProjection,
     MatterCompiler,
+    MatterEventCompiler,
 } from '@/types';
 
 defineProps<{
     engagements: EngagementCompiler;
     clientMandates: ClientMandateCompiler;
     matters: MatterCompiler;
+    matterEvents: MatterEventCompiler;
 }>();
 
 defineOptions({
@@ -240,6 +242,57 @@ function statusClass(
                             </dd>
                             <dt class="text-[10px] text-slate-500 uppercase">
                                 Permitted
+                            </dt>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+
+            <section
+                class="rounded-2xl border border-cyan-600/20 bg-cyan-50/60 p-5 sm:p-6 dark:bg-cyan-950/20"
+            >
+                <div
+                    class="flex flex-col justify-between gap-4 sm:flex-row sm:items-start"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-semibold tracking-[0.18em] text-cyan-700 uppercase dark:text-cyan-300"
+                        >
+                            Matter event and evidence compiler
+                        </p>
+                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                            Matter history remains append-only and attributable
+                        </h2>
+                        <p
+                            class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
+                        >
+                            Decisions, changes, incidents, reviews, and closure
+                            are distinct events. Closure requires independent
+                            verification; no event silently creates approval or
+                            erases history.
+                        </p>
+                    </div>
+                    <dl class="grid shrink-0 grid-cols-2 gap-2 text-center">
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd class="text-xl font-semibold">
+                                {{ matterEvents.counts.events }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Events
+                            </dt>
+                        </div>
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd
+                                class="text-xl font-semibold text-cyan-700 dark:text-cyan-300"
+                            >
+                                {{ matterEvents.counts.admitted_events }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Admitted
                             </dt>
                         </div>
                     </dl>

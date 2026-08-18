@@ -14,6 +14,8 @@ use App\FormationCompletion\FormationCompletionRepository;
 use App\FormationCompletion\ResolveFormationCompletion;
 use App\IdentityAndRoles\IdentityAndRoleRepository;
 use App\IdentityAndRoles\ResolveIdentityAndRoles;
+use App\MatterEvents\MatterEventRepository;
+use App\MatterEvents\ResolveMatterEvents;
 use App\Matters\MatterRepository;
 use App\Matters\ResolveMatters;
 use App\Partnership\PartnershipDefinitionRepository;
@@ -37,6 +39,7 @@ class EngagementController extends Controller
         AuthorityMatrixRepository $authorityMatrix,
         ClientMandateRepository $clientMandates,
         MatterRepository $matters,
+        MatterEventRepository $matterEvents,
         EngagementRepository $engagements,
         ClientAcceptanceRepository $clientAcceptance,
         FormationCompletionRepository $formationCompletion,
@@ -50,6 +53,7 @@ class EngagementController extends Controller
         ResolveAuthorityMatrix $resolveAuthorityMatrix,
         ResolveClientMandates $resolveClientMandates,
         ResolveMatters $resolveMatters,
+        ResolveMatterEvents $resolveMatterEvents,
         ResolveEngagements $resolveEngagements,
         ResolveClientAcceptance $resolveClientAcceptance,
         ResolveFormationCompletion $resolveFormationCompletion,
@@ -74,10 +78,13 @@ class EngagementController extends Controller
         $resolvedAuthority = $resolveAuthorityMatrix->handle($authorityMatrix->current(), $resolvedPartnership, $resolvedPolicies, $resolvedCoverage, $resolvedIdentities);
         $resolvedEngagements = $resolveEngagements->handle($engagements->current(), $resolveClientAcceptance->handle($clientAcceptance->current(), $policyRegistry), $resolvedPartnership, $resolvedPolicies);
 
+        $resolvedMatters = $resolveMatters->handle($matters->current(), $resolvedEngagements);
+
         return Inertia::render('Engagements/Index', [
             'engagements' => $resolvedEngagements->toArray(),
             'clientMandates' => $resolveClientMandates->handle($clientMandates->current(), $resolvedEngagements, $resolvedAuthority)->toArray(),
-            'matters' => $resolveMatters->handle($matters->current(), $resolvedEngagements)->toArray(),
+            'matters' => $resolvedMatters->toArray(),
+            'matterEvents' => $resolveMatterEvents->handle($matterEvents->current(), $resolvedMatters)->toArray(),
         ]);
     }
 }

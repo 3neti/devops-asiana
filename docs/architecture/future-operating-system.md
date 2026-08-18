@@ -177,8 +177,14 @@ The repository now includes a read-only **Matter and Responsible-Partner Account
 
 An accountable Matter projection does not create an Engagement, Client Mandate, Firm Authority, or action permission. It gives the Firm a durable answer to which Partner owns professional accountability for a bounded piece of work while preserving operational and approval boundaries.
 
+## Matter events and evidence
+
+The repository now includes a read-only **Matter Event and Evidence Compiler** backed by `resources/institution/matter-events.json`. It preserves append-only decision, change, incident, review, and closure events against one Matter, requiring an attributable actor, valid chronology, event disposition, and separate Evidence. Closure additionally requires an independent verifier.
+
+The compiler does not turn events into approvals or authority, and it never erases prior Matter history. An observed execution remains an event until the required review, verification, and disposition facts are separately evidenced.
+
 ## Recommended next vertical slice
 
-Build a narrow **Matter Event and Evidence Compiler**. It should record bounded Matter events—decisions, changes, incidents, reviews, and closure—without collapsing them into a generic workflow or erasing the parent Engagement's accountability history.
+Build a narrow **Matter Closure and Corrective-Action Link Compiler**. It should connect independently verified Matter closure to owned corrective work without treating closure as proof that all follow-up obligations are complete.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

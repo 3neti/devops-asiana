@@ -479,6 +479,29 @@ export type MatterCompiler = {
     principles: string[];
 };
 
+export type MatterEventCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    requirements: Array<{ key: string; label: string; question: string }>;
+    events: Array<Record<string, unknown>>;
+    admitted_events: Array<Record<string, unknown>>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        events: number;
+        admitted_events: number;
+        evidence_records: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        matter_gaps: Array<{ code: string; message: string }>;
+        event_gaps: Array<{ code: string; message: string }>;
+        chronology_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};
+
 export type AccessGrantLifecycleStatus =
     | 'requested'
     | 'under_review'

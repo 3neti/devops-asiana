@@ -29,6 +29,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Successor Appointments  | separate successor appointment, qualification, acceptance, activation, vacancy closure, and evidence |
 | Client Mandates         | Client authorization boundaries, action requests, Specific Approval, and permitted-action projections |
 | Matters                 | bounded professional work, singular Responsible Partner, scope, risk, escalation, and evidence       |
+| Matter Events           | append-only decisions, changes, incidents, reviews, closure, chronology, and Evidence               |
 | Vendors                 | due diligence, contracts, access, review and exit                                                    |
 
 Cross-domain references should use stable identifiers and explicit application services or actions. A shared workflow framework, event-sourcing platform, microservices, or package extraction is not justified at this stage.
@@ -48,6 +49,8 @@ Successor appointment is a further admission boundary after a terminal Role tran
 Client Mandate resolution is downstream of Engagement and Firm Authority resolution. `ResolveClientMandates` evaluates a bounded action request against an Engagement open for Client work, the exact Client Mandate action/system/environment boundary, an effective Authority Matrix entry and holder, separate Specific Approval, and Evidence. It emits only a permitted-action projection; it never expands an Engagement, creates Firm Authority, or treats technical access or execution as Client authorization.
 
 Matter resolution is downstream of Engagement resolution. `ResolveMatters` distinguishes a bounded piece of professional work from both the Client relationship and its parent Engagement. It requires exactly one Responsible Partner reconciled with the Engagement, explicit scope and exclusions, risk classification and acceptance, escalation contacts and triggers, and Evidence. A Matter projection never creates an Engagement, Client Mandate, Firm Authority, or permission to perform Client work.
+
+Matter Event resolution is downstream of Matter resolution. `ResolveMatterEvents` records decisions, changes, incidents, reviews, and closure against one known Matter, preserving actor, chronology, disposition, and Evidence. Closure requires an independent verifier; an event never backfills approval, creates authority, or erases earlier Matter history.
 
 Identity resolution deliberately precedes the Authority Matrix. The Matrix may consume an operative Office or delegated-authority assignment, but still evaluates the authority domain, action, threshold or risk, source, time, and Evidence. It never converts every Role Assignment into authority. Client Mandate and Specific Approval remain independent downstream constraints and are not emitted by the Matrix.
 
