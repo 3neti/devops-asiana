@@ -5,6 +5,7 @@ namespace App\IdentityAndRoles;
 use App\FormationCompletion\ResolvedFormationCompletion;
 use App\Partnership\ResolvedPartnership;
 use App\ResponsibilityCoverage\ResolvedResponsibilityCoverage;
+use App\RoleActivations\ResolvedRoleActivations;
 use DateTimeImmutable;
 use Illuminate\Support\Carbon;
 use Throwable;
@@ -17,6 +18,7 @@ final class ResolveIdentityAndRoles
         ResolvedResponsibilityCoverage $responsibilityCoverage,
         ?DateTimeImmutable $asOf = null,
         ?ResolvedFormationCompletion $formationCompletion = null,
+        ?ResolvedRoleActivations $roleActivations = null,
     ): ResolvedIdentityAndRoles {
         /** @var list<array{code: string, message: string}> $conflicts */
         $conflicts = [];
@@ -44,6 +46,7 @@ final class ResolveIdentityAndRoles
         $commencementBasis = collect($formationCompletion->officeActivationBases ?? [])
             ->firstWhere('permits_formation_derived_assignments', true);
         $firmEffectiveAt = $this->date($commencementBasis['effective_at'] ?? null);
+        $activationAdmissions = $this->indexByAssignmentKey($roleActivations->assignmentActivationAdmissions ?? []);
 
         if ($firmEffectiveAt === null && $this->usesFormationEffectiveDate($definition->assignments)) {
             $activationGaps[] = $this->issue(
@@ -58,6 +61,7 @@ final class ResolveIdentityAndRoles
             roles: $roleIndex,
             evidenceKeys: $evidenceKeys,
             firmEffectiveAt: $firmEffectiveAt,
+            activationAdmissions: $activationAdmissions,
             asOf: $effectiveAt,
             lifecycleCounts: $assignmentLifecycleCounts,
             conflicts: $conflicts,
@@ -186,6 +190,7 @@ final class ResolveIdentityAndRoles
      * @param  array<string, array<string, mixed>>  $identities
      * @param  array<string, array<string, mixed>>  $roles
      * @param  list<string>  $evidenceKeys
+     * @param  array<string, array<string, mixed>>  $activationAdmissions
      * @param  array<string, int>  $lifecycleCounts
      * @param  list<array{code: string, message: string}>  $conflicts
      * @param  list<array{code: string, message: string}>  $activationGaps
@@ -204,6 +209,7 @@ final class ResolveIdentityAndRoles
         array $roles,
         array $evidenceKeys,
         ?Carbon $firmEffectiveAt,
+        array $activationAdmissions,
         Carbon $asOf,
         array &$lifecycleCounts,
         array &$conflicts,
@@ -248,6 +254,7 @@ final class ResolveIdentityAndRoles
 
             $basis = is_array($assignment['basis'] ?? null) ? $assignment['basis'] : [];
             $basisType = $basis['type'] ?? null;
+            $activationAdmission = $activationAdmissions[$key] ?? null;
             $basisValid = in_array($basisType, ['formation', 'appointment', 'delegation'], true)
                 && is_string($basis['reference'] ?? null) && $basis['reference'] !== '';
             if (! $basisValid) {
@@ -259,7 +266,7 @@ final class ResolveIdentityAndRoles
                 $conflicts[] = $this->issue('unqualified_role_assignment', "Assignment {$key} does not satisfy the Role qualification.");
             }
 
-            $effectiveFrom = $this->resolveEffectiveFrom($assignment, $firmEffectiveAt);
+            $effectiveFrom = $this->resolveEffectiveFrom($assignment, $firmEffectiveAt, $activationAdmission);
             $expiresAt = $this->date($assignment['expires_at'] ?? null);
             if ($effectiveFrom !== null && $expiresAt !== null && $expiresAt->lessThanOrEqualTo($effectiveFrom)) {
                 $conflicts[] = $this->issue('invalid_assignment_period', "Assignment {$key} expires before or at its effective time.");
@@ -280,8 +287,19 @@ final class ResolveIdentityAndRoles
                 $activationGaps[] = $this->issue('incomplete_delegated_authority', "Assignment {$key} cannot carry delegated authority without bounded scope and expiry.");
             }
 
-            $evidenceValid = true;
-            if ($status === AssignmentLifecycleStatus::Active) {
+            $effectiveStatus = $status;
+            if ($basisType === 'formation' && $activationAdmission !== null && $status === AssignmentLifecycleStatus::Approved) {
+                $effectiveStatus = AssignmentLifecycleStatus::Active;
+            }
+            if ($basisType === 'formation' && $status === AssignmentLifecycleStatus::Active && $activationAdmission === null) {
+                $activationGaps[] = $this->issue(
+                    'formation_assignment_activation_not_admitted',
+                    "Assignment {$key} declares Active without an admitted holder-assumption record.",
+                );
+            }
+
+            $evidenceValid = $basisType === 'formation' ? $activationAdmission !== null : true;
+            if ($basisType !== 'formation' && $status === AssignmentLifecycleStatus::Active) {
                 $evidenceValid = $this->requireEvidence($assignment['evidence_record_key'] ?? null, $evidenceKeys, "Assignment {$key}", $evidenceGaps);
             }
             if (in_array($status, [AssignmentLifecycleStatus::Ended, AssignmentLifecycleStatus::Revoked], true)) {
@@ -295,20 +313,24 @@ final class ResolveIdentityAndRoles
 
             $temporallyActive = $effectiveFrom !== null && ! $effectiveFrom->isAfter($asOf)
                 && ($expiresAt === null || $expiresAt->isAfter($asOf));
-            $operative = $status === AssignmentLifecycleStatus::Active && $temporallyActive
+            $operative = $effectiveStatus === AssignmentLifecycleStatus::Active && $temporallyActive
                 && $basisValid && $qualified && $approvalValid && $delegationValid && $evidenceValid;
             $grantsFirmAuthority = $operative && in_array($role['category'] ?? null, ['office', 'delegated_authority'], true);
 
             $resolved[] = [
                 ...$assignment,
                 'lifecycle_status_label' => $status?->label() ?? 'Invalid',
+                'effective_lifecycle_status' => $effectiveStatus?->value,
+                'effective_lifecycle_status_label' => $effectiveStatus?->label() ?? 'Invalid',
                 'identity_name' => $identity['display_name'] ?? $identityKey,
                 'role_name' => $role['name'] ?? $roleKey,
+                'activation_admitted' => $activationAdmission !== null,
+                'activation_admission_key' => $activationAdmission['key'] ?? null,
                 'effective_at_resolved' => $effectiveFrom?->toIso8601String(),
                 'temporal_state' => $this->temporalState($effectiveFrom, $expiresAt, $asOf),
                 'operative' => $operative,
                 'grants_firm_authority' => $grantsFirmAuthority,
-                'operational_status' => $this->operationalStatus($status, $effectiveFrom, $expiresAt, $asOf, $operative),
+                'operational_status' => $this->operationalStatus($effectiveStatus, $effectiveFrom, $expiresAt, $asOf, $operative),
             ];
         }
 
@@ -403,11 +425,14 @@ final class ResolveIdentityAndRoles
         }
     }
 
-    /** @param array<string, mixed> $assignment */
-    private function resolveEffectiveFrom(array $assignment, ?Carbon $firmEffectiveAt): ?Carbon
+    /**
+     * @param  array<string, mixed>  $assignment
+     * @param  array<string, mixed>|null  $activationAdmission
+     */
+    private function resolveEffectiveFrom(array $assignment, ?Carbon $firmEffectiveAt, ?array $activationAdmission): ?Carbon
     {
         if (($assignment['effective_at_source'] ?? null) === 'formation.firm.effective_date') {
-            return $firmEffectiveAt;
+            return $this->date($activationAdmission['effective_at'] ?? null) ?? $firmEffectiveAt;
         }
 
         return $this->date($assignment['effective_at'] ?? null);
@@ -552,6 +577,23 @@ final class ResolveIdentityAndRoles
         foreach ($records as $record) {
             if (is_string($record['key'] ?? null)) {
                 $indexed[$record['key']] = $record;
+            }
+        }
+
+        return $indexed;
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $records
+     * @return array<string, array<string, mixed>>
+     */
+    private function indexByAssignmentKey(array $records): array
+    {
+        $indexed = [];
+
+        foreach ($records as $record) {
+            if (($record['activates_exact_assignment'] ?? false) === true && is_string($record['assignment_key'] ?? null)) {
+                $indexed[$record['assignment_key']] = $record;
             }
         }
 

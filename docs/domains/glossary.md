@@ -75,6 +75,8 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Initial Policy Approval Basis          | Narrow projection from verified Formation Ratification; it supplies neither publication nor activation                                                  |
 | Firm Commencement Record               | Exact, counsel-confirmed and evidenced reconciliation of formation facts required before formation-derived assignments may activate                      |
 | Formation-derived Assignment Basis     | Commencement projection supplying constitutional effective time; it does not itself activate an Office or Role Assignment                               |
+| Role Assumption Record                 | Attributable holder acceptance, independent verification, and activation record for one exact eligible formation-derived assignment                     |
+| Assignment Activation Admission        | Compiler projection making one matching approved assignment effectively Active; it grants no Firm Authority by itself                                  |
 | Legal Requirement Set                  | Case-specific formation and registration record types confirmed by Philippine counsel rather than inferred by software                                  |
 | Capital Initialization Record          | Referenced Evidence of a Founding Partner's initial contribution, separate from governance, compensation, and Engagement economics                      |
 | Policy Publication Record              | Evidence that one exact controlled Policy Version and content digest were published; publication supplies neither approval nor activation               |

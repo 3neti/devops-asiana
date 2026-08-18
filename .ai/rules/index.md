@@ -23,6 +23,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | {app/GovernanceMeetings/**,resources/institution/governance-meetings.json,resources/js/pages/GovernanceMeetings/**,tests/**/*GovernanceMeeting*} | .ai/rules/governance-meetings.md |
 | app/IdentityAndRoles/**,resources/institution/identity-and-roles.json,resources/js/pages/IdentityAndRoles/** | .ai/rules/identity-and-roles.md |
 | app/Incidents/**,resources/institution/incidents.json,resources/js/pages/Incidents/**,tests/**/*Incident* | .ai/rules/incidents.md |
+| app/RoleActivations/**,resources/institution/role-activations.json,app/IdentityAndRoles/** | .ai/rules/institution-identity-and-roles.md |
 | resources/institution/** | .ai/rules/institution.md |
 | resources/js/pages/ClientAcceptance/** | .ai/rules/pages-client-acceptance.md |
 | resources/js/pages/Engagements/** | .ai/rules/pages-engagements.md |

@@ -72,11 +72,19 @@ An assignment is operative only when all applicable conditions are satisfied:
 
 Only an operative Office or delegated-authority assignment may contribute Firm Authority. A professional-responsibility assignment can be operative without granting Firm Authority.
 
+### Founding assignment assumption
+
+Formation-derived assignments have an additional admission boundary. Verified Firm Commencement makes an approved assignment eligible, but does not activate it. The holder must accept one exact assignment, another recognized person must independently verify that acceptance and the assignment snapshot, and the activation itself must be separately recorded. Acceptance, verification, and activation each require distinct Evidence.
+
+`resources/institution/role-activations.json` is the canonical assumption register. `ResolveRoleActivations` may emit an activation admission only for an exact approved formation assignment whose Role, holder, formation reference, Commencement basis, chronology, and Evidence reconcile. One admission activates only its named assignment. It does not activate the holder's other responsibilities and declares no Firm Authority.
+
+`ResolveIdentityAndRoles` preserves the canonical assignment lifecycle as Approved while projecting an admitted assignment's effective lifecycle as Active. This prevents the activation projection from rewriting historical institutional truth. A manually declared Active state cannot substitute for an admitted assumption.
+
 ## Founding state
 
 The registry recognizes Lester B. Hurtado and Angelica Anaïs C. Santos by reference to the Partnership Formation. It defines nine Roles and records eight formation-derived assignments. Security & Compliance and Privileged Emergency Access Approver remain unassigned.
 
-The assignments are Approved but not Active. Their effective time may be supplied only by a verified Firm Commencement basis, not by a date standing alone. The principal office, Firm effective date, counsel-confirmed legal requirement set, capital initialization, Commencement Record, and Evidence remain unresolved. The compiler therefore reports seven assigned Roles as pending activation, two Roles as vacant, and zero effective Firm Authority. It does not invent commencement or treat formation records as already operative.
+The assignments are Approved but not Active. Their eligibility may be supplied only by a verified Firm Commencement basis, not by a date standing alone, and each exact assignment then requires a separately admitted holder assumption. The principal office, Firm effective date, counsel-confirmed legal requirement set, capital initialization, Commencement Record, assumption records, and Evidence remain unresolved. The compilers therefore report eight pending assumptions, seven assigned Roles pending activation, two Roles vacant, and zero effective Firm Authority. They do not invent commencement or treat formation records as already operative.
 
 Employment or service classification for both founders remains unresolved and separate from their Founding Partner status. Neither Institutional Identity is bound to an application login or system account in the canonical registry.
 
@@ -88,4 +96,4 @@ Active assignment and disposition records require Evidence. Appointment, suspens
 
 ## Next boundary
 
-The next compiler may use resolved Identities and Role Assignments to define an Authority Matrix: who may decide, approve, commit, or act in a named authority domain, at a stated risk or threshold, and under what source. Client Mandate and Specific Approval remain separate downstream gates.
+A future Role Assignment Transition Compiler should preserve suspension, resignation, removal, revocation, ending, successor appointment, and resulting responsibility coverage as distinct attributable events. Ending one assignment must create a visible vacancy when no independently admitted successor exists; it must never transfer a Role or authority silently.

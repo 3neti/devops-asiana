@@ -1090,6 +1090,8 @@ export type RoleAssignment = {
     identity_name: string;
     lifecycle_status: AssignmentLifecycleStatus;
     lifecycle_status_label: string;
+    effective_lifecycle_status: AssignmentLifecycleStatus;
+    effective_lifecycle_status_label: string;
     basis: {
         type: 'formation' | 'appointment' | 'delegation';
         reference: string;
@@ -1098,6 +1100,8 @@ export type RoleAssignment = {
     effective_at_source: string | null;
     effective_at_resolved: string | null;
     expires_at: string | null;
+    activation_admitted: boolean;
+    activation_admission_key: string | null;
     operative: boolean;
     grants_firm_authority: boolean;
     temporal_state: string;
@@ -1117,6 +1121,7 @@ export type IdentityAndRoleCompiler = {
         identities: number;
         roles: number;
         assignments: number;
+        admitted_activations: number;
         authority_effective: number;
         authentication_bindings: number;
         by_assignment_lifecycle: Record<AssignmentLifecycleStatus, number>;
@@ -1128,6 +1133,58 @@ export type IdentityAndRoleCompiler = {
         activation_gaps: Array<{ code: string; message: string }>;
         evidence_gaps: Array<{ code: string; message: string }>;
         holder_mismatches: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};
+
+export type RoleActivationCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    candidates: Array<{
+        key: string;
+        role_key: string;
+        role_name: string;
+        role_category: string;
+        authority_attachment: string;
+        identity_key: string;
+        identity_name: string;
+        basis_reference: string;
+        recorded_lifecycle_status: AssignmentLifecycleStatus;
+        commencement_eligible: boolean;
+    }>;
+    activation_records: Array<Record<string, unknown>>;
+    assignment_activation_admissions: Array<{
+        key: string;
+        activation_record_key: string;
+        assignment_key: string;
+        role_key: string;
+        identity_key: string;
+        effective_at: string;
+        activates_exact_assignment: true;
+        grants_firm_authority: false;
+        authority_effect: 'eligible_for_separate_authority_resolution' | 'none';
+    }>;
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        candidate_assignments: number;
+        commencement_eligible_assignments: number;
+        recorded_assumptions: number;
+        admitted_activations: number;
+        pending_assignments: number;
+        evidence_records: number;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        activation_gaps: Array<{ code: string; message: string }>;
+        acceptance_gaps: Array<{ code: string; message: string }>;
+        verification_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
     };
     principles: string[];
 };

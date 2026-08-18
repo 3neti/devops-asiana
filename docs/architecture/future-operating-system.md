@@ -147,8 +147,14 @@ The compiler does not prescribe Philippine registration steps. Counsel must iden
 
 Only a verified effective Commencement Record emits a formation-derived assignment activation basis. `ResolveIdentityAndRoles` now consumes that basis: a populated Firm effective date alone cannot activate the Managing Partner office or any formation-derived professional responsibility. Canonical state remains unresolved and emits no activation basis.
 
+## Founding Office assumption and Role activation
+
+The repository now includes a read-only **Founding Role Activation Compiler** backed by `resources/institution/role-activations.json`. It derives activation candidates from the canonical identity-and-role registry, makes them eligible only through an exact effective Firm Commencement basis, and requires holder acceptance, independent verification by another recognized person, valid chronology, and separate Evidence for acceptance, verification, and activation.
+
+An admission activates only its exact assignment. Canonical assignment history remains Approved while the identity compiler projects the admitted effective lifecycle as Active. The admission itself grants no Firm Authority; a professional responsibility remains non-authoritative, while an Office becomes only eligible for separate Authority Matrix resolution. Canonical state records no assumptions, so all eight founding assignments remain pending without inferred activation.
+
 ## Recommended next vertical slice
 
-Build a narrow **Founding Office Assumption and Role Activation Compiler**. It should admit an exact effective Firm Commencement basis, preserve each holder's explicit acceptance or assumption of an Office or professional responsibility, require assignment-specific Evidence, and activate only the matching formation-derived Role Assignment. Commencement must not silently activate every recorded responsibility, and accepting a professional role must not create Firm Authority unless the Role independently carries an authority attachment.
+Build a narrow **Role Assignment Transition Compiler** for suspension, resignation, removal, revocation, and ordinary ending. It should preserve the competent decision source, holder notice or acknowledgment where applicable, effective time, Evidence, resulting vacancy, and any separately admitted successor. Disposition must never erase assignment history, transfer an Office automatically, or imply that a successor inherits the predecessor's authority.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

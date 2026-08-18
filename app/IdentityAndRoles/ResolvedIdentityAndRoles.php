@@ -50,6 +50,10 @@ final readonly class ResolvedIdentityAndRoles
                 'identities' => count($this->identities),
                 'roles' => count($this->roles),
                 'assignments' => count($this->assignments),
+                'admitted_activations' => count(array_filter(
+                    $this->assignments,
+                    static fn (array $assignment): bool => ($assignment['activation_admitted'] ?? false) === true,
+                )),
                 'authority_effective' => count(array_filter(
                     $this->assignments,
                     static fn (array $assignment): bool => ($assignment['grants_firm_authority'] ?? false) === true,
@@ -73,6 +77,7 @@ final readonly class ResolvedIdentityAndRoles
                 'Partner status, office appointment, professional responsibility, and delegated authority are separate records.',
                 'Approval does not activate an assignment; effective time, evidence, and lifecycle remain explicit.',
                 'A formation date alone does not activate an assignment; a verified Firm Commencement basis is required.',
+                'Firm Commencement does not activate every formation assignment; each holder assumption is separately admitted.',
                 'A professional role carries responsibility but does not bind the Firm unless a separate authority source says so.',
                 'Ending an assignment does not erase its history or silently transfer it to another person.',
             ],

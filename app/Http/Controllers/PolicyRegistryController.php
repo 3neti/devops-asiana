@@ -20,6 +20,8 @@ use App\Policies\PolicyRegistryRepository;
 use App\Policies\ResolvePolicyRegistry;
 use App\ResponsibilityCoverage\ResolveResponsibilityCoverage;
 use App\ResponsibilityCoverage\ResponsibilityCoverageRepository;
+use App\RoleActivations\ResolveRoleActivations;
+use App\RoleActivations\RoleActivationRepository;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -35,6 +37,7 @@ class PolicyRegistryController extends Controller
         IdentityAndRoleRepository $identityAndRoles,
         ResponsibilityCoverageRepository $responsibilityCoverage,
         PartnershipDefinitionRepository $partnership,
+        RoleActivationRepository $roleActivations,
         ResolvePolicyRegistry $resolvePolicyRegistry,
         ResolveFormationBootstrap $resolveFormationBootstrap,
         ResolveFormationCompletion $resolveFormationCompletion,
@@ -44,6 +47,7 @@ class PolicyRegistryController extends Controller
         ResolveIdentityAndRoles $resolveIdentityAndRoles,
         ResolveResponsibilityCoverage $resolveResponsibilityCoverage,
         ResolvePartnership $resolvePartnership,
+        ResolveRoleActivations $resolveRoleActivations,
     ): Response {
         $policyDefinition = $registries->current();
         $resolvedPartnership = $resolvePartnership->handle($partnership->current());
@@ -58,11 +62,14 @@ class PolicyRegistryController extends Controller
             formationBootstrap: $resolvedFormationBootstrap,
         );
         $resolvedCoverage = $resolveResponsibilityCoverage->handle($responsibilityCoverage->current(), $resolvedPartnership, $basePolicies);
+        $identityDefinition = $identityAndRoles->current();
+        $resolvedRoleActivations = $resolveRoleActivations->handle($roleActivations->current(), $identityDefinition, $resolvedFormationCompletion);
         $resolvedIdentities = $resolveIdentityAndRoles->handle(
-            $identityAndRoles->current(),
+            $identityDefinition,
             $resolvedPartnership,
             $resolvedCoverage,
             formationCompletion: $resolvedFormationCompletion,
+            roleActivations: $resolvedRoleActivations,
         );
         $resolvedAuthority = $resolveAuthorityMatrix->handle($authorityMatrix->current(), $resolvedPartnership, $basePolicies, $resolvedCoverage, $resolvedIdentities);
         $resolvedGovernanceMeetings = $resolveGovernanceMeetings->handle($governanceMeetings->current(), $resolvedPartnership, $basePolicies, $resolvedAuthority);

@@ -155,9 +155,7 @@ const stages = [
                         Explicit admission
                     </p>
                     <p class="mt-2 font-serif text-xl font-semibold">
-                        {{
-                            decisionRecords.counts.collective_admissions
-                        }}
+                        {{ decisionRecords.counts.collective_admissions }}
                         admitted sources
                     </p>
                     <p

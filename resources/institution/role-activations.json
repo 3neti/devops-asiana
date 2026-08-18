@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "requirements": [
+        {
+            "key": "verified-firm-commencement",
+            "label": "Verified Firm Commencement",
+            "question": "Which exact Firm Commencement basis makes the formation assignment eligible for activation?"
+        },
+        {
+            "key": "exact-assignment",
+            "label": "Exact assignment snapshot",
+            "question": "Which approved formation-derived assignment is being assumed without activating any other assignment?"
+        },
+        {
+            "key": "holder-acceptance",
+            "label": "Holder acceptance",
+            "question": "When and with what Evidence did the named holder accept this exact Office or responsibility?"
+        },
+        {
+            "key": "independent-verification",
+            "label": "Independent verification",
+            "question": "Who other than the holder verified the acceptance and assignment snapshot?"
+        },
+        {
+            "key": "activation-evidence",
+            "label": "Activation Evidence",
+            "question": "What separately proves acceptance, verification, and activation recording?"
+        }
+    ],
+    "activation_records": [],
+    "evidence_records": []
+}

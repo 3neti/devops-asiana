@@ -9,6 +9,7 @@ use App\Policies\PolicyRegistryDefinition;
 use App\Policies\ResolvePolicyRegistry;
 use App\ResponsibilityCoverage\ResolveResponsibilityCoverage;
 use App\ResponsibilityCoverage\ResponsibilityCoverageDefinition;
+use App\RoleActivations\ResolvedRoleActivations;
 use DateTimeImmutable;
 
 function identityRoleDefinition(): IdentityAndRoleDefinition
@@ -60,6 +61,7 @@ function resolveIdentityRoles(
     ?IdentityAndRoleDefinition $identityAndRoles = null,
     ?PartnershipDefinition $partnership = null,
     bool $formationCommenced = true,
+    ?ResolvedRoleActivations $roleActivations = null,
 ): array {
     $partnershipDefinition = $partnership ?? identityRolePartnershipDefinition();
     $resolvedPartnership = (new ResolvePartnership)->handle($partnershipDefinition);
@@ -77,7 +79,33 @@ function resolveIdentityRoles(
         $formationCommenced && $partnershipDefinition->formation['firm']['effective_date'] !== null
             ? identityRoleFormationCompletion($partnershipDefinition->formation['firm']['effective_date'])
             : null,
+        $roleActivations,
     )->toArray();
+}
+
+function identityRoleActivation(string $assignmentKey, string $roleKey, string $identityKey): ResolvedRoleActivations
+{
+    return new ResolvedRoleActivations(
+        schemaVersion: 1,
+        requirements: [],
+        candidates: [],
+        activationRecords: [],
+        assignmentActivationAdmissions: [[
+            'key' => "assumption::{$assignmentKey}",
+            'assignment_key' => $assignmentKey,
+            'role_key' => $roleKey,
+            'identity_key' => $identityKey,
+            'effective_at' => '2026-01-01T00:00:00+08:00',
+            'activates_exact_assignment' => true,
+            'grants_firm_authority' => false,
+        ]],
+        evidenceRecords: [],
+        conflicts: [],
+        activationGaps: [],
+        acceptanceGaps: [],
+        verificationGaps: [],
+        evidenceGaps: [],
+    );
 }
 
 function identityRoleFormationCompletion(string $effectiveAt): ResolvedFormationCompletion
@@ -196,6 +224,22 @@ test('role holders reconcile with responsibility coverage without duplicating ca
 });
 
 test('an operative professional responsibility does not itself grant Firm authority', function () {
+    $resolved = resolveIdentityRoles(
+        identityRoleDefinition(),
+        identityRoleEffectivePartnership(),
+        roleActivations: identityRoleActivation('client-delivery-angelica', 'client-delivery', 'angelica-santos'),
+    );
+    $assignment = collect($resolved['assignments'])->firstWhere('key', 'client-delivery-angelica');
+
+    expect($assignment['operative'])->toBeTrue()
+        ->and($assignment['lifecycle_status'])->toBe('approved')
+        ->and($assignment['effective_lifecycle_status'])->toBe('active')
+        ->and($assignment['activation_admitted'])->toBeTrue()
+        ->and($assignment['grants_firm_authority'])->toBeFalse()
+        ->and($resolved['counts']['authority_effective'])->toBe(0);
+});
+
+test('declaring a formation assignment active does not replace holder assumption', function () {
     $definition = identityRoleDefinition();
     $assignments = $definition->assignments;
     $assignmentIndex = array_search('client-delivery-angelica', array_column($assignments, 'key'), true);
@@ -208,9 +252,9 @@ test('an operative professional responsibility does not itself grant Firm author
     $resolved = resolveIdentityRoles($modified, identityRoleEffectivePartnership());
     $assignment = collect($resolved['assignments'])->firstWhere('key', 'client-delivery-angelica');
 
-    expect($assignment['operative'])->toBeTrue()
-        ->and($assignment['grants_firm_authority'])->toBeFalse()
-        ->and($resolved['counts']['authority_effective'])->toBe(0);
+    expect($assignment['operative'])->toBeFalse()
+        ->and(array_column($resolved['reports']['activation_gaps'], 'code'))
+        ->toContain('formation_assignment_activation_not_admitted');
 });
 
 test('a Firm effective date does not activate formation assignments without verified commencement', function () {

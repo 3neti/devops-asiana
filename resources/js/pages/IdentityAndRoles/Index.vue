@@ -14,10 +14,14 @@ import { index as identityAndRolesIndex } from '@/routes/identity-and-roles';
 import { show as showDocument } from '@/routes/institutional-documents';
 import type {
     IdentityAndRoleCompiler,
+    RoleActivationCompiler,
     ResponsibilityCoverageStatus,
 } from '@/types';
 
-defineProps<{ identityAndRoles: IdentityAndRoleCompiler }>();
+const props = defineProps<{
+    identityAndRoles: IdentityAndRoleCompiler;
+    roleActivations: RoleActivationCompiler;
+}>();
 
 defineOptions({
     layout: {
@@ -62,6 +66,12 @@ function statusClass(status: ResponsibilityCoverageStatus): string {
 
 function label(value: string): string {
     return value.replaceAll('_', ' ');
+}
+
+function activationAdmitted(assignmentKey: string): boolean {
+    return props.roleActivations.assignment_activation_admissions.some(
+        (admission) => admission.assignment_key === assignmentKey,
+    );
 }
 </script>
 
@@ -115,7 +125,12 @@ function label(value: string): string {
                             <p
                                 class="mt-1 font-semibold text-slate-950 dark:text-white"
                             >
-                                Approved assignments await activation
+                                {{
+                                    roleActivations.counts.pending_assignments >
+                                    0
+                                        ? 'Approved assignments await assumption'
+                                        : 'Founding assignments admitted'
+                                }}
                             </p>
                         </div>
                         <CircleAlert class="size-8 text-amber-600" />
@@ -194,6 +209,74 @@ function label(value: string): string {
                         {{ item.detail }}
                     </p>
                 </article>
+            </section>
+
+            <section
+                class="rounded-2xl border border-indigo-600/20 bg-indigo-50/70 p-5 sm:p-6 dark:bg-indigo-950/20"
+            >
+                <div
+                    class="flex flex-col justify-between gap-4 sm:flex-row sm:items-start"
+                >
+                    <div>
+                        <p
+                            class="text-xs font-semibold tracking-[0.18em] text-indigo-700 uppercase dark:text-indigo-300"
+                        >
+                            Founding role activation compiler
+                        </p>
+                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                            Commencement establishes eligibility. Each holder
+                            still assumes one exact assignment.
+                        </h2>
+                        <p
+                            class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
+                        >
+                            Acceptance, independent verification, activation,
+                            and their Evidence remain distinct. An admitted
+                            professional responsibility does not itself create
+                            Firm Authority.
+                        </p>
+                    </div>
+                    <dl class="grid shrink-0 grid-cols-3 gap-2 text-center">
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd class="text-xl font-semibold">
+                                {{
+                                    roleActivations.counts.candidate_assignments
+                                }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Candidates
+                            </dt>
+                        </div>
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd
+                                class="text-xl font-semibold text-teal-700 dark:text-teal-300"
+                            >
+                                {{
+                                    roleActivations.counts.admitted_activations
+                                }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Admitted
+                            </dt>
+                        </div>
+                        <div
+                            class="rounded-lg bg-white px-4 py-3 dark:bg-slate-900"
+                        >
+                            <dd
+                                class="text-xl font-semibold text-amber-700 dark:text-amber-300"
+                            >
+                                {{ roleActivations.counts.pending_assignments }}
+                            </dd>
+                            <dt class="text-[10px] text-slate-500 uppercase">
+                                Pending
+                            </dt>
+                        </div>
+                    </dl>
+                </div>
             </section>
 
             <section
@@ -398,9 +481,20 @@ function label(value: string): string {
                                     <td
                                         class="py-4 text-amber-700 capitalize dark:text-amber-400"
                                     >
-                                        {{
-                                            label(assignment.operational_status)
-                                        }}
+                                        <span
+                                            :class="
+                                                activationAdmitted(
+                                                    assignment.key,
+                                                )
+                                                    ? 'text-teal-700 dark:text-teal-300'
+                                                    : ''
+                                            "
+                                            >{{
+                                                label(
+                                                    assignment.operational_status,
+                                                )
+                                            }}</span
+                                        >
                                     </td>
                                 </tr>
                             </tbody>

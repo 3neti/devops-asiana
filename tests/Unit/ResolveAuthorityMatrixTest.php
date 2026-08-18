@@ -12,6 +12,7 @@ use App\Policies\ResolvedPolicyRegistry;
 use App\Policies\ResolvePolicyRegistry;
 use App\ResponsibilityCoverage\ResolveResponsibilityCoverage;
 use App\ResponsibilityCoverage\ResponsibilityCoverageDefinition;
+use App\RoleActivations\ResolvedRoleActivations;
 use DateTimeImmutable;
 
 function authorityMatrixDefinition(): AuthorityMatrixDefinition
@@ -126,6 +127,7 @@ function resolveAuthorityMatrixCompiler(
     ?PartnershipDefinition $partnership = null,
     ?IdentityAndRoleDefinition $identityAndRoles = null,
     ?Closure $policyTransform = null,
+    ?ResolvedRoleActivations $roleActivations = null,
 ): array {
     $resolvedPartnership = (new ResolvePartnership)->handle($partnership ?? authorityMatrixPartnershipDefinition());
     $resolvedPolicies = (new ResolvePolicyRegistry)->handle(authorityMatrixPolicyDefinition());
@@ -145,6 +147,7 @@ function resolveAuthorityMatrixCompiler(
         $partnership !== null && $partnership->formation['firm']['effective_date'] !== null
             ? authorityMatrixFormationCompletion($partnership->formation['firm']['effective_date'])
             : null,
+        $roleActivations,
     );
 
     return (new ResolveAuthorityMatrix)->handle(
@@ -155,6 +158,31 @@ function resolveAuthorityMatrixCompiler(
         $resolvedIdentities,
         new DateTimeImmutable('2026-08-18T12:00:00+08:00'),
     )->toArray();
+}
+
+function authorityMatrixManagingPartnerActivation(): ResolvedRoleActivations
+{
+    return new ResolvedRoleActivations(
+        schemaVersion: 1,
+        requirements: [],
+        candidates: [],
+        activationRecords: [],
+        assignmentActivationAdmissions: [[
+            'key' => 'assumption::managing-partner-angelica',
+            'assignment_key' => 'managing-partner-angelica',
+            'role_key' => 'managing-partner',
+            'identity_key' => 'angelica-santos',
+            'effective_at' => '2026-01-01T00:00:00+08:00',
+            'activates_exact_assignment' => true,
+            'grants_firm_authority' => false,
+        ]],
+        evidenceRecords: [],
+        conflicts: [],
+        activationGaps: [],
+        acceptanceGaps: [],
+        verificationGaps: [],
+        evidenceGaps: [],
+    );
 }
 
 function authorityMatrixFormationCompletion(string $effectiveAt): ResolvedFormationCompletion
@@ -268,18 +296,7 @@ test('a controlled approval action cannot permit self approval', function () {
 });
 
 test('a fully active office entry grants bounded Firm Authority to its operative holder', function () {
-    $identityDefinition = authorityMatrixIdentityDefinition();
-    $assignments = $identityDefinition->assignments;
-    $assignmentIndex = array_search('managing-partner-angelica', array_column($assignments, 'key'), true);
-    $assignments[$assignmentIndex]['lifecycle_status'] = 'active';
-    $assignments[$assignmentIndex]['evidence_record_key'] = 'evidence-managing-partner';
-    $activeIdentities = new IdentityAndRoleDefinition(
-        $identityDefinition->schemaVersion,
-        $identityDefinition->identities,
-        $identityDefinition->roles,
-        $assignments,
-        [authorityMatrixEvidence('evidence-managing-partner', 'Role Assignment Record')],
-    );
+    $activeIdentities = authorityMatrixIdentityDefinition();
     $matrixDefinition = authorityMatrixDefinition();
     $entries = $matrixDefinition->entries;
     $entryIndex = array_search('managing-partner-ordinary-management', array_column($entries, 'key'), true);
@@ -294,6 +311,7 @@ test('a fully active office entry grants bounded Firm Authority to its operative
         authorityMatrixEffectivePartnership(),
         $activeIdentities,
         fn (ResolvedPolicyRegistry $policies): ResolvedPolicyRegistry => authorityMatrixEffectivePolicies($policies, ['authority-and-delegation']),
+        authorityMatrixManagingPartnerActivation(),
     );
     $entry = collect($resolved['entries'])->firstWhere('key', 'managing-partner-ordinary-management');
 
