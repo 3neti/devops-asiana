@@ -183,8 +183,14 @@ The repository now includes a read-only **Matter Event and Evidence Compiler** b
 
 The compiler does not turn events into approvals or authority, and it never erases prior Matter history. An observed execution remains an event until the required review, verification, and disposition facts are separately evidenced.
 
+## Matter closure and corrective-action links
+
+The repository now includes a read-only **Matter Closure and Corrective-Action Link Compiler** backed by `resources/institution/matter-closures.json`. It requires an admitted closure Event, explicit Matter and Corrective Action references, and separate closure Evidence. It projects Matter closure independently from whether linked remediation is complete, keeping outstanding obligations visible.
+
+Corrective Actions retain their own accountable owner, due-date history, completion claim, independent verification, authority, and closure. Matter closure never implies remediation closure, and remediation closure never rewrites Matter history.
+
 ## Recommended next vertical slice
 
-Build a narrow **Matter Closure and Corrective-Action Link Compiler**. It should connect independently verified Matter closure to owned corrective work without treating closure as proof that all follow-up obligations are complete.
+Build a narrow **Client and Engagement Evidence Index Compiler**. It should make the Matter, Engagement, Client Mandate, authority, and Evidence chain queryable without introducing a generic search or workflow engine.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

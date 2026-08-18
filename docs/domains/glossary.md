@@ -164,3 +164,5 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Matter Event                            | An attributable decision, change, incident, review, or closure record bounded to one Matter                                                           |
 | Event Admission                         | Projection that a Matter Event passed parent, type, chronology, and Evidence checks                                                                  |
 | Closure Verification                    | Independent confirmation that a Matter's closure disposition is supported and complete                                                               |
+| Matter Closure Projection               | Resolved projection of a verified Matter closure and its linked outstanding remediation obligations                                                  |
+| Corrective Action Link                  | Explicit reference from a Matter Closure to a separately governed institutional remediation record                                                   |

@@ -122,8 +122,10 @@ Canonical Matters live in `resources/institution/matters.json`. `ResolveMatters`
 
 Canonical Matter Events live in `resources/institution/matter-events.json`. `ResolveMatterEvents` records append-only decisions, changes, incidents, reviews, and closure against one Matter. Events require an attributable actor, ordered chronology, and Evidence; closure additionally requires an independent verifier. Events never create approval or authority and never erase prior Matter history.
 
+Canonical Matter Closure links live in `resources/institution/matter-closures.json`. `ResolveMatterClosures` requires an admitted closure Event, explicit Matter and Corrective Action links, and separate Evidence. It reports outstanding remediation without closing or erasing Corrective Actions; remediation retains its own owner, verification, authority, and closure lifecycle.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Matter Closure and Corrective-Action Link Compiler that keeps closure distinct from follow-up obligations.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a narrow Client and Engagement Evidence Index Compiler that makes institutional traceability queryable without becoming a generic search or workflow engine.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).
