@@ -77,12 +77,18 @@ Source and remediation lifecycles remain independent: source closure never close
 
 No Corrective Actions are invented in canonical data. Because the Authority and Delegation Policy remains Draft, the Console correctly reports zero actions and one base assignment-readiness gap. Source-specific policies are evaluated when a corresponding record is added.
 
+## Implemented tenth vertical slice
+
+The repository now includes a read-only **Continuity Exercise Record Compiler** backed by `resources/institution/continuity-exercises.json`. It links Firm or Client context, Open Engagement and Client Mandate where applicable, exact policy versions, approved service-specific RTO/RPO, dependencies, backup and recovery point, safe exercise plan, approval, schedule, execution timeline, isolated restore, observed recovery time and recovery-point age, independent verification, material gaps, canonical Corrective Actions, restored-data disposition, closure, and Evidence Records.
+
+Backup success does not prove restorability. The compiler never supplies generic Client objectives and compares observed facts without rewriting approved expectations. The exercise coordinator cannot self-verify. A partial or failed result remains useful evidence, but every material gap must link to accountable corrective work before a separate closure decision becomes eligible.
+
+No Continuity Exercise, recovery objective, backup, or resilience claim is invented in canonical data. Because the Business Continuity and Disaster Recovery, Authority and Delegation, and Information Security policies remain Draft, the Console correctly reports zero exercises and three approval-readiness gaps.
+
 ## Recommended next vertical slice
 
-Build a **Continuity Exercise Record** linking an approved exercise scope to service dependencies, recovery objectives, backups, recovery points, restore execution, observed RTO/RPO performance, gaps, Corrective Actions, independent verification, and evidence. Do not invent Client-specific recovery objectives.
+Build a **Responsibility Coverage Compiler** that derives required offices, authorities, and professional responsibilities from the Partnership and operative policies; resolves current qualified holders; distinguishes personal constitutional rights from office-based authority; and reports vacancies, conflicts, concentration risk, and missing succession coverage.
 
-## Subsequent slices
-
-1. Responsibility Coverage projection linking policy-required offices and authorities to current qualified holders and exposing vacancies.
+After Responsibility Coverage, prefer a thin institutional identity and role-assignment registry before introducing write workflows or generalized authorization.
 
 Each slice should add only the UI and infrastructure needed to exercise its rules. Authentication from the Laravel starter may remain, but institutional roles must not be conflated with the starter `User` model before identity requirements are designed.

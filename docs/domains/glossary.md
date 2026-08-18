@@ -93,6 +93,12 @@ These terms describe the business domain. They do not prescribe Laravel class or
 | Completion Claim         | Owner's evidenced assertion that declared Corrective Action acceptance criteria have been met        |
 | Corrective Action Verification | Independent test of a Completion Claim against its declared verification standard              |
 | Due-date History         | Append-only record of initial and revised dates, each with authority, reason, time, and evidence      |
+| Continuity Exercise      | Authorized controlled test of the ability to continue or recover a defined service                   |
+| Recovery Time Objective (RTO) | Explicit approved target duration for restoring a defined service after disruption              |
+| Recovery Point Objective (RPO) | Explicit approved maximum age of recoverable service data at the point of restoration            |
+| Observed Recovery Time   | Measured duration from declared exercise start to the verified recovered state                       |
+| Observed Recovery-point Age | Measured age of the recovery point actually used during restoration                              |
+| Exercise Gap             | Material difference between approved expectation and independently verified exercise result          |
 | Post-Incident Review     | Blameless review of impact, timeline, conditions, controls, decisions, recovery, and communications |
 | Corrective Action        | Owned work addressing an identified contributing condition or control gap                         |
 | Capital Account          | Record of a Partner's capital position, distinct from compensation                                |

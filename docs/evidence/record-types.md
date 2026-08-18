@@ -42,6 +42,13 @@
 | Corrective Action Closure | verified action, closer, authority, reason, time, resulting state |
 | Backup Verification        | expected scope, observed status, gaps, remediation               |
 | Restore Test               | recovery point, environment, outcome, timing, disposal           |
+| Continuity Objective Approval | service, RTO, RPO, source, approver, authority, time           |
+| Continuity Exercise Approval | context, scope, scenario, objectives, risk, safe boundary, schedule |
+| Continuity Exercise Timeline | actors, actions, decisions, deviations, state changes, times    |
+| Recovery Observation       | objective, observed recovery time, recovery-point age, result, evidence |
+| Continuity Verification    | independent verifier, standards, observed results, objective comparison, gaps |
+| Restored-data Disposition  | restored copy, actor, authority, disposal or retention result, time |
+| Continuity Exercise Closure | verified result, communications, corrective actions, data disposition, closer, authority |
 | Security Review            | scope, findings, risk decisions, remediation                     |
 | Policy Approval            | version, approving authority, decision, effective date           |
 | Policy Acceptance          | person, policy version, acknowledgement, date                    |

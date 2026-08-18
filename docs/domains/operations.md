@@ -87,3 +87,13 @@ Finding → Assign → Remediate → Claim → Verify → Close
 ```
 
 One person owns the outcome. Due dates retain authorized history, overdue work requires escalation, and the owner cannot verify their own completion claim. Closing a source record never closes the Corrective Action. Successful independent verification makes closure eligible; only a separate authorized and evidenced decision closes it.
+
+## Continuity Exercise
+
+A Continuity Exercise is a controlled test of Firm or Client recovery capability. It binds explicit approved service objectives, dependencies, safe scope, backup and recovery-point selection, execution, observed results, independent verification, gaps, Corrective Actions, restored-data disposition, communication, and closure.
+
+```text
+Propose → Approve → Schedule → Exercise → Observe → Verify → Close
+```
+
+Backup success does not prove restorability. RTO and RPO are never supplied by default or inferred from infrastructure; each is sourced and approved. Observed recovery time and recovery-point age are measured separately and retained even when an objective is missed. The exercise coordinator cannot self-verify, material gaps cannot disappear without Corrective Actions, and verification cannot imply closure.

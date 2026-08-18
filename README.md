@@ -76,7 +76,7 @@ Technology / IP   →    platform / scheme  →   owned infrastructure  →  del
 
 ## Current state
 
-The repository now contains nine thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
+The repository now contains ten thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
 
 Canonical policy identity and lifecycle metadata live in `resources/institution/policies.json`, while policy content remains in `docs/policies/`. `ResolvePolicyRegistry` verifies version references, content integrity after review begins, explicit approvals, exception scope and expiry, and Evidence Record links. The Policy Register makes those distinctions visible without granting approval authority to an authenticated application user. The full `docs/` hierarchy remains available through the generated, sanitized document browser.
 
@@ -94,8 +94,10 @@ Canonical Break-glass Access standards and records live in `resources/institutio
 
 Canonical Corrective Action standards and records live in `resources/institution/corrective-actions.json`. `ResolveCorrectiveActions` cross-resolves each source finding, exact governing requirement, risk, singular accountable owner, assignment, remediation plan, due-date history, overdue escalation, completion claim, independent verification, disposition, closure, and evidence. Source closure never closes remediation, owners cannot self-verify, date changes preserve history, and verification only makes a separate closure decision eligible. No Corrective Actions are invented while assignment authority remains Draft.
 
+Canonical Continuity Exercise standards and records live in `resources/institution/continuity-exercises.json`. `ResolveContinuityExercises` cross-resolves Firm or Client context, Open Engagement and Client Mandate where applicable, explicit approved RTO/RPO, dependencies, backup baseline, recovery point, safe plan, approval, schedule, execution, isolated restore, observed recovery time and recovery-point age, independent verification, gaps, Corrective Actions, restored-data disposition, closure, and evidence. Backup success never proves restorability, missed objectives remain visible, and no Client recovery target is invented.
+
 No institutional database schema, generic workflow engine, accounting engine, or document editor has been introduced. See [`docs/architecture/partnership-compiler.md`](docs/architecture/partnership-compiler.md) and [`docs/architecture/future-operating-system.md`](docs/architecture/future-operating-system.md).
 
-Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a Continuity Exercise Record linking approved scope, dependencies, recovery objectives, backup and restore execution, observed results, gaps, Corrective Actions, independent verification, and evidence.
+Do not yet build billing, payroll, a compensation engine, CRM, ticketing, infrastructure orchestration, monitoring, HRIS, a generic workflow engine, customer integrations, or elaborate UI. The recommended next increment is a Responsibility Coverage Compiler deriving required offices and authorities, resolving qualified holders, and exposing vacancies, conflicts, concentration risk, and succession gaps.
 
 Start with [`docs/README.md`](docs/README.md), the [`firm thesis`](docs/vision/firm-thesis.md), and the [`domain glossary`](docs/domains/glossary.md).

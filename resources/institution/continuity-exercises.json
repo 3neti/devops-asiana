@@ -1,0 +1,92 @@
+{
+    "schema_version": 1,
+    "governing_policies": [
+        {
+            "purpose": "continuity-and-recovery",
+            "key": "business-continuity-dr",
+            "version": "0.1",
+            "required_for_approval": true
+        },
+        {
+            "purpose": "approval-and-execution-authority",
+            "key": "authority-and-delegation",
+            "version": "0.1",
+            "required_for_approval": true
+        },
+        {
+            "purpose": "restored-data-protection",
+            "key": "information-security",
+            "version": "0.1",
+            "required_for_approval": true
+        }
+    ],
+    "record_requirements": [
+        {
+            "key": "context",
+            "label": "Institutional Context",
+            "question": "Is this a Firm or Client exercise, and which Open Engagement establishes any Client boundary?"
+        },
+        {
+            "key": "scope",
+            "label": "Approved Scope",
+            "question": "Which services, systems, environments, data classes, exclusions, and owners are in scope?"
+        },
+        {
+            "key": "objectives",
+            "label": "Recovery Objectives",
+            "question": "Which explicitly approved and sourced RTO and RPO apply to each tested service?"
+        },
+        {
+            "key": "dependencies",
+            "label": "Dependency Map",
+            "question": "Which people, credentials, platforms, providers, regions, facilities, and communications paths affect recovery?"
+        },
+        {
+            "key": "backup-baseline",
+            "label": "Backup Baseline",
+            "question": "What authorized backup, recovery point, retention, encryption, integrity, ownership, and evidence support the exercise?"
+        },
+        {
+            "key": "plan",
+            "label": "Exercise Plan",
+            "question": "Who coordinates, what scenario and constraints apply, who participates, and what defines success?"
+        },
+        {
+            "key": "approval",
+            "label": "Exercise Approval",
+            "question": "Who approved the exact scope, objectives, risks, schedule, and safe execution boundary?"
+        },
+        {
+            "key": "execution",
+            "label": "Execution Timeline",
+            "question": "What attributable actions, deviations, decisions, and times describe what actually happened?"
+        },
+        {
+            "key": "restore",
+            "label": "Restore or Failover Result",
+            "question": "Which recovery point and isolated target were used, and what integrity, security, cleanup, and timing results were observed?"
+        },
+        {
+            "key": "objective-comparison",
+            "label": "Objective Comparison",
+            "question": "Did observed recovery time and recovery-point age meet each approved objective?"
+        },
+        {
+            "key": "verification",
+            "label": "Independent Verification",
+            "question": "Who independently tested the evidence, declared results, and material gaps?"
+        },
+        {
+            "key": "corrective-actions",
+            "label": "Gap Accountability",
+            "question": "Does every material gap link to a real Corrective Action or an explicit authorized no-action disposition?"
+        },
+        {
+            "key": "closure",
+            "label": "Closure",
+            "question": "Were results communicated, restored data controlled, evidence preserved, and closure separately authorized?"
+        }
+    ],
+    "exercise_records": [],
+    "evidence_records": []
+}

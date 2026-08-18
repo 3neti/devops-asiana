@@ -3,6 +3,7 @@
 use App\Http\Controllers\BreakGlassAccessController;
 use App\Http\Controllers\ChangeController;
 use App\Http\Controllers\ClientAcceptanceController;
+use App\Http\Controllers\ContinuityExerciseController;
 use App\Http\Controllers\CorrectiveActionController;
 use App\Http\Controllers\EngagementController;
 use App\Http\Controllers\FirmConsoleController;
@@ -24,6 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('changes', ChangeController::class)->name('changes.index');
     Route::get('incidents', IncidentController::class)->name('incidents.index');
     Route::get('corrective-actions', CorrectiveActionController::class)->name('corrective-actions.index');
+    Route::get('continuity-exercises', ContinuityExerciseController::class)->name('continuity-exercises.index');
     Route::get('documents/{document}', [InstitutionalDocumentController::class, 'show'])
         ->where('document', '.*')
         ->name('institutional-documents.show');

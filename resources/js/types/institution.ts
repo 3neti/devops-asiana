@@ -758,3 +758,80 @@ export type CorrectiveActionCompiler = {
     principles: string[];
     boundary: string;
 };
+
+export type ContinuityExerciseLifecycleStatus =
+    | 'proposed'
+    | 'approved'
+    | 'scheduled'
+    | 'in_progress'
+    | 'awaiting_verification'
+    | 'verified'
+    | 'closed'
+    | 'cancelled';
+
+export type ContinuityExerciseProjection = {
+    key: string;
+    title: string;
+    lifecycle_status: ContinuityExerciseLifecycleStatus;
+    lifecycle_status_label: string;
+    exercise_type: 'tabletop' | 'backup_restore' | 'failover' | 'full_scale';
+    exercise_type_label: string;
+    window_state:
+        'undefined' | 'before_window' | 'within_window' | 'after_window';
+    may_execute_exercise: boolean;
+    may_close_exercise: boolean;
+    objectives_met: number;
+    objectives_missed: number;
+    objectives_not_measured: number;
+    unresolved_gaps: number;
+    operational_status:
+        | 'proposed'
+        | 'approved_not_scheduled'
+        | 'authorized_for_execution'
+        | 'blocked_scheduled_exercise'
+        | 'exercise_in_progress'
+        | 'awaiting_verification'
+        | 'ready_for_closure'
+        | 'verified_with_open_gaps'
+        | 'closed_verified'
+        | 'blocked_closure'
+        | 'cancelled';
+};
+
+export type ContinuityExerciseCompiler = {
+    schema_version: number;
+    compiler_status:
+        'consistent' | 'consistent_with_gaps' | 'conflict_detected';
+    governing_policies: Array<{
+        purpose: string;
+        key: string;
+        version: string;
+        required_for_approval: boolean;
+        title: string;
+        status: PolicyLifecycleStatus | 'missing';
+        status_label: string;
+        operative: boolean;
+    }>;
+    record_requirements: Array<{
+        key: string;
+        label: string;
+        question: string;
+    }>;
+    exercise_records: ContinuityExerciseProjection[];
+    evidence_records: Array<Record<string, unknown>>;
+    counts: {
+        exercise_records: number;
+        evidence_records: number;
+        objectives_missed: number;
+        unresolved_gaps: number;
+        ready_for_closure: number;
+        by_lifecycle_status: Record<ContinuityExerciseLifecycleStatus, number>;
+    };
+    reports: {
+        conflicts: Array<{ code: string; message: string }>;
+        decision_gaps: Array<{ code: string; message: string }>;
+        evidence_gaps: Array<{ code: string; message: string }>;
+        readiness_gaps: Array<{ code: string; message: string }>;
+    };
+    principles: string[];
+};

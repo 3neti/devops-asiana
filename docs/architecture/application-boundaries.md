@@ -16,7 +16,7 @@ The future Laravel application may organize a cohesive modular monolith around t
 | Changes      | classification, review, recovery, deployment, verification        |
 | Incidents    | detection, declaration, command, timeline, disclosure, restoration, review, corrective action |
 | Corrective Actions | source findings, singular ownership, due-date history, escalation, independent verification, closure |
-| Continuity   | dependencies, backups, restores, exercises, objectives            |
+| Continuity   | approved objectives, dependencies, backups, isolated restores, exercises, observed results, gaps |
 | Evidence     | immutable index, custody, links, retention, integrity             |
 | Finance      | financial authority, commitments, Firm assets and approvals       |
 | Compensation | attribution and policy-driven calculations, later                 |
