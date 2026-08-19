@@ -31,6 +31,8 @@ test('it deterministically compiles a working draft with visible gaps and counse
         ->and($result['counts']['conflicts'])->toBe(0)
         ->and($result['agreement']['markdown'])->toContain('[UNRESOLVED]')
         ->and($result['agreement']['markdown'])->toContain('[COUNSEL REVIEW]')
+        ->and($result['agreement']['markdown'])->toContain('AI can perform the work. The Firm accepts responsibility for the work.')
+        ->and($result['agreement']['markdown'])->toContain('professional accountability')
         ->and($result['agreement']['markdown'])->toContain('Firm Allocation')
         ->and($result['agreement_fingerprint'])->toHaveLength(64);
 });

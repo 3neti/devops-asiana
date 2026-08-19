@@ -9,6 +9,30 @@
             "principal_office": null,
             "effective_date": null
         },
+        "purpose": {
+            "statement": "DevOps Asiana exists to provide professional accountability for technology operations in an increasingly AI-operated computing environment. The Firm provides professional technology operations, engineering, reliability, infrastructure, security, integration, and related advisory services, and supervises, authorizes, operates, reviews, verifies, and stands behind technology work performed by human professionals, automation, software systems, and artificial-intelligence agents within defined Client Engagements and delegated authority.",
+            "initial_market_specialization": [
+                "Banks",
+                "Electronic money issuers",
+                "Payment systems",
+                "Financial technology platforms",
+                "Other institutions operating regulated or critical technology infrastructure"
+            ],
+            "scope_boundary": "The constitutional purpose remains broad enough to serve other organizations operating critical information or technology infrastructure.",
+            "professional_doctrine": "AI can perform the work. The Firm accepts responsibility for the work.",
+            "incidental_capacity": [
+                "Acquire and own property",
+                "Lease property and establish offices or facilities",
+                "Acquire equipment, software, and professional services",
+                "Engage professionals, employ personnel, and contract with vendors",
+                "Develop internal operational tooling and intellectual property",
+                "Acquire professional capabilities and maintain reserves",
+                "Procure insurance",
+                "Establish laboratories or testing facilities",
+                "Invest in infrastructure necessary or incidental to the practice",
+                "Perform lawful activities necessary or incidental to the Firm's professional services"
+            ]
+        },
         "founding_partners": [
             {
                 "key": "lester-hurtado",
@@ -182,6 +206,13 @@
             "institutional_state": "resolved",
             "legal_state": "counsel_review",
             "statement": "Engagement Contribution is allocated 30% to Lester, 50% to Anaïs, and 20% to the Firm Allocation."
+        },
+        {
+            "key": "partnership-purpose",
+            "label": "Institutional purpose",
+            "institutional_state": "resolved",
+            "legal_state": "counsel_review",
+            "statement": "The Firm exists to provide bounded professional accountability for AI-amplified technology operations, initially serving regulated or critical financial infrastructure while retaining a broad institutional purpose."
         },
         {
             "key": "initial-capital-contributions",

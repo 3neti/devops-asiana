@@ -72,7 +72,8 @@ final class CompilePartnershipAgreement
             $value = match ($key) {
                 'principal-office' => $firm['principal_office'] ?? null,
                 'formation-commencement' => $firm['effective_date'] ?? null,
-                default => $formation[$key === 'partnership-purpose' ? 'purpose' : ($key === 'partnership-term' ? 'term' : 'loss_sharing')] ?? null,
+                'partnership-purpose' => $formation['purpose']['statement'] ?? null,
+                default => $formation[$key === 'partnership-term' ? 'term' : 'loss_sharing'] ?? null,
             };
             if ($value === null || $value === '') {
                 $gaps[] = [
@@ -173,6 +174,7 @@ final class CompilePartnershipAgreement
     private function renderMarkdown(ResolvedPartnership $partnership, array $decisionGaps, array $counselReview): string
     {
         $firm = $partnership->formation['firm'];
+        $purpose = $partnership->formation['purpose'] ?? null;
         $partners = $partnership->projections['partnership'];
         $economics = $partnership->projections['economics'];
         $lines = [
@@ -190,9 +192,30 @@ final class CompilePartnershipAgreement
             '- **Principal Office:** '.$this->valueOrUnresolved($firm['principal_office'] ?? null, 'The principal office has not been determined.'),
             '- **Commencement:** '.$this->valueOrUnresolved($firm['effective_date'] ?? null, 'Formation commencement has not been determined.'),
             '',
-            '## II. Founding Partners and Governance',
+            '## II. Institutional Purpose',
             '',
+            $purpose['statement'] ?? '[UNRESOLVED] The Partnership purpose has not been determined.',
+            '',
+            '> '.$this->valueOrUnresolved($purpose['professional_doctrine'] ?? null, 'The professional accountability doctrine has not been determined.'),
+            '',
+            '**Initial market specialization:**',
         ];
+        foreach ($purpose['initial_market_specialization'] ?? [] as $market) {
+            $lines[] = "- {$market}";
+        }
+        $lines[] = '';
+        if (isset($purpose['scope_boundary'])) {
+            $lines[] = $purpose['scope_boundary'];
+            $lines[] = '';
+        }
+        $lines[] = '**Incidental institutional capacity:**';
+        foreach ($purpose['incidental_capacity'] ?? [] as $capacity) {
+            $lines[] = "- {$capacity}";
+        }
+        $lines[] = '';
+        $lines[] = 'Institutional intent is resolved; formal legal wording and enforceability remain subject to Philippine counsel review.';
+        $lines[] = '';
+        $lines[] = '## III. Founding Partners and Governance';
         foreach ($partners as $partner) {
             $lines[] = "### {$partner['name']}";
             $lines[] = "- Partner status: {$partner['partner_status']}";
@@ -202,7 +225,7 @@ final class CompilePartnershipAgreement
         }
         $lines[] = 'Equal governance weight does not resolve the currently open deadlock mechanism.';
         $lines[] = '';
-        $lines[] = '## III. Management and Authority';
+        $lines[] = '## IV. Management and Authority';
         $lines[] = '';
         foreach ($partnership->projections['management'] as $office) {
             $lines[] = "- **{$office['name']}:** ".($office['holder_name'] ?? '[UNRESOLVED — office is vacant]').'. Authority derives from the Partnership Agreement and Authority Matrix, subject to Reserved Matters.';
@@ -210,7 +233,7 @@ final class CompilePartnershipAgreement
         $lines[] = '';
         $lines[] = 'Firm Authority, Client Mandate, Specific Approval, and Technical Access remain separate gates.';
         $lines[] = '';
-        $lines[] = '## IV. Economics';
+        $lines[] = '## V. Economics';
         $lines[] = '';
         $lines[] = "The conceptual allocation base is **{$economics['basis']}**: {$economics['basis_definition']}";
         foreach ($economics['partner_allocations'] as $allocation) {
@@ -218,13 +241,13 @@ final class CompilePartnershipAgreement
         }
         $lines[] = "- {$economics['firm_allocation']['label']}: {$economics['firm_allocation']['percentage']}% (institutional recipient, not a Partner)";
         $lines[] = '';
-        $lines[] = '## V. Reserved Matters';
+        $lines[] = '## VI. Reserved Matters';
         $lines[] = '';
         foreach ($partnership->constitution['reserved_matters'] as $matter) {
             $lines[] = "- {$matter}";
         }
         $lines[] = '';
-        $lines[] = '## VI. Decisions Required';
+        $lines[] = '## VII. Decisions Required';
         $lines[] = '';
         foreach ($decisionGaps as $gap) {
             $lines[] = "### [UNRESOLVED] {$gap['label']}";
@@ -235,14 +258,14 @@ final class CompilePartnershipAgreement
             $lines[] = 'No unresolved decisions are currently reported.';
             $lines[] = '';
         }
-        $lines[] = '## VII. Counsel Review';
+        $lines[] = '## VIII. Counsel Review';
         $lines[] = '';
         foreach ($counselReview as $review) {
             $lines[] = "### [COUNSEL REVIEW] {$review['label']}";
             $lines[] = $review['statement'];
             $lines[] = '';
         }
-        $lines[] = '## VIII. Institutional Disclaimer';
+        $lines[] = '## IX. Institutional Disclaimer';
         $lines[] = '';
         $lines[] = 'AI may draft changes to canonical sources, but humans constitute the Partnership. Compilation does not advance legal or institutional status.';
 
