@@ -73,10 +73,11 @@ Technology / IP   →    platform / scheme  →   owned infrastructure  →  del
 - [`docs/architecture`](docs/architecture/) describes future application boundaries and data principles.
 - [`docs/adr`](docs/adr/) records durable decisions.
 - [`docs/legal`](docs/legal/) identifies matters reserved for Philippine counsel.
+- [`docs/COMPASS.md`](docs/COMPASS.md) is the canonical orientation for epoch, gates, active frontier, and build restraint.
 
 ## Current state
 
-The repository now contains nineteen thin executable institutional compilers and a read-only Firm Console. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership` with consistency, conflict, missing-decision, responsibility-gap, and counsel-review reports. The Firm Map renders Partnership, Management, Responsibility, and Economics projections from that one result.
+The repository now contains thin executable institutional compilers and a read-only Firm Console. The current epoch is **FORMATION**, the immediate institutional gate is **PARTNERSHIP READY TO COMMENCE**, and the active frontier is **Resolved Partnership → deterministic Partnership Agreement → Firm Map**. Canonical formation facts live in `resources/institution/partnership.json`; `ResolvePartnership` produces a `ResolvedPartnership`, and `CompilePartnershipAgreement` deterministically projects a readable `WORKING DRAFT` Agreement with fingerprints, unresolved decisions, counsel review, and conflicts. The Firm Map and Agreement card render from that same resolved source state.
 
 Canonical policy identity and lifecycle metadata live in `resources/institution/policies.json`, while policy content remains in `docs/policies/`. `ResolvePolicyRegistry` admits an exact institutionally valid Decision Record as the approval basis for one Policy Version, then independently verifies exact-content publication, activation, effective date, exceptions, and Evidence. Decision eligibility, approval admission, publication, and activation never imply one another. Git history and document rendering confer no authority. The Policy Register makes those distinctions visible without granting approval authority to an authenticated application user. The full `docs/` hierarchy remains available through the generated, sanitized document browser.
 

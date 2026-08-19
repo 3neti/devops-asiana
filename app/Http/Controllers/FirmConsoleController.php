@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FormationCompletion\FormationCompletionRepository;
 use App\FormationCompletion\ResolveFormationCompletion;
+use App\Partnership\CompilePartnershipAgreement;
 use App\Partnership\PartnershipDefinitionRepository;
 use App\Partnership\ResolvePartnership;
 use Inertia\Inertia;
@@ -15,11 +16,17 @@ class FirmConsoleController extends Controller
         PartnershipDefinitionRepository $definitions,
         FormationCompletionRepository $formationCompletion,
         ResolvePartnership $resolvePartnership,
+        CompilePartnershipAgreement $compilePartnershipAgreement,
         ResolveFormationCompletion $resolveFormationCompletion,
     ): Response {
-        $resolvedPartnership = $resolvePartnership->handle($definitions->current());
+        $partnershipDefinition = $definitions->current();
+        $resolvedPartnership = $resolvePartnership->handle($partnershipDefinition);
 
         return Inertia::render('FirmConsole/Index', [
+            'partnershipAgreement' => $compilePartnershipAgreement->handle(
+                $partnershipDefinition,
+                $resolvedPartnership,
+            )->toArray(),
             'formationCompletion' => $resolveFormationCompletion->handle(
                 $formationCompletion->current(),
                 $resolvedPartnership,

@@ -107,6 +107,37 @@ export type ResolvedPartnership = {
     disclaimer: string;
 };
 
+export type PartnershipAgreementCompilation = {
+    schema_version: number;
+    status: 'working_draft' | 'conflict_detected';
+    source_fingerprint: string;
+    agreement_fingerprint: string;
+    compilation_id: string;
+    source_commit: string | null;
+    compiled_at: string;
+    counts: {
+        resolved_provisions: number;
+        decisions_required: number;
+        counsel_review: number;
+        conflicts: number;
+    };
+    resolved_provisions: Array<{
+        key: string;
+        label: string;
+        source: string;
+    }>;
+    decision_gaps: InstitutionalDecision[];
+    counsel_review: InstitutionalDecision[];
+    conflicts: Array<{ code: string; message: string }>;
+    agreement: {
+        title: string;
+        status: 'working_draft' | 'conflict_detected';
+        markdown: string;
+    };
+    principles: string[];
+    disclaimer: string;
+};
+
 export type FormationCompletion = {
     schema_version: number;
     compiler_status:

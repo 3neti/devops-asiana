@@ -32,4 +32,6 @@ Procedures and runbooks must name their governing policy, authorized roles, requ
 | `adr/`          | Durable institutional and technical decisions            |
 | `legal/`        | Matters requiring counsel validation                     |
 
+The canonical [Compass](COMPASS.md) records the current epoch, institutional gates, active frontier, and explicit build restraint for future agents.
+
 The executable projections are summarized under [Future operating system](architecture/future-operating-system.md). The [Formation Completion and Firm Commencement doctrine](domains/formation-completion-and-firm-commencement.md) defines the newest compiler boundary. The browser catalogue is generated from this hierarchy; the repository remains canonical.

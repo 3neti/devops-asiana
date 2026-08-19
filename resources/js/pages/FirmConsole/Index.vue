@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import {
     AlertTriangle,
     ArrowRight,
@@ -7,6 +7,7 @@ import {
     BookOpenCheck,
     Braces,
     CircleHelp,
+    FileText,
     Landmark,
     Scale,
     ShieldCheck,
@@ -16,12 +17,14 @@ import { dashboard } from '@/routes';
 import type {
     FormationCompletion,
     ResolvedPartnership,
+    PartnershipAgreementCompilation,
     ResolutionState,
 } from '@/types';
 
 defineProps<{
     formationCompletion: FormationCompletion;
     partnership: ResolvedPartnership;
+    partnershipAgreement: PartnershipAgreementCompilation;
 }>();
 
 defineOptions({
@@ -46,6 +49,10 @@ function stateClass(state: ResolutionState): string {
         not_yet_ready:
             'border-slate-400/30 bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
     }[state];
+}
+
+function compileAgreement(): void {
+    router.reload({ only: ['partnershipAgreement'] });
 }
 </script>
 
@@ -269,6 +276,135 @@ function stateClass(state: ResolutionState): string {
                         {{ finding.message }}
                     </li>
                 </ul>
+            </section>
+
+            <section
+                id="partnership-agreement"
+                class="scroll-mt-6 overflow-hidden rounded-2xl border border-teal-700/30 bg-white shadow-sm dark:border-teal-500/30 dark:bg-slate-900"
+            >
+                <div
+                    class="flex flex-col gap-5 border-b border-teal-700/10 p-5 sm:p-6 lg:flex-row lg:items-center lg:justify-between dark:border-teal-500/10"
+                >
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950"
+                        >
+                            <FileText class="size-5" />
+                        </div>
+                        <div>
+                            <p
+                                class="text-xs font-semibold tracking-[0.18em] text-teal-700 uppercase dark:text-teal-400"
+                            >
+                                Constitutional root
+                            </p>
+                            <h2
+                                class="mt-1 font-serif text-2xl font-semibold text-slate-950 dark:text-stone-50"
+                            >
+                                Partnership Agreement
+                            </h2>
+                            <p
+                                class="mt-1 text-sm text-slate-600 dark:text-slate-400"
+                            >
+                                Deterministic projection of the current
+                                ResolvedPartnership.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <a
+                            href="#partnership-agreement-document"
+                            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                        >
+                            Open Agreement
+                        </a>
+                        <button
+                            type="button"
+                            class="rounded-lg bg-slate-950 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-stone-100 dark:text-slate-950 dark:hover:bg-stone-200"
+                            @click="compileAgreement"
+                        >
+                            Compile
+                        </button>
+                    </div>
+                </div>
+                <div class="grid gap-3 p-5 sm:grid-cols-4 sm:p-6">
+                    <div class="rounded-xl bg-slate-50 p-3 dark:bg-slate-950">
+                        <p class="text-xl font-semibold">
+                            {{
+                                partnershipAgreement.counts.resolved_provisions
+                            }}
+                        </p>
+                        <p
+                            class="text-[10px] tracking-wide text-slate-500 uppercase"
+                        >
+                            Resolved provisions
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-xl bg-amber-50 p-3 dark:bg-amber-950/30"
+                    >
+                        <p class="text-xl font-semibold">
+                            {{ partnershipAgreement.counts.decisions_required }}
+                        </p>
+                        <p
+                            class="text-[10px] tracking-wide text-amber-700 uppercase dark:text-amber-300"
+                        >
+                            Decisions required
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-xl bg-violet-50 p-3 dark:bg-violet-950/30"
+                    >
+                        <p class="text-xl font-semibold">
+                            {{ partnershipAgreement.counts.counsel_review }}
+                        </p>
+                        <p
+                            class="text-[10px] tracking-wide text-violet-700 uppercase dark:text-violet-300"
+                        >
+                            Counsel review
+                        </p>
+                    </div>
+                    <div class="rounded-xl bg-slate-50 p-3 dark:bg-slate-950">
+                        <p class="text-xl font-semibold">
+                            {{ partnershipAgreement.counts.conflicts }}
+                        </p>
+                        <p
+                            class="text-[10px] tracking-wide text-slate-500 uppercase"
+                        >
+                            Conflicts
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-slate-200 px-5 py-3 text-xs text-slate-500 sm:px-6 dark:border-slate-800"
+                >
+                    <span
+                        class="font-semibold tracking-wide text-teal-700 uppercase dark:text-teal-400"
+                    >
+                        {{ partnershipAgreement.status.replace('_', ' ') }}
+                    </span>
+                    <span>Compiled {{ partnershipAgreement.compiled_at }}</span>
+                    <span class="font-mono"
+                        >{{
+                            partnershipAgreement.agreement_fingerprint.slice(
+                                0,
+                                16,
+                            )
+                        }}…</span
+                    >
+                </div>
+                <details
+                    id="partnership-agreement-document"
+                    class="border-t border-slate-200 dark:border-slate-800"
+                >
+                    <summary
+                        class="cursor-pointer px-5 py-4 text-sm font-semibold text-slate-700 dark:text-slate-200"
+                    >
+                        Read working draft
+                    </summary>
+                    <pre
+                        class="max-h-[34rem] overflow-auto border-t border-slate-200 bg-slate-50 p-5 text-sm leading-6 whitespace-pre-wrap text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
+                        >{{ partnershipAgreement.agreement.markdown }}</pre>
+                </details>
             </section>
 
             <FirmMap

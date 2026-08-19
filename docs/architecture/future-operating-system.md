@@ -4,6 +4,8 @@
 
 The repository now includes a read-only Partnership Formation and Constitution Compiler backed by `resources/institution/partnership.json`. It resolves a `ResolvedPartnership`, validates governance and economic totals, reports open decisions, counsel-review items, structural conflicts, and responsibility gaps, and supplies the Firm Map and document browser.
 
+The constitutional projection frontier now includes a deterministic **Partnership Agreement Compiler**. `CompilePartnershipAgreement` consumes the canonical `PartnershipDefinition` plus `ResolvedPartnership`, computes source and Agreement fingerprints, emits a working-draft Markdown Agreement, and keeps unresolved decisions, counsel review, and conflicts visible. Compilation is not approval, execution, commencement, or legal validation. The Firm Map and Agreement card are projections of the same resolved source state.
+
 This slice does not persist data, generate legal text, or claim legal validity.
 
 ## Implemented second vertical slice
