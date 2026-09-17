@@ -61,3 +61,42 @@ test('compilation does not mutate the Partnership Definition', function () {
 
     expect(json_encode($definition->formation, JSON_THROW_ON_ERROR))->toBe($snapshot);
 });
+
+test('indefinite duration preserves commencement and related decision boundaries', function () {
+    $definition = compilationPartnershipDefinition();
+    $resolved = app(ResolvePartnership::class)->handle($definition);
+    $result = app(CompilePartnershipAgreement::class)->handle($definition, $resolved)->toArray();
+    $gaps = array_column($result['decision_gaps'], 'key');
+    $reviews = array_column($result['counsel_review'], 'key');
+
+    expect(array_column($result['resolved_provisions'], 'key'))->toContain('partnership-term')
+        ->and($gaps)->not->toContain('partnership-term')
+        ->and($gaps)->toContain('formation-commencement', 'partnership-dissolution', 'initial-capital-contributions', 'capital-ownership', 'governance-deadlock', 'partner-retirement', 'death-incapacity', 'buyout-redemption')
+        ->and($reviews)->toContain('partnership-term', 'partnership-dissolution')
+        ->and($definition->formation['firm']['effective_date'])->toBeNull()
+        ->and($result['agreement']['markdown'])->toContain('Indefinite institutional duration', 'Partners may change. The Firm is intended to endure.', 'one of only two Partners', 'Professional and governance authority does not automatically pass to heirs.', 'Commencement remains unresolved')
+        ->and($result['counts'])->toBe([
+            'resolved_provisions' => 14,
+            'decisions_required' => 10,
+            'counsel_review' => 11,
+            'conflicts' => 0,
+        ]);
+});
+
+test('missing term remains visible despite a continuity preference', function () {
+    $definition = compilationPartnershipDefinition();
+    $formation = $definition->formation;
+    unset($formation['term']);
+    $definition = new PartnershipDefinition(
+        schemaVersion: $definition->schemaVersion,
+        formation: $formation,
+        constitution: $definition->constitution,
+        decisions: $definition->decisions,
+    );
+    $resolved = app(ResolvePartnership::class)->handle($definition);
+    $result = app(CompilePartnershipAgreement::class)->handle($definition, $resolved)->toArray();
+
+    expect(array_column($result['decision_gaps'], 'key'))->toContain('partnership-term')
+        ->and(array_column($result['resolved_provisions'], 'key'))->not->toContain('partnership-term')
+        ->and($result['agreement']['markdown'])->toContain('[UNRESOLVED] The Partnership term has not been determined.');
+});

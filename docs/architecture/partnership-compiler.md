@@ -34,9 +34,11 @@ Each decision distinguishes institutional state from legal state. This permits i
 
 The repository now includes `CompilePartnershipAgreement`. It consumes the canonical `PartnershipDefinition` and its `ResolvedPartnership` intermediate representation to produce a deterministic working-draft Agreement. The projection includes resolved provisions, explicit decision gaps, counsel-review matters, conflicts, source and Agreement fingerprints, a compilation identifier, and a readable Markdown draft.
 
-The compiler never calls an LLM, mutates canonical sources, advances institutional or legal status, or claims that the Agreement is valid, executed, or effective. Missing formation facts such as principal office, purpose, term, commencement, and formal loss treatment remain visible as `[UNRESOLVED]`; institutional intent whose legal mechanics remain unsettled is rendered as `[COUNSEL REVIEW]`.
+The compiler never calls an LLM, mutates canonical sources, advances institutional or legal status, or claims that the Agreement is valid, executed, or effective. Missing formation facts such as principal office, commencement, and formal loss treatment remain visible as `[UNRESOLVED]`; institutional intent whose legal mechanics remain unsettled is rendered as `[COUNSEL REVIEW]`.
 
 The institutional purpose is now resolved at the level of intent: DevOps Asiana provides bounded professional accountability for AI-amplified technology operations, initially focused on regulated or critical financial infrastructure while retaining a broader critical-infrastructure purpose. The Agreement projects this purpose and its professional doctrine, including the boundary that AI may perform work while the Firm accepts responsibility within defined Client Engagements and delegated authority. Final legal wording, enforceability, and statutory treatment remain counsel questions.
+
+The canonical term is indefinite institutional duration. The existing compiler projects term and continuity separately from commencement, and retains explicit counsel review for formal wording and partner-change continuation, including the two-Partner continuity question. Dissolution and winding-up mechanics remain an unresolved decision with counsel review; no continuation or dissolution workflow is introduced.
 
 The Firm Console presents this Agreement at the root of the Firm Map. Its Compile action is a read-only deterministic re-projection. The current canonical source state compiles as `WORKING DRAFT`.
 

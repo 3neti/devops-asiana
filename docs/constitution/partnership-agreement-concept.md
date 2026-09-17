@@ -17,3 +17,13 @@ The instrument should preserve these separations:
 Policies may govern ordinary institutional operations only within the authority delegated by the Agreement. Procedures cannot change policy. Execution cannot cure missing approval. Amendments and waivers must be identifiable and historically preserved.
 
 The Agreement should make Firm property and Client relationships institutional rather than divisible personal property, subject to applicable law and counsel's drafting.
+
+## Term and continuity intent
+
+DevOps Asiana is intended to have indefinite institutional duration and to continue notwithstanding changes in individual Partners, to the fullest extent permitted by applicable law and the Partnership Agreement. The Firm is intended to terminate only upon an applicable dissolution event followed by an orderly winding-up process.
+
+> Partners may change. The Firm is intended to endure.
+
+This resolves duration and the institutional continuity preference only. Formation commencement remains unresolved: neither this decision, compilation, nor repository state commences the Firm. Founders begin the institution without limiting its lifespan to their participation. Clients belong to the Firm; economic value may survive a Partner, but professional and governance authority does not automatically pass to heirs.
+
+Formal Philippine legal or SEC wording, partner-change continuation mechanics, and especially continuation after the loss of one of only two Partners require counsel review. Final dissolution triggers and winding-up mechanics remain unresolved. This doctrine selects no retirement, withdrawal, death, incapacity, expulsion, estate, succession, redemption, or valuation procedures and does not weaken admission, Reserved Matters, accountability, authority, or formation controls.

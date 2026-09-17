@@ -215,6 +215,14 @@ final class CompilePartnershipAgreement
         $lines[] = '';
         $lines[] = 'Institutional intent is resolved; formal legal wording and enforceability remain subject to Philippine counsel review.';
         $lines[] = '';
+        $lines[] = '### Term and Continuity';
+        $lines[] = '';
+        $lines[] = $this->valueOrUnresolved($partnership->formation['term'] ?? null, 'The Partnership term has not been determined.');
+        $lines[] = '';
+        foreach ($partnership->constitution['continuity'] ?? [] as $statement) {
+            $lines[] = $statement;
+            $lines[] = '';
+        }
         $lines[] = '## III. Founding Partners and Governance';
         foreach ($partners as $partner) {
             $lines[] = "### {$partner['name']}";

@@ -33,6 +33,7 @@
                 "Perform lawful activities necessary or incidental to the Firm's professional services"
             ]
         },
+        "term": "Indefinite institutional duration, subject to applicable law and dissolution in accordance with the Partnership Agreement.",
         "founding_partners": [
             {
                 "key": "lester-hurtado",
@@ -104,6 +105,13 @@
         }
     },
     "constitution": {
+        "continuity": {
+            "statement": "The Firm is intended to continue notwithstanding changes in the identity, role, or tenure of individual Partners, to the fullest extent permitted by applicable law and the Partnership Agreement.",
+            "doctrine": "Partners may change. The Firm is intended to endure.",
+            "scope": "Admission, withdrawal, retirement, death, incapacity, succession, and changes in management office are not the desired end of the institution. The Firm is intended to serve multiple generations of Partners; its lifespan and Client relationships are not limited to the Founding Partners' participation.",
+            "authority_boundary": "Economic value may survive a Partner. Professional and governance authority does not automatically pass to heirs. Partner admission, Reserved Matters, succession controls, Responsible Partner accountability, and authority rules remain intact.",
+            "commencement_boundary": "A term decision, successful compilation, or repository state does not commence the Firm. Commencement remains unresolved and requires its own institutional decision and necessary legal or formal acts."
+        },
         "offices": [
             {
                 "key": "managing-partner",
@@ -213,6 +221,20 @@
             "institutional_state": "resolved",
             "legal_state": "counsel_review",
             "statement": "The Firm exists to provide bounded professional accountability for AI-amplified technology operations, initially serving regulated or critical financial infrastructure while retaining a broad institutional purpose."
+        },
+        {
+            "key": "partnership-term",
+            "label": "Partnership term and institutional continuity intent",
+            "institutional_state": "resolved",
+            "legal_state": "counsel_review",
+            "statement": "DevOps Asiana is intended to have indefinite institutional duration and to continue notwithstanding changes in individual Partners, to the fullest extent permitted by applicable law and the Partnership Agreement. The Firm is intended to terminate only upon an applicable dissolution event followed by an orderly winding-up process. Formal Philippine legal or SEC wording and partner-change continuation mechanics require counsel review. In particular, legal continuation after the departure, death, incapacity, or other loss of one of only two Partners must not be inferred from institutional intent."
+        },
+        {
+            "key": "partnership-dissolution",
+            "label": "Dissolution and winding-up mechanics",
+            "institutional_state": "unresolved",
+            "legal_state": "counsel_review",
+            "statement": "The Firm is intended to terminate only through an applicable dissolution event and orderly winding up, rather than expiration of an arbitrary fixed term. Final dissolution triggers, required Partner decisions, and winding-up mechanics remain unresolved and require Philippine counsel review. No withdrawal, retirement, death, incapacity, expulsion, estate, succession, redemption, or valuation procedure is selected by the continuity doctrine."
         },
         {
             "key": "initial-capital-contributions",

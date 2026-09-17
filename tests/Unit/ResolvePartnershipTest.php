@@ -31,7 +31,7 @@ test('it exposes unresolved decisions counsel review and responsibility gaps', f
     $resolved = (new ResolvePartnership)->handle(partnershipDefinition())->toArray();
 
     expect($resolved['reports']['decision_gaps'])
-        ->toHaveCount(6)
+        ->toHaveCount(7)
         ->and(array_column($resolved['reports']['decision_gaps'], 'key'))
         ->toContain('initial-capital-contributions', 'capital-ownership', 'governance-deadlock', 'partner-retirement', 'death-incapacity', 'buyout-redemption')
         ->and(array_column($resolved['reports']['counsel_review'], 'key'))
