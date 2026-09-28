@@ -57,21 +57,18 @@ const stages = [
                         <p
                             class="text-xs font-semibold tracking-[0.22em] uppercase"
                         >
-                            Institutional record compiler
+                            Institutional record review
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        A decision is attributable authority applied to an
-                        explicit proposal—not an action inferred after the fact.
+                        Decisions &amp; Approvals
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        The ledger preserves proposal, review, risk, approval,
-                        effective time, execution, verification, and Evidence as
-                        separate institutional facts.
+                        Proposal, approval, execution, and verification records.
                     </p>
                 </div>
 
@@ -178,8 +175,8 @@ const stages = [
                     <p
                         class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Admission supplies collective approval basis; it does
-                        not create or execute the decision.
+                        Collective approval requires separate decision
+                        admission.
                     </p>
                 </div>
             </section>
@@ -195,15 +192,13 @@ const stages = [
                         <h2
                             class="font-semibold text-amber-950 dark:text-amber-100"
                         >
-                            The record surface is ready; operative
-                            decision-making is not.
+                            Authority pending
                         </h2>
                         <p
                             class="mt-1 text-sm leading-6 text-amber-900/80 dark:text-amber-200/80"
                         >
-                            Formation facts are not backfilled as decisions.
-                            Both governing policies remain Draft and the
-                            Authority Matrix currently has no effective entries.
+                            Governing policies: Draft. No effective authority
+                            entries.
                         </p>
                         <Link
                             :href="authorityMatrixIndex()"
@@ -223,8 +218,8 @@ const stages = [
                     >
                         Institutional chain
                     </p>
-                    <h2 class="mt-2 font-serif text-2xl font-semibold">
-                        Everything material remains a distinct record.
+                    <h2 class="mt-2 text-xl font-semibold">
+                        Decision lifecycle
                     </h2>
                 </div>
                 <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -260,9 +255,7 @@ const stages = [
                 <article
                     class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900"
                 >
-                    <h2 class="font-serif text-2xl font-semibold">
-                        Governing sources
-                    </h2>
+                    <h2 class="text-xl font-semibold">Governing sources</h2>
                     <div class="mt-5 space-y-3">
                         <div
                             v-for="policy in decisionRecords.governing_policies"
@@ -286,9 +279,7 @@ const stages = [
                 <article
                     class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900"
                 >
-                    <h2 class="font-serif text-2xl font-semibold">
-                        Readiness report
-                    </h2>
+                    <h2 class="text-xl font-semibold">Readiness report</h2>
                     <ul class="mt-5 space-y-3">
                         <li
                             v-for="gap in decisionRecords.reports
@@ -309,15 +300,13 @@ const stages = [
                 class="rounded-2xl border border-dashed border-slate-300 bg-white/60 p-8 text-center dark:border-slate-700 dark:bg-slate-900/50"
             >
                 <FileCheck2 class="mx-auto size-8 text-slate-400" />
-                <h2 class="mt-4 font-serif text-2xl font-semibold">
+                <h2 class="mt-4 text-xl font-semibold">
                     No institutional decisions recorded
                 </h2>
                 <p
                     class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                 >
-                    This is truthful current state, not missing sample data.
-                    Records enter this ledger only when the Firm makes and
-                    evidences an actual decision under operative authority.
+                    No decisions recorded under operative authority.
                 </p>
             </section>
         </div>

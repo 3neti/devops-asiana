@@ -82,18 +82,15 @@ const authorityLayers = [
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        No Access Without Authority.
+                        Production Access
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        Technical possession is not permission. Production
-                        access becomes usable only when a named person, an Open
-                        Engagement, Client Mandate, Firm approvals, bounded
-                        scope, provisioning, independent verification, current
-                        validity, and evidence all agree.
+                        Named access, scope, approvals, validity, and
+                        verification.
                     </p>
                 </div>
 
@@ -185,10 +182,8 @@ const authorityLayers = [
                         <p
                             class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            Draft policy expresses intent but does not create
-                            operative access authority. Every required policy
-                            must be Effective, approved, integrity-verified, and
-                            evidenced.
+                            Effective, approved, verified governing policies
+                            required.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
                             <Link
@@ -219,9 +214,8 @@ const authorityLayers = [
                         >
                             Access lifecycle
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Approval, provisioning, verification, and activation
-                            are separate facts
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Access lifecycle
                         </h2>
                     </div>
                     <Fingerprint class="size-6 text-slate-400" />
@@ -279,9 +273,7 @@ const authorityLayers = [
                     >
                         Grant standard
                     </p>
-                    <h2 class="mt-2 font-serif text-2xl font-semibold">
-                        Questions every Access Grant must answer
-                    </h2>
+                    <h2 class="mt-2 text-xl font-semibold">Required fields</h2>
                     <div class="mt-5 grid gap-3 md:grid-cols-2">
                         <article
                             v-for="requirement in productionAccess.grant_requirements"
@@ -311,10 +303,8 @@ const authorityLayers = [
                         <p
                             class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            The repository records ownership, custody, vault
-                            reference, rotation, and evidence—never passwords,
-                            tokens, private keys, recovery codes, or credential
-                            values.
+                            Custody and vault references only. No credential
+                            values stored.
                         </p>
                     </article>
                     <article
@@ -346,7 +336,7 @@ const authorityLayers = [
                         >
                             Canonical register
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                        <h2 class="mt-2 text-xl font-semibold">
                             Production Access Grants
                         </h2>
                     </div>
@@ -362,10 +352,7 @@ const authorityLayers = [
                     <p
                         class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-500"
                     >
-                        This is the correct current state: no canonical
-                        Engagement is Open and the governing policies remain
-                        Draft. The Console does not invent operational
-                        authority.
+                        No Open Engagements. Governing policies: Draft.
                     </p>
                 </div>
                 <div v-else class="mt-5 grid gap-3">

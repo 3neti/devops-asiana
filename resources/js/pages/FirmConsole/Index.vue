@@ -74,20 +74,18 @@ function compileAgreement(): void {
                         <p
                             class="text-xs font-semibold tracking-[0.22em] uppercase"
                         >
-                            Professional Partnership Operating System
+                            DevOps Asiana
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        A system of professional accountability.
+                        Firm Console
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        Inspect who is responsible, where authority comes from,
-                        which decisions remain open, and what requires
-                        counsel—before the Firm accepts institutional risk.
+                        Responsibilities, authority, and decisions.
                     </p>
                 </div>
                 <div
@@ -98,7 +96,7 @@ function compileAgreement(): void {
                             <p
                                 class="text-xs font-semibold text-slate-500 uppercase"
                             >
-                                Compiler state
+                                Review status
                             </p>
                             <p
                                 class="mt-1 font-semibold text-slate-950 dark:text-white"
@@ -106,7 +104,7 @@ function compileAgreement(): void {
                                 {{
                                     partnership.compiler_status ===
                                     'consistent_with_open_decisions'
-                                        ? 'Consistent with open decisions'
+                                        ? 'Open decisions'
                                         : 'Conflict detected'
                                 }}
                             </p>
@@ -172,18 +170,14 @@ function compileAgreement(): void {
                                 Firm commencement
                             </p>
                         </div>
-                        <h2 class="mt-3 font-serif text-2xl font-semibold">
-                            Formation facts do not become operating authority by
-                            implication.
+                        <h2 class="mt-3 text-xl font-semibold">
+                            Commencement requirements
                         </h2>
                         <p
                             class="mt-3 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                         >
-                            A counsel-confirmed requirement set, exact principal
-                            office and effective date, both Founding Partners,
-                            separately resolved capital records, and complete
-                            Evidence must converge before formation-derived
-                            Offices can activate.
+                            Formation requirements and evidence must be verified
+                            before office activation.
                         </p>
                     </div>
 
@@ -257,25 +251,30 @@ function compileAgreement(): void {
                     </div>
                 </div>
 
-                <ul
+                <details
                     v-if="!formationCompletion.firm_commenced"
-                    class="mt-5 grid gap-2 text-sm sm:grid-cols-2"
+                    class="mt-5"
                 >
-                    <li
-                        v-for="finding in [
-                            ...formationCompletion.reports.conflicts,
-                            ...formationCompletion.reports.formation_gaps,
-                            ...formationCompletion.reports.legal_gaps,
-                            ...formationCompletion.reports.capital_gaps,
-                            ...formationCompletion.reports.evidence_gaps,
-                            ...formationCompletion.reports.counsel_review,
-                        ]"
-                        :key="`${finding.code}-${finding.message}`"
-                        class="rounded-lg bg-white/80 px-3 py-2 text-slate-700 dark:bg-slate-900/80 dark:text-slate-300"
-                    >
-                        {{ finding.message }}
-                    </li>
-                </ul>
+                    <summary class="cursor-pointer text-sm font-medium">
+                        Outstanding requirements
+                    </summary>
+                    <ul class="mt-5 grid gap-2 text-sm sm:grid-cols-2">
+                        <li
+                            v-for="finding in [
+                                ...formationCompletion.reports.conflicts,
+                                ...formationCompletion.reports.formation_gaps,
+                                ...formationCompletion.reports.legal_gaps,
+                                ...formationCompletion.reports.capital_gaps,
+                                ...formationCompletion.reports.evidence_gaps,
+                                ...formationCompletion.reports.counsel_review,
+                            ]"
+                            :key="`${finding.code}-${finding.message}`"
+                            class="rounded-lg bg-white/80 px-3 py-2 text-slate-700 dark:bg-slate-900/80 dark:text-slate-300"
+                        >
+                            {{ finding.message }}
+                        </li>
+                    </ul>
+                </details>
             </section>
 
             <section
@@ -298,15 +297,14 @@ function compileAgreement(): void {
                                 Constitutional root
                             </p>
                             <h2
-                                class="mt-1 font-serif text-2xl font-semibold text-slate-950 dark:text-stone-50"
+                                class="mt-1 text-xl font-semibold text-slate-950 dark:text-stone-50"
                             >
                                 Partnership Agreement
                             </h2>
                             <p
                                 class="mt-1 text-sm text-slate-600 dark:text-slate-400"
                             >
-                                Deterministic projection of the current
-                                ResolvedPartnership.
+                                Current working draft.
                             </p>
                         </div>
                     </div>
@@ -322,7 +320,7 @@ function compileAgreement(): void {
                             class="rounded-lg bg-slate-950 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-stone-100 dark:text-slate-950 dark:hover:bg-stone-200"
                             @click="compileAgreement"
                         >
-                            Compile
+                            Refresh
                         </button>
                     </div>
                 </div>
@@ -424,48 +422,13 @@ function compileAgreement(): void {
                             <p
                                 class="text-xs font-semibold tracking-[0.18em] text-teal-700 uppercase dark:text-teal-400"
                             >
-                                Partnership compiler
+                                Constitution
                             </p>
-                            <h2 class="mt-2 font-serif text-2xl font-semibold">
-                                Agreement follows resolved truth
+                            <h2 class="mt-2 text-xl font-semibold">
+                                Partnership decisions
                             </h2>
                         </div>
                         <Braces class="size-6 text-slate-400" />
-                    </div>
-
-                    <div
-                        class="mt-6 grid gap-2 text-sm md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center"
-                    >
-                        <div
-                            class="rounded-xl bg-slate-50 p-4 dark:bg-slate-950"
-                        >
-                            <p class="font-semibold">Partnership Formation</p>
-                            <p class="mt-1 text-xs text-slate-500">
-                                Founders, governance, office, and economics
-                            </p>
-                        </div>
-                        <ArrowRight
-                            class="mx-auto hidden size-4 text-slate-400 md:block"
-                        />
-                        <div
-                            class="rounded-xl border border-teal-600/30 bg-teal-50 p-4 dark:bg-teal-950/30"
-                        >
-                            <p class="font-semibold">ResolvedPartnership</p>
-                            <p class="mt-1 text-xs text-slate-500">
-                                Validation, gaps, conflicts, counsel review
-                            </p>
-                        </div>
-                        <ArrowRight
-                            class="mx-auto hidden size-4 text-slate-400 md:block"
-                        />
-                        <div
-                            class="rounded-xl bg-slate-50 p-4 dark:bg-slate-950"
-                        >
-                            <p class="font-semibold">Agreement Projection</p>
-                            <p class="mt-1 text-xs text-slate-500">
-                                Future Markdown and HTML drafting output
-                            </p>
-                        </div>
                     </div>
 
                     <div class="mt-6 grid gap-3">
@@ -478,11 +441,18 @@ function compileAgreement(): void {
                                 <p class="text-sm font-semibold">
                                     {{ decision.label }}
                                 </p>
-                                <p
-                                    class="mt-1 text-sm text-slate-600 dark:text-slate-400"
-                                >
-                                    {{ decision.statement }}
-                                </p>
+                                <details class="mt-2 text-sm">
+                                    <summary
+                                        class="cursor-pointer text-slate-500"
+                                    >
+                                        Details
+                                    </summary>
+                                    <p
+                                        class="mt-1 text-sm text-slate-600 dark:text-slate-400"
+                                    >
+                                        {{ decision.statement }}
+                                    </p>
+                                </details>
                             </div>
                             <div
                                 class="flex flex-wrap items-start gap-2 sm:justify-end"
@@ -528,11 +498,18 @@ function compileAgreement(): void {
                                 <p class="text-sm font-semibold">
                                     {{ gap.label }}
                                 </p>
-                                <p
-                                    class="mt-1 text-xs text-slate-600 dark:text-slate-400"
-                                >
-                                    {{ gap.statement }}
-                                </p>
+                                <details class="mt-2 text-sm">
+                                    <summary
+                                        class="cursor-pointer text-slate-500"
+                                    >
+                                        Details
+                                    </summary>
+                                    <p
+                                        class="mt-1 text-xs text-slate-600 dark:text-slate-400"
+                                    >
+                                        {{ gap.statement }}
+                                    </p>
+                                </details>
                             </li>
                         </ul>
                     </section>
@@ -575,7 +552,7 @@ function compileAgreement(): void {
                         <div class="flex items-center gap-3">
                             <ShieldCheck class="size-5 text-teal-600" />
                             <h2 class="font-serif text-xl font-semibold">
-                                Authority has three gates
+                                Authority requirements
                             </h2>
                         </div>
                         <div class="mt-4 grid gap-3 text-sm">
@@ -618,7 +595,7 @@ function compileAgreement(): void {
                             <AlertTriangle class="size-5 text-red-700" />
                             <div>
                                 <p class="font-semibold">
-                                    Compiler conflicts detected
+                                    review conflicts detected
                                 </p>
                                 <p
                                     v-for="conflict in partnership.reports

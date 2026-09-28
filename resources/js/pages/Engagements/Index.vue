@@ -110,17 +110,15 @@ function statusClass(
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        No Client Work Without Engagement.
+                        Engagements
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        An Engagement is the controlling unit of professional
-                        responsibility. It binds accepted Client, scope,
-                        Responsible Partner, mandate, Firm approval, operating
-                        boundaries, and evidence before work may begin.
+                        Client, scope, Responsible Partner, mandate, approval,
+                        and evidence.
                     </p>
                 </div>
 
@@ -207,18 +205,16 @@ function statusClass(
                         <p
                             class="text-xs font-semibold tracking-[0.18em] text-indigo-700 uppercase dark:text-indigo-300"
                         >
-                            Client mandate and authority compiler
+                            Client mandate and authority review
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Firm Authority is not Client authorization
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Client authorization
                         </h2>
                         <p
                             class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                         >
-                            A bounded Client action requires an Open Engagement,
-                            a current mandate for the exact system and
-                            environment, effective Firm Authority for the named
-                            actor, separate Specific Approval, and Evidence.
+                            Open Engagement, Client Mandate, Firm Authority, and
+                            Specific Approval required.
                         </p>
                     </div>
                     <dl class="grid shrink-0 grid-cols-2 gap-2 text-center">
@@ -258,18 +254,16 @@ function statusClass(
                         <p
                             class="text-xs font-semibold tracking-[0.18em] text-cyan-700 uppercase dark:text-cyan-300"
                         >
-                            Matter event and evidence compiler
+                            Matter event and evidence review
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Matter history remains append-only and attributable
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Matter history
                         </h2>
                         <p
                             class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                         >
-                            Decisions, changes, incidents, reviews, and closure
-                            are distinct events. Closure requires independent
-                            verification; no event silently creates approval or
-                            erases history.
+                            Separate event records. Independent verification
+                            required for closure.
                         </p>
                     </div>
                     <dl class="grid shrink-0 grid-cols-2 gap-2 text-center">
@@ -309,19 +303,14 @@ function statusClass(
                         <p
                             class="text-xs font-semibold tracking-[0.18em] text-amber-700 uppercase dark:text-amber-300"
                         >
-                            Matter accountability compiler
+                            Matter accountability review
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Client, Engagement, and Matter remain distinct
-                        </h2>
+                        <h2 class="mt-2 text-xl font-semibold">Matters</h2>
                         <p
                             class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                         >
-                            A Matter is bounded professional work inside an
-                            Engagement. It preserves exactly one Responsible
-                            Partner, explicit scope, risk ownership and
-                            acceptance, escalation, and Evidence without
-                            becoming a generic ticket.
+                            Scope, Responsible Partner, risk, and evidence by
+                            Matter.
                         </p>
                     </div>
                     <dl class="grid shrink-0 grid-cols-2 gap-2 text-center">
@@ -366,10 +355,8 @@ function statusClass(
                         <p
                             class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            The compiler will not recognize an Open Engagement
-                            while a required governing policy is not Effective.
-                            Draft publication does not create operative
-                            authority.
+                            All governing policies must be Effective before
+                            opening.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
                             <Link
@@ -407,8 +394,8 @@ function statusClass(
                         >
                             Opening sequence
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Approval and opening are separate facts
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Opening requirements
                         </h2>
                     </div>
                     <Fingerprint class="size-6 text-slate-400" />
@@ -456,7 +443,7 @@ function statusClass(
                         >
                             Opening standard
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                        <h2 class="mt-2 text-xl font-semibold">
                             Required institutional gates
                         </h2>
                     </div>
@@ -518,8 +505,8 @@ function statusClass(
                         >
                             Engagement register
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Professional responsibility records
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Engagement records
                         </h2>
                     </div>
                     <UserRoundCog class="size-6 text-slate-400" />
@@ -538,11 +525,8 @@ function statusClass(
                     <p
                         class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-500"
                     >
-                        The repository contains no invented Client work. An
-                        Engagement may be added only after a real Client is
-                        accepted and its scope, singular Responsible Partner,
-                        mandate, terms, approval, opening verification, and
-                        Evidence Records can be stated truthfully.
+                        No Engagements recorded. Acceptance and verified opening
+                        required.
                     </p>
                 </div>
 
@@ -626,7 +610,7 @@ function statusClass(
                         class="size-5 text-red-700 dark:text-red-400"
                     />
                     <h2 class="font-serif text-xl font-semibold">
-                        Engagement compiler findings
+                        Engagement review findings
                     </h2>
                 </div>
                 <ul class="mt-4 grid gap-2 text-sm">

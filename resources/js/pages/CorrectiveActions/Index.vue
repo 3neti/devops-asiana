@@ -74,19 +74,14 @@ const separations = [
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        Findings remain accountable until independently verified
-                        and expressly closed.
+                        Corrective Actions
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        Corrective Actions preserve obligations created by
-                        Incidents, failed Changes, emergency-access reviews,
-                        Access Reviews, Policy Exceptions, and other evidenced
-                        findings. Closing the source never silently closes the
-                        remediation.
+                        Remediation tracked independently of source closure.
                     </p>
                 </div>
 
@@ -178,11 +173,8 @@ const separations = [
                         <p
                             class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            Assignment and escalation authority must come from
-                            an Effective, approved, integrity-verified,
-                            evidenced Authority and Delegation Policy.
-                            Source-specific policies become mandatory when their
-                            records are present.
+                            Effective, approved authority policy required;
+                            source policies apply.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
                             <Link
@@ -211,9 +203,7 @@ const separations = [
                 >
                     Accountability lifecycle
                 </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold">
-                    Each stage proves a different fact
-                </h2>
+                <h2 class="mt-2 text-xl font-semibold">Action lifecycle</h2>
                 <div
                     class="mt-6 grid gap-2 xl:grid-cols-[repeat(11,minmax(0,auto))] xl:items-center"
                 >
@@ -266,9 +256,7 @@ const separations = [
                         <CalendarClock
                             class="size-5 text-teal-700 dark:text-teal-400"
                         />
-                        <h2 class="font-serif text-2xl font-semibold">
-                            Required record
-                        </h2>
+                        <h2 class="text-xl font-semibold">Required record</h2>
                     </div>
                     <div class="mt-5 space-y-3">
                         <div
@@ -289,13 +277,11 @@ const separations = [
                 <div
                     class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
                 >
-                    <h2 class="font-serif text-2xl font-semibold">
+                    <h2 class="text-xl font-semibold">
                         Corrective Action Register
                     </h2>
                     <p class="mt-2 text-sm leading-6 text-slate-500">
-                        The canonical register is intentionally empty. Records
-                        are added only when a real evidenced finding creates a
-                        remediation obligation.
+                        No evidenced findings recorded.
                     </p>
                     <div
                         v-if="correctiveActions.corrective_actions.length === 0"
@@ -306,9 +292,7 @@ const separations = [
                             No corrective actions recorded
                         </p>
                         <p class="mt-1 text-sm text-slate-500">
-                            Absence of records is not a claim that the Firm has
-                            no risk; it states that no canonical finding has yet
-                            been entered.
+                            Risk assessment pending recorded findings.
                         </p>
                     </div>
                     <div v-else class="mt-6 space-y-4">

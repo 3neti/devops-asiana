@@ -102,9 +102,9 @@ const changeClasses = [
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        No Ticket, No Change.
+                        Production Changes
                     </h1>
                     <p
                         class="mt-3 font-serif text-xl font-semibold text-teal-800 dark:text-teal-300"
@@ -114,11 +114,8 @@ const changeClasses = [
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        A deployment is not its own authority. The Firm must
-                        connect every production alteration to an Open
-                        Engagement, Client Mandate, specific approvals, a named
-                        authorized executor, a viable recovery path, independent
-                        verification, and durable evidence.
+                        Engagement, mandate, approvals, executor, recovery,
+                        verification, and evidence.
                     </p>
                 </div>
 
@@ -210,9 +207,8 @@ const changeClasses = [
                         <p
                             class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            Draft policy does not authorize production
-                            execution. Every required policy must be Effective,
-                            approved, integrity-verified, and evidenced.
+                            Effective, approved, verified governing policies
+                            required.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
                             <Link
@@ -241,10 +237,7 @@ const changeClasses = [
                 >
                     Change lifecycle
                 </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold">
-                    Execution cannot collapse the decisions that precede or
-                    follow it
-                </h2>
+                <h2 class="mt-2 text-xl font-semibold">Change lifecycle</h2>
                 <div
                     class="mt-6 grid gap-2 2xl:grid-cols-[repeat(15,minmax(0,auto))] 2xl:items-center"
                 >
@@ -304,19 +297,14 @@ const changeClasses = [
                         >
                             Recovery doctrine
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Recovery readiness is a precondition, not an
-                            afterthought
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Recovery requirements
                         </h2>
                         <p
                             class="mt-3 max-w-4xl text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            The record must define a viable strategy, steps,
-                            triggers, owner, estimated recovery time, and a
-                            confirmed recovery point before production
-                            execution. An irreversible plan cannot pass the
-                            ordinary Change gate merely because someone approved
-                            deployment.
+                            Document recovery steps, triggers, owner, timing,
+                            and recovery point.
                         </p>
                     </div>
                 </div>
@@ -351,9 +339,7 @@ const changeClasses = [
                 >
                     Change standard
                 </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold">
-                    Questions every Change Record must answer
-                </h2>
+                <h2 class="mt-2 text-xl font-semibold">Required fields</h2>
                 <div class="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                     <article
                         v-for="requirement in changes.record_requirements"
@@ -380,7 +366,7 @@ const changeClasses = [
                         >
                             Canonical register
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                        <h2 class="mt-2 text-xl font-semibold">
                             Production Change Records
                         </h2>
                     </div>
@@ -396,10 +382,8 @@ const changeClasses = [
                     <p
                         class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-500"
                     >
-                        This is the correct current state: no canonical
-                        Engagement is Open, no Production Access Grant is
-                        Active, and the governing policies remain Draft. The
-                        Console does not manufacture execution authority.
+                        No Open Engagements or Active access grants. Governing
+                        policies: Draft.
                     </p>
                 </div>
                 <div v-else class="mt-5 grid gap-3">

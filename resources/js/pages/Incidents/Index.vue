@@ -83,18 +83,15 @@ const notificationAudiences = ['Client', 'Legal', 'Regulatory', 'Insurer'];
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        No Incident Without Disclosure.
+                        Incidents
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        An alert is not a declaration, restored service is not
-                        closure, and technical action is not professional
-                        accountability. Every material response must identify
-                        command, authority, impact, disclosure, verification,
-                        review, corrective action, and evidence.
+                        Command, impact, disclosure, recovery, review, and
+                        evidence.
                     </p>
                 </div>
 
@@ -185,10 +182,8 @@ const notificationAudiences = ['Client', 'Legal', 'Regulatory', 'Insurer'];
                         <p
                             class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            Draft policy does not create operational authority.
-                            Security and continuity policies also become
-                            mandatory when the Incident type or major
-                            classification makes them applicable.
+                            Effective governing policies required; additional
+                            policies depend on Incident classification.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
                             <Link
@@ -218,9 +213,7 @@ const notificationAudiences = ['Client', 'Legal', 'Regulatory', 'Insurer'];
                 >
                     Response lifecycle
                 </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold">
-                    Operational state and institutional decision remain distinct
-                </h2>
+                <h2 class="mt-2 text-xl font-semibold">Incident lifecycle</h2>
                 <div
                     class="mt-6 grid gap-2 2xl:grid-cols-[repeat(15,minmax(0,auto))] 2xl:items-center"
                 >
@@ -272,26 +265,22 @@ const notificationAudiences = ['Client', 'Legal', 'Regulatory', 'Insurer'];
                     <ClipboardCheck
                         class="size-6 text-teal-700 dark:text-teal-400"
                     />
-                    <h2 class="mt-4 font-serif text-2xl font-semibold">
+                    <h2 class="mt-4 text-xl font-semibold">
                         Restoration ≠ Closure
                     </h2>
                     <p
                         class="mt-3 text-sm leading-6 text-slate-700 dark:text-slate-300"
                     >
-                        Restoration records the recovered technical state,
-                        independent verification, and stability observation.
-                        Closure separately requires final notification
-                        decisions, the required blameless review, owned
-                        corrective actions, complete evidence, and competent
-                        authority.
+                        Recovery and closure require separate verification and
+                        approval.
                     </p>
                 </article>
                 <article
                     class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900"
                 >
                     <BellRing class="size-6 text-rose-700 dark:text-rose-400" />
-                    <h2 class="mt-4 font-serif text-2xl font-semibold">
-                        Every audience receives a decision
+                    <h2 class="mt-4 text-xl font-semibold">
+                        Disclosure decisions
                     </h2>
                     <div class="mt-4 flex flex-wrap gap-2">
                         <span
@@ -305,9 +294,8 @@ const notificationAudiences = ['Client', 'Legal', 'Regulatory', 'Insurer'];
                     <p
                         class="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Notified, not required, or pending must be recorded by
-                        an authorized decision-maker with reason and evidence.
-                        Client impact cannot be closed as “not required.”
+                        Record each disclosure decision with authority and
+                        evidence. Client impact requires notification.
                     </p>
                 </article>
             </section>
@@ -317,7 +305,7 @@ const notificationAudiences = ['Client', 'Legal', 'Regulatory', 'Insurer'];
             >
                 <div class="flex items-center gap-2">
                     <FileSearch class="size-5 text-slate-500" />
-                    <h2 class="font-serif text-2xl font-semibold">
+                    <h2 class="text-xl font-semibold">
                         Incident Record standard
                     </h2>
                 </div>
@@ -341,7 +329,7 @@ const notificationAudiences = ['Client', 'Legal', 'Regulatory', 'Insurer'];
                 class="rounded-2xl border border-dashed border-slate-300 bg-white/70 p-8 text-center dark:border-slate-700 dark:bg-slate-900/70"
             >
                 <Siren class="mx-auto size-8 text-slate-400" />
-                <h2 class="mt-4 font-serif text-2xl font-semibold">
+                <h2 class="mt-4 text-xl font-semibold">
                     {{
                         incidents.incident_records.length === 0
                             ? 'No Incident Records yet'
@@ -352,9 +340,7 @@ const notificationAudiences = ['Client', 'Legal', 'Regulatory', 'Insurer'];
                     v-if="incidents.incident_records.length === 0"
                     class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-500"
                 >
-                    The empty registry is intentional. The compiler exposes the
-                    control model and policy readiness without fabricating
-                    operational history.
+                    No Incident records.
                 </p>
                 <div v-else class="mt-6 grid gap-4 text-left lg:grid-cols-2">
                     <article

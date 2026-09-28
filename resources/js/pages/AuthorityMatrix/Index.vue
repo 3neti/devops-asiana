@@ -89,22 +89,19 @@ function statusClass(status: AuthorityResolutionStatus): string {
                         <p
                             class="text-xs font-semibold tracking-[0.22em] uppercase"
                         >
-                            Firm Authority compiler
+                            Firm Authority review
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        Authority is specific, bounded, attributable, and never
-                        inferred from title or access.
+                        Authority Matrix
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        The Matrix resolves who may decide or approve for the
-                        Firm, under which institutional source, within which
-                        boundary, and why the authority is—or is not—currently
-                        effective.
+                        Decision rights, sources, scope, and current
+                        eligibility.
                     </p>
                 </div>
 
@@ -244,11 +241,8 @@ function statusClass(status: AuthorityResolutionStatus): string {
                         <p
                             class="mt-1 text-sm leading-6 text-amber-900/80 dark:text-amber-200/80"
                         >
-                            Draft policy and Design entries describe the future
-                            control surface but cannot authorize a decision or
-                            action. Approved constitutional entries also await
-                            the unresolved Firm effective date and operative
-                            holder records.
+                            Draft entries are non-operative. Constitutional
+                            authority awaits commencement and eligible holders.
                         </p>
                     </div>
                 </div>
@@ -266,8 +260,8 @@ function statusClass(status: AuthorityResolutionStatus): string {
                         >
                             Resolved Matrix
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Seven grounded actions, no invented powers
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Authority entries
                         </h2>
                     </div>
                     <Link
@@ -400,8 +394,8 @@ function statusClass(status: AuthorityResolutionStatus): string {
                             No authority exists yet
                         </p>
                     </div>
-                    <h2 class="mt-2 font-serif text-2xl font-semibold">
-                        Deferred decisions are explicit exclusions
+                    <h2 class="mt-2 text-xl font-semibold">
+                        Deferred decisions
                     </h2>
                     <div class="mt-5 grid gap-3">
                         <article
@@ -454,7 +448,7 @@ function statusClass(status: AuthorityResolutionStatus): string {
                         <div class="flex items-center gap-2">
                             <Scale class="size-5 text-indigo-600" />
                             <h2 class="font-serif text-xl font-semibold">
-                                Compiler safeguards
+                                review safeguards
                             </h2>
                         </div>
                         <ul

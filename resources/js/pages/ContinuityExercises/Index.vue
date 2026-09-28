@@ -78,18 +78,15 @@ const controlDistinctions = [
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        Recoverability is demonstrated through controlled
-                        exercise, measured results, and evidence.
+                        Continuity Exercises
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        Continuity Exercises bind approved scope, dependencies,
-                        recovery objectives, backup and restore execution,
-                        observed performance, independent verification, material
-                        gaps, Corrective Actions, data disposition, and closure.
+                        Recovery objectives, measured results, verification, and
+                        closure.
                     </p>
                 </div>
 
@@ -183,10 +180,8 @@ const controlDistinctions = [
                         <p
                             class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            Continuity, authority, and information-security
-                            policies must be Effective, approved,
-                            integrity-verified, and evidenced before an exercise
-                            can receive operative approval.
+                            Effective, approved, verified governing policies
+                            required.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
                             <Link
@@ -215,9 +210,7 @@ const controlDistinctions = [
                 >
                     Exercise lifecycle
                 </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold">
-                    Plan assumptions become measured institutional facts
-                </h2>
+                <h2 class="mt-2 text-xl font-semibold">Exercise stages</h2>
                 <div
                     class="mt-6 grid gap-2 2xl:grid-cols-[repeat(13,minmax(0,auto))] 2xl:items-center"
                 >
@@ -266,7 +259,7 @@ const controlDistinctions = [
                 <div
                     class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
                 >
-                    <h2 class="font-serif text-2xl font-semibold">
+                    <h2 class="text-xl font-semibold">
                         Required exercise record
                     </h2>
                     <div class="mt-5 space-y-3">
@@ -288,13 +281,11 @@ const controlDistinctions = [
                 <div
                     class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
                 >
-                    <h2 class="font-serif text-2xl font-semibold">
+                    <h2 class="text-xl font-semibold">
                         Continuity Exercise Register
                     </h2>
                     <p class="mt-2 text-sm leading-6 text-slate-500">
-                        The canonical register is intentionally empty. No Client
-                        recovery objective, backup, restore result, or
-                        resilience claim is invented.
+                        No recovery results recorded.
                     </p>
                     <div
                         v-if="continuityExercises.exercise_records.length === 0"
@@ -305,8 +296,7 @@ const controlDistinctions = [
                             No continuity exercises recorded
                         </p>
                         <p class="mt-1 text-sm text-slate-500">
-                            The absence of exercises is visible as institutional
-                            state, not disguised as readiness.
+                            Recovery readiness unverified.
                         </p>
                     </div>
                     <div v-else class="mt-6 space-y-4">

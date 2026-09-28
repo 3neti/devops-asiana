@@ -93,18 +93,14 @@ function statusLabel(status: ResponsibilityCoverageStatus): string {
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        Every required responsibility must resolve to qualified,
-                        reviewable human coverage.
+                        Responsibility Coverage
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        This compiler derives offices, professional
-                        responsibilities, and authority requirements from the
-                        Partnership and policy register—then exposes vacancies,
-                        conflicts, concentration, and succession gaps.
+                        Offices, responsibilities, vacancies, and succession.
                     </p>
                 </div>
 
@@ -218,8 +214,8 @@ function statusLabel(status: ResponsibilityCoverageStatus): string {
                         >
                             Canonical requirements
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Coverage resolves from existing institutional truth
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Coverage register
                         </h2>
                     </div>
                     <Link
@@ -430,8 +426,7 @@ function statusLabel(status: ResponsibilityCoverageStatus): string {
                     <p
                         class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Draft policies disclose future coverage needs but do not
-                        create operative authority or live vacancies.
+                        Draft-policy requirements remain pending activation.
                     </p>
                     <ul class="mt-4 grid gap-2 text-sm">
                         <li

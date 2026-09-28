@@ -97,22 +97,19 @@ function activationAdmitted(assignmentKey: string): boolean {
                         <p
                             class="text-xs font-semibold tracking-[0.22em] uppercase"
                         >
-                            Institutional identity compiler
+                            Institutional identity review
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        People hold roles. Roles carry responsibilities.
-                        Authority remains separately provable.
+                        Identity &amp; Roles
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        This register reconciles named people and role
-                        assignments with Partnership formation and
-                        Responsibility Coverage without treating status, access,
-                        or prior conduct as authority.
+                        People, assignments, and eligibility. Authority assessed
+                        separately.
                     </p>
                 </div>
 
@@ -225,19 +222,16 @@ function activationAdmitted(assignmentKey: string): boolean {
                         <p
                             class="text-xs font-semibold tracking-[0.18em] text-indigo-700 uppercase dark:text-indigo-300"
                         >
-                            Founding role activation compiler
+                            Founding role activation review
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Commencement establishes eligibility. Each holder
-                            still assumes one exact assignment.
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Role activation
                         </h2>
                         <p
                             class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                         >
-                            Acceptance, independent verification, activation,
-                            and their Evidence remain distinct. An admitted
-                            professional responsibility does not itself create
-                            Firm Authority.
+                            Separate acceptance, verification, and activation
+                            records.
                         </p>
                     </div>
                     <dl class="grid shrink-0 grid-cols-3 gap-2 text-center">
@@ -293,19 +287,15 @@ function activationAdmitted(assignmentKey: string): boolean {
                         <p
                             class="text-xs font-semibold tracking-[0.18em] text-indigo-700 uppercase dark:text-indigo-400"
                         >
-                            Role transition compiler
+                            Role transition review
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Lifecycle changes preserve history and expose
-                            vacancies
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Role transitions
                         </h2>
                         <p
                             class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                         >
-                            Suspension, resignation, removal, revocation, and
-                            ending are separately evidenced transitions. A
-                            successor is never inferred from the outgoing
-                            holder.
+                            Recorded transitions; no automatic succession.
                         </p>
                     </div>
                     <dl class="grid shrink-0 grid-cols-3 gap-2 text-center">
@@ -384,19 +374,16 @@ function activationAdmitted(assignmentKey: string): boolean {
                         <p
                             class="text-xs font-semibold tracking-[0.18em] text-teal-700 uppercase dark:text-teal-300"
                         >
-                            Successor appointment compiler
+                            Successor appointment review
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            A vacancy closes only through a new admitted
-                            assignment
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Successor appointments
                         </h2>
                         <p
                             class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                         >
-                            Appointment authority, qualification, approval,
-                            holder acceptance, activation, and Evidence are
-                            evaluated independently. No successor inherits the
-                            predecessor's Office or Firm Authority.
+                            Successors require separate approval, acceptance,
+                            and activation.
                         </p>
                     </div>
                     <dl class="grid shrink-0 grid-cols-2 gap-2 text-center">
@@ -444,9 +431,7 @@ function activationAdmitted(assignmentKey: string): boolean {
                         >
                             Identity register
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Known people, without inferred relationships
-                        </h2>
+                        <h2 class="mt-2 text-xl font-semibold">People</h2>
                     </div>
                     <Link
                         :href="
@@ -527,9 +512,7 @@ function activationAdmitted(assignmentKey: string): boolean {
                 >
                     Role register
                 </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold">
-                    Coverage reconciled to institutional requirements
-                </h2>
+                <h2 class="mt-2 text-xl font-semibold">Coverage</h2>
                 <div class="mt-6 grid gap-3">
                     <article
                         v-for="role in identityAndRoles.roles"
@@ -595,10 +578,7 @@ function activationAdmitted(assignmentKey: string): boolean {
                     >
                         Assignment ledger
                     </p>
-                    <h2 class="mt-2 font-serif text-2xl font-semibold">
-                        Approved records are preserved before they become
-                        operative
-                    </h2>
+                    <h2 class="mt-2 text-xl font-semibold">Role assignments</h2>
                     <div class="mt-6 overflow-x-auto">
                         <table class="w-full min-w-[48rem] text-left text-sm">
                             <thead
@@ -678,7 +658,7 @@ function activationAdmitted(assignmentKey: string): boolean {
                         class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
                     >
                         <h2 class="font-serif text-xl font-semibold">
-                            Compiler safeguards
+                            review safeguards
                         </h2>
                         <ul
                             class="mt-4 space-y-3 text-sm leading-6 text-slate-600 dark:text-slate-400"

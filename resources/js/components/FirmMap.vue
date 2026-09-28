@@ -71,7 +71,7 @@ function selectPartner(partner: FoundingPartner): void {
                     <p
                         class="text-xs font-semibold tracking-[0.2em] text-teal-700 uppercase dark:text-teal-400"
                     >
-                        Institutional projection
+                        Firm structure
                     </p>
                     <h2
                         class="font-serif text-2xl font-semibold tracking-tight text-slate-950 dark:text-stone-50"
@@ -81,8 +81,8 @@ function selectPartner(partner: FoundingPartner): void {
                     <p
                         class="max-w-2xl text-sm text-slate-600 dark:text-slate-400"
                     >
-                        One institutional truth, viewed through partnership,
-                        management, responsibility, and economics.
+                        Partnership, management, responsibilities, and
+                        economics.
                     </p>
                 </div>
             </div>
@@ -218,8 +218,7 @@ function selectPartner(partner: FoundingPartner): void {
                         <p
                             class="mt-1 text-sm text-slate-600 dark:text-slate-400"
                         >
-                            A portion of every Engagement Contribution builds
-                            the Firm.
+                            Allocation from Engagement Contribution.
                         </p>
                     </div>
                 </div>
@@ -374,9 +373,8 @@ function selectPartner(partner: FoundingPartner): void {
                 <p
                     class="rounded-xl border border-dashed border-slate-300 px-4 py-3 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400"
                 >
-                    Anaïs manages the Firm. Lester and Anaïs govern the
-                    Partnership. Office authority can transfer without rewriting
-                    a person's constitutional status.
+                    Management: Anaïs. Governance: Lester and Anaïs. Office
+                    transfers preserve Partner status.
                 </p>
             </div>
 

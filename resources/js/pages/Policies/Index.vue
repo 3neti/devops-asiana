@@ -97,16 +97,14 @@ function statusClass(status: PolicyProjection['current_status']): string {
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        Policy is authority with a history.
+                        Policy Register
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        The register separates drafting, approval,
-                        effectiveness, exceptions, and evidence. A committed
-                        document is not thereby approved or operative.
+                        Lifecycle, approvals, exceptions, and evidence.
                     </p>
                 </div>
 
@@ -118,7 +116,7 @@ function statusClass(status: PolicyProjection['current_status']): string {
                             <p
                                 class="text-xs font-semibold text-slate-500 uppercase"
                             >
-                                Registry compiler
+                                Registry review
                             </p>
                             <p
                                 class="mt-1 font-semibold text-slate-950 dark:text-white"
@@ -197,18 +195,14 @@ function statusClass(status: PolicyProjection['current_status']): string {
                                 Constitutional bootstrap
                             </p>
                         </div>
-                        <h2 class="mt-3 font-serif text-2xl font-semibold">
-                            Formation may approve the first control policies,
-                            but cannot activate them silently.
+                        <h2 class="mt-3 text-xl font-semibold">
+                            Initial policy ratification
                         </h2>
                         <p
                             class="mt-3 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-400"
                         >
-                            A counsel-confirmed Partnership Agreement, the
-                            resolved formation date, unanimous evidenced
-                            Founding Partner consent, and exact controlled
-                            policy content must converge first. Publication and
-                            activation remain separate records in this register.
+                            Executed Agreement, formation date, Partner consent,
+                            and controlled policy content required.
                         </p>
                     </div>
 
@@ -302,9 +296,8 @@ function statusClass(status: PolicyProjection['current_status']): string {
                         >
                             Policy authority chain
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Approval, publication, and activation are
-                            independent records.
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Policy records
                         </h2>
                     </div>
                     <div class="grid flex-[1.4] gap-2 sm:grid-cols-4">
@@ -357,10 +350,9 @@ function statusClass(status: PolicyProjection['current_status']): string {
                     class="mt-5 flex flex-col gap-3 border-t border-teal-200 pt-4 text-sm leading-6 text-slate-600 sm:flex-row sm:items-center sm:justify-between dark:border-teal-900 dark:text-slate-400"
                 >
                     <p>
-                        An effective Firm Decision requires exact admission.
-                        Only the two allowlisted initial policies may instead
-                        cite verified Formation Ratification. Neither path,
-                        publication, nor approval alone makes policy operative.
+                        Separate approval, publication, and activation required.
+                        Initial policies may use verified Formation
+                        Ratification.
                     </p>
                     <Link
                         :href="decisionRecordsIndex()"
@@ -381,8 +373,8 @@ function statusClass(status: PolicyProjection['current_status']): string {
                         >
                             Controlled lifecycle
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Approval and effectiveness are separate decisions
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Policy lifecycle
                         </h2>
                     </div>
                     <FileClock class="size-6 text-slate-400" />
@@ -422,7 +414,7 @@ function statusClass(status: PolicyProjection['current_status']): string {
                         >
                             Canonical register
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                        <h2 class="mt-2 text-xl font-semibold">
                             Current policy versions
                         </h2>
                     </div>
@@ -563,9 +555,8 @@ function statusClass(status: PolicyProjection['current_status']): string {
                     <p
                         class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Supersession retains the prior version. Once review
-                        begins, the registered digest detects silent content
-                        changes.
+                        Version history retained; reviewed content integrity
+                        checked.
                     </p>
                 </article>
             </section>
@@ -581,7 +572,7 @@ function statusClass(status: PolicyProjection['current_status']): string {
                 <div class="flex items-center gap-3">
                     <FileCheck2 class="size-5 text-red-700 dark:text-red-400" />
                     <h2 class="font-serif text-xl font-semibold">
-                        Compiler findings
+                        review findings
                     </h2>
                 </div>
                 <ul class="mt-4 grid gap-2 text-sm">

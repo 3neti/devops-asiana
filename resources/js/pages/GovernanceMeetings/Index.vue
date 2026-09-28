@@ -56,22 +56,18 @@ function ruleSummary(rule: {
                         <p
                             class="text-xs font-semibold tracking-[0.22em] uppercase"
                         >
-                            Partnership governance compiler
+                            Partnership governance review
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        Attendance is not consent. Silence is not a vote.
-                        Execution is not approval.
+                        Governance Meetings
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        The Meeting compiler preserves notice, attendance,
-                        quorum, conflicts, recusals, votes, abstentions,
-                        outcomes, and Evidence while deriving governance weight
-                        from Partnership truth.
+                        Attendance, quorum, votes, outcomes, and evidence.
                     </p>
                 </div>
 
@@ -140,18 +136,13 @@ function ruleSummary(rule: {
                         <h2
                             class="font-semibold text-amber-950 dark:text-amber-100"
                         >
-                            No constitutional voting outcome can presently be
-                            compiled.
+                            Governance requirements unresolved
                         </h2>
                         <p
                             class="mt-1 text-sm leading-6 text-amber-900/80 dark:text-amber-200/80"
                         >
-                            Ordinary and Reserved Matter quorum and approval
-                            thresholds remain unresolved. The 50/50 deadlock
-                            mechanism remains unresolved and subject to
-                            Philippine counsel review. Both governing policies
-                            are Draft, and collective authority is not yet
-                            effective.
+                            Quorum and thresholds unresolved. Deadlock: counsel
+                            review. Governing policies: Draft.
                         </p>
                     </div>
                 </div>
@@ -165,7 +156,7 @@ function ruleSummary(rule: {
                         <UsersRound
                             class="size-5 text-indigo-700 dark:text-indigo-400"
                         />
-                        <h2 class="font-serif text-2xl font-semibold">
+                        <h2 class="text-xl font-semibold">
                             Governing Partnership
                         </h2>
                     </div>
@@ -181,7 +172,7 @@ function ruleSummary(rule: {
                                     {{ partner.partner_status }}
                                 </p>
                             </div>
-                            <p class="font-serif text-2xl font-semibold">
+                            <p class="text-xl font-semibold">
                                 {{ partner.governance_weight }}%
                             </p>
                         </div>
@@ -189,8 +180,7 @@ function ruleSummary(rule: {
                     <p
                         class="mt-4 text-xs leading-5 text-slate-500 dark:text-slate-400"
                     >
-                        These weights are projected from Partnership Formation;
-                        Meeting Records cannot override them.
+                        Governance weights follow the Partnership Agreement.
                     </p>
                 </article>
 
@@ -201,7 +191,7 @@ function ruleSummary(rule: {
                         <Scale
                             class="size-5 text-indigo-700 dark:text-indigo-400"
                         />
-                        <h2 class="font-serif text-2xl font-semibold">
+                        <h2 class="text-xl font-semibold">
                             Constitutional mechanics
                         </h2>
                     </div>
@@ -270,9 +260,7 @@ function ruleSummary(rule: {
                 >
                     Meeting anatomy
                 </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold">
-                    Nine distinct control questions
-                </h2>
+                <h2 class="mt-2 text-xl font-semibold">Meeting requirements</h2>
                 <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     <article
                         v-for="requirement in governanceMeetings.meeting_requirements"
@@ -297,15 +285,14 @@ function ruleSummary(rule: {
                 <article
                     class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900"
                 >
-                    <h2 class="font-serif text-2xl font-semibold">
+                    <h2 class="text-xl font-semibold">
                         Reserved Matter catalogue
                     </h2>
                     <p
                         class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Every Reserved agenda item must cite one exact
-                        constitutional matter. Classification cannot be supplied
-                        by prose alone.
+                        Reserved agenda items require an exact constitutional
+                        reference.
                     </p>
                     <div class="mt-5 grid gap-2 sm:grid-cols-2">
                         <div
@@ -322,16 +309,14 @@ function ruleSummary(rule: {
                     class="rounded-2xl border border-dashed border-slate-300 bg-white/60 p-6 dark:border-slate-700 dark:bg-slate-900/50"
                 >
                     <FileCheck2 class="size-7 text-slate-400" />
-                    <h2 class="mt-4 font-serif text-2xl font-semibold">
+                    <h2 class="mt-4 text-xl font-semibold">
                         No meetings recorded
                     </h2>
                     <p
                         class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Formation facts are not reconstructed as meeting
-                        minutes. An adopted, fully evidenced outcome may produce
-                        a candidate for the Decision Record compiler, but never
-                        a silent canonical write.
+                        Adopted outcomes require separate Decision Record
+                        admission.
                     </p>
                     <div
                         class="mt-5 flex flex-wrap gap-4 text-sm font-semibold"

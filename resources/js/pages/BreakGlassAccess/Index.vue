@@ -83,19 +83,15 @@ const authorityLayers = [
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        Emergency access is temporary authority, not standing
-                        privilege.
+                        Emergency Access
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        Break-glass exists only for a defined emergency under an
-                        Open Engagement and declared Incident. It names one
-                        actor, limits scope, requires independent approval and
-                        observation, expires automatically, leaves a complete
-                        record, and receives disclosure and review.
+                        Incident, Engagement, named actor, independent
+                        approvals, monitoring, and expiry required.
                     </p>
                 </div>
 
@@ -189,9 +185,8 @@ const authorityLayers = [
                         <p
                             class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                         >
-                            Draft policy cannot create emergency authority. All
-                            four governing policies must be Effective, approved,
-                            integrity-verified, and evidenced before activation.
+                            All four governing policies must be Effective before
+                            activation.
                         </p>
                         <div class="mt-4 flex flex-wrap gap-2">
                             <Link
@@ -220,8 +215,8 @@ const authorityLayers = [
                 >
                     Emergency lifecycle
                 </p>
-                <h2 class="mt-2 font-serif text-2xl font-semibold">
-                    Each stage proves a different institutional fact
+                <h2 class="mt-2 text-xl font-semibold">
+                    Emergency access lifecycle
                 </h2>
                 <div
                     class="mt-6 grid gap-2 2xl:grid-cols-[repeat(17,minmax(0,auto))] 2xl:items-center"
@@ -278,9 +273,8 @@ const authorityLayers = [
                     <p
                         class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
                     >
-                        Authority ends at the approved timestamp even if
-                        technical removal has not yet been verified. Continued
-                        need requires a new record and new approvals.
+                        Authority expires at the approved time. Extensions
+                        require a new record and approvals.
                     </p>
                 </article>
                 <article
@@ -295,9 +289,7 @@ const authorityLayers = [
                     <p
                         class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Vault access, authentication, or credential possession
-                        proves none of the Engagement, Incident, approval,
-                        scope, or time gates.
+                        Credential possession does not grant authority.
                     </p>
                 </article>
                 <article
@@ -312,9 +304,8 @@ const authorityLayers = [
                     <p
                         class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Post-use cleanup proves permission removal, independent
-                        verification, and credential rotation where the custody
-                        design requires it.
+                        Permission removal, independent verification, and
+                        required credential rotation.
                     </p>
                 </article>
             </section>
@@ -327,7 +318,7 @@ const authorityLayers = [
                         class="mt-1 size-6 shrink-0 text-rose-700 dark:text-rose-400"
                     />
                     <div>
-                        <h2 class="font-serif text-2xl font-semibold">
+                        <h2 class="text-xl font-semibold">
                             Secret material is prohibited
                         </h2>
                         <p
@@ -346,7 +337,7 @@ const authorityLayers = [
             >
                 <div class="flex items-center gap-2">
                     <FileSearch class="size-5 text-slate-500" />
-                    <h2 class="font-serif text-2xl font-semibold">
+                    <h2 class="text-xl font-semibold">
                         Break-glass Access Record standard
                     </h2>
                 </div>
@@ -370,7 +361,7 @@ const authorityLayers = [
                 class="rounded-2xl border border-dashed border-slate-300 bg-white/70 p-8 text-center dark:border-slate-700 dark:bg-slate-900/70"
             >
                 <ShieldAlert class="mx-auto size-8 text-slate-400" />
-                <h2 class="mt-4 font-serif text-2xl font-semibold">
+                <h2 class="mt-4 text-xl font-semibold">
                     {{
                         breakGlassAccess.access_records.length === 0
                             ? 'No Break-glass Access Records yet'
@@ -381,9 +372,7 @@ const authorityLayers = [
                     v-if="breakGlassAccess.access_records.length === 0"
                     class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-500"
                 >
-                    The registry is intentionally empty. The control model is
-                    executable without inventing emergencies, credentials, or
-                    authority.
+                    No emergency access records.
                 </p>
                 <div v-else class="mt-6 grid gap-4 text-left lg:grid-cols-2">
                     <article

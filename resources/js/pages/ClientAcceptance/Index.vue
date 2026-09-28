@@ -92,16 +92,15 @@ function statusClass(
                         </p>
                     </div>
                     <h1
-                        class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-5xl dark:text-stone-50"
+                        class="mt-4 max-w-4xl text-3xl leading-tight font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-stone-50"
                     >
-                        No Client Without Acceptance.
+                        Client Acceptance
                     </h1>
                     <p
                         class="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-400"
                     >
-                        The Firm must know whom it may serve, what risks and
-                        relationships were considered, who decided, under what
-                        authority, and where the evidence is retained.
+                        Client identity, risk assessment, decisions, and
+                        evidence.
                     </p>
                 </div>
 
@@ -218,8 +217,8 @@ function statusClass(
                         >
                             Decision boundary
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
-                            Acceptance permits consideration, not work
+                        <h2 class="mt-2 text-xl font-semibold">
+                            Acceptance requirements
                         </h2>
                     </div>
                     <UserRoundCheck class="size-6 text-slate-400" />
@@ -266,7 +265,7 @@ function statusClass(
                         >
                             Review standard
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                        <h2 class="mt-2 text-xl font-semibold">
                             Required acceptance assessments
                         </h2>
                     </div>
@@ -305,7 +304,7 @@ function statusClass(
                         >
                             Acceptance ledger
                         </p>
-                        <h2 class="mt-2 font-serif text-2xl font-semibold">
+                        <h2 class="mt-2 text-xl font-semibold">
                             Prospective Clients and decisions
                         </h2>
                     </div>
@@ -325,10 +324,7 @@ function statusClass(
                     <p
                         class="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-500"
                     >
-                        The repository contains no invented Client data. A
-                        future record must preserve identity, the full review,
-                        conflicts and related parties, risk, authority,
-                        decision, validity, and evidence.
+                        No prospective Clients recorded.
                     </p>
                 </div>
 
@@ -394,9 +390,7 @@ function statusClass(
                     <p
                         class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Assessment evidence and decision evidence are distinct.
-                        A signed contract or commenced work cannot substitute
-                        for the acceptance decision.
+                        Separate assessment and acceptance evidence required.
                     </p>
                 </article>
                 <article
@@ -411,10 +405,7 @@ function statusClass(
                     <p
                         class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        Each decision records the decision-maker and authority
-                        basis. Authentication, Partner status, origination, or
-                        relationship ownership does not imply acceptance
-                        authority.
+                        Explicit decision-maker and authority basis required.
                     </p>
                 </article>
                 <article
@@ -429,9 +420,8 @@ function statusClass(
                     <p
                         class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400"
                     >
-                        ODTI and 3neti relationships are disclosed related-party
-                        facts. Platform affiliation does not override duty to
-                        the prospective Client or the Firm.
+                        Disclose ODTI and 3neti relationships; preserve
+                        professional independence.
                     </p>
                 </article>
             </section>
@@ -449,7 +439,7 @@ function statusClass(
                         class="size-5 text-red-700 dark:text-red-400"
                     />
                     <h2 class="font-serif text-xl font-semibold">
-                        Acceptance compiler findings
+                        Acceptance review findings
                     </h2>
                 </div>
                 <ul class="mt-4 grid gap-2 text-sm">
