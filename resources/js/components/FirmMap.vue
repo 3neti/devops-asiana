@@ -90,7 +90,7 @@ function selectPartner(partner: FoundingPartner): void {
             <div
                 role="tablist"
                 aria-label="Firm Map projection"
-                class="grid grid-cols-2 gap-1 rounded-xl border border-slate-200 bg-white p-1 sm:flex dark:border-slate-700 dark:bg-slate-900"
+                class="grid grid-cols-2 gap-1 rounded-xl border border-slate-200 bg-white p-1 sm:flex sm:flex-wrap dark:border-slate-700 dark:bg-slate-900"
             >
                 <button
                     v-for="projection in projections"
@@ -98,7 +98,7 @@ function selectPartner(partner: FoundingPartner): void {
                     type="button"
                     role="tab"
                     :aria-selected="activeProjection === projection.key"
-                    class="rounded-lg px-3 py-2 text-xs font-semibold transition-colors"
+                    class="min-h-11 rounded-lg px-3 py-2 text-xs font-semibold transition-colors"
                     :class="
                         activeProjection === projection.key
                             ? 'bg-slate-950 text-white shadow-sm dark:bg-stone-100 dark:text-slate-950'
@@ -138,7 +138,7 @@ function selectPartner(partner: FoundingPartner): void {
                         v-for="partner in partners"
                         :key="partner.key"
                         type="button"
-                        class="group rounded-2xl border bg-white p-5 text-left transition-all hover:-translate-y-0.5 hover:shadow-md dark:bg-slate-900"
+                        class="group rounded-2xl border bg-white p-3 text-left transition-all hover:-translate-y-0.5 hover:shadow-md sm:p-5 dark:bg-slate-900"
                         :class="
                             selectedPartnerKey === partner.key
                                 ? 'border-teal-600 ring-2 ring-teal-600/10 dark:border-teal-500'
@@ -146,10 +146,12 @@ function selectPartner(partner: FoundingPartner): void {
                         "
                         @click="selectPartner(partner)"
                     >
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="flex items-center gap-3">
+                        <div
+                            class="flex min-w-0 items-start justify-between gap-2"
+                        >
+                            <div class="flex min-w-0 items-center gap-3">
                                 <div
-                                    class="flex size-10 items-center justify-center rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                                    class="flex size-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"
                                 >
                                     <UserRound class="size-5" />
                                 </div>
@@ -168,10 +170,10 @@ function selectPartner(partner: FoundingPartner): void {
                             </div>
                             <CheckCircle2
                                 v-if="selectedPartnerKey === partner.key"
-                                class="size-5 text-teal-600"
+                                class="size-5 shrink-0 text-teal-600"
                             />
                         </div>
-                        <div class="mt-5 grid grid-cols-2 gap-3">
+                        <div class="mt-5 grid grid-cols-2 gap-2 sm:gap-3">
                             <div
                                 class="rounded-xl bg-slate-50 p-3 dark:bg-slate-950"
                             >

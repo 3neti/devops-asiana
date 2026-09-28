@@ -170,3 +170,37 @@
         @apply bg-background text-foreground;
     }
 }
+
+/* Contain wide registers without clipping the surrounding page. */
+.firm-content {
+    overflow-wrap: anywhere;
+}
+
+.firm-content :where(.grid, .flex) > * {
+    min-width: 0;
+}
+
+.firm-content .overflow-x-auto {
+    max-width: 100%;
+}
+
+@media (width < 768px) {
+    [data-mobile='true'] [data-sidebar='menu-button'] {
+        min-height: 2.75rem;
+    }
+
+    .firm-content summary,
+    .firm-content button {
+        min-height: 2.75rem;
+    }
+
+    .firm-content summary {
+        align-content: center;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: max(1rem, 1em);
+    }
+}

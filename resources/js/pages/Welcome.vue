@@ -7,10 +7,10 @@ import { dashboard, login, register } from '@/routes';
 <template>
     <Head title="DevOps Asiana" />
     <div
-        class="flex min-h-screen flex-col bg-stone-50 text-slate-950 dark:bg-slate-950 dark:text-stone-50"
+        class="flex min-h-svh flex-col bg-stone-50 text-slate-950 dark:bg-slate-950 dark:text-stone-50"
     >
         <header
-            class="flex items-center justify-between border-b border-slate-200 px-6 py-5 sm:px-10 dark:border-slate-800"
+            class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 px-6 py-5 sm:px-10 dark:border-slate-800"
         >
             <div class="flex items-center gap-3 font-semibold">
                 <Scale class="size-5 text-teal-700 dark:text-teal-400" />
@@ -27,31 +27,33 @@ import { dashboard, login, register } from '@/routes';
                 >
                     Partnership · Governance · Operations
                 </p>
-                <h1 class="text-4xl font-semibold tracking-tight sm:text-6xl">
+                <h1 class="text-3xl font-semibold tracking-tight sm:text-6xl">
                     DevOps Asiana
                 </h1>
                 <p class="text-lg text-slate-500 dark:text-slate-400">
                     Firm Console
                 </p>
             </div>
-            <div class="flex flex-wrap items-center gap-4">
+            <div
+                class="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"
+            >
                 <Link
                     v-if="$page.props.auth.user"
                     :href="dashboard()"
-                    class="inline-flex items-center gap-3 rounded-lg bg-slate-950 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800 dark:bg-stone-100 dark:text-slate-950 dark:hover:bg-white"
+                    class="inline-flex items-center justify-center gap-3 rounded-lg bg-slate-950 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800 dark:bg-stone-100 dark:text-slate-950 dark:hover:bg-white"
                 >
                     Open Console <ArrowUpRight class="size-4" />
                 </Link>
                 <template v-else>
                     <Link
                         :href="login()"
-                        class="inline-flex items-center gap-3 rounded-lg bg-slate-950 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800 dark:bg-stone-100 dark:text-slate-950 dark:hover:bg-white"
+                        class="inline-flex items-center justify-center gap-3 rounded-lg bg-slate-950 px-5 py-3 text-sm font-medium text-white hover:bg-slate-800 dark:bg-stone-100 dark:text-slate-950 dark:hover:bg-white"
                     >
                         Sign in <ArrowUpRight class="size-4" />
                     </Link>
                     <Link
                         :href="register()"
-                        class="rounded-lg px-5 py-3 text-sm font-medium text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
+                        class="rounded-lg px-5 py-3 text-center text-sm font-medium text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
                         >Create account</Link
                     >
                 </template>

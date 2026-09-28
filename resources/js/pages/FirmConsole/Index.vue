@@ -111,7 +111,9 @@ function compileAgreement(): void {
                         </div>
                         <BadgeCheck class="size-8 text-teal-600" />
                     </div>
-                    <div class="mt-5 grid grid-cols-3 gap-2 text-center">
+                    <div
+                        class="mt-5 grid grid-cols-1 gap-2 text-center min-[400px]:grid-cols-3"
+                    >
                         <div
                             class="rounded-lg bg-slate-50 p-3 dark:bg-slate-950"
                         >
@@ -181,7 +183,9 @@ function compileAgreement(): void {
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-2 self-start text-center">
+                    <div
+                        class="grid grid-cols-1 gap-2 self-start text-center min-[400px]:grid-cols-3"
+                    >
                         <div
                             class="rounded-xl border border-amber-200 bg-white p-3 dark:border-amber-900 dark:bg-slate-900"
                         >
@@ -324,7 +328,7 @@ function compileAgreement(): void {
                         </button>
                     </div>
                 </div>
-                <div class="grid gap-3 p-5 sm:grid-cols-4 sm:p-6">
+                <div class="grid grid-cols-2 gap-3 p-4 sm:grid-cols-4 sm:p-6">
                     <div class="rounded-xl bg-slate-50 p-3 dark:bg-slate-950">
                         <p class="text-xl font-semibold">
                             {{
@@ -381,7 +385,7 @@ function compileAgreement(): void {
                         {{ partnershipAgreement.status.replace('_', ' ') }}
                     </span>
                     <span>Compiled {{ partnershipAgreement.compiled_at }}</span>
-                    <span class="font-mono"
+                    <span class="font-mono wrap-anywhere"
                         >{{
                             partnershipAgreement.agreement_fingerprint.slice(
                                 0,
@@ -400,7 +404,7 @@ function compileAgreement(): void {
                         Read working draft
                     </summary>
                     <pre
-                        class="max-h-[34rem] overflow-auto border-t border-slate-200 bg-slate-50 p-5 text-sm leading-6 whitespace-pre-wrap text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
+                        class="max-h-[70svh] overflow-auto border-t border-slate-200 bg-slate-50 p-5 text-sm leading-6 wrap-anywhere whitespace-pre-wrap text-slate-700 sm:max-h-[34rem] dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
                         >{{ partnershipAgreement.agreement.markdown }}</pre>
                 </details>
             </section>
@@ -615,7 +619,9 @@ function compileAgreement(): void {
                 class="flex flex-col gap-2 border-t border-slate-200 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800"
             >
                 <p>{{ partnership.disclaimer }}</p>
-                <p class="font-mono">resources/institution/partnership.json</p>
+                <p class="font-mono wrap-anywhere">
+                    resources/institution/partnership.json
+                </p>
             </footer>
         </div>
     </div>

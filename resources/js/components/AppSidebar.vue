@@ -16,6 +16,7 @@ import {
     UserRoundCheck,
     UsersRound,
     Vote,
+    X,
 } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import InstitutionalDocumentNav from '@/components/InstitutionalDocumentNav.vue';
@@ -29,6 +30,7 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    useSidebar,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import { index as authorityMatrix } from '@/routes/authority-matrix';
@@ -126,17 +128,27 @@ const mainNavItems: NavItem[] = [
 ];
 
 const page = usePage();
+const { isMobile, setOpenMobile } = useSidebar();
 const institutionalNavigation = page.props
     .institutionalNavigation as InstitutionalNavigationGroup[];
 </script>
 
 <template>
     <Sidebar collapsible="icon" variant="inset">
-        <SidebarHeader>
+        <SidebarHeader class="relative">
+            <button
+                v-if="isMobile"
+                type="button"
+                aria-label="Close navigation"
+                class="absolute top-2 right-2 z-10 flex size-11 items-center justify-center rounded-md hover:bg-sidebar-accent"
+                @click="setOpenMobile(false)"
+            >
+                <X class="size-5" />
+            </button>
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" as-child>
-                        <Link :href="dashboard()">
+                        <Link :href="dashboard()" @click="setOpenMobile(false)">
                             <AppLogo />
                         </Link>
                     </SidebarMenuButton>

@@ -8,6 +8,7 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    useSidebar,
 } from '@/components/ui/sidebar';
 import { useCurrentUrl } from '@/composables/useCurrentUrl';
 import type { InstitutionalNavigationGroup } from '@/types';
@@ -17,6 +18,7 @@ defineProps<{
 }>();
 
 const { isCurrentUrl } = useCurrentUrl();
+const { setOpenMobile } = useSidebar();
 </script>
 
 <template>
@@ -38,7 +40,11 @@ const { isCurrentUrl } = useCurrentUrl();
                             :is-active="isCurrentUrl(document.href)"
                             :tooltip="document.title"
                         >
-                            <Link :href="document.href" prefetch>
+                            <Link
+                                :href="document.href"
+                                prefetch
+                                @click="setOpenMobile(false)"
+                            >
                                 <FileText />
                                 <span>{{ document.title }}</span>
                             </Link>
